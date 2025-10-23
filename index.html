@@ -738,6 +738,7 @@ html {
 
   #red-placeholder-image {
     margin-top: 0;
+    margin-left: 0;
     width: min(669px, 100%);
     height: auto;
     justify-self: center;
@@ -775,6 +776,10 @@ html {
     padding: clamp(24px, 8vw, 36px) 20px 0;
     margin: 0;
     text-align: left;
+  }
+
+  .project-spotlight__copy--standalone {
+    margin-top: clamp(24px, 8vw, 40px);
   }
 
   .project-spotlight__copy .project-copy-aligned {
@@ -856,6 +861,10 @@ html {
       max-width: clamp(320px, 42vw, 520px);
     }
 
+    .project-spotlight__copy--standalone {
+      margin-top: clamp(32px, 6vw, 56px);
+    }
+
     .project-spotlight__title {
       display: flex;
       width: 100%;
@@ -890,6 +899,20 @@ html {
       line-height: inherit;
     }
 
+    .project-spotlight__title-line,
+    .project-spotlight__subtitle-line {
+      display: block;
+      color: inherit;
+      font: inherit;
+      line-height: inherit;
+    }
+
+    .project-spotlight__subtitle {
+      display: flex;
+      width: 100%;
+      margin-top: clamp(6px, 1.6vw, 12px);
+    }
+
     .project-spotlight__graphic {
       align-self: center;
       justify-self: center;
@@ -907,6 +930,17 @@ html {
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    #green-placeholder-description {
+      margin-left: 0;
+    }
+
+    #red-placeholder-image {
+      width: 1000px;
+      height: 550px;
+      max-width: 100%;
+      margin-top: -180px;
     }
 
     .project-spotlight__chair {
@@ -1584,21 +1618,6 @@ html {
                 <button class="placeholder-button" type="button">VIEW PROJECT</button>
               </div>
             </figure>
-            <div class="project-spotlight__copy">
-              <div class="project-spotlight__title reveal" id="red-placeholder-caption">
-                <span class="black-placeholder-title">
-                  <span class="black-placeholder-title__inner">
-                    <span>Signals in Silence</span>
-                    <span>A dictionary of the psychic realm</span>
-                  </span>
-                </span>
-              </div>
-              <p class="project-copy reveal project-copy-aligned" id="red-placeholder-copy">
-                <span class="project-copy-aligned__inner">
-                  Unveils the hidden language of intuition and energy — a concise guide to the unseen forces that shape our inner and outer worlds.
-                </span>
-              </p>
-            </div>
             <div class="project-spotlight__graphic">
               <svg
                 class="project-spotlight__chair"
@@ -1618,6 +1637,22 @@ html {
               </svg>
             </div>
           </div>
+          <div class="project-spotlight__copy project-spotlight__copy--standalone">
+            <div class="project-spotlight__title reveal" id="red-placeholder-caption">
+              <span class="black-placeholder-title">
+                <span class="project-spotlight__title-line" id="red-placeholder-title">Signals in Silence</span>
+              </span>
+            </div>
+            <div class="project-spotlight__subtitle reveal" id="red-placeholder-subtitle">
+              <span class="project-spotlight__subtitle-line">A dictionary of the psychic realm</span>
+            </div>
+            <p class="project-copy reveal project-copy-aligned" id="red-placeholder-copy">
+              <span class="project-copy-aligned__inner">
+                Unveils the hidden language of intuition and energy — a concise guide to the unseen forces that shape our inner and outer worlds.
+              </span>
+            </p>
+          </div>
+
           <div class="post-placeholder-panel reveal">
             <div class="post-placeholder-panel__image">
               <video
