@@ -765,9 +765,11 @@ html {
   }
 
   #red-placeholder-image {
-    width: 100%;
+    width: min(669px, 100%);
+    aspect-ratio: 4 / 5;
     height: auto;
     display: block;
+    margin: 0 auto;
   }
 
   .project-spotlight__copy {
@@ -921,7 +923,7 @@ html {
       justify-content: center;
       width: clamp(180px, 22vw, 260px);
       touch-action: none;
-      transform: translate(-130px, -50px) scale(1.44);
+      transform: translate(270px, -50px) scale(1.44);
       transform-origin: center center;
       transition: transform 0.3s ease;
     }
@@ -1642,9 +1644,6 @@ html {
               <span class="black-placeholder-title">
                 <span class="project-spotlight__title-line" id="red-placeholder-title">Signals in Silence</span>
               </span>
-            </div>
-            <div class="project-spotlight__subtitle reveal" id="red-placeholder-subtitle">
-              <span class="project-spotlight__subtitle-line">A dictionary of the psychic realm</span>
             </div>
             <p class="project-copy reveal project-copy-aligned" id="red-placeholder-copy">
               <span class="project-copy-aligned__inner">
