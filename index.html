@@ -491,6 +491,70 @@ html {
       aspect-ratio: 4 / 5;
     }
 
+    #blue-placeholder {
+      width: min(1023px, 100%);
+      aspect-ratio: 842 / 486;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    #blue-placeholder .blue-placeholder__surface {
+      position: absolute;
+      inset: 0;
+      background: #1c4bff;
+    }
+
+    .blue-placeholder-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(24px, 4vw, 40px);
+      width: min(1023px, 100%);
+      margin: -200px auto 0;
+      padding: 0 20px;
+    }
+
+    .blue-placeholder-copy {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-end;
+      gap: clamp(32px, 5vw, 60px);
+      text-align: left; /* Changed back to left */
+      width: 100%;
+      max-width: 1023px;
+      margin-left: auto;
+      margin-right: 0;
+      box-sizing: border-box;
+    }
+
+    .blue-placeholder-title {
+      width: clamp(187px, 18vw, 260px);
+      color: #000;
+      font-family: "Helvetica Neue", sans-serif;
+      font-size: clamp(28px, 2.8vw, 40px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: clamp(32px, 3vw, 44px);
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2px, 0.6vw, 8px);
+      align-items: flex-start; /* Changed back to flex-start */
+    }
+
+    .blue-placeholder-subtitle {
+      max-width: clamp(270px, 24vw, 360px);
+      color: #616161;
+      font-family: "Helvetica Neue", sans-serif;
+      font-size: clamp(14px, 1.2vw, 18px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: clamp(18px, 1.5vw, 24px);
+      text-align: left; /* Changed back to left */
+    }
+
     .placeholder-overlay {
       position: absolute;
       inset: 0;
@@ -772,6 +836,46 @@ html {
     margin: 0 auto;
   }
 
+  .blue-placeholder-block {
+    width: 100%; /* Narrower by another 20px, effectively back to 100% */
+    margin: -75px 0 0; /* Adjusted margins to compensate for new width and keep it centered */
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(20px, 7vw, 36px);
+    text-align: center;
+  }
+
+  #blue-placeholder {
+    width: 100%; /* Keep 100% relative to its parent .blue-placeholder-block */
+  }
+
+  .blue-placeholder-copy {
+    position: static;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(14px, 5vw, 24px);
+    max-width: clamp(280px, 90vw, 380px);
+    text-align: left;
+    padding-left: 0;
+    margin-left: -80px; /* Moved left by another 20px */
+  }
+
+  .blue-placeholder-title {
+    width: 100%;
+    font-size: clamp(24px, 7vw, 32px);
+    line-height: clamp(30px, 8vw, 42px);
+    align-items: flex-start; /* Added to align title to the left */
+  }
+
+  .blue-placeholder-subtitle {
+    max-width: 100%;
+    font-size: clamp(13px, 4.2vw, 16px);
+    line-height: clamp(18px, 5vw, 24px);
+    text-align: left; /* Changed to left */
+  }
+
   .project-spotlight__copy {
     grid-area: auto;
     max-width: 100%;
@@ -801,8 +905,14 @@ html {
     justify-content: center;
     align-items: center;
     padding: clamp(40px, 10vw, 48px) 20px 0;
-    transform: translate(0, 0) scale(1.1);
-    margin-top: 50px; /* Move down by 50px */
+    transform: translate(50px, 0) scale(1.54); /* Moved 50px to the right */
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .project-spotlight__graphic--solo {
+    margin-top: clamp(40px, 10vw, 70px);
   }
 
   .project-spotlight__graphic img,
@@ -836,6 +946,7 @@ html {
   margin-bottom: 5px;
   max-width: 680px;
   margin-left: 0;
+  margin-top: 100px; /* Moved down by 100px */
 }
 
 .project-gallery {
@@ -921,11 +1032,24 @@ html {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: clamp(180px, 22vw, 260px);
+      width: auto;
+      max-width: none;
       touch-action: none;
-      transform: translate(270px, -50px) scale(1.44);
+      transform: translate(410px, -150px) scale(2.016);
       transform-origin: center center;
       transition: transform 0.3s ease;
+      overflow: visible;
+    }
+
+    .project-chair-block {
+      display: flex;
+      justify-content: center;
+      margin: clamp(48px, 10vw, 120px) 0;
+    }
+
+    .project-spotlight__graphic--solo {
+      transform: none;
+      padding: 0;
     }
 
     .project-spotlight__graphic img {
@@ -1481,13 +1605,11 @@ html {
       }
 
       .design-is-text {
-        margin: 0 0 12px 20px;
-        grid-column: 1 / -1;
+        display: none; /* Removed on mobile */
       }
 
       .works-label {
-        margin: 0 0 clamp(12px, 4vw, 24px) 20px;
-        grid-column: 1 / -1;
+        display: none; /* Removed on mobile */
       }
 
       .studio-textbox {
@@ -1613,14 +1735,24 @@ html {
           <hr class="project-copy-divider reveal" />
           <hr class="project-divider reveal" id="green-placeholder-divider" />
 
-          <div class="project-spotlight reveal">
-            <figure class="project-placeholder reveal reveal-media" id="red-placeholder-image">
-              <img src="image4.jpg" alt="Signals in Silence project preview" class="placeholder-cover" loading="lazy" />
+          <div class="blue-placeholder-block reveal">
+            <figure class="project-placeholder reveal reveal-media" id="blue-placeholder">
+              <div class="blue-placeholder__surface" aria-hidden="true"></div>
               <div class="placeholder-overlay">
                 <button class="placeholder-button" type="button">VIEW PROJECT</button>
               </div>
             </figure>
-            <div class="project-spotlight__graphic">
+            <div class="blue-placeholder-copy">
+              <div class="blue-placeholder-title">
+                <span>Signals</span>
+                <span>In Silence</span>
+              </div>
+              <div class="blue-placeholder-subtitle">Expoerimental book design. A visual dictionary of telepathyc psudo sience</div>
+            </div>
+          </div>
+
+          <div class="project-chair-block reveal">
+            <div class="project-spotlight__graphic project-spotlight__graphic--solo">
               <svg
                 class="project-spotlight__chair"
                 viewBox="0 0 858.24 1186.28"
@@ -1638,18 +1770,6 @@ html {
                 <path class="chair-drawing" d=""></path>
               </svg>
             </div>
-          </div>
-          <div class="project-spotlight__copy project-spotlight__copy--standalone">
-            <div class="project-spotlight__title reveal" id="red-placeholder-caption">
-              <span class="black-placeholder-title">
-                <span class="project-spotlight__title-line" id="red-placeholder-title">Signals in Silence</span>
-              </span>
-            </div>
-            <p class="project-copy reveal project-copy-aligned" id="red-placeholder-copy">
-              <span class="project-copy-aligned__inner">
-                Unveils the hidden language of intuition and energy — a concise guide to the unseen forces that shape our inner and outer worlds.
-              </span>
-            </p>
           </div>
 
           <div class="post-placeholder-panel reveal">
