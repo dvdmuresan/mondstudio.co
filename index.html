@@ -83,6 +83,7 @@ html {
       font-family: 'helvetica-neue-lt-pro', 'helvetica-neue-lt-pro-cond', sans-serif;
       line-height: 1.44;
       text-rendering: optimizeLegibility;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
     }
 
     body, h1, h2, h3, h4, p, figure {
@@ -481,9 +482,10 @@ html {
     }
 
     #red-placeholder-image {
-      margin-top: -180px;
+      margin-top: 0;
       margin-left: 0;
       margin-right: 0;
+      width: min(669px, 100%);
       max-width: 100%;
       justify-self: flex-start;
       aspect-ratio: 4 / 5;
@@ -613,7 +615,7 @@ html {
 }
 
 .project-copy-aligned {
-  margin: -25px auto 0 0;
+  margin: -25px auto 0 20px;
   width: min(1248px, calc(100vw - 40px));
   display: flex;
   justify-content: flex-start;
@@ -629,6 +631,7 @@ html {
   line-height: 25px;
   color: #131313;
   width: 250px;
+  padding-left: 0; /* Aligned to the left */
 }
 
 .project-copy-divider {
@@ -709,10 +712,10 @@ html {
   }
 
   #red-placeholder-image {
-    margin-top: clamp(-80px, -12vw, -40px);
+    margin-top: 0;
     margin-left: 0;
     margin-right: 0;
-    width: min(520px, 100%);
+    width: min(669px, 100%);
     height: auto;
     justify-self: center;
   }
@@ -734,8 +737,8 @@ html {
   }
 
   #red-placeholder-image {
-    margin-top: clamp(-20px, -6vw, 0px);
-    width: min(460px, 100%);
+    margin-top: 0;
+    width: min(669px, 100%);
     height: auto;
     justify-self: center;
   }
@@ -750,6 +753,7 @@ html {
     text-align: left;
     align-items: flex-start;
     gap: clamp(32px, 8vw, 48px);
+    padding: 0;
   }
 
   .project-spotlight > figure:first-child {
@@ -775,6 +779,13 @@ html {
 
   .project-spotlight__copy .project-copy-aligned {
     max-width: 100%;
+    width: 100%;
+    margin: 0;
+    display: block;
+  }
+
+  .project-spotlight__copy .project-copy-aligned__inner {
+    width: 100%;
   }
 
   .project-spotlight__graphic {
@@ -784,6 +795,7 @@ html {
     align-items: center;
     padding: clamp(40px, 10vw, 48px) 20px 0;
     transform: translate(0, 0) scale(1.1);
+    margin-top: 50px; /* Move down by 50px */
   }
 
   .project-spotlight__graphic img,
@@ -839,8 +851,8 @@ html {
     .project-spotlight__copy {
       display: grid;
       gap: clamp(10px, 2.4vw, 18px);
-      margin-left: clamp(-60px, -6vw, -32px);
-      padding-left: clamp(8px, 2vw, 24px);
+      margin-left: 0; /* Aligned to the left */
+      padding-left: 0; /* Aligned to the left */
       max-width: clamp(320px, 42vw, 520px);
     }
 
@@ -1090,6 +1102,7 @@ html {
       will-change: opacity, transform, top;
       padding: 20px;
       margin-top: -100px;
+      max-width: 100%; /* Ensure footer does not exceed viewport width */
     }
 
 .footer-section::before {
