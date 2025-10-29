@@ -338,11 +338,15 @@ html {
       line-height: 1.05;
     }
 
-    .hero__nav:hover a,
-    .hero__nav:focus-within a {
+    .hero__nav.is-link-hovered a {
       opacity: 0.3;
     }
 
+    .hero__nav.is-link-hovered a.is-active-nav-link {
+      opacity: 1;
+    }
+
+    .hero__nav.is-link-hovered a.is-active-nav-link,
     .hero__nav a:hover,
     .hero__nav a:focus-visible,
     .hero__nav a:active {
@@ -352,6 +356,7 @@ html {
       outline: none;
     }
 
+    body[data-theme="light"] .hero__nav.is-link-hovered a.is-active-nav-link,
     body[data-theme="light"] .hero__nav a:hover,
     body[data-theme="light"] .hero__nav a:focus-visible,
     body[data-theme="light"] .hero__nav a:active {
@@ -1021,12 +1026,21 @@ html {
 
     .hero__nav .hero-text-drop {
       opacity: 0;
-      transition: none;
+      transition: opacity 320ms ease;
       transform: translateY(-30px);
     }
 
     .hero__nav .hero-text-drop.is-visible {
+      opacity: 1;
       animation: heroNavFadeIn 520ms cubic-bezier(.2, .9, .2, 1) forwards;
+    }
+
+    .hero__nav.is-link-hovered .hero-text-drop.is-visible {
+      opacity: 0.3;
+    }
+
+    .hero__nav.is-link-hovered .hero-text-drop.is-visible.is-active-nav-link {
+      opacity: 1;
     }
 
     @keyframes fadeInBottom {
@@ -1046,15 +1060,12 @@ html {
 
     @keyframes heroNavFadeIn {
       0% {
-        opacity: 0;
         transform: translateY(-30px);
       }
       70% {
-        opacity: 1;
         transform: translateY(3px);
       }
       100% {
-        opacity: 1;
         transform: translateY(0);
       }
     }
@@ -2602,7 +2613,7 @@ body[data-theme="light"] .studio-textbox-note {
 
       <div class="video-overlay-box" id="video-overlay-box">
         <span class="clickable-text hero-service-tag hero-text-drop" id="branding-text">[BRANDING]</span>
-        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text">[PRODUCT DEV]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text">[3D DESIGN]</span>
         <span class="clickable-text hero-service-tag hero-text-drop" id="art-direction-text">[ART DIRECTION]</span>
         <span class="clickable-text hero-service-tag hero-text-drop" id="uiux-text">[UI/UX]</span>
       </div>
@@ -2780,6 +2791,7 @@ body[data-theme="light"] .studio-textbox-note {
       const videoOverlayBox = document.getElementById('video-overlay-box');
       const skipButton = document.getElementById('video-skip-button');
       const heroNavLinks = Array.from(document.querySelectorAll('.hero__nav .hero-text-drop'));
+      const heroNav = document.querySelector('.hero__nav');
       const heroTextNodes = [
         document.querySelector('.hero__brand'),
         ...heroNavLinks,
@@ -2789,6 +2801,42 @@ body[data-theme="light"] .studio-textbox-note {
       const prefersReducedMotion = window.matchMedia
         ? window.matchMedia('(prefers-reduced-motion: reduce)')
         : { matches: false };
+
+      if (heroNav && heroNavLinks.length) {
+        const clearActiveNavLink = () => {
+          heroNav.classList.remove('is-link-hovered');
+          heroNavLinks.forEach((link) => link.classList.remove('is-active-nav-link'));
+        };
+
+        const setActiveNavLink = (link) => {
+          heroNav.classList.add('is-link-hovered');
+          heroNavLinks.forEach((item) => {
+            if (item === link) {
+              item.classList.add('is-active-nav-link');
+            } else {
+              item.classList.remove('is-active-nav-link');
+            }
+          });
+        };
+
+        heroNavLinks.forEach((link) => {
+          link.addEventListener('mouseenter', () => setActiveNavLink(link));
+          link.addEventListener('mouseleave', (event) => {
+            if (!heroNav.contains(event.relatedTarget)) {
+              clearActiveNavLink();
+            }
+          });
+          link.addEventListener('focus', () => setActiveNavLink(link));
+          link.addEventListener('blur', () => {
+            window.setTimeout(() => {
+              if (!heroNav.contains(document.activeElement)) {
+                clearActiveNavLink();
+              }
+            }, 0);
+          });
+        });
+      }
+
       heroTextNodes.forEach((node) => node.classList.add('hero-text-drop'));
       let heroTextSequencePlayed = false;
       if (!video || !overlay) return;
