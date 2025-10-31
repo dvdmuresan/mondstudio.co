@@ -512,7 +512,7 @@
       transform: translateY(24px);
       transition: opacity 600ms ease, transform 420ms cubic-bezier(.2,.9,.2,1);
       will-change: opacity, transform, top;
-      padding: 20px;
+      padding: 20px clamp(28px, 6vw, 48px) clamp(28px, 6vw, 48px) 20px;
       margin-top: 0;
       max-width: calc(100vw - 40px);
     }
@@ -531,12 +531,10 @@
     }
 
  .footer-brand-minimal {
-  position: absolute;
-  font-weight: 500;
-  top: 20px;
-  left: 20px;
-  color: var(--color-fg);
-  font-weight: 500;
+      grid-column: 1 / span 3;
+      align-self: start;
+      justify-self: start;
+      color: var(--color-fg);
       text-align: left;
       font-family: "Saans", sans-serif;
       font-size: 19px;
@@ -545,48 +543,57 @@
       line-height: 25px;
     }
 
-.footer-copy-minimal {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  width: min(345px, calc(100% - 40px));
-  color: var(--color-fg);
+    .footer-content {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: clamp(28px, 6vw, 48px);
+      row-gap: clamp(32px, 8vw, 56px);
+      padding: 20px clamp(28px, 6vw, 48px) clamp(28px, 6vw, 48px) 20px;
+      min-height: inherit;
+    }
+
+    .footer-copy-minimal {
+      grid-column: 1 / span 5;
+      align-self: end;
+      color: var(--color-fg);
       text-align: left;
       font-family: "Saans", sans-serif;
       font-size: 15px;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
+      max-width: min(360px, 100%);
     }
 
- .footer-social-minimal {
-      position: absolute;
-      top: 20px;
-      left: clamp(260px, calc(50% - 120px), 357px);
-      right: clamp(40px, 6vw, 80px);
+    .footer-social-minimal {
+      grid-column: 5 / span 5;
+      align-self: start;
       display: flex;
-      gap: 100px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      column-gap: clamp(40px, 7vw, 96px);
+      row-gap: clamp(12px, 5vw, 24px);
       color: var(--color-fg);
       font-family: "Saans", sans-serif;
-      font-size: 36px;
+      font-size: clamp(18px, 3vw, 28px);
       font-style: normal;
       font-weight: 400;
       line-height: normal;
       text-transform: uppercase;
-      text-align: center;
+      text-align: left;
     }
 
 .footer-social-minimal a {
       position: relative;
       display: inline-flex;
       align-items: center;
-      font-size: clamp(20px, 4vw, 26px);
+      font-size: inherit;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       font-weight: 500;
       color: var(--color-fg);
       text-decoration: none;
-      margin-right: 20px;
       transition: color 180ms ease;
     }
 
@@ -617,12 +624,10 @@
     }
 
 .footer-contact-block {
-      position: absolute;
-      width: clamp(240px, 20vw, 259px);
-      left: auto;
-      right: clamp(40px, 6vw, 80px);
-      bottom: 20px;
-  color: var(--color-fg);
+      grid-column: 5 / span 5;
+      align-self: start;
+      max-width: clamp(240px, 22vw, 280px);
+      color: var(--color-fg);
       font-family: "Saans", sans-serif;
       font-size: 15px;
       font-style: normal;
@@ -632,33 +637,48 @@
     }
 
     @media (max-width: 900px) {
-       .footer-social-minimal {
-  font-weight: 500;
-        left: clamp(40px, 6vw, 80px);
-        right: clamp(30px, 8vw, 60px);
-        justify-content: space-between;
-        gap: clamp(30px, 8vw, 60px);
-        font-size: clamp(26px, 5vw, 32px);
+      .footer-content {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        padding: clamp(32px, 8vw, 56px) clamp(24px, 7vw, 40px);
+      }
+
+      .footer-brand-minimal {
+        grid-column: 1 / -1;
+      }
+
+      .footer-social-minimal {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+        column-gap: clamp(28px, 7vw, 40px);
+        row-gap: clamp(12px, 5vw, 20px);
+        font-size: clamp(20px, 5vw, 26px);
       }
 
       .footer-contact-block {
-        left: auto;
-        right: clamp(30px, 8vw, 60px);
+        grid-column: 1 / -1;
+        max-width: clamp(260px, 50vw, 320px);
+      }
+
+      .footer-copy-minimal {
+        grid-column: 1 / -1;
+        max-width: none;
       }
     }
 
     @media (max-width: 540px) {
-       .footer-social-minimal {
-  font-weight: 500;
-        left: 20px;
-        right: 20px;
-        font-size: clamp(20px, 6vw, 26px);
+      .footer-content {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        row-gap: clamp(24px, 8vw, 40px);
+      }
+
+      .footer-social-minimal {
+        justify-content: space-between;
+        column-gap: clamp(20px, 8vw, 32px);
+        font-size: clamp(18px, 6vw, 24px);
       }
 
       .footer-contact-block {
-        width: calc(100% - 40px);
-        left: 20px;
-        right: auto;
+        width: 100%;
         font-size: 15px;
         line-height: 22px;
       }
@@ -682,10 +702,9 @@
       }
 
       .footer-content {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        row-gap: clamp(28px, 8vw, 40px);
+        padding: clamp(32px, 10vw, 52px) 20px clamp(48px, 12vw, 64px);
       }
 
       .footer-brand-minimal,
@@ -693,9 +712,7 @@
       .footer-contact-block,
       .footer-email,
       .footer-copy-minimal {
-        position: static;
-        margin-left: 0;
-        transform: translateX(0);
+        grid-column: 1 / -1;
         width: auto;
       }
 
@@ -703,25 +720,24 @@
         margin-bottom: 48px;
       }
 
-       .footer-social-minimal {
-  font-weight: 500;
+      .footer-social-minimal {
         display: flex;
         flex-direction: column;
-        gap: clamp(28px, 7vw, 36px);
+        gap: clamp(24px, 8vw, 32px);
         margin-top: 0;
       }
 
       .footer-contact-block {
-        margin-top: clamp(64px, 12vw, 72px);
+        margin-top: clamp(48px, 10vw, 56px);
         width: calc(100% - 40px);
       }
 
       .footer-email {
-        margin-top: clamp(36px, 10vw, 48px);
+        margin-top: clamp(24px, 8vw, 36px);
       }
 
       .footer-copy-minimal {
-        margin-top: clamp(48px, 12vw, 64px);
+        margin-top: clamp(36px, 10vw, 48px);
       }
     }
 
@@ -910,7 +926,7 @@
     @media (max-width: 720px) {
       .hero__top {
         flex-direction: row;
-        align-items: flex-start;
+        align-items: flex-end;
         justify-content: space-between;
         padding: 20px;
       }
@@ -918,18 +934,16 @@
       .view-toggle {
         position: static;
         transform: none;
-        align-self: flex-start;
-        margin: clamp(16px, 4vw, 24px) 0 clamp(24px, 6vw, 32px) 0;
+        align-self: flex-end;
+        margin: 0;
       }
 
       .hero__nav {
-        position: fixed;
-        top: 20px;
-        right: 20px;
+        position: static;
+        margin: 0;
+        margin-left: auto;
         align-items: flex-end;
         text-align: right;
-        margin: 0;
-        z-index: 4;
       }
     }
 
@@ -968,7 +982,7 @@
     }
   </style>
 </head>
-<body>
+<body class="view-image">
   <header class="hero-header">
     <div class="hero__top">
       <a class="hero__brand" href="index.html">MOND STUDIO</a>
@@ -1137,38 +1151,6 @@
       const thumb = document.getElementById('projects-thumb');
       const firstRow = document.querySelector('.projects-table tbody tr');
       const container = document.querySelector('.projects-left');
-      const projectsGallery = document.querySelector('.projects-gallery');
-      const heroTop = document.querySelector('.hero__top');
-      const mobileMedia = window.matchMedia('(max-width: 720px)');
-      let viewTogglePlaceholder = null;
-
-      if (viewToggle && heroTop) {
-        viewTogglePlaceholder = document.createElement('span');
-        viewTogglePlaceholder.id = 'view-toggle-return';
-        viewTogglePlaceholder.style.display = 'none';
-        heroTop.insertBefore(viewTogglePlaceholder, viewToggle);
-      }
-
-      const relocateViewToggle = () => {
-        if (!viewToggle || !heroTop || !projectsGallery || !viewTogglePlaceholder) return;
-        if (mobileMedia.matches) {
-          if (projectsGallery.previousElementSibling !== viewToggle) {
-            projectsGallery.parentNode.insertBefore(viewToggle, projectsGallery);
-          }
-        } else {
-          if (viewTogglePlaceholder.parentNode) {
-            viewTogglePlaceholder.parentNode.insertBefore(viewToggle, viewTogglePlaceholder.nextSibling);
-          }
-        }
-      };
-
-      if (typeof mobileMedia.addEventListener === 'function') {
-        mobileMedia.addEventListener('change', relocateViewToggle);
-      } else if (typeof mobileMedia.addListener === 'function') {
-        mobileMedia.addListener(relocateViewToggle);
-      }
-
-      relocateViewToggle();
 
       const setView = (view) => {
         const isImage = view === 'image';

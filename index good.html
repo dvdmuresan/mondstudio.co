@@ -107,17 +107,15 @@ html {
       overflow-x: hidden; /* Prevent horizontal scrolling */
       position: relative;
       color-scheme: dark;
-      padding-bottom: 40px;
     }
 
     body[data-theme="light"] {
-      --color-bg: #f7f7f7;
-      --color-surface: #ffffff;
-      --color-panel: #ffffff;
+      --color-bg: #F7F7F7;
+      --color-surface: #FFFFFF;
+      --color-panel: #F2F2F2;
       --color-fg: #131313;
-      --color-muted: #5e5e5e;
+      --color-muted: #6c6c6c;
       --color-white: #ffffff;
-      --grid-line-color: rgba(0, 0, 0, 0.06);
       --grid-line-image: none;
       --line-color: none;
       --hero-overlay-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.08) 45%, rgba(255, 255, 255, 0.9) 100%);
@@ -318,49 +316,51 @@ html {
       color: var(--color-fg);
     }
 
-.hero__nav {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 19px;
-  text-align: right;
-  align-items: flex-end;
-  color: inherit;
-  font-weight: 500;
-  opacity: 0;
-  transform: translateY(-8px);
-  pointer-events: none;
-}
+    .hero__nav {
+      font-weight: 500;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 19px;
+      text-align: right;
+      align-items: flex-end;
+      color: var(--color-fg);
+    }
 
     .hero__nav a {
-      color: inherit;
+      font-weight: 500;
+      color: var(--color-fg);
       opacity: 1;
-      transition: opacity 180ms ease;
+      transition: opacity 180ms ease, color 180ms ease, font-weight 180ms ease;
+      line-height: 1.05;
     }
 
-    .hero__overlay.is-visible .hero__nav {
-      animation: heroNavFade 1800ms cubic-bezier(.2, .9, .2, 1) forwards;
-      pointer-events: auto;
-    }
-
-    .hero__nav:hover a {
+    .hero__nav.is-link-hovered a {
       opacity: 0.3;
     }
 
-    .hero__nav:hover a:hover,
-    .hero__nav:hover a:focus-visible {
+    .hero__nav.is-link-hovered a.is-active-nav-link {
       opacity: 1;
     }
 
-    .hero__nav:focus-within a {
-      opacity: 0.3;
+    .hero__nav.is-link-hovered a.is-active-nav-link,
+    .hero__nav a:hover,
+    .hero__nav a:focus-visible,
+    .hero__nav a:active {
+      opacity: 1;
+      font-weight: 600;
+      color: var(--color-white);
+      outline: none;
     }
 
-    .hero__nav:focus-within a:focus-visible {
-      opacity: 1;
+    body[data-theme="light"] .hero__nav.is-link-hovered a.is-active-nav-link,
+    body[data-theme="light"] .hero__nav a:hover,
+    body[data-theme="light"] .hero__nav a:focus-visible,
+    body[data-theme="light"] .hero__nav a:active {
+      color: var(--color-fg);
     }
 
     .video-overlay-box {
@@ -968,7 +968,6 @@ html {
     .post-placeholder-panel.pl-5 {
       position: relative;
       margin-top: 150px;
-      margin-bottom: 150px;
       background: linear-gradient(176deg, rgba(32, 32, 32, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%);
       box-shadow: none;
       border-radius: 7px;
@@ -1025,15 +1024,23 @@ html {
       animation-delay: 320ms;
     }
 
-    @keyframes heroNavFade {
-      0% {
-        opacity: 0;
-        transform: translateY(-16px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .hero__nav .hero-text-drop {
+      opacity: 0;
+      transition: opacity 320ms ease;
+      transform: translateY(-30px);
+    }
+
+    .hero__nav .hero-text-drop.is-visible {
+      opacity: 1;
+      animation: heroNavFadeIn 520ms cubic-bezier(.2, .9, .2, 1) forwards;
+    }
+
+    .hero__nav.is-link-hovered .hero-text-drop.is-visible {
+      opacity: 0.3;
+    }
+
+    .hero__nav.is-link-hovered .hero-text-drop.is-visible.is-active-nav-link {
+      opacity: 1;
     }
 
     @keyframes fadeInBottom {
@@ -1051,21 +1058,23 @@ html {
       }
     }
 
+    @keyframes heroNavFadeIn {
+      0% {
+        transform: translateY(-30px);
+      }
+      70% {
+        transform: translateY(3px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .fade-in-bottom {
         animation: none;
         opacity: 1;
         transform: none;
-      }
-
-      .hero__nav {
-        opacity: 1;
-        transform: none;
-        pointer-events: auto;
-      }
-
-      .hero__overlay.is-visible .hero__nav {
-        animation: none;
       }
     }
 
@@ -2096,22 +2105,21 @@ body[data-theme="light"] .studio-textbox-note {
 
     /* FOOTER */
 .footer-section {
-  position: relative;
-  width: min(100%, calc(100vw - 40px));
+  position: absolute;
+  left: 50%;
+  width: 100vw;
   min-height: calc(550px * 0.708 - 100px);
   background: var(--color-panel);
   color: var(--color-fg);
-      border-radius: 7px;
-      margin: 0 auto -20px;
       box-sizing: border-box;
       display: block;
       opacity: 0;
-      transform: translateY(24px);
+      transform: translate(-50%, 24px);
       transition: opacity 600ms ease, transform 420ms cubic-bezier(.2,.9,.2,1);
       will-change: opacity, transform, top;
       padding: 20px;
-      margin-top: 0;
-      max-width: calc(100vw - 40px); /* Ensure footer does not exceed viewport width */
+      margin-top: -100px;
+      max-width: 100%; /* Ensure footer does not exceed viewport width */
     }
 
 .footer-section::before {
@@ -2119,12 +2127,11 @@ body[data-theme="light"] .studio-textbox-note {
   position: absolute;
   inset: 0;
   border: 1px solid transparent;
-  border-radius: 7px;
 }
 
     .footer-section.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate(-50%, 0);
     }
 
  .footer-brand-minimal {
@@ -2192,7 +2199,7 @@ body[data-theme="light"] .studio-textbox-note {
     .footer-social-minimal a:hover,
     .footer-social-minimal a:focus {
       outline: none;
-      color: var(--color-fg);
+      color: var(--color-white);
     }
 
 .footer-social-minimal a::after {
@@ -2264,14 +2271,12 @@ body[data-theme="light"] .studio-textbox-note {
     @media (max-width: 640px) {
       .footer-section {
         position: relative;
+        left: 0;
         width: 100%;
         min-height: auto;
         transform: none;
         padding: clamp(36px, 10vw, 52px) 20px clamp(48px, 12vw, 64px);
         margin-top: 0;
-        margin-bottom: -20px;
-        margin-left: auto;
-        margin-right: auto;
       }
 
       .footer-section.visible {
@@ -2493,8 +2498,8 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       .post-placeholder-panel.pl-5 {
-        margin-top: 150px;
-        margin-bottom: 150px;
+        margin-top: 50px;
+        margin-bottom: 100px;
       }
 
       .hero__cta {
@@ -2502,15 +2507,6 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       .hero__video {
-        width: 100vw;
-        height: 100vh;
-        max-height: 100vh;
-        left: 0;
-        top: 0;
-        transform: none;
-      }
-
-      .hero__video.is-shrinking {
         width: min(336px, 90vw);
         height: min(659px, 90vh);
         max-height: none;
@@ -2520,9 +2516,12 @@ body[data-theme="light"] .studio-textbox-note {
         transform: translate(-50%, -50%);
       }
 
-      .hero__skip-button {
-        transform: translateX(-50%);
-        bottom: clamp(24px, 8vw, 60px);
+      .hero__video.is-shrinking {
+        width: min(336px, 90vw);
+        height: min(659px, 90vh);
+        max-height: none;
+        aspect-ratio: 336 / 659;
+        transform: translate(-50%, -50%);
       }
 
       .hero__top {
@@ -2606,15 +2605,15 @@ body[data-theme="light"] .studio-textbox-note {
       <div class="hero__top">
         <a class="hero__brand hero-text-drop" href="index.html">MOND STUDIO</a>
         <nav class="hero__nav" aria-label="Primary navigation">
-          <a href="work.html">WORK</a>
-          <a href="#about">ABOUT</a>
-          <a href="#footer-section">CONTACT</a>
+          <a class="hero-text-drop" href="work.html">WORK</a>
+          <a class="hero-text-drop" href="#about">ABOUT</a>
+          <a class="hero-text-drop" href="#footer-section">CONTACT</a>
         </nav>
       </div>
 
       <div class="video-overlay-box" id="video-overlay-box">
         <span class="clickable-text hero-service-tag hero-text-drop" id="branding-text">[BRANDING]</span>
-        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text">[PRODUCT DEV]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text">[3D DESIGN]</span>
         <span class="clickable-text hero-service-tag hero-text-drop" id="art-direction-text">[ART DIRECTION]</span>
         <span class="clickable-text hero-service-tag hero-text-drop" id="uiux-text">[UI/UX]</span>
       </div>
@@ -2791,8 +2790,11 @@ body[data-theme="light"] .studio-textbox-note {
       const overlay = document.getElementById('hero-overlay');
       const videoOverlayBox = document.getElementById('video-overlay-box');
       const skipButton = document.getElementById('video-skip-button');
+      const heroNavLinks = Array.from(document.querySelectorAll('.hero__nav .hero-text-drop'));
+      const heroNav = document.querySelector('.hero__nav');
       const heroTextNodes = [
         document.querySelector('.hero__brand'),
+        ...heroNavLinks,
         document.querySelector('.hero__cta'),
         ...document.querySelectorAll('.hero-service-tag')
       ].filter(Boolean);
@@ -2800,28 +2802,40 @@ body[data-theme="light"] .studio-textbox-note {
         ? window.matchMedia('(prefers-reduced-motion: reduce)')
         : { matches: false };
 
-      if (video) {
-        video.muted = true;
-        video.setAttribute('muted', '');
-        video.setAttribute('playsinline', '');
+      if (heroNav && heroNavLinks.length) {
+        const clearActiveNavLink = () => {
+          heroNav.classList.remove('is-link-hovered');
+          heroNavLinks.forEach((link) => link.classList.remove('is-active-nav-link'));
+        };
+
+        const setActiveNavLink = (link) => {
+          heroNav.classList.add('is-link-hovered');
+          heroNavLinks.forEach((item) => {
+            if (item === link) {
+              item.classList.add('is-active-nav-link');
+            } else {
+              item.classList.remove('is-active-nav-link');
+            }
+          });
+        };
+
+        heroNavLinks.forEach((link) => {
+          link.addEventListener('mouseenter', () => setActiveNavLink(link));
+          link.addEventListener('mouseleave', (event) => {
+            if (!heroNav.contains(event.relatedTarget)) {
+              clearActiveNavLink();
+            }
+          });
+          link.addEventListener('focus', () => setActiveNavLink(link));
+          link.addEventListener('blur', () => {
+            window.setTimeout(() => {
+              if (!heroNav.contains(document.activeElement)) {
+                clearActiveNavLink();
+              }
+            }, 0);
+          });
+        });
       }
-
-      const ensureAutoplay = () => {
-        if (!video) return;
-        try {
-          const playAttempt = video.play();
-          if (playAttempt && typeof playAttempt.then === 'function') {
-            playAttempt.catch(() => {
-              /* Some mobile browsers still block autoplay even when muted */
-            });
-          }
-        } catch (err) {
-          /* Ignore autoplay errors */
-        }
-      };
-
-      ensureAutoplay();
-      video.addEventListener('loadedmetadata', ensureAutoplay);
 
       heroTextNodes.forEach((node) => node.classList.add('hero-text-drop'));
       let heroTextSequencePlayed = false;
@@ -2840,12 +2854,14 @@ body[data-theme="light"] .studio-textbox-note {
         }
         const baseDelay = 120;
         const stepDelay = 180;
+        const navStepDelay = 280;
+        const navLinkSet = new Set(heroNavLinks);
         let currentDelay = baseDelay;
         heroTextNodes.forEach((node) => {
           window.setTimeout(() => {
             node.classList.add('is-visible');
           }, currentDelay);
-          currentDelay += stepDelay;
+          currentDelay += navLinkSet.has(node) ? navStepDelay : stepDelay;
         });
       }
 
