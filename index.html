@@ -218,7 +218,13 @@ html {
       object-position: center;
       background: transparent;
       z-index: 0;
-      transition: width 800ms ease, height 800ms ease, left 800ms ease, top 800ms ease, transform 800ms ease;
+      transition:
+        width 2000ms cubic-bezier(0.22, 1, 0.36, 1),
+        height 2000ms cubic-bezier(0.22, 1, 0.36, 1),
+        left 2000ms cubic-bezier(0.22, 1, 0.36, 1),
+        top 2000ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 2000ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: width, height, left, top, transform;
     }
 
     .hero__video.is-shrinking {
@@ -229,6 +235,8 @@ html {
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+      border-radius: 10px;
+      overflow: hidden;
     }
 
     .hero__skip-button {
@@ -436,7 +444,7 @@ html {
       height: auto;
       flex-shrink: 0;
       border-radius: 7px;
-      background: #0004FF;
+      background: transparent;
       overflow: hidden;
     }
 
@@ -559,7 +567,7 @@ html {
       height: clamp(320px, 55vw, 566px);
       flex-shrink: 0;
       border-radius: 7px;
-      background: #BD035E;
+      background: transparent;
       overflow: hidden;
     }
 
@@ -604,50 +612,27 @@ html {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: 34px;
-      padding: 0 16px;
-      border-radius: 5px;
-      background: rgba(14, 14, 14, 0.62);
-      color: rgba(255, 255, 255, 0.94);
+      padding: 8px 18px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--color-fg);
       font-family: "Saans", sans-serif;
-      font-size: 9px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 12px;
-      letter-spacing: 0.2px;
-      text-transform: uppercase;
+      font-size: 13px;
+      line-height: 1;
       text-align: center;
-      backdrop-filter: blur(22px) saturate(140%);
-      -webkit-backdrop-filter: blur(22px) saturate(140%);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-      isolation: isolate;
-      overflow: hidden;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+      transition: background-color 180ms ease, color 180ms ease;
       z-index: 2;
     }
 
     .placeholder-badge span {
       display: inline-flex;
-      min-width: 43px;
-      height: 12px;
-      text-align: center;
       align-items: center;
       justify-content: center;
-      position: relative;
-      z-index: 1;
     }
 
-    .placeholder-badge::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(0, 0, 0, 0.45));
-      mix-blend-mode: soft-light;
-      opacity: 0.75;
-      pointer-events: none;
-      z-index: 0;
+    body[data-theme="light"] .placeholder-badge {
+      background: rgba(0, 0, 0, 0.08);
+      color: var(--color-fg);
     }
 
     
@@ -658,7 +643,7 @@ html {
       height: 619px;
       flex-shrink: 0;
       border-radius: 7px;
-      background: #F06;
+      background: transparent;
       overflow: hidden;
     }
 
@@ -726,12 +711,17 @@ html {
       height: auto;
       flex-shrink: 0;
       border-radius: 7px;
-      background: rgba(255, 255, 255, 0.05);
+      background: transparent;
       overflow: hidden;
     }
 
     body[data-theme="light"] .pl-1 {
-      background: #EAEAEA;
+      background: transparent;
+    }
+
+    body[data-theme="light"] .placeholder-badge {
+      color: var(--color-fg);
+      border-color: rgba(19, 19, 19, 0.18);
     }
 
     .pl-1 img,
@@ -883,20 +873,22 @@ html {
       margin: clamp(80px, 10vw, 120px) auto;
       padding: clamp(20px, 5vw, 40px);
       border-radius: clamp(20px, 3.5vw, 28px);
-      background: linear-gradient(176deg, rgba(26, 26, 26, 0.95) 0%, rgba(10, 10, 10, 0.92) 100%);
-      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.32);
+      background: transparent;
+      box-shadow: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     body[data-theme="light"] .post-placeholder-panel {
-      background: linear-gradient(176deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 244, 238, 0.95) 100%);
-      box-shadow: 0 28px 60px rgba(19, 19, 19, 0.08);
+      background: transparent;
+      box-shadow: none;
+      border-color: rgba(19, 19, 19, 0.12);
     }
 
     .post-placeholder-panel__image {
       position: relative;
       border-radius: clamp(18px, 3vw, 28px);
       overflow: hidden;
-      background: #FFD200;
+      background: transparent;
     }
 
     .post-placeholder-panel__video {
@@ -969,13 +961,13 @@ html {
       position: relative;
       margin-top: 150px;
       margin-bottom: 150px;
-      background: linear-gradient(176deg, rgba(32, 32, 32, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%);
+      background: var(--color-panel);
       box-shadow: none;
       border-radius: 7px;
     }
 
     body[data-theme="light"] .post-placeholder-panel.pl-5 {
-      background: #EAEAEA;
+      background: var(--color-panel);
     }
 
     .pl-5 .post-placeholder-panel__image {
@@ -1276,12 +1268,12 @@ body[data-theme="light"] .studio-textbox-note {
       position: relative;
       border-radius: 7px;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.05);
+      background: transparent;
     }
 
     body[data-theme="light"] .placeholder-image,
     body[data-theme="light"] .project-placeholder {
-      background: #EAEAEA;
+      background: transparent;
     }
 
 .placeholder-image {
@@ -1327,7 +1319,7 @@ body[data-theme="light"] .studio-textbox-note {
     #blue-placeholder .blue-placeholder__surface {
       position: absolute;
       inset: 0;
-      background: #0030ff;
+      background: transparent;
     }
 
     .blue-placeholder-block {
@@ -1426,7 +1418,7 @@ body[data-theme="light"] .studio-textbox-note {
       align-items: center;
       justify-content: center;
       padding: clamp(16px, 3vw, 32px);
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 60%);
+      background: transparent;
     }
 
     .placeholder-button {
@@ -1948,7 +1940,7 @@ body[data-theme="light"] .studio-textbox-note {
       width: 68.5%;
       height: 570px;
       margin: 100px auto 200px;
-      background: var(--color-panel);
+      background: transparent;
       align-self: center;
       position: relative;
       display: flex;
@@ -1964,7 +1956,7 @@ body[data-theme="light"] .studio-textbox-note {
       width: calc(65% - 40px);
       height: calc(100% - 40px);
       margin: 20px;
-      background: #FFD200;
+      background: transparent;
       position: relative;
       overflow: hidden;
       border-radius: 0;
@@ -1996,7 +1988,7 @@ body[data-theme="light"] .studio-textbox-note {
 
     .post-placeholder-panel__body {
       font-family: "Saans", sans-serif;
-      font-size: 15px;
+      font-size: 13px;
       line-height: 1.6;
       max-width: clamp(240px, 100%, 360px);
     }
@@ -2145,24 +2137,25 @@ body[data-theme="light"] .studio-textbox-note {
 .footer-copy-minimal {
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  left: auto;
+  right: 20px;
   width: min(345px, calc(100% - 40px));
   color: var(--color-fg);
-      text-align: left;
+      text-align: right;
       font-family: "Saans", sans-serif;
-      font-size: 15px;
+      font-size: 13px;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
     }
 
- .footer-social-minimal {
+.footer-social-minimal {
       position: absolute;
       top: 20px;
-      left: clamp(260px, calc(50% - 120px), 357px);
-      right: clamp(40px, 6vw, 80px);
+      left: auto;
+      right: 20px;
       display: flex;
-      gap: 100px;
+      gap: clamp(40px, 8vw, 100px);
       color: var(--color-fg);
       font-family: "Saans", sans-serif;
       font-size: 36px;
@@ -2185,6 +2178,10 @@ body[data-theme="light"] .studio-textbox-note {
       text-decoration: none;
       margin-right: 20px;
       transition: color 180ms ease;
+    }
+
+.footer-social-minimal a:last-child {
+      margin-right: 0;
     }
 
 
@@ -2216,8 +2213,8 @@ body[data-theme="light"] .studio-textbox-note {
 .footer-contact-block {
       position: absolute;
       width: clamp(240px, 20vw, 259px);
-      left: auto;
-      right: clamp(40px, 6vw, 80px);
+      left: 20px;
+      right: auto;
       bottom: 20px;
   color: var(--color-fg);
       font-family: "Saans", sans-serif;
@@ -2239,8 +2236,8 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       .footer-contact-block {
-        left: auto;
-        right: clamp(30px, 8vw, 60px);
+        left: clamp(20px, 6vw, 40px);
+        right: auto;
       }
     }
 
@@ -2319,6 +2316,7 @@ body[data-theme="light"] .studio-textbox-note {
 
       .footer-copy-minimal {
         margin-top: clamp(48px, 12vw, 64px);
+        text-align: left;
       }
     }
 
@@ -2511,13 +2509,14 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       .hero__video.is-shrinking {
-        width: min(336px, 90vw);
-        height: min(659px, 90vh);
-        max-height: none;
-        aspect-ratio: 336 / 659;
+        width: calc(100vw - 40px);
+        height: auto;
+        aspect-ratio: 4 / 5;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, calc(-50% + 20px));
+        border-radius: 10px;
+        overflow: hidden;
       }
 
       .hero__skip-button {
@@ -2578,6 +2577,13 @@ body[data-theme="light"] .studio-textbox-note {
       }
     }
   </style>
+  <style>
+    @media (max-width: 768px) {
+      #video-overlay-box {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="hero">
@@ -2622,7 +2628,8 @@ body[data-theme="light"] .studio-textbox-note {
   </header>
 
   <div class="hero-description fade-in-bottom" style="animation-duration: 1800ms;">
-    Mond Studio is a design studio centered on new ideas and defining experiences, partnering with our generation's leading brands and innovators to influence culture. Recent projects include work for.
+    At Mond Studio, every detail begins with intention.<br />
+    We design to reveal meaning — shaping experiences that move people, define culture, and reflect the world we want to build.
   </div>
 
   <div class="latest-works-row">
@@ -2712,7 +2719,7 @@ body[data-theme="light"] .studio-textbox-note {
         4100321 Cluj-Napoca<br><br>
         <a class="footer-email" href="mailto:hello@mondstudio.com?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.com</a>
       </div>
-      <div class="footer-copy-minimal">©2025 MOND STUDIO SRL All Rights Reserved</div>
+      <div class="footer-copy-minimal">©2025 MOND STUDIO. All Rights Reserved.</div>
     </div>
   </footer>
 
@@ -2864,7 +2871,7 @@ body[data-theme="light"] .studio-textbox-note {
         }
       };
 
-      const SHRINK_OFFSET = 3;
+      const SHRINK_OFFSET = 5.5;
       let hasShrinkTriggered = false;
 
       const triggerShrink = () => {

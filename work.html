@@ -331,11 +331,14 @@
       align-items: center;
       justify-content: center;
       padding: 8px 18px;
+      border-radius: 7px;
       background: rgba(255, 255, 255, 0.08);
-      border-radius: 30px;
-      font-size: 15px;
+      font-size: 13px;
       line-height: 1;
       color: var(--color-fg);
+      font-family: "Saans", sans-serif;
+      text-align: center;
+      transition: background-color 180ms ease, color 180ms ease;
     }
 
     .projects-table tbody tr {
@@ -378,7 +381,8 @@
     }
 
     body[data-theme="light"] .projects-type {
-      background: rgba(0, 0, 0, 0.06);
+      background: rgba(0, 0, 0, 0.08);
+      color: var(--color-fg);
     }
 
     .projects-thumb {
