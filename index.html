@@ -217,7 +217,6 @@ html {
       width: clamp(320px, 90vw, 1432px);
       height: auto;
       max-height: clamp(180px, 90vh, 731px);
-      aspect-ratio: 1432 / 731;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
@@ -227,19 +226,31 @@ html {
       border-radius: 10px;
       overflow: hidden;
       z-index: 0;
+      transition:
+        width 3s cubic-bezier(.4, 0, .2, 1),
+        height 3s cubic-bezier(.4, 0, .2, 1),
+        max-height 3s cubic-bezier(.4, 0, .2, 1),
+        transform 3s cubic-bezier(.4, 0, .2, 1),
+        border-radius 3s cubic-bezier(.4, 0, .2, 1);
     }
 
-    .hero__video.is-shrinking,
-    .hero__video.is-shrunk {
-      width: clamp(320px, 90vw, 1432px);
-      height: auto;
-      max-height: clamp(180px, 90vh, 731px);
-      aspect-ratio: 1432 / 731;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 10px;
-      overflow: hidden;
+    @media (min-width: 721px) {
+      .hero__video.is-stage-1 {
+        width: calc(100vw - 40px);
+        max-width: calc(100vw - 40px);
+        height: calc(100vh - 40px);
+        max-height: calc(100vh - 40px);
+        transform: translate(-50%, -50%);
+        border-radius: clamp(14px, 3vw, 32px);
+      }
+
+      .hero__video.is-stage-2 {
+        width: clamp(320px, 90vw, 1432px);
+        height: auto;
+        max-height: clamp(180px, 90vh, 731px);
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+      }
     }
 
     .hero__skip-button {
@@ -261,7 +272,7 @@ html {
     .hero__theme-toggle {
       position: absolute;
       left: 20px;
-      bottom: 20px;
+      bottom: 0;
       z-index: 3;
       display: inline-flex;
       align-items: center;
@@ -343,7 +354,7 @@ html {
     .hero__brand {
       font-weight: 500;
       position: absolute;
-      top: 20px;
+      top: 10px;
       left: 20px;
       font-size: 19px;
       letter-spacing: 0.2px;
@@ -479,7 +490,7 @@ html {
       display: flex;
       align-items: flex-start;
       gap: 20px;
-      margin: 128px 20px 0 20px;
+      margin: 50px 20px 0 20px;
       flex-wrap: wrap;
     }
 
@@ -524,12 +535,12 @@ html {
     }
 
     .pl-4-block {
-      margin: 100px auto 0;
+      margin: 65px auto 0;
       width: min(1024px, calc(100vw - 40px));
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 20px;
+      gap: 50px;
     }
 
     .pl-4-caption-wrapper {
@@ -582,8 +593,8 @@ html {
       justify-content: flex-start;
       gap: 90px;
       width: 100%;
-      margin-top: auto;
-      padding-top: 20px;
+      margin-top: -15px;
+      padding-top: 0;
     }
 
     .pl-4 {
@@ -712,7 +723,7 @@ html {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 40px;
+      gap: 50px;
       width: 100%;
       max-width: min(1013px, calc(100vw - 60px));
     }
@@ -846,8 +857,8 @@ html {
       .latest-works-duo {
         flex-direction: column;
         align-items: flex-start;
-        gap: clamp(32px, 8vw, 48px);
-        margin-top: clamp(120px, 18vw, 168px);
+        gap: 20px;
+        margin-top: 50px;
       }
 
       .pl-3-stack {
@@ -2159,7 +2170,7 @@ body[data-theme="light"] .studio-textbox-note {
  .footer-brand-minimal {
   position: absolute;
   font-weight: 500;
-  top: 20px;
+  top: 10px;
   left: 20px;
   color: var(--color-fg);
   font-weight: 500;
@@ -2173,7 +2184,7 @@ body[data-theme="light"] .studio-textbox-note {
 
 .footer-copy-minimal {
   position: absolute;
-  bottom: 20px;
+  bottom: 0;
   left: auto;
   right: 20px;
   width: min(345px, calc(100% - 40px));
@@ -2301,7 +2312,9 @@ body[data-theme="light"] .studio-textbox-note {
         width: 100%;
         min-height: auto;
         transform: none;
-        padding: clamp(36px, 10vw, 52px) 20px clamp(48px, 12vw, 64px);
+        padding: 0 20px;
+        padding-top: calc(clamp(36px, 10vw, 52px) - 15px);
+        padding-bottom: calc(clamp(48px, 12vw, 64px) - 15px);
         margin-top: 0;
         margin-bottom: -20px;
         margin-left: auto;
@@ -2352,7 +2365,7 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       .footer-copy-minimal {
-        margin-top: clamp(48px, 12vw, 64px);
+        margin-top: calc(clamp(48px, 12vw, 64px) + 20px);
         text-align: left;
       }
     }
@@ -2512,15 +2525,21 @@ body[data-theme="light"] .studio-textbox-note {
         line-height: 1.2;
       }
 
+      .pl-1-title,
+      .pl-3-title,
+      .pl-4-title {
+        width: 100%;
+        max-width: none;
+      }
+
       .pl-1-subtitle,
       .pl-3-subtitle,
       .pl-4-subtitle {
-        font-size: calc(14px / 1.1);
-        line-height: calc(16px / 1.1);
+        display: none;
       }
 
       .latest-works-label {
-        font-size: 36px;
+        font-size: 30px;
         line-height: 1.1;
       }
 
@@ -2559,21 +2578,31 @@ body[data-theme="light"] .studio-textbox-note {
 
       .hero__video {
         width: calc(100vw - 40px);
-        height: auto;
+        height: calc((100vw - 40px) * 471 / 373);
         max-height: none;
         left: 50%;
         top: 50%;
         transform: translate(-50%, calc(-50% - 25px));
-        aspect-ratio: 373 / 471;
+        border-radius: 10px;
+        transition: transform 3s cubic-bezier(.4, 0, .2, 1), height 3s cubic-bezier(.4, 0, .2, 1), border-radius 3s cubic-bezier(.4, 0, .2, 1);
+        will-change: transform, height, border-radius;
       }
 
-      .hero__video.is-shrinking,
-      .hero__video.is-shrunk {
-        width: calc(100vw - 40px);
-        height: auto;
-        max-height: none;
-        aspect-ratio: 373 / 471;
+      .hero__video.is-stage-1 {
+        min-height: calc((100vw - 40px) * 471 / 373);
+        height: clamp(
+          calc((100vw - 40px) * 471 / 373),
+          calc(((100vw - 40px) * 2.2) - 40px),
+          calc(100vh - 80px)
+        );
+        transform: translate(-50%, calc(-50% - 20px));
+        border-radius: clamp(10px, 4vw, 22px);
+      }
+
+      .hero__video.is-stage-2 {
+        height: calc((100vw - 40px) * 471 / 373);
         transform: translate(-50%, calc(-50% - 25px));
+        border-radius: 10px;
       }
 
       .hero__skip-button {
@@ -2673,7 +2702,7 @@ body[data-theme="light"] .studio-textbox-note {
 <body>
   <header class="hero">
     <video
-      class="hero__video"
+      class="hero__video is-stage-1"
       src="videolanding.mp4"
       autoplay
       muted
@@ -2907,6 +2936,19 @@ body[data-theme="light"] .studio-textbox-note {
         ? window.matchMedia('(prefers-reduced-motion: reduce)')
         : { matches: false };
       const themeToggle = document.getElementById('theme-toggle');
+      const stageOneClass = 'is-stage-1';
+      const stageTwoClass = 'is-stage-2';
+      const SHRINK_OFFSET = 3;
+      let hasShrinkTriggered = false;
+
+      const activateStageTwo = () => {
+        if (!video) return;
+        if (!video.classList.contains(stageTwoClass)) {
+          video.classList.remove(stageOneClass);
+          video.classList.add(stageTwoClass);
+        }
+        hasShrinkTriggered = true;
+      };
 
       if (video) {
         video.muted = true;
@@ -2957,6 +2999,13 @@ body[data-theme="light"] .studio-textbox-note {
         });
       }
 
+      if (prefersReducedMotion.matches) {
+        if (video) {
+          video.style.transition = 'none';
+        }
+        activateStageTwo();
+      }
+
       const storageKey = 'mond-video-played';
       const hasPlayedBefore = sessionStorage.getItem(storageKey) === '1';
 
@@ -2978,16 +3027,17 @@ body[data-theme="light"] .studio-textbox-note {
         themeToggle.style.opacity = '1';
       };
 
-      const SHRINK_OFFSET = Number.POSITIVE_INFINITY;
-      let hasShrinkTriggered = false;
-
       const triggerShrink = () => {
-        if (hasShrinkTriggered || !video) return;
-        hasShrinkTriggered = true;
+        if (hasShrinkTriggered) return;
+        activateStageTwo();
       };
 
       const evaluateShrink = () => {
         if (!video || isNaN(video.duration)) return;
+        if (video.duration <= SHRINK_OFFSET) {
+          triggerShrink();
+          return;
+        }
         if (video.duration - video.currentTime <= SHRINK_OFFSET) {
           triggerShrink();
         }
