@@ -65,7 +65,7 @@
   --transition-duration: 420ms;
   --transition-timing: cubic-bezier(.4, 0, .2, 1);
   --transition-default: var(--transition-duration) var(--transition-timing);
-  --grid-line-color: rgba(255, 255, 255, 0.08);
+  --grid-line-color: #1a1a1a;
   --grid-line-image: linear-gradient(
     to right,
     transparent 0,
@@ -92,6 +92,7 @@
 
 html {
   scroll-behavior: auto;
+  overscroll-behavior-x: none;
 }
 
     body {
@@ -108,6 +109,7 @@ html {
       position: relative;
       color-scheme: dark;
       padding-bottom: 40px;
+      overscroll-behavior-x: none;
     }
 
     body[data-theme="light"] {
@@ -117,7 +119,7 @@ html {
       --color-fg: #131313;
       --color-muted: #5e5e5e;
       --color-white: #ffffff;
-      --grid-line-color: rgba(0, 0, 0, 0.06);
+      --grid-line-color: #e9e9e9;
       --grid-line-image: none;
       --line-color: none;
       --hero-overlay-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.08) 45%, rgba(255, 255, 255, 0.9) 100%);
@@ -141,16 +143,16 @@ html {
         to right,
         transparent 0,
         transparent calc(25% - 0.5px),
-        #d7d7d7 calc(25% - 0.5px),
-        #d7d7d7 calc(25% + 0.5px),
+        #e9e9e9 calc(25% - 0.5px),
+        #e9e9e9 calc(25% + 0.5px),
         transparent calc(25% + 0.5px),
         transparent calc(50% - 0.5px),
-        #d7d7d7 calc(50% - 0.5px),
-        #d7d7d7 calc(50% + 0.5px),
+        #e9e9e9 calc(50% - 0.5px),
+        #e9e9e9 calc(50% + 0.5px),
         transparent calc(50% + 0.5px),
         transparent calc(75% - 0.5px),
-        #d7d7d7 calc(75% - 0.5px),
-        #d7d7d7 calc(75% + 0.5px),
+        #e9e9e9 calc(75% - 0.5px),
+        #e9e9e9 calc(75% + 0.5px),
         transparent calc(75% + 0.5px),
         transparent 100%
       );
@@ -2500,10 +2502,21 @@ body[data-theme="light"] .studio-textbox-note {
     }
 
     @media (max-width: 720px) {
+      body {
+        touch-action: pan-y;
+      }
+
       .hero-description {
         margin-top: 70px;
         font-size: 30px;
         line-height: 1.2;
+      }
+
+      .pl-1-subtitle,
+      .pl-3-subtitle,
+      .pl-4-subtitle {
+        font-size: calc(14px / 1.1);
+        line-height: calc(16px / 1.1);
       }
 
       .pl-4-caption {
@@ -2541,7 +2554,7 @@ body[data-theme="light"] .studio-textbox-note {
         max-height: none;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, calc(-50% + 25px));
+        transform: translate(-50%, calc(-50% - 25px));
         aspect-ratio: 373 / 471;
       }
 
@@ -2551,7 +2564,7 @@ body[data-theme="light"] .studio-textbox-note {
         height: auto;
         max-height: none;
         aspect-ratio: 373 / 471;
-        transform: translate(-50%, calc(-50% + 25px));
+        transform: translate(-50%, calc(-50% - 25px));
       }
 
       .hero__skip-button {
@@ -2698,7 +2711,7 @@ body[data-theme="light"] .studio-textbox-note {
 
       <div class="video-overlay-box" id="video-overlay-box">
         <span class="clickable-text hero-service-tag hero-text-drop" id="branding-text">[BRANDING]</span>
-        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text">[PRODUCT DEV]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text">[3D DESIGN]</span>
         <span class="clickable-text hero-service-tag hero-text-drop" id="art-direction-text">[ART DIRECTION]</span>
         <span class="clickable-text hero-service-tag hero-text-drop" id="uiux-text">[UI/UX]</span>
       </div>
