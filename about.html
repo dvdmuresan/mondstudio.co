@@ -1,44 +1,17 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MOND Studio — About</title>
-  <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
-  <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mond Studio — About</title>
+  <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css">
+  <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css">
+  <script>
+    document.documentElement.classList.add('js');
+  </script>
   <style>
-    :root {
-      --color-bg: #080808;
-      --color-panel: #151515;
-      --color-fg: #f5f5f5;
-      --color-muted: #a5a5a5;
-      --color-white: #ffffff;
-      --grid-line-color: rgba(255, 255, 255, 0.08);
-      --grid-line-image: linear-gradient(
-        to right,
-        transparent 0,
-        transparent calc(25% - 0.5px),
-        var(--grid-line-color) calc(25% - 0.5px),
-        var(--grid-line-color) calc(25% + 0.5px),
-        transparent calc(25% + 0.5px),
-        transparent calc(50% - 0.5px),
-        var(--grid-line-color) calc(50% - 0.5px),
-        var(--grid-line-color) calc(50% + 0.5px),
-        transparent calc(50% + 0.5px),
-        transparent calc(75% - 0.5px),
-        var(--grid-line-color) calc(75% - 0.5px),
-        var(--grid-line-color) calc(75% + 0.5px),
-        transparent calc(75% + 0.5px),
-        transparent 100%
-      );
-    }
-
-    @font-face {
-      font-family: 'NB International';
-      src: url('NB International Regular Webfont.ttf') format('truetype');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
 
     @font-face {
@@ -65,31 +38,147 @@
       font-display: swap;
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
+    @font-face {
+      font-family: "Saans";
+      src: url("FONT/Saans-TRIAL-SemiBold.ttf") format("truetype");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
     }
 
-    html {
-      scroll-behavior: auto;
+    @font-face {
+      font-family: "Saans";
+      src: url("FONT/Saans-TRIAL-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      background-color: var(--color-bg);
-      background-image: var(--grid-line-image);
-      background-repeat: repeat-y;
-      background-size: 100% auto;
-      color: var(--color-fg);
-      font-family: "Saans", sans-serif;
-      line-height: 1.44;
-      text-rendering: optimizeLegibility;
+      background: #171717;
+      color: #101010;
+      font-family: "Saans", "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
+      align-items: center;
+      padding: 20px 20px 104px;
+      gap: 0;
+    }
+
+    html.js body {
+      opacity: 0;
+    }
+
+    html.js body.is-page-loaded {
+      opacity: 1;
+      transition: opacity 720ms ease;
+    }
+
+    html.js body.is-page-exiting {
+      opacity: 0;
+      transition: opacity 420ms ease;
+    }
+
+    .page-header {
+      width: 100%;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
       position: relative;
-      padding-bottom: 40px;
-      color-scheme: dark;
+      align-self: stretch;
+    }
+
+    main {
+      width: 100%;
+      max-width: 472px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      scroll-margin-top: 120px;
+    }
+
+    .stack {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .stack__block {
+      position: relative;
+    }
+
+    html.js body .stack__block {
+      --reveal-delay: 0ms;
+      opacity: 0;
+      transform: translateY(90px);
+      transition: transform 1600ms cubic-bezier(.2, .9, .2, 1), opacity 1600ms ease;
+      transition-delay: var(--reveal-delay);
+    }
+
+    html.js body.is-page-loaded .stack__block {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    html.js body .stack__block:nth-child(1) {
+      --reveal-delay: 0ms;
+    }
+
+    html.js body .stack__block:nth-child(2) {
+      --reveal-delay: 320ms;
+    }
+
+    html.js body .stack__block:nth-child(3) {
+      --reveal-delay: 640ms;
+    }
+
+    html.js body .stack__block:nth-child(4) {
+      --reveal-delay: 960ms;
+    }
+
+    .stack__square {
+      position: absolute;
+      width: 85px;
+      height: 85px;
+      border-radius: 7px;
+      top: 50%;
+      transform: translateY(calc(-50% - 100px));
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .stack__square--left {
+      left: calc(-85px - 10px);
+    }
+
+    .stack__square--right {
+      right: calc(-85px - 10px);
+    }
+
+    .stack__square--intro {
+      top: calc(100% - 91px);
+      transform: none;
+      background: #ffffff;
+      cursor: none;
+    }
+
+    .stack__square--services-left {
+      background: #ffffff;
+      top: auto;
+      bottom: -100px;
+      transform: none;
+    }
+
+    .stack__square--right-bottom {
+      top: auto;
+      bottom: -100px;
+      transform: none;
+      background: #ffffff;
+      cursor: none;
     }
 
     body::before {
@@ -97,323 +186,416 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      background-image: var(--grid-line-image);
-      background-repeat: repeat-y;
-      background-size: 100% auto;
+      background-image: url("bgabout.jpg");
+      background-size: 120% auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: filter 720ms ease;
       pointer-events: none;
     }
 
+    .page-header,
     main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: clamp(120px, 16vw, 200px) 20px;
+      transition: filter 720ms ease;
     }
 
-    .placeholder {
-      max-width: 640px;
-      text-align: center;
-      font-family: "Saans", sans-serif;
-      font-size: 20px;
-      color: var(--color-muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    body.is-blurred .page-header,
+    body.is-blurred main {
+      filter: blur(5px);
     }
 
-.footer-section {
-  position: relative;
-  width: min(100%, calc(100vw - 40px));
-  min-height: calc(550px * 0.708 - 100px);
-  background: var(--color-panel);
-  color: var(--color-fg);
-      border-radius: 7px;
-      margin: 0 auto -20px;
-      box-sizing: border-box;
-      display: block;
+    body.is-blurred::before {
+      filter: blur(5px);
+    }
+
+    body::after {
+      display: none;
+    }
+
+
+    .cursor-card {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 291px;
+      height: 344px;
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22);
+      transform: translate(-999px, -999px);
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 600ms ease, transform 420ms cubic-bezier(.2,.9,.2,1);
-      will-change: opacity, transform, top;
-      padding: 20px;
-      margin-top: 0;
-      max-width: calc(100vw - 40px);
+      pointer-events: none;
+      transition: opacity 150ms ease;
+      z-index: 20;
     }
 
-.footer-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 1px solid transparent;
-  border-radius: 7px;
-}
-
-    .footer-section.visible {
+    .cursor-card.is-visible {
       opacity: 1;
-      transform: translateY(0);
     }
 
- .footer-brand-minimal {
-  position: absolute;
-  font-weight: 500;
-  top: 20px;
-  left: 20px;
-  color: var(--color-fg);
-  font-weight: 500;
-      text-align: left;
-      font-family: "Saans", sans-serif;
-      font-size: 19px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 25px;
-    }
-
-.footer-copy-minimal {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  width: min(345px, calc(100% - 40px));
-  color: var(--color-fg);
-      text-align: left;
-      font-family: "Saans", sans-serif;
-      font-size: 15px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-    }
-
- .footer-social-minimal {
-      position: absolute;
-      top: 20px;
-      left: clamp(240px, calc(50% - 140px), 360px);
-      right: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      column-gap: clamp(40px, 7vw, 96px);
-      row-gap: clamp(12px, 5vw, 24px);
-      color: var(--color-fg);
-      font-family: "Saans", sans-serif;
-      font-size: clamp(18px, 3vw, 28px);
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      text-transform: uppercase;
-      text-align: center;
-    }
-
-.footer-social-minimal a {
+    .hero__top {
       position: relative;
-      display: inline-flex;
-      align-items: center;
-      font-size: inherit;
+      min-height: 60px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .hero__brand {
+      position: relative;
+      font-family: "Saans", sans-serif;
+      font-weight: 500;
+      font-size: 19px;
+      letter-spacing: 0.2px;
+      line-height: 1;
+      color: #f7f7f7;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .hero__nav {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 19px;
+      text-align: right;
+      align-items: flex-end;
+      color: #f7f7f7;
+      font-family: "Saans", sans-serif;
+      font-weight: 500;
+      line-height: 18px;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      font-weight: 500;
-      color: var(--color-fg);
+    }
+
+    .hero__nav a {
+      color: inherit;
+      opacity: 1;
       text-decoration: none;
-      transition: color 180ms ease;
+      transition: opacity 180ms ease;
     }
 
-
-
-    .footer-social-minimal a:hover,
-    .footer-social-minimal a:focus {
-      outline: none;
-      color: var(--color-fg);
+    .hero__nav:hover a,
+    .hero__nav:focus-within a {
+      opacity: 0.3;
     }
 
-.footer-social-minimal a::after {
-  content: '';
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 100%;
-      height: 2px;
-      background: currentColor;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 220ms ease;
+    .hero__nav:hover a:hover,
+    .hero__nav:hover a:focus-visible,
+    .hero__nav:focus-within a:focus-visible {
+      opacity: 1;
     }
 
-    .footer-social-minimal a:hover::after,
-    .footer-social-minimal a:focus::after {
-      transform: scaleX(1);
+    .card {
+      background: #f7f7f7;
+      border-radius: 6px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
     }
 
-.footer-contact-block {
-      position: absolute;
-      width: clamp(240px, 20vw, 259px);
-      left: clamp(240px, calc(50% - 140px), 360px);
-      bottom: 20px;
-  color: var(--color-fg);
-      font-family: "Saans", sans-serif;
-      font-size: 15px;
+    .card--intro {
+      padding: 19px 24px;
+    }
+
+    .card--services {
+      padding: 28px 26px;
+    }
+
+    .card--info {
+      padding: 21px 24px;
+    }
+
+    .card--contact {
+      padding: 17px 23px;
+      scroll-margin-top: 120px;
+    }
+
+    .intro {
+      color: #000;
+      font-family: "Saans-TRIAL", "Saans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 19px;
       font-style: normal;
-      font-weight: 400;
-      line-height: 22px;
-      text-align: left;
+      font-weight: 500;
+      line-height: normal;
     }
 
-    @media (max-width: 900px) {
-       .footer-social-minimal {
-  font-weight: 500;
-        left: clamp(40px, 6vw, 80px);
-        right: 20px;
-        justify-content: flex-start;
-        column-gap: clamp(32px, 6vw, 56px);
-        row-gap: clamp(12px, 5vw, 20px);
-        font-size: clamp(22px, 4.6vw, 28px);
-      }
-
-      .footer-contact-block {
-        left: clamp(40px, 6vw, 80px);
-      }
+    .services {
+      color: #000;
+      font-family: "Saans-TRIAL", "Saans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 33px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
     }
 
-    @media (max-width: 540px) {
-       .footer-social-minimal {
-  font-weight: 500;
-        left: 20px;
-        right: 20px;
-        justify-content: space-between;
-        column-gap: clamp(24px, 7vw, 32px);
-        font-size: clamp(18px, 6vw, 24px);
-      }
-
-      .footer-contact-block {
-        width: calc(100% - 40px);
-        left: 20px;
-        font-size: 15px;
-        line-height: 22px;
-      }
+    .info-grid {
+      display: flex;
+      gap: 52px;
+      flex-wrap: wrap;
     }
 
-    @media (max-width: 640px) {
-      .footer-section {
-        position: relative;
-        width: 100%;
-        min-height: auto;
-        transform: none;
-        padding: clamp(36px, 10vw, 52px) 20px clamp(48px, 12vw, 64px);
-        margin-top: 0;
-        margin-bottom: -20px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+    .info-column {
+      flex: 1 1 157px;
+    }
 
-      .footer-section.visible {
-        transform: none;
-      }
+    .info-column h3 {
+      margin: 0 0 16px;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
 
-      .footer-content {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+    .info-column--industries h3,
+    .info-column--socials h3 {
+      color: #000;
+      font-family: "Saans-TRIAL", "Saans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    .info-column ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #919191;
+      font-family: "Saans-TRIAL", "Saans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+
+    .info-column li + li {
+      margin-top: 5px;
+    }
+
+    .contact h3 {
+      margin: 0 0 10px;
+      color: #000;
+      font-family: "Saans-TRIAL", "Saans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    .contact a,
+    .contact p {
+      margin: 0;
+      color: #919191;
+      font-family: "Saans-TRIAL", "Saans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      color: #101010;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 104px 14px 70px;
         gap: 0;
       }
 
-      .footer-brand-minimal,
-      .footer-social-minimal,
-      .footer-contact-block,
-      .footer-email,
-      .footer-copy-minimal {
+      .page-header {
         position: static;
-        margin-left: 0;
-        transform: translateX(0);
-        width: auto;
+        margin-bottom: 24px;
+        height: auto;
       }
 
-      .footer-brand-minimal {
-        margin-bottom: 48px;
+      main {
+        margin-top: 120px;
       }
 
-       .footer-social-minimal {
-  font-weight: 500;
+      .hero__top {
+        min-height: auto;
+        padding-top: 20px;
         display: flex;
         flex-direction: column;
-        gap: clamp(28px, 7vw, 36px);
-        margin-top: 0;
+        align-items: flex-start;
+        gap: 16px;
       }
 
-      .footer-contact-block {
-        margin-top: clamp(64px, 12vw, 72px);
-        width: calc(100% - 40px);
+      .hero__nav {
+        position: static;
+        align-items: flex-start;
+        text-align: left;
       }
 
-      .footer-email {
-        margin-top: clamp(36px, 10vw, 48px);
+      .hero__brand {
+        position: static;
+        margin-bottom: 12px;
       }
 
-      .footer-copy-minimal {
-        margin-top: clamp(48px, 12vw, 64px);
+      .stack__square {
+        display: none;
       }
-    }
 
-.footer-email {
-  color: var(--color-fg);
-      text-decoration: underline;
+      .card--intro {
+        padding: 16px 17px;
+      }
+
+      .card--services {
+        padding: 23px 19px;
+      }
+
+      .card--info {
+        padding: 17px 17px;
+      }
+
+      .card--contact {
+        padding: 14px 17px;
+      }
+
+      .services {
+        font-size: clamp(28px, 7vw, 35px);
+      }
+
+      .info-grid {
+        gap: 31px;
+      }
+
+      .info-column {
+        flex: 1 1 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <main>
-    <div class="placeholder">About content will be added soon.</div>
+  <header class="page-header">
+    <div class="hero__top">
+      <a class="hero__brand" href="index.html">MOND STUDIO</a>
+      <nav class="hero__nav" aria-label="Primary navigation">
+        <a href="work.html">WORK</a>
+        <a href="about.html">ABOUT</a>
+        <a href="about.html#footer-section">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="about">
+    <div class="stack">
+      <div class="stack__block">
+        <span class="stack__square stack__square--left stack__square--intro" aria-hidden="true" data-cursor-image="david.jpg" data-cursor-alt="David">
+          <img src="david icon.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;" />
+        </span>
+        <section class="card card--intro intro">
+      Mond Studio is a multidisciplinary design practice. We create visual identities, digital environments, and conceptual works that question the pace, values, and aesthetics of contemporary culture.
+        </section>
+      </div>
+
+      <div class="stack__block">
+        <span class="stack__square stack__square--right stack__square--right-bottom" aria-hidden="true" data-cursor-image="bence.jpg" data-cursor-alt="Bence">
+          <img src="bence icon.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;" />
+        </span>
+        <section class="card card--services services">
+      3D Design<br>
+      Visual Identity<br>
+      Graphic Design<br>
+      Digital Content<br>
+      Art Direction<br>
+      UI/UX Design
+        </section>
+      </div>
+
+      <div class="stack__block">
+        <span class="stack__square stack__square--left stack__square--services-left" aria-hidden="true"></span>
+        <section class="card card--info">
+      <div class="info-grid">
+        <div class="info-column info-column--industries">
+          <h3>Industries</h3>
+          <ul>
+            <li>Art</li>
+            <li>Restaurants</li>
+            <li>Technology</li>
+            <li>Fashion Beauty</li>
+            <li>Sustainability</li>
+          </ul>
+        </div>
+        <div class="info-column info-column--socials">
+          <h3>Socials</h3>
+          <ul>
+            <li>Instagram</li>
+            <li>Facebook</li>
+            <li>WhatsApp</li>
+            <li>LinkedIn</li>
+          </ul>
+        </div>
+      </div>
+        </section>
+      </div>
+
+      <div class="stack__block">
+        <section class="card card--contact contact" id="footer-section">
+      <h3>Contact</h3>
+      <a href="mailto:hello@mondstudio.co">hello@mondstudio.co</a><br>
+      <p>+40 766 502 401</p>
+        </section>
+      </div>
+    </div>
   </main>
 
-  <footer class="footer-section visible" id="footer-section" aria-hidden="false">
-    <div class="footer-content">
-      <div class="footer-brand-minimal">MOND STUDIO</div>
-      <nav class="footer-social-minimal" aria-label="Footer social links">
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LINKDIN</a>
-      </nav>
-      <div class="footer-contact-block">
-        Mond Studio SRL<br>
-        Street name here<br>
-        4100321 Cluj-Napoca<br><br>
-        <a class="footer-email" href="mailto:hello@mondstudio.com?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.com</a>
-      </div>
-      <div class="footer-copy-minimal">©2025 MOND STUDIO SRL All Rights Reserved</div>
-    </div>
-  </footer>
+  <div class="cursor-card" aria-hidden="true">
+    <img src="david.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;" />
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      requestAnimationFrame(() => document.body.classList.add('is-page-loaded'));
+    });
+  </script>
 
   <script>
     (function () {
-      const STORAGE_KEY = 'mond-theme';
-      const mediaQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+      const squares = Array.from(document.querySelectorAll('.stack__square[data-cursor-image]'));
+      const cursorCard = document.querySelector('.cursor-card');
+      if (!cursorCard || !squares.length) return;
 
-      const readStoredTheme = () => {
-        try {
-          return window.localStorage.getItem(STORAGE_KEY);
-        } catch (error) {
-          return null;
-        }
+      const cursorImage = cursorCard.querySelector('img');
+      const CARD_WIDTH = 291;
+      const CARD_HEIGHT = 344;
+      let activeSquare = null;
+
+      const updatePosition = (event) => {
+        if (!activeSquare) return;
+        const offsetX = cursorCard.offsetWidth ? cursorCard.offsetWidth / 2 : CARD_WIDTH / 2;
+        const offsetY = cursorCard.offsetHeight ? cursorCard.offsetHeight / 2 : CARD_HEIGHT / 2;
+        cursorCard.style.transform = `translate(${event.clientX - offsetX}px, ${event.clientY - offsetY}px)`;
       };
 
-      const applyTheme = (theme) => {
-        const resolved = theme === 'light' ? 'light' : 'dark';
-        document.body.dataset.theme = resolved;
-        document.body.style.colorScheme = resolved;
+      const showCard = (square, event) => {
+        activeSquare = square;
+        const imageSrc = square.dataset.cursorImage;
+        const imageAlt = square.dataset.cursorAlt || '';
+        if (cursorImage && imageSrc) {
+          cursorImage.src = imageSrc;
+          cursorImage.alt = imageAlt;
+        }
+        document.body.classList.add('is-blurred');
+        cursorCard.classList.add('is-visible');
+        updatePosition(event);
       };
 
-      const storedTheme = readStoredTheme();
-      const initialTheme = storedTheme || (mediaQuery && mediaQuery.matches ? 'dark' : 'light');
-      applyTheme(initialTheme);
+      const hideCard = () => {
+        activeSquare = null;
+        document.body.classList.remove('is-blurred');
+        cursorCard.classList.remove('is-visible');
+        cursorCard.style.transform = 'translate(-999px, -999px)';
+      };
 
-      if (!storedTheme && mediaQuery) {
-        const handlePreferenceChange = (event) => {
-          if (readStoredTheme()) return;
-          applyTheme(event.matches ? 'dark' : 'light');
-        };
+      squares.forEach((square) => {
+        square.addEventListener('mouseenter', (event) => showCard(square, event));
+        square.addEventListener('mousemove', updatePosition);
+        square.addEventListener('mouseleave', hideCard);
+      });
 
-        if (typeof mediaQuery.addEventListener === 'function') {
-          mediaQuery.addEventListener('change', handlePreferenceChange);
-        } else if (typeof mediaQuery.addListener === 'function') {
-          mediaQuery.addListener(handlePreferenceChange);
-        }
-      }
+      document.addEventListener('mousemove', updatePosition);
     })();
   </script>
 </body>

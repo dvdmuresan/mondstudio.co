@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MOND Studio — Intermezzo Fesztival</title>
+  <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
+  <style>
+    @font-face {
+      font-family: "Saans";
+      src: url("FONT/Saans-TRIAL-Light.ttf") format("truetype");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Saans";
+      src: url("FONT/Saans-TRIAL-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Saans";
+      src: url("FONT/Saans-TRIAL-Medium.ttf") format("truetype");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --color-bg: #080808;
+      --color-panel: #151515;
+      --color-fg: #f5f5f5;
+      --color-muted: #a5a5a5;
+      --grid-line-color: #1a1a1a;
+      --grid-line-image: linear-gradient(
+        to right,
+        transparent 0,
+        transparent calc(25% - 0.5px),
+        var(--grid-line-color) calc(25% - 0.5px),
+        var(--grid-line-color) calc(25% + 0.5px),
+        transparent calc(25% + 0.5px),
+        transparent calc(50% - 0.5px),
+        var(--grid-line-color) calc(50% - 0.5px),
+        var(--grid-line-color) calc(50% + 0.5px),
+        transparent calc(50% + 0.5px),
+        transparent calc(75% - 0.5px),
+        var(--grid-line-color) calc(75% - 0.5px),
+        var(--grid-line-color) calc(75% + 0.5px),
+        transparent calc(75% + 0.5px),
+        transparent 100%
+      );
+    }
+
+    body[data-theme="light"] {
+      --color-bg: #f7f7f7;
+      --color-panel: #ffffff;
+      --color-fg: #131313;
+      --color-muted: #5a5a5a;
+      --grid-line-color: #e5e5e5;
+      --grid-line-image: none;
+      color-scheme: light;
+      background-image: none;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    body, h1, h2, h3, h4, p, figure {
+      margin: 0;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: var(--color-bg);
+      background-image: var(--grid-line-image);
+      background-repeat: repeat-y;
+      background-size: 100% auto;
+      color: var(--color-fg);
+      font-family: "Saans", sans-serif;
+      line-height: 1.44;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+      position: relative;
+      color-scheme: dark;
+      padding-bottom: 0;
+      overscroll-behavior-x: none;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: var(--grid-line-image);
+      background-repeat: repeat-y;
+      background-size: 100% auto;
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      flex: 1 0 auto;
+      min-height: 100vh;
+      color: var(--color-fg);
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    body[data-theme="light"] .hero::after {
+      background: none;
+    }
+
+    .hero__overlay {
+      position: relative;
+      color: var(--color-fg);
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: clamp(28px, 8vw, 64px);
+      padding: 0;
+      padding-bottom: clamp(24px, 6vw, 48px);
+      background: transparent;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 420ms ease, visibility 420ms ease;
+    }
+
+    .hero__overlay.is-visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .hero__top {
+      position: relative;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: clamp(24px, 6vw, 48px);
+    }
+
+    .hero__brand {
+      font-weight: 500;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 19px;
+      letter-spacing: 0.2px;
+      line-height: 1;
+      color: var(--color-fg);
+    }
+
+    .hero__nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 19px;
+      text-align: right;
+      align-items: flex-end;
+      color: inherit;
+      font-weight: 500;
+      line-height: 18px;
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+    }
+
+    .hero__nav a {
+      color: inherit;
+      opacity: 1;
+      transition: opacity 180ms ease;
+    }
+
+    .hero__overlay.is-visible .hero__nav {
+      animation: heroNavFade 1800ms cubic-bezier(.2, .9, .2, 1) forwards;
+      pointer-events: auto;
+    }
+
+    .hero__nav:hover a {
+      opacity: 0.3;
+    }
+
+    .hero__nav:hover a:hover,
+    .hero__nav:hover a:focus-visible {
+      opacity: 1;
+    }
+
+    .hero__nav:focus-within a {
+      opacity: 0.3;
+    }
+
+    .hero__nav:focus-within a:focus-visible {
+      opacity: 1;
+    }
+
+    .hero-text-drop {
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 420ms ease, transform 420ms cubic-bezier(.2,.9,.2,1);
+      will-change: opacity, transform;
+      pointer-events: none;
+    }
+
+    .hero-text-drop.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    @keyframes heroNavFade {
+      0% {
+        opacity: 0;
+        transform: translateY(-16px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .case-main {
+      flex: 0 0 auto;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: clamp(10px, 6vw, 40px) 0 clamp(48px, 12vw, 120px);
+      margin-top: -800px;
+    }
+
+    .case-section {
+      width: calc(100vw - 40px);
+      display: grid;
+      gap: clamp(72px, 12vw, 120px);
+      row-gap: clamp(72px, 12vw, 120px);
+    }
+
+    .case-intro__copy {
+      width: 899px;
+      height: 221px;
+      color: #FFF;
+      font-family: "Helvetica Neue", "Saans", sans-serif;
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 49px;
+      margin-left: 230px;
+      margin-top: 100px;
+      margin-bottom: clamp(48px, 12vw, 96px);
+    }
+
+    .case-description {
+      width: 516px;
+      height: 191px;
+      color: #FFF;
+      font-family: "Helvetica Neue", "Saans", sans-serif;
+      font-size: 19.778px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      margin-left: 230px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .case-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: calc(100% - 40px);
+      margin: -100px auto 0;
+    }
+
+    .case-gallery > figure {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+      height: clamp(380px, 46vw, 580px);
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .case-gallery > figure img,
+    .case-gallery > figure video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .case-gallery > figure:first-child {
+      flex-basis: calc(39.8% - 5px);
+      max-width: calc(39.8% - 5px);
+    }
+
+    .case-gallery > figure:nth-child(2) {
+      flex-basis: calc(60.2% - 5px);
+      max-width: calc(60.2% - 5px);
+    }
+
+    .case-gallery > figure:nth-child(3) {
+      flex-basis: 100%;
+      max-width: 100%;
+      height: clamp(480px, 58vw, 720px);
+      margin: 0;
+    }
+
+    .footer-section {
+      position: relative;
+      width: min(100%, calc(100vw - 40px));
+      min-height: calc(550px * 0.708 - 100px);
+      background: var(--color-panel);
+      color: var(--color-fg);
+      border-radius: 7px;
+      margin: 0 auto 20px;
+      box-sizing: border-box;
+      display: block;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 600ms ease, transform 420ms cubic-bezier(.2,.9,.2,1);
+      will-change: opacity, transform, top;
+      padding: 20px;
+      margin-top: auto;
+      max-width: calc(100vw - 40px);
+    }
+
+    .footer-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      border-radius: 7px;
+    }
+
+    .footer-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer-brand-minimal {
+      position: absolute;
+      font-weight: 500;
+      top: 20px;
+      left: 20px;
+      color: #BABABA;
+      font-family: "Saans", sans-serif;
+      font-size: 19px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 25px;
+      text-align: left;
+    }
+
+    .footer-copy-minimal {
+      position: absolute;
+      bottom: 20px;
+      left: auto;
+      right: 20px;
+      width: min(345px, calc(100% - 40px));
+      color: #BABABA;
+      text-align: right;
+      font-family: "Saans", sans-serif;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    .footer-social-minimal {
+      position: absolute;
+      top: 20px;
+      left: auto;
+      right: 20px;
+      display: flex;
+      gap: clamp(40px, 8vw, 100px);
+      color: #BABABA;
+      font-family: "Saans", sans-serif;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .footer-social-minimal a {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      font-size: clamp(20px, 4vw, 26px);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: #BABABA;
+      text-decoration: none;
+      margin-right: 20px;
+      transition: color 180ms ease;
+    }
+
+    .footer-social-minimal a:last-child {
+      margin-right: 0;
+    }
+
+    .footer-social-minimal a:hover,
+    .footer-social-minimal a:focus {
+      outline: none;
+      color: #ffffff;
+    }
+
+    .footer-social-minimal a::after,
+    .footer-social-minimal a:hover::after,
+    .footer-social-minimal a:focus::after {
+      display: none;
+    }
+
+    .footer-contact-block {
+      position: absolute;
+      width: clamp(240px, 20vw, 259px);
+      left: 20px;
+      right: auto;
+      bottom: 20px;
+      color: #BABABA;
+      font-family: "Saans", sans-serif;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+      text-align: left;
+    }
+
+    .footer-email {
+      color: #BABABA;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1024px) {
+      .case-intro__copy {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        font-size: clamp(32px, 4vw, 38px);
+        margin-left: 0;
+        margin-bottom: clamp(36px, 10vw, 60px);
+      }
+
+      .case-description {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        font-size: clamp(18px, 3.5vw, 20px);
+        margin-left: 0;
+        margin-top: clamp(40px, 10vw, 80px);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .case-main {
+        margin-top: 0;
+        padding-top: clamp(40px, 12vw, 80px);
+      }
+
+      .case-intro__copy {
+        margin-left: 0;
+        margin-bottom: clamp(32px, 9vw, 48px);
+      }
+
+      .case-description {
+        margin-left: 0;
+        margin-top: clamp(36px, 12vw, 64px);
+      }
+
+      .hero__top {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 20px;
+      }
+
+      .hero__brand {
+        position: static;
+        margin: 0;
+      }
+
+      .hero__nav {
+        position: static;
+        top: auto;
+        right: auto;
+        align-self: flex-start;
+        text-align: right;
+        align-items: flex-end;
+        margin: 0;
+      }
+
+      .case-gallery {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 0 20px;
+      }
+
+      .case-gallery > figure {
+        width: 100%;
+        height: clamp(360px, 85vw, 520px);
+      }
+
+      .case-gallery > figure:nth-child(3) {
+        height: clamp(510px, 95vw, 640px);
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .footer-social-minimal {
+        font-weight: 500;
+        left: clamp(40px, 6vw, 80px);
+        right: clamp(30px, 8vw, 60px);
+        justify-content: space-between;
+        gap: clamp(30px, 8vw, 60px);
+        font-size: clamp(26px, 5vw, 32px);
+      }
+
+      .footer-contact-block {
+        left: clamp(20px, 6vw, 40px);
+        right: auto;
+      }
+    }
+
+    body[data-theme="light"] .footer-brand-minimal,
+    body[data-theme="light"] .footer-social-minimal,
+    body[data-theme="light"] .footer-contact-block,
+    body[data-theme="light"] .footer-copy-minimal,
+    body[data-theme="light"] .footer-email {
+      color: #414141;
+    }
+
+    body[data-theme="light"] .footer-social-minimal a {
+      color: #414141;
+    }
+
+    body[data-theme="light"] .footer-social-minimal a:hover,
+    body[data-theme="light"] .footer-social-minimal a:focus {
+      color: #000000;
+    }
+
+    @media (max-width: 540px) {
+      .footer-social-minimal {
+        font-weight: 500;
+        left: 20px;
+        right: 20px;
+        font-size: clamp(20px, 6vw, 26px);
+      }
+
+      .footer-contact-block {
+        width: calc(100% - 40px);
+        left: 20px;
+        right: auto;
+        font-size: 15px;
+        line-height: 22px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .footer-section {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        transform: none;
+        padding: 0 20px;
+        padding-top: calc(clamp(36px, 10vw, 52px) - 15px);
+        padding-bottom: calc(clamp(48px, 12vw, 64px) - 15px);
+        margin-top: auto;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section.visible {
+        transform: none;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+      }
+
+      .footer-brand-minimal,
+      .footer-social-minimal,
+      .footer-contact-block,
+      .footer-email,
+      .footer-copy-minimal {
+        position: static;
+        margin-left: 0;
+        transform: translateX(0);
+        width: auto;
+      }
+
+      .footer-brand-minimal {
+        margin-bottom: 48px;
+      }
+
+      .footer-social-minimal {
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(28px, 7vw, 36px);
+        margin-top: 0;
+      }
+
+      .footer-contact-block {
+        margin-top: clamp(64px, 12vw, 72px);
+        width: calc(100% - 40px);
+      }
+
+      .footer-email {
+        margin-top: clamp(36px, 10vw, 48px);
+      }
+
+      .footer-copy-minimal {
+        margin-top: calc(clamp(48px, 12vw, 64px) + 20px);
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__overlay is-visible" id="hero-overlay" aria-hidden="false">
+      <div class="hero__top">
+        <a class="hero__brand hero-text-drop is-visible" href="index.html">MOND STUDIO</a>
+        <nav class="hero__nav" aria-label="Primary navigation">
+          <a href="work.html">WORK</a>
+          <a href="about.html">ABOUT</a>
+          <a href="#footer-section">CONTACT</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="case-main" id="about" data-theme-target>
+    <section class="case-section">
+      <p class="case-intro__copy">
+        Intermezzo Festival — visual identity for a one day of music event at Magyar Zene Háza, Budapest.
+      </p>
+      <div class="case-gallery">
+        <figure class="case-gallery__item">
+          <img src="image1.jpg" alt="Intermezzo poster artwork" loading="lazy" />
+        </figure>
+        <figure class="case-gallery__item">
+          <img src="image2.jpg" alt="Festival wayfinding signage design" loading="lazy" />
+        </figure>
+        <figure class="case-gallery__wide">
+          <video
+            src="intermezzo1.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            aria-label="Intermezzo immersive stage visual"
+          ></video>
+        </figure>
+      </div>
+      <p class="case-description">
+        Intermezzo Festival was a one-day music event hosted at Magyar Zene Háza (the House of Music) in Budapest,
+        celebrating the intersection of sound, architecture, and community. The visual identity aimed to capture the
+        transient, rhythmic nature of the event — a single day filled with layered performances, improvisation, and
+        moments of pause between sound and silence.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer-section visible" id="footer-section" aria-hidden="false">
+    <div class="footer-content">
+      <div class="footer-brand-minimal">MOND STUDIO</div>
+      <nav class="footer-social-minimal" aria-label="Footer social links">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LINKDIN</a>
+      </nav>
+      <div class="footer-contact-block">
+        Mond Studio SRL<br />
+        Street name here<br />
+        4100321 Cluj-Napoca<br /><br />
+        <a class="footer-email" href="mailto:hello@mondstudio.com?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.com</a>
+      </div>
+      <div class="footer-copy-minimal">©2025 MOND STUDIO. All Rights Reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
