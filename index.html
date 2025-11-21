@@ -385,10 +385,65 @@ html {
   pointer-events: none;
 }
 
-    .hero__nav a {
+    .hero__nav-link {
       color: inherit;
       opacity: 1;
       transition: opacity 180ms ease;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 160px;
+      font-family: "Saans", sans-serif;
+      overflow: hidden;
+    }
+
+    .hero__nav-text {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      line-height: 1;
+      letter-spacing: 0.2px;
+      transition: opacity 260ms ease, max-width 260ms ease, transform 260ms ease;
+      white-space: nowrap;
+    }
+
+    .hero__nav-text--short {
+      max-width: 120px;
+    }
+
+    .hero__nav-text--long {
+      position: absolute;
+      right: 0;
+      max-width: 0;
+      opacity: 0;
+      transform: translateX(18px);
+    }
+
+    .hero__nav-link:hover .hero__nav-text--short,
+    .hero__nav-link:focus-visible .hero__nav-text--short {
+      max-width: 0;
+      opacity: 0;
+      transform: translateX(-18px);
+    }
+
+    .hero__nav-link:hover .hero__nav-text--long,
+    .hero__nav-link:focus-visible .hero__nav-text--long {
+      max-width: 200px;
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     .hero__overlay.is-visible .hero__nav {
@@ -396,20 +451,20 @@ html {
       pointer-events: auto;
     }
 
-    .hero__nav:hover a {
+    .hero__nav:hover .hero__nav-link {
       opacity: 0.3;
     }
 
-    .hero__nav:hover a:hover,
-    .hero__nav:hover a:focus-visible {
+    .hero__nav:hover .hero__nav-link:hover,
+    .hero__nav:hover .hero__nav-link:focus-visible {
       opacity: 1;
     }
 
-    .hero__nav:focus-within a {
+    .hero__nav:focus-within .hero__nav-link {
       opacity: 0.3;
     }
 
-    .hero__nav:focus-within a:focus-visible {
+    .hero__nav:focus-within .hero__nav-link:focus-visible {
       opacity: 1;
     }
 
@@ -2743,9 +2798,21 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       <div class="hero__top">
         <a class="hero__brand hero-text-drop" href="index.html">MOND STUDIO</a>
         <nav class="hero__nav" aria-label="Primary navigation">
-          <a href="work.html">WORK</a>
-          <a href="about.html">ABOUT</a>
-          <a href="#footer-section">CONTACT</a>
+          <a class="hero__nav-link" href="work.html">
+            <span aria-hidden="true" class="hero__nav-text hero__nav-text--short">( W )</span>
+            <span aria-hidden="true" class="hero__nav-text hero__nav-text--long">(WORK)</span>
+            <span class="sr-only">WORK</span>
+          </a>
+          <a class="hero__nav-link" href="about.html">
+            <span aria-hidden="true" class="hero__nav-text hero__nav-text--short">( A )</span>
+            <span aria-hidden="true" class="hero__nav-text hero__nav-text--long">(ABOUT)</span>
+            <span class="sr-only">ABOUT</span>
+          </a>
+          <a class="hero__nav-link" href="#footer-section">
+            <span aria-hidden="true" class="hero__nav-text hero__nav-text--short">( C )</span>
+            <span aria-hidden="true" class="hero__nav-text hero__nav-text--long">(CONTACT)</span>
+            <span class="sr-only">CONTACT</span>
+          </a>
         </nav>
       </div>
 
