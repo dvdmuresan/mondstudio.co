@@ -473,7 +473,7 @@
       width: calc(222px * 1.55);
       height: calc(125px * 1.55);
       border-radius: 15px;
-      background-image: url("maier%20box.jpg");
+      background-image: url("image1.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -507,6 +507,12 @@
       pointer-events: none;
       transition: max-height 420ms ease, opacity 260ms ease, transform 260ms ease, filter 260ms ease;
       will-change: transform, opacity;
+    }
+
+    .projects-gallery__link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
     }
 
     .projects-gallery__grid {
@@ -1093,7 +1099,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       <nav class="hero__nav" aria-label="Primary navigation">
         <a href="work.html">WORK</a>
         <a href="about.html">ABOUT</a>
-        <a href="index.html#footer-section">CONTACT</a>
+        <a href="https://cal.com/">CONTACT</a>
       </nav>
     </div>
   </header>
@@ -1113,32 +1119,32 @@ body[data-theme="light"] .footer-social-minimal a:focus {
             </thead>
             <tbody>
               <tr class="project-row">
-                <td><a href="#">Maier Jewelry</a></td>
+                <td><a href="intermezzo.html">INTERMEZZO FESZTIVAL - VISUAL IDENTITY</a></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>2024</td>
-                <td><a class="project-view-button" href="#">View Project</a></td>
+                <td><a class="project-view-button" href="intermezzo.html">View Project</a></td>
               </tr>
               <tr class="project-row">
-                <td><a href="#">Signal Forge</a></td>
-                <td><span class="projects-type">Visual Identity</span></td>
+                <td><a href="#">DREAM VILLE SOFTWARE - BRANDING</a></td>
+                <td><span class="projects-type">Branding</span></td>
                 <td>2023</td>
                 <td><a class="project-view-button" href="#">View Project</a></td>
               </tr>
               <tr class="project-row">
-                <td><a href="#">Quiet Systems</a></td>
-                <td><span class="projects-type">Product Design</span></td>
+                <td><a href="#">WALK WITH ME - RECORD LABEL</a></td>
+                <td><span class="projects-type">Record Design</span></td>
                 <td>2023</td>
                 <td><a class="project-view-button" href="#">View Project</a></td>
               </tr>
               <tr class="project-row">
-                <td><a href="#">Pulse Labs</a></td>
-                <td><span class="projects-type">Brand Strategy</span></td>
+                <td><a href="#">SIGNALS IN SILENCE - BOOK DESIGN</a></td>
+                <td><span class="projects-type">Book Design</span></td>
                 <td>2022</td>
                 <td><a class="project-view-button" href="#">View Project</a></td>
               </tr>
               <tr class="project-row">
-                <td><a href="#">Northwind Apps</a></td>
-                <td><span class="projects-type">UX Research</span></td>
+                <td><a href="#">SELF REFLECTION - PRODUCT DESIGN</a></td>
+                <td><span class="projects-type">Product Design</span></td>
                 <td>2022</td>
                 <td><a class="project-view-button" href="#">View Project</a></td>
               </tr>
@@ -1152,39 +1158,41 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         <div class="projects-gallery" aria-label="Project image gallery">
           <div class="projects-gallery__grid">
             <figure>
-              <div class="projects-gallery__item">
-                <div class="projects-gallery__badge"><span>Branding</span></div>
-                <img src="image1.jpg" alt="Maier Jewelry branding image" loading="lazy" />
-              </div>
-              <figcaption class="projects-gallery__caption">Maier Jewelry — Visual Identity</figcaption>
+              <a class="projects-gallery__link" href="intermezzo.html">
+                <div class="projects-gallery__item">
+                  <div class="projects-gallery__badge"><span>Visual Identity</span></div>
+                  <img src="image1.jpg" alt="Maier Jewelry branding image" loading="lazy" />
+                </div>
+                <figcaption class="projects-gallery__caption">INTERMEZZO FESZTIVAL - VISUAL IDENTITY</figcaption>
+              </a>
             </figure>
             <figure>
               <div class="projects-gallery__item">
                 <div class="projects-gallery__badge"><span>Branding</span></div>
                 <img src="image2.jpg" alt="Signal Forge branding image" loading="lazy" />
               </div>
-              <figcaption class="projects-gallery__caption">Signal Forge — Visual Identity</figcaption>
+              <figcaption class="projects-gallery__caption">DREAM VILLE SOFTWARE - BRANDING</figcaption>
             </figure>
             <figure>
               <div class="projects-gallery__item">
-                <div class="projects-gallery__badge"><span>Branding</span></div>
-                <img src="image3.png" alt="Quiet Systems product design" loading="lazy" />
+                <div class="projects-gallery__badge"><span>Record Design</span></div>
+                <img src="image6.jpg" alt="Quiet Systems product design" loading="lazy" />
               </div>
-              <figcaption class="projects-gallery__caption">Quiet Systems — Product Design</figcaption>
+              <figcaption class="projects-gallery__caption">WALK WITH ME - RECORD LABEL</figcaption>
             </figure>
             <figure>
               <div class="projects-gallery__item">
-                <div class="projects-gallery__badge"><span>Branding</span></div>
+                <div class="projects-gallery__badge"><span>Book Design</span></div>
                 <img src="image4.jpg" alt="Pulse Labs brand strategy visual" loading="lazy" />
               </div>
-              <figcaption class="projects-gallery__caption">Pulse Labs — Brand Strategy</figcaption>
+              <figcaption class="projects-gallery__caption">SIGNALS IN SILENCE - BOOK DESIGN</figcaption>
             </figure>
             <figure>
               <div class="projects-gallery__item">
-                <div class="projects-gallery__badge"><span>Branding</span></div>
-                <video src="video%203.mp4" autoplay muted loop playsinline></video>
+                <div class="projects-gallery__badge"><span>Product Design</span></div>
+                <img src="image5.jpg" alt="SELF REFLECTION - PRODUCT DESIGN" loading="lazy" />
               </div>
-              <figcaption class="projects-gallery__caption">Northwind Apps — UX Research</figcaption>
+              <figcaption class="projects-gallery__caption">SELF REFLECTION - PRODUCT DESIGN</figcaption>
             </figure>
           </div>
         </div>

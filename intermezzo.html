@@ -275,7 +275,7 @@
       font-weight: 500;
       line-height: 49px;
       margin-left: 230px;
-      margin-top: 100px;
+      margin-top: -100px;
       margin-bottom: clamp(48px, 12vw, 96px);
     }
 
@@ -288,17 +288,35 @@
       font-style: normal;
       font-weight: 500;
       line-height: normal;
-      margin-left: 230px;
       margin-top: 0;
       margin-bottom: 0;
+    }
+
+    .case-description-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 343px;
+      align-items: flex-start;
+      padding-left: 230px;
+    }
+
+    .case-credits {
+      width: 232px;
+      height: 86px;
+      color: #929292;
+      font-family: "Helvetica Neue", sans-serif;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
     }
 
     .case-gallery {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 20px;
       width: calc(100% - 40px);
-      margin: -100px auto 0;
+      margin: -200px auto 0;
     }
 
     .case-gallery > figure {
@@ -306,9 +324,16 @@
       border-radius: 10px;
       overflow: hidden;
       background: rgba(255, 255, 255, 0.04);
-      height: clamp(380px, 46vw, 580px);
+      height: auto;
       flex: 1 1 auto;
       min-width: 0;
+    }
+
+    .case-gallery__item {
+      flex: 1 1 calc(50% - 10px);
+      max-width: calc(50% - 10px);
+      aspect-ratio: 4 / 5;
+      height: auto;
     }
 
     .case-gallery > figure img,
@@ -319,21 +344,20 @@
       display: block;
     }
 
-    .case-gallery > figure:first-child {
-      flex-basis: calc(39.8% - 5px);
-      max-width: calc(39.8% - 5px);
-    }
-
-    .case-gallery > figure:nth-child(2) {
-      flex-basis: calc(60.2% - 5px);
-      max-width: calc(60.2% - 5px);
-    }
-
     .case-gallery > figure:nth-child(3) {
       flex-basis: 100%;
       max-width: 100%;
-      height: clamp(480px, 58vw, 720px);
+      height: auto;
       margin: 0;
+    }
+
+    .case-gallery > figure:nth-child(3) video {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transform: scale(1.1);
+      transform-origin: center;
+      display: block;
     }
 
     .footer-section {
@@ -679,7 +703,7 @@
           <img src="image1.jpg" alt="Intermezzo poster artwork" loading="lazy" />
         </figure>
         <figure class="case-gallery__item">
-          <img src="image2.jpg" alt="Festival wayfinding signage design" loading="lazy" />
+          <img src="Intermezzo poster.jpg" alt="Festival wayfinding signage design" loading="lazy" />
         </figure>
         <figure class="case-gallery__wide">
           <video
@@ -692,12 +716,20 @@
           ></video>
         </figure>
       </div>
-      <p class="case-description">
-        Intermezzo Festival was a one-day music event hosted at Magyar Zene Háza (the House of Music) in Budapest,
-        celebrating the intersection of sound, architecture, and community. The visual identity aimed to capture the
-        transient, rhythmic nature of the event — a single day filled with layered performances, improvisation, and
-        moments of pause between sound and silence.
-      </p>
+      <div class="case-description-row">
+        <p class="case-description">
+          Intermezzo Festival was a one-day music event hosted at Magyar Zene Háza (the House of Music) in Budapest,
+          celebrating the intersection of sound, architecture, and community. The visual identity aimed to capture the
+          transient, rhythmic nature of the event — a single day filled with layered performances, improvisation, and
+          moments of pause between sound and silence.
+        </p>
+        <div class="case-credits">
+          Art Direction: David Muresan<br>
+          Motion Design: David Muresan<br>
+          Graphic Designer: Csenge Lazar<br>
+          3D animation: Horesnyi Mate
+        </div>
+      </div>
     </section>
   </main>
 

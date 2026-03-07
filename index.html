@@ -375,63 +375,22 @@ html {
   flex-direction: column;
   gap: 8px;
   font-size: 19px;
+  line-height: 18px;
   text-align: right;
   align-items: flex-end;
-  color: inherit;
+  color: var(--color-fg);
   font-weight: 500;
-  line-height: 18px;
+  font-family: "Saans", sans-serif;
   opacity: 0;
   transform: translateY(-8px);
   pointer-events: none;
 }
 
-    .hero__nav-link {
-      color: inherit;
+    .hero__nav a {
       opacity: 1;
       transition: opacity 180ms ease;
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: flex-end;
-      min-width: 160px;
-      font-family: "Saans", sans-serif;
-      overflow: hidden;
-    }
-
-    .hero__nav-text {
-      display: inline-flex;
-      align-items: center;
-      justify-content: flex-end;
-      line-height: 1;
-      letter-spacing: 0.2px;
-      transition: opacity 260ms ease, max-width 260ms ease, transform 260ms ease;
-      white-space: nowrap;
-    }
-
-    .hero__nav-text--short {
-      max-width: 120px;
-    }
-
-    .hero__nav-text--long {
-      position: absolute;
-      right: 0;
-      max-width: 0;
-      opacity: 0;
-      transform: translateX(18px);
-    }
-
-    .hero__nav-link:hover .hero__nav-text--short,
-    .hero__nav-link:focus-visible .hero__nav-text--short {
-      max-width: 0;
-      opacity: 0;
-      transform: translateX(-18px);
-    }
-
-    .hero__nav-link:hover .hero__nav-text--long,
-    .hero__nav-link:focus-visible .hero__nav-text--long {
-      max-width: 200px;
-      opacity: 1;
-      transform: translateX(0);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .sr-only {
@@ -451,20 +410,20 @@ html {
       pointer-events: auto;
     }
 
-    .hero__nav:hover .hero__nav-link {
+    .hero__nav:hover a {
       opacity: 0.3;
     }
 
-    .hero__nav:hover .hero__nav-link:hover,
-    .hero__nav:hover .hero__nav-link:focus-visible {
+    .hero__nav:hover a:hover,
+    .hero__nav:hover a:focus-visible {
       opacity: 1;
     }
 
-    .hero__nav:focus-within .hero__nav-link {
+    .hero__nav:focus-within a {
       opacity: 0.3;
     }
 
-    .hero__nav:focus-within .hero__nav-link:focus-visible {
+    .hero__nav:focus-within a:focus-visible {
       opacity: 1;
     }
 
@@ -2798,27 +2757,15 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       <div class="hero__top">
         <a class="hero__brand hero-text-drop" href="index.html">MOND STUDIO</a>
         <nav class="hero__nav" aria-label="Primary navigation">
-          <a class="hero__nav-link" href="work.html">
-            <span aria-hidden="true" class="hero__nav-text hero__nav-text--short">( W )</span>
-            <span aria-hidden="true" class="hero__nav-text hero__nav-text--long">(WORK)</span>
-            <span class="sr-only">WORK</span>
-          </a>
-          <a class="hero__nav-link" href="about.html">
-            <span aria-hidden="true" class="hero__nav-text hero__nav-text--short">( A )</span>
-            <span aria-hidden="true" class="hero__nav-text hero__nav-text--long">(ABOUT)</span>
-            <span class="sr-only">ABOUT</span>
-          </a>
-          <a class="hero__nav-link" href="#footer-section">
-            <span aria-hidden="true" class="hero__nav-text hero__nav-text--short">( C )</span>
-            <span aria-hidden="true" class="hero__nav-text hero__nav-text--long">(CONTACT)</span>
-            <span class="sr-only">CONTACT</span>
-          </a>
+          <a href="work.html">WORK</a>
+          <a href="about.html">ABOUT</a>
+          <a href="https://cal.com/">CONTACT</a>
         </nav>
       </div>
 
       <div class="video-overlay-box" id="video-overlay-box">
-        <span class="clickable-text hero-service-tag hero-text-drop" id="branding-text">[BRANDING]</span>
-        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text">[3D DESIGN]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="branding-text" data-cursor-image="image2.jpg">[BRANDING]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text" data-cursor-image="3d.jpg">[3D DESIGN]</span>
         <span class="clickable-text hero-service-tag hero-text-drop" id="art-direction-text">[ART DIRECTION]</span>
         <span class="clickable-text hero-service-tag hero-text-drop" id="uiux-text">[UI/UX]</span>
       </div>
@@ -2865,7 +2812,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
   </div>
 
   <div class="pl-4-block reveal">
-    <div class="pl-4" aria-hidden="true"><div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Branding</span></div><img src="image4.jpg" alt="Branding project fourth image" loading="lazy" /></div>
+    <div class="pl-4" aria-hidden="true"><div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Book Design</span></div><img src="image4.jpg" alt="Branding project fourth image" loading="lazy" /></div>
     <div class="pl-4-meta">
       <div class="pl-4-title">③ Signals in Silence</div>
       <div class="pl-4-subtitle">
@@ -3316,65 +3263,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     })();
   </script>
 
-  <script>
-    /* Enhanced smooth scrolling */
-    (function () {
-      const links = document.querySelectorAll('a[href^="#"]:not([href="#"])');
-      if (!links.length) return;
-
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const duration = 1400;
-
-      const easeInOutCubic = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-
-      function handleClick(event) {
-        const hash = this.getAttribute('href');
-        const id = hash.slice(1);
-        const target = document.getElementById(id);
-        if (!target) return;
-
-        event.preventDefault();
-
-        if (prefersReducedMotion.matches) {
-          target.scrollIntoView({ behavior: 'auto' });
-          return;
-        }
-
-        const startY = window.pageYOffset;
-        const targetRect = target.getBoundingClientRect();
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        const targetY = Math.min(startY + targetRect.top, maxScroll);
-        const distance = targetY - startY;
-
-        if (Math.abs(distance) < 4) {
-          try {
-            target.focus({ preventScroll: true });
-          } catch (err) {}
-          return;
-        }
-
-        const startTime = performance.now();
-
-        function step(currentTime) {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const easedProgress = easeInOutCubic(progress);
-          window.scrollTo(0, startY + distance * easedProgress);
-          if (progress < 1) {
-            requestAnimationFrame(step);
-          } else {
-            try {
-              target.focus({ preventScroll: true });
-            } catch (err) {}
-          }
-        }
-
-        requestAnimationFrame(step);
-      }
-
-      links.forEach((link) => link.addEventListener('click', handleClick));
-    })();
-  </script>
+  <script type="module" src="./smooth-scroll.js"></script>
 
   <script>
     /* Reveal animations */
@@ -3433,8 +3322,9 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       interactiveAreas.forEach((node) => {
         node.addEventListener('mouseenter', (event) => {
           if (event.currentTarget.classList.contains('hero-service-tag')) {
+            const customImage = event.currentTarget.dataset.cursorImage;
             cursor.classList.add('is-image');
-            cursor.style.backgroundImage = "url('image1.jpg')";
+            cursor.style.backgroundImage = customImage ? `url('${customImage}')` : "url('image1.jpg')";
           } else {
             cursor.classList.remove('is-image');
             cursor.style.backgroundImage = '';
