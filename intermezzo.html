@@ -256,6 +256,8 @@
       justify-content: center;
       padding: clamp(10px, 6vw, 40px) 0 clamp(48px, 12vw, 120px);
       margin-top: -800px;
+      position: relative;
+      z-index: 3;
     }
 
     .case-section {
@@ -313,10 +315,27 @@
 
     .case-gallery {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 20px;
-      width: calc(100% - 40px);
-      margin: -200px auto 0;
+      width: 100%;
+      margin: -200px 0 0;
+      padding: 0;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-color: var(--color-muted) transparent;
+      cursor: grab;
+      user-select: none;
+      position: relative;
+      z-index: 4;
+    }
+
+    .case-gallery.is-dragging {
+      cursor: grabbing;
+    }
+
+    .case-gallery > figure,
+    .case-gallery > figure * {
+      cursor: inherit;
     }
 
     .case-gallery > figure {
@@ -324,16 +343,20 @@
       border-radius: 10px;
       overflow: hidden;
       background: rgba(255, 255, 255, 0.04);
-      height: auto;
-      flex: 1 1 auto;
-      min-width: 0;
+      height: 750px;
+      flex: 0 0 auto;
+      min-width: 240px;
+      scroll-snap-align: start;
     }
 
     .case-gallery__item {
-      flex: 1 1 calc(50% - 10px);
-      max-width: calc(50% - 10px);
       aspect-ratio: 4 / 5;
-      height: auto;
+      width: auto;
+    }
+
+    .case-gallery__wide {
+      aspect-ratio: 16 / 9;
+      min-width: 533px;
     }
 
     .case-gallery > figure img,
@@ -342,22 +365,8 @@
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-
-    .case-gallery > figure:nth-child(3) {
-      flex-basis: 100%;
-      max-width: 100%;
-      height: auto;
-      margin: 0;
-    }
-
-    .case-gallery > figure:nth-child(3) video {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      transform: scale(1.1);
-      transform-origin: center;
-      display: block;
+      pointer-events: none;
+      user-select: none;
     }
 
     .footer-section {
@@ -547,20 +556,20 @@
       }
 
       .case-gallery {
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
         margin: 0;
-        padding: 0 20px;
+        padding: 0;
+        cursor: grab;
+      }
+
+      .case-gallery.is-dragging {
+        cursor: grabbing;
       }
 
       .case-gallery > figure {
-        width: 100%;
-        height: clamp(360px, 85vw, 520px);
-      }
-
-      .case-gallery > figure:nth-child(3) {
-        height: clamp(510px, 95vw, 640px);
-        margin: 0;
+        height: 750px;
+        min-width: 220px;
       }
     }
 
@@ -577,6 +586,35 @@
       .footer-contact-block {
         left: clamp(20px, 6vw, 40px);
         right: auto;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .case-gallery {
+        flex-direction: column;
+        overflow-x: visible;
+        scroll-snap-type: none;
+        cursor: default;
+        padding: 0;
+      }
+
+      .case-gallery.is-dragging {
+        cursor: default;
+      }
+
+      .case-gallery > figure {
+        width: 100%;
+        min-width: 0;
+        height: auto;
+      }
+
+      .case-gallery__item {
+        aspect-ratio: 4 / 5;
+      }
+
+      .case-gallery__wide {
+        aspect-ratio: 16 / 9;
+        min-width: 0;
       }
     }
 
@@ -750,5 +788,45 @@
       <div class="footer-copy-minimal">©2025 MOND STUDIO. All Rights Reserved.</div>
     </div>
   </footer>
+
+  <script>
+    // Enable click-and-drag (pointer drag) scrolling on the gallery
+    (() => {
+      const galleries = document.querySelectorAll(".case-gallery");
+      galleries.forEach((gallery) => {
+        let isDragging = false;
+        let startX = 0;
+        let startScroll = 0;
+
+        const endDrag = (e) => {
+          if (!isDragging) return;
+          isDragging = false;
+          gallery.classList.remove("is-dragging");
+          if (e && e.pointerId !== undefined && gallery.hasPointerCapture(e.pointerId)) {
+            gallery.releasePointerCapture(e.pointerId);
+          }
+        };
+
+        gallery.addEventListener("pointerdown", (e) => {
+          isDragging = true;
+          startX = e.clientX;
+          startScroll = gallery.scrollLeft;
+          gallery.setPointerCapture(e.pointerId);
+          gallery.classList.add("is-dragging");
+          e.preventDefault();
+        });
+
+        gallery.addEventListener("pointermove", (e) => {
+          if (!isDragging) return;
+          const deltaX = e.clientX - startX;
+          gallery.scrollLeft = startScroll - deltaX;
+        });
+
+        gallery.addEventListener("pointerup", endDrag);
+        gallery.addEventListener("pointercancel", endDrag);
+        gallery.addEventListener("pointerleave", endDrag);
+      });
+    })();
+  </script>
 </body>
 </html>
