@@ -6,6 +6,7 @@
   <title>MOND Studio — Intermezzo Fesztival</title>
   <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
   <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
+  <link rel="icon" type="image/jpeg" href="mondfav.jpg" />
   <style>
     @font-face {
       font-family: "Saans";
@@ -36,7 +37,7 @@
       --color-panel: #151515;
       --color-fg: #f5f5f5;
       --color-muted: #a5a5a5;
-      --grid-line-color: #1a1a1a;
+       --grid-line-color: #1a1a1a;
       --grid-line-image: linear-gradient(
         to right,
         transparent 0,
@@ -268,17 +269,42 @@
     }
 
     .case-intro__copy {
-      width: 899px;
-      height: 221px;
+      width: 100%;
+      max-width: 960px;
+      height: auto;
       color: #FFF;
       font-family: "Helvetica Neue", "Saans", sans-serif;
-      font-size: 48px;
+      font-size: 19.778px;
       font-style: normal;
       font-weight: 500;
-      line-height: 49px;
-      margin-left: 230px;
+      line-height: 1.44;
+      margin-left: 0;
       margin-top: -100px;
-      margin-bottom: clamp(48px, 12vw, 96px);
+      margin-bottom: 25px;
+    }
+
+    .case-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-left: 0;
+      margin-top: 0;
+      margin-bottom: clamp(32px, 10vw, 56px);
+    }
+
+    .case-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.06);
+      color: #c9c9c9;
+      font-size: 14px;
+      letter-spacing: 0.08px;
+      line-height: 1.2;
+      font-weight: 400;
+      text-transform: none;
     }
 
     .case-description {
@@ -318,7 +344,7 @@
       flex-wrap: nowrap;
       gap: 20px;
       width: 100%;
-      margin: -200px 0 0;
+      margin: -300px 0 0;
       padding: 0;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
@@ -500,11 +526,17 @@
     @media (max-width: 1024px) {
       .case-intro__copy {
         width: 100%;
-        max-width: 100%;
+        max-width: 960px;
         height: auto;
-        font-size: clamp(32px, 4vw, 38px);
+        font-size: 19.778px;
         margin-left: 0;
-        margin-bottom: clamp(36px, 10vw, 60px);
+        margin-bottom: 25px;
+      }
+
+      .case-tags {
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: clamp(28px, 9vw, 44px);
       }
 
       .case-description {
@@ -518,14 +550,52 @@
     }
 
     @media (max-width: 720px) {
+      .case-section {
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
+
+      .hero {
+        min-height: auto;
+        height: auto;
+        padding: 16px 0 12px;
+      }
+
       .case-main {
         margin-top: 0;
-        padding-top: clamp(40px, 12vw, 80px);
+        padding-top: clamp(24px, 8vw, 48px);
       }
 
       .case-intro__copy {
         margin-left: 0;
-        margin-bottom: clamp(32px, 9vw, 48px);
+        margin-top: -50px;
+        margin-bottom: 25px;
+        width: 100%;
+        line-height: 1.44;
+      }
+
+      .case-tags {
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: clamp(24px, 8vw, 36px);
+      }
+
+      .case-description-row {
+        padding: 0;
+        margin: 0;
+      }
+
+      .case-description,
+      .case-credits {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .case-credits {
+        margin-top: -250px;
       }
 
       .case-description {
@@ -596,6 +666,7 @@
         scroll-snap-type: none;
         cursor: default;
         padding: 0;
+        margin-top: -100px;
       }
 
       .case-gallery.is-dragging {
@@ -736,6 +807,10 @@
       <p class="case-intro__copy">
         Intermezzo Festival — visual identity for a one day of music event at Magyar Zene Háza, Budapest.
       </p>
+      <div class="case-tags">
+        <span class="case-tag">Visual Identity</span>
+        <span class="case-tag">Brand Strategy</span>
+      </div>
       <div class="case-gallery">
         <figure class="case-gallery__item">
           <img src="image1.jpg" alt="Intermezzo poster artwork" loading="lazy" />
@@ -785,7 +860,7 @@
         4100321 Cluj-Napoca<br /><br />
         <a class="footer-email" href="mailto:hello@mondstudio.com?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.com</a>
       </div>
-      <div class="footer-copy-minimal">©2025 MOND STUDIO. All Rights Reserved.</div>
+      <div class="footer-copy-minimal">©2026 MOND STUDIO. All Rights Reserved.</div>
     </div>
   </footer>
 

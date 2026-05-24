@@ -11,7 +11,7 @@ const enableLenis = () => {
 
   lenis = new Lenis({
     smoothWheel: true,
-    duration: 1.5,
+    duration: 0.35, // snappier, closer to native ~60fps feel
   });
 };
 
