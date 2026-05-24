@@ -1,34 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHS2KKDC09"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-EHS2KKDC09');
+  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MOND Studio — Intermezzo Fesztival</title>
+  <link rel="preconnect" href="https://use.typekit.net" />
   <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
   <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
-  <link rel="icon" type="image/jpeg" href="mondfav.jpg" />
+  <link rel="stylesheet" href="https://use.typekit.net/did4gvj.css" />
+  <link rel="icon" type="image/png" href="asset5.png" />
   <style>
     @font-face {
-      font-family: "Saans";
-      src: url("FONT/Saans-TRIAL-Light.ttf") format("truetype");
-      font-weight: 300;
+      font-family: "Mona Sans";
+      src: url("Mona_Sans/MonaSans-VariableFont_wdth,wght.ttf") format("truetype");
+      font-weight: 200 900;
       font-style: normal;
       font-display: swap;
     }
 
     @font-face {
-      font-family: "Saans";
-      src: url("FONT/Saans-TRIAL-Regular.ttf") format("truetype");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Saans";
-      src: url("FONT/Saans-TRIAL-Medium.ttf") format("truetype");
-      font-weight: 500;
-      font-style: normal;
+      font-family: "Mona Sans";
+      src: url("Mona_Sans/MonaSans-Italic-VariableFont_wdth,wght.ttf") format("truetype");
+      font-weight: 200 900;
+      font-style: italic;
       font-display: swap;
     }
 
@@ -89,7 +92,7 @@
       background-repeat: repeat-y;
       background-size: 100% auto;
       color: var(--color-fg);
-      font-family: "Saans", sans-serif;
+      font-family: "Mona Sans", sans-serif;
       line-height: 1.44;
       text-rendering: optimizeLegibility;
       overflow-x: hidden;
@@ -177,6 +180,17 @@
       letter-spacing: 0.2px;
       line-height: 1;
       color: var(--color-fg);
+    }
+
+    .hero__brand-image {
+      display: block;
+      width: auto;
+      height: 17.85px;
+      object-fit: contain;
+    }
+
+    body[data-theme="light"] .hero__brand-image {
+      filter: invert(1);
     }
 
     .hero__nav {
@@ -273,7 +287,7 @@
       max-width: 960px;
       height: auto;
       color: #FFF;
-      font-family: "Helvetica Neue", "Saans", sans-serif;
+      font-family: "Helvetica Neue", "Mona Sans", sans-serif;
       font-size: 19.778px;
       font-style: normal;
       font-weight: 500;
@@ -311,7 +325,7 @@
       width: 516px;
       height: 191px;
       color: #FFF;
-      font-family: "Helvetica Neue", "Saans", sans-serif;
+      font-family: "Helvetica Neue", "Mona Sans", sans-serif;
       font-size: 19.778px;
       font-style: normal;
       font-weight: 500;
@@ -332,7 +346,7 @@
       width: 232px;
       height: 86px;
       color: #929292;
-      font-family: "Helvetica Neue", sans-serif;
+      font-family: "Mona Sans", sans-serif;
       font-size: 15px;
       font-style: normal;
       font-weight: 500;
@@ -433,7 +447,7 @@
       top: 20px;
       left: 20px;
       color: #BABABA;
-      font-family: "Saans", sans-serif;
+      font-family: "Mona Sans", sans-serif;
       font-size: 19px;
       font-style: normal;
       font-weight: 400;
@@ -449,7 +463,7 @@
       width: min(345px, calc(100% - 40px));
       color: #BABABA;
       text-align: right;
-      font-family: "Saans", sans-serif;
+      font-family: "Mona Sans", sans-serif;
       font-size: 13px;
       font-style: normal;
       font-weight: 400;
@@ -464,7 +478,7 @@
       display: flex;
       gap: clamp(40px, 8vw, 100px);
       color: #BABABA;
-      font-family: "Saans", sans-serif;
+      font-family: "Mona Sans", sans-serif;
       font-size: 36px;
       font-style: normal;
       font-weight: 400;
@@ -510,7 +524,7 @@
       right: auto;
       bottom: 20px;
       color: #BABABA;
-      font-family: "Saans", sans-serif;
+      font-family: "Mona Sans", sans-serif;
       font-size: 15px;
       font-style: normal;
       font-weight: 400;
@@ -786,13 +800,69 @@
         text-align: left;
       }
     }
+    .footer-brand-minimal__logo {
+      display: block;
+      width: 167.45px;
+      height: 17.85px;
+      background-color: currentColor;
+      -webkit-mask-image: url("asset4.png");
+      mask-image: url("asset4.png");
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-size: contain;
+      mask-size: contain;
+      -webkit-mask-position: left center;
+      mask-position: left center;
+    }
+
+    .footer-contact-block {
+      width: max-content;
+      max-width: calc(100% - 40px);
+      white-space: nowrap;
+    }
+
+    .footer-section,
+    .footer-section * {
+      font-family: "degular-mono", monospace;
+    }
+
+    .footer-social-minimal,
+    .footer-social-minimal a {
+      font-family: "Mona Sans", sans-serif;
+    }
+
+    body[data-theme="light"] .footer-brand-minimal,
+    body[data-theme="light"] .footer-social-minimal,
+    body[data-theme="light"] .footer-contact-block,
+    body[data-theme="light"] .footer-copy-minimal,
+    body[data-theme="light"] .footer-email {
+      color: #414141;
+    }
+
+    body[data-theme="light"] .footer-social-minimal a {
+      color: #414141;
+    }
+
+    body[data-theme="light"] .footer-social-minimal a:hover,
+    body[data-theme="light"] .footer-social-minimal a:focus {
+      color: #131313;
+    }
+
+    @media (max-width: 640px) {
+      .footer-contact-block {
+        max-width: calc(100% - 40px);
+        white-space: normal;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="hero">
     <div class="hero__overlay is-visible" id="hero-overlay" aria-hidden="false">
       <div class="hero__top">
-        <a class="hero__brand hero-text-drop is-visible" href="index.html">MOND STUDIO</a>
+        <a class="hero__brand hero-text-drop is-visible" href="index.html" aria-label="MOND Studio home">
+          <img class="hero__brand-image" src="asset4.png" alt="MOND Studio" />
+        </a>
         <nav class="hero__nav" aria-label="Primary navigation">
           <a href="work.html">WORK</a>
           <a href="about.html">ABOUT</a>
@@ -848,17 +918,19 @@
 
   <footer class="footer-section visible" id="footer-section" aria-hidden="false">
     <div class="footer-content">
-      <div class="footer-brand-minimal">MOND STUDIO</div>
+      <div class="footer-brand-minimal" aria-label="MOND Studio">
+        <span class="footer-brand-minimal__logo" aria-hidden="true"></span>
+      </div>
       <nav class="footer-social-minimal" aria-label="Footer social links">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LINKDIN</a>
       </nav>
       <div class="footer-contact-block">
-        Mond Studio SRL<br />
-        Street name here<br />
-        4100321 Cluj-Napoca<br /><br />
-        <a class="footer-email" href="mailto:hello@mondstudio.com?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.com</a>
+        Cluj-Napoca, Romania <span id="ro-clock" aria-label="Cluj-Napoca local time"></span><br>
+        Budapest, Hungary <span id="hu-clock" aria-label="Budapest local time"></span><br>
+        <a class="footer-email" href="mailto:hello@mondstudio.co?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.co</a><br>
+        +40 766 502 401
       </div>
       <div class="footer-copy-minimal">©2026 MOND STUDIO. All Rights Reserved.</div>
     </div>
@@ -903,5 +975,6 @@
       });
     })();
   </script>
+  <script defer src="./site-common.js"></script>
 </body>
 </html>
