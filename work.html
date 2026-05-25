@@ -12,7 +12,7 @@
   </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mond Studio — Work</title>
+  <title>MOND : STUDIO — Work</title>
   <link rel="preconnect" href="https://use.typekit.net" />
   <link rel="icon" type="image/png" href="asset5.png" />
   <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
@@ -37,7 +37,7 @@
     }
 
     :root {
-      --color-bg: #080808;
+      --color-bg: #000000;
       --color-panel: #151515;
       --color-fg: #f5f5f5;
       --color-muted: #a5a5a5;
@@ -86,7 +86,7 @@
       flex-direction: column;
       overflow-x: hidden;
       position: relative;
-      padding-bottom: 40px;
+      padding-bottom: 0;
       color-scheme: dark;
       overscroll-behavior-x: none;
     }
@@ -587,10 +587,10 @@
   position: relative;
   width: min(100%, calc(100vw - 40px));
   min-height: calc(550px * 0.708 - 100px);
-  background: var(--color-panel);
+  background: #0c0c0c;
   color: var(--color-fg);
       border-radius: 7px;
-      margin: 0 auto -20px;
+      margin: 0 auto 20px;
       box-sizing: border-box;
       display: block;
       opacity: 0;
@@ -752,7 +752,7 @@
         padding-top: calc(clamp(36px, 10vw, 52px) - 15px);
         padding-bottom: calc(clamp(48px, 12vw, 64px) - 15px);
         margin-top: 0;
-        margin-bottom: -20px;
+        margin-bottom: 20px;
         margin-left: auto;
         margin-right: auto;
       }
@@ -1040,6 +1040,10 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     }
 
     @media (max-width: 640px) {
+      body.view-image .projects-gallery {
+        margin-top: -20px;
+      }
+
       .projects-gallery__grid,
       body.view-image .projects-gallery__grid {
         grid-template-columns: 1fr;
@@ -1137,8 +1141,8 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
   <header class="hero-header">
     <div class="hero__top">
-      <a class="hero__brand" href="index.html" aria-label="MOND Studio home">
-        <img class="hero__brand-image" src="asset4.png" alt="MOND Studio" />
+      <a class="hero__brand" href="index.html" aria-label="MOND : STUDIO home">
+        <img class="hero__brand-image" src="asset4.png" alt="MOND : STUDIO" />
       </a>
       <button class="view-toggle" type="button" id="view-toggle" aria-pressed="true">
         <span class="view-toggle__option view-toggle__option--active" data-view="image">IMAGE</span>
@@ -1251,13 +1255,13 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
   <footer class="footer-section visible" id="footer-section" aria-hidden="false">
     <div class="footer-content">
-      <div class="footer-brand-minimal" aria-label="MOND Studio">
+      <div class="footer-brand-minimal" aria-label="MOND : STUDIO">
         <span class="footer-brand-minimal__logo" aria-hidden="true"></span>
       </div>
       <nav class="footer-social-minimal" aria-label="Footer social links">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LINKDIN</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
       </nav>
       <div class="footer-contact-block">
         Cluj-Napoca, Romania <span id="ro-clock" aria-label="Cluj-Napoca local time"></span><br>
@@ -1265,7 +1269,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         <a class="footer-email" href="mailto:hello@mondstudio.co?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.co</a><br>
         +40 766 502 401
       </div>
-      <div class="footer-copy-minimal">©2026 MOND STUDIO. All Rights Reserved.</div>
+      <div class="footer-copy-minimal">©2026 MOND : STUDIO. All Rights Reserved.</div>
     </div>
   </footer>
 

@@ -12,7 +12,7 @@
   </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MOND Studio — Intermezzo Fesztival</title>
+  <title>MOND : STUDIO — Intermezzo Festival</title>
   <link rel="preconnect" href="https://use.typekit.net" />
   <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
   <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
@@ -36,7 +36,7 @@
     }
 
     :root {
-      --color-bg: #080808;
+      --color-bg: #000000;
       --color-panel: #151515;
       --color-fg: #f5f5f5;
       --color-muted: #a5a5a5;
@@ -288,13 +288,14 @@
       height: auto;
       color: #FFF;
       font-family: "Helvetica Neue", "Mona Sans", sans-serif;
-      font-size: 19.778px;
+      font-size: clamp(45px, 6.4vw, 90px);
       font-style: normal;
-      font-weight: 500;
-      line-height: 1.44;
+      font-weight: 400;
+      line-height: 0.95;
       margin-left: 0;
       margin-top: -100px;
       margin-bottom: 25px;
+      letter-spacing: 0;
     }
 
     .case-tags {
@@ -328,7 +329,7 @@
       font-family: "Helvetica Neue", "Mona Sans", sans-serif;
       font-size: 19.778px;
       font-style: normal;
-      font-weight: 500;
+      font-weight: 400;
       line-height: normal;
       margin-top: 0;
       margin-bottom: 0;
@@ -413,7 +414,7 @@
       position: relative;
       width: min(100%, calc(100vw - 40px));
       min-height: calc(550px * 0.708 - 100px);
-      background: var(--color-panel);
+      background: #0c0c0c;
       color: var(--color-fg);
       border-radius: 7px;
       margin: 0 auto 20px;
@@ -542,7 +543,7 @@
         width: 100%;
         max-width: 960px;
         height: auto;
-        font-size: 19.778px;
+        font-size: clamp(38px, 6.4vw, 70px);
         margin-left: 0;
         margin-bottom: 25px;
       }
@@ -584,15 +585,25 @@
       .case-intro__copy {
         margin-left: 0;
         margin-top: -50px;
-        margin-bottom: 25px;
+        margin-bottom: 15px;
         width: 100%;
-        line-height: 1.44;
+        font-size: clamp(34px, 10.4vw, 58px);
+        line-height: 0.98;
       }
 
       .case-tags {
         margin-left: 0;
         margin-top: 0;
-        margin-bottom: clamp(24px, 8vw, 36px);
+        margin-bottom: 80px;
+      }
+
+      .case-tag {
+        padding: 8px 14px;
+        border-radius: 7px;
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.16);
+        font-family: "Mona Sans", sans-serif;
+        font-weight: 500;
       }
 
       .case-description-row {
@@ -680,7 +691,7 @@
         scroll-snap-type: none;
         cursor: default;
         padding: 0;
-        margin-top: -100px;
+        margin-top: 0;
       }
 
       .case-gallery.is-dragging {
@@ -860,8 +871,8 @@
   <header class="hero">
     <div class="hero__overlay is-visible" id="hero-overlay" aria-hidden="false">
       <div class="hero__top">
-        <a class="hero__brand hero-text-drop is-visible" href="index.html" aria-label="MOND Studio home">
-          <img class="hero__brand-image" src="asset4.png" alt="MOND Studio" />
+        <a class="hero__brand hero-text-drop is-visible" href="index.html" aria-label="MOND : STUDIO home">
+          <img class="hero__brand-image" src="asset4.png" alt="MOND : STUDIO" />
         </a>
         <nav class="hero__nav" aria-label="Primary navigation">
           <a href="work.html">WORK</a>
@@ -874,9 +885,7 @@
 
   <main class="case-main" id="about" data-theme-target>
     <section class="case-section">
-      <p class="case-intro__copy">
-        Intermezzo Festival — visual identity for a one day of music event at Magyar Zene Háza, Budapest.
-      </p>
+      <h1 class="case-intro__copy">Intermezzo Festival</h1>
       <div class="case-tags">
         <span class="case-tag">Visual Identity</span>
         <span class="case-tag">Brand Strategy</span>
@@ -918,13 +927,13 @@
 
   <footer class="footer-section visible" id="footer-section" aria-hidden="false">
     <div class="footer-content">
-      <div class="footer-brand-minimal" aria-label="MOND Studio">
+      <div class="footer-brand-minimal" aria-label="MOND : STUDIO">
         <span class="footer-brand-minimal__logo" aria-hidden="true"></span>
       </div>
       <nav class="footer-social-minimal" aria-label="Footer social links">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LINKDIN</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
       </nav>
       <div class="footer-contact-block">
         Cluj-Napoca, Romania <span id="ro-clock" aria-label="Cluj-Napoca local time"></span><br>
@@ -932,12 +941,12 @@
         <a class="footer-email" href="mailto:hello@mondstudio.co?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.co</a><br>
         +40 766 502 401
       </div>
-      <div class="footer-copy-minimal">©2026 MOND STUDIO. All Rights Reserved.</div>
+      <div class="footer-copy-minimal">©2026 MOND : STUDIO. All Rights Reserved.</div>
     </div>
   </footer>
 
   <script>
-    // Enable click-and-drag (pointer drag) scrolling on the gallery
+    // Enable click-and-drag scrolling on the gallery.
     (() => {
       const galleries = document.querySelectorAll(".case-gallery");
       galleries.forEach((gallery) => {
@@ -973,6 +982,7 @@
         gallery.addEventListener("pointercancel", endDrag);
         gallery.addEventListener("pointerleave", endDrag);
       });
+
     })();
   </script>
   <script defer src="./site-common.js"></script>
