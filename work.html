@@ -364,43 +364,8 @@
     .projects-table th:nth-child(3),
     .projects-table td:nth-child(3) {
       text-align: right;
-      padding-right: 20px;
-      transform: translateX(-200px);
-    }
-
-    .projects-table th:nth-child(4),
-    .projects-table td:nth-child(4) {
-      text-align: right;
       padding-right: 16px;
-      width: 180px;
-    }
-
-    .project-view-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: calc(44px / 1.38);
-      padding: 0 calc(22px / 1.38);
-      border-radius: 100px;
-      border: 1px solid #7e7e7e;
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--color-white);
-      font-family: "Mona Sans", sans-serif;
-      font-size: calc(15px / 1.38);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
-    }
-
-    .project-view-button:hover,
-    .project-view-button:focus-visible {
-      background: rgba(255, 255, 255, 0.25);
-      color: var(--color-white);
-      border-color: rgba(255, 255, 255, 0.45);
-      transform: scale(1.03);
-      outline: none;
+      width: 120px;
     }
 
     .projects-table tbody tr {
@@ -447,18 +412,6 @@
       color: var(--color-fg);
     }
 
-    body[data-theme="light"] .project-view-button {
-      background: rgba(255, 255, 255, 0.65);
-      border-color: rgba(19, 19, 19, 0.18);
-      color: var(--color-fg);
-    }
-
-    body[data-theme="light"] .project-view-button:hover,
-    body[data-theme="light"] .project-view-button:focus-visible {
-      background: rgba(255, 255, 255, 0.9);
-      border-color: rgba(19, 19, 19, 0.28);
-      color: var(--color-fg);
-    }
 
     .projects-thumb {
       position: absolute;
@@ -817,6 +770,13 @@ body[data-theme="light"] .footer-copy-minimal,
 body[data-theme="light"] .footer-email {
   color: #414141;
 }
+body[data-theme="light"] .footer-section {
+  background: #ffffff;
+  color: #131313;
+}
+body[data-theme="light"] .footer-section::before {
+  border-color: #e5e5e5;
+}
 body[data-theme="light"] .footer-social-minimal a {
   color: #414141;
 }
@@ -1012,6 +972,15 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     }
 
     @media (max-width: 720px) {
+      .hero-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        min-height: 0;
+        z-index: 30;
+      }
+
       .hero__top {
         flex-direction: row;
         align-items: flex-end;
@@ -1020,14 +989,11 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       }
 
       .view-toggle {
+        display: none;
+      }
+
+      .hero__brand {
         position: static;
-        transform: none;
-        align-self: flex-end;
-        margin: 0;
-        padding: 8px 15px;
-        gap: 10px;
-        font-size: 12px;
-        letter-spacing: 0.15em;
       }
 
       .hero__nav {
@@ -1115,6 +1081,15 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       color: #414141;
     }
 
+    body[data-theme="light"] .footer-section {
+      background: #ffffff;
+      color: #131313;
+    }
+
+    body[data-theme="light"] .footer-section::before {
+      border-color: #e5e5e5;
+    }
+
     body[data-theme="light"] .footer-social-minimal a {
       color: #414141;
     }
@@ -1152,7 +1127,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       <nav class="hero__nav" aria-label="Primary navigation">
         <a href="work.html">WORK</a>
         <a href="about.html">ABOUT</a>
-        <a href="https://cal.com/">CONTACT</a>
+        <a href="https://cal.eu/mondstudio">CONTACT</a>
       </nav>
     </div>
   </header>
@@ -1167,7 +1142,6 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <th scope="col">PROJECT</th>
                 <th scope="col">TYPE</th>
                 <th scope="col">YEAR</th>
-                <th scope="col" aria-label="View"></th>
               </tr>
             </thead>
             <tbody>
@@ -1175,31 +1149,26 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <td><a href="intermezzo.html">Intermezzo Fesztival - visual identity</a></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>2024</td>
-                <td><a class="project-view-button" href="intermezzo.html">View Project</a></td>
               </tr>
               <tr class="project-row">
                 <td><a href="#">Dream Ville Software - branding</a></td>
                 <td><span class="projects-type">Branding</span></td>
                 <td>2023</td>
-                <td><a class="project-view-button" href="#">View Project</a></td>
               </tr>
               <tr class="project-row">
                 <td><a href="#">Walk with me - record label</a></td>
                 <td><span class="projects-type">Record Design</span></td>
                 <td>2023</td>
-                <td><a class="project-view-button" href="#">View Project</a></td>
               </tr>
               <tr class="project-row">
                 <td><a href="#">Signals in silence - book design</a></td>
                 <td><span class="projects-type">Book Design</span></td>
                 <td>2022</td>
-                <td><a class="project-view-button" href="#">View Project</a></td>
               </tr>
               <tr class="project-row">
                 <td><a href="#">Self reflection - product design</a></td>
                 <td><span class="projects-type">Product Design</span></td>
                 <td>2022</td>
-                <td><a class="project-view-button" href="#">View Project</a></td>
               </tr>
             </tbody>
           </table>
@@ -1261,7 +1230,6 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       <nav class="footer-social-minimal" aria-label="Footer social links">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
       </nav>
       <div class="footer-contact-block">
         Cluj-Napoca, Romania <span id="ro-clock" aria-label="Cluj-Napoca local time"></span><br>
@@ -1292,14 +1260,11 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         document.body.style.colorScheme = resolved;
       };
 
-      const storedTheme = readStoredTheme();
-      const initialTheme = storedTheme || (mediaQuery && mediaQuery.matches ? 'dark' : 'light');
-      applyTheme(initialTheme);
+      applyTheme('dark');
 
-      if (!storedTheme && mediaQuery) {
+      if (mediaQuery) {
         const handlePreferenceChange = (event) => {
-          if (readStoredTheme()) return;
-          applyTheme(event.matches ? 'dark' : 'light');
+          applyTheme('dark');
         };
 
         if (typeof mediaQuery.addEventListener === 'function') {

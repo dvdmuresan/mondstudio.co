@@ -64,6 +64,37 @@
       );
     }
 
+    body[data-theme="light"] {
+      --color-bg: #f7f7f7;
+      --grid-line-color: #e9e9e9;
+      --grid-line-image: none;
+      color: #131313;
+      color-scheme: light;
+      background-image: none;
+    }
+
+    body[data-theme="light"]::before {
+      background-image: linear-gradient(
+        to right,
+        transparent 0,
+        transparent calc(25% - 0.5px),
+        #e9e9e9 calc(25% - 0.5px),
+        #e9e9e9 calc(25% + 0.5px),
+        transparent calc(25% + 0.5px),
+        transparent calc(50% - 0.5px),
+        #e9e9e9 calc(50% - 0.5px),
+        #e9e9e9 calc(50% + 0.5px),
+        transparent calc(50% + 0.5px),
+        transparent calc(75% - 0.5px),
+        #e9e9e9 calc(75% - 0.5px),
+        #e9e9e9 calc(75% + 0.5px),
+        transparent calc(75% + 0.5px),
+        transparent 100%
+      );
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -140,6 +171,10 @@
       line-height: 1;
     }
 
+    body[data-theme="light"] .edge-colon-markers {
+      color: #000000;
+    }
+
     .edge-colon-markers__side {
       display: flex;
       flex-direction: column;
@@ -205,6 +240,11 @@
       object-fit: contain;
     }
 
+    body[data-theme="light"] .hero__brand-image,
+    body[data-theme="light"] .about-wordmark img {
+      filter: invert(1);
+    }
+
     .hero__nav {
       position: relative;
       display: flex;
@@ -227,6 +267,12 @@
       opacity: 1;
       text-decoration: none;
       transition: opacity 180ms ease;
+    }
+
+    body[data-theme="light"] .hero__nav,
+    body[data-theme="light"] .about-hero__tagline,
+    body[data-theme="light"] .about-scroll-cue {
+      color: #131313;
     }
 
     .hero__nav:hover a,
@@ -378,6 +424,14 @@
       color: #f7f7f7;
     }
 
+    body[data-theme="light"] .about-copy__line {
+      color: rgba(19, 19, 19, 0.18);
+    }
+
+    body[data-theme="light"] .about-copy__line.is-active {
+      color: #131313;
+    }
+
     .about-copy__line + .about-copy__line {
       margin-top: 0.16em;
     }
@@ -409,6 +463,8 @@
 
     @media (max-width: 600px) {
       .page-header {
+        position: absolute;
+        top: 20px;
         left: 14px;
         right: 14px;
       }
@@ -608,6 +664,12 @@
       color: #414141;
     }
 
+    body[data-theme="light"] .site-footer {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      color: #131313;
+    }
+
     body[data-theme="light"] .site-footer .footer-social-minimal a {
       color: #414141;
     }
@@ -689,7 +751,7 @@
       <nav class="hero__nav" aria-label="Primary navigation">
         <a href="work.html">WORK</a>
         <a href="about.html">ABOUT</a>
-        <a href="about.html#footer-section">CONTACT</a>
+        <a href="https://cal.eu/mondstudio">CONTACT</a>
       </nav>
     </div>
   </header>
@@ -698,8 +760,8 @@
     <div class="about-page">
       <section class="about-hero" aria-labelledby="about-title">
         <h1 class="about-hero__tagline" id="about-title">Intention<br>is our aesthetics.</h1>
-        <figure class="about-figure" aria-label="MOND : STUDIO visual study">
-          <img src="bgabout.jpg" alt="Abstract shadow study on a concrete wall" />
+        <figure class="about-figure" aria-label="MOND : STUDIO studio team visual">
+          <img src="1x/TRAM.JPG" alt="Tram in the city" />
         </figure>
         <button class="about-scroll-cue" type="button" aria-label="Scroll to about text"></button>
       </section>
@@ -728,7 +790,6 @@
       <nav class="footer-social-minimal" aria-label="Footer social links">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
       </nav>
       <div class="footer-contact-block">
         Cluj-Napoca, Romania <span id="ro-clock" aria-label="Cluj-Napoca local time"></span><br>
@@ -757,13 +818,14 @@
       if (!wordmark || !figure || !figureImage || !lines.length) return;
 
       const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
-      const imageSources = ['david 2.jpg', 'Bencz.jpg', 'Mate.jpg'];
-      imageSources.forEach((src) => {
+      const topImageSource = '1x/TRAM.JPG';
+      const staffImageSources = ['david 2.jpg', 'Bencz.jpg', 'Mate.jpg'];
+      [topImageSource, ...staffImageSources].forEach((src) => {
         const image = new Image();
         image.src = src;
       });
       let ticking = false;
-      let activeImageIndex = -1;
+      let activeImageSource = topImageSource;
 
       const update = () => {
         ticking = false;
@@ -784,7 +846,6 @@
         const logoBottom = window.innerHeight - 20 + targetY * eased;
         const logoTop = logoBottom - scaledHeight;
         const wordmarkVisible = footerTop > logoTop + scaledHeight + 24;
-        const imageVisible = footerTop > window.innerHeight * 0.08;
         document.body.classList.toggle('has-scrolled', scrollY > 0);
         document.body.classList.toggle('footer-near', footerTop < window.innerHeight + 180);
 
@@ -793,7 +854,6 @@
         root.style.setProperty('--wordmark-scale', scale.toFixed(4));
         root.style.setProperty('--about-image-scale', imageScale.toFixed(4));
         wordmark.style.opacity = wordmarkVisible ? '1' : '0';
-        figure.style.opacity = imageVisible ? '1' : '0';
 
         const activePoint = window.innerHeight * 0.46;
         let activeLine = lines[0];
@@ -809,11 +869,15 @@
         });
 
         const activeIndex = Math.max(0, lines.indexOf(activeLine));
-        const nextImageIndex = activeIndex % imageSources.length;
-        if (nextImageIndex !== activeImageIndex) {
-          activeImageIndex = nextImageIndex;
-          figureImage.src = imageSources[nextImageIndex];
+        const isTopImage = scrollY < window.innerHeight * 0.12;
+        const nextImageSource = isTopImage ? topImageSource : staffImageSources[activeIndex];
+        const imageVisible = Boolean(nextImageSource) && footerTop > window.innerHeight * 0.08;
+
+        if (nextImageSource && nextImageSource !== activeImageSource) {
+          activeImageSource = nextImageSource;
+          figureImage.src = nextImageSource;
         }
+        figure.style.opacity = imageVisible ? '1' : '0';
 
         lines.forEach((line) => line.classList.toggle('is-active', line === activeLine));
       };

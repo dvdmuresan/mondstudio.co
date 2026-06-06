@@ -1,4 +1,21 @@
 (() => {
+  const themeStorageKey = "mond-theme";
+  const readStoredTheme = () => {
+    try {
+      return window.localStorage.getItem(themeStorageKey);
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const applyTheme = (theme) => {
+    const resolved = theme === "light" ? "light" : "dark";
+    document.body.dataset.theme = resolved;
+    document.body.style.colorScheme = resolved;
+  };
+
+  applyTheme("dark");
+
   const clockConfigs = [
     { el: document.getElementById("ro-clock"), timeZone: "Europe/Bucharest" },
     { el: document.getElementById("hu-clock"), timeZone: "Europe/Budapest" },
