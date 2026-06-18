@@ -371,6 +371,11 @@
       will-change: transform;
     }
 
+    .about-figure,
+    .about-figure img {
+      pointer-events: none;
+    }
+
     .about-figure img {
       width: 100%;
       height: 100%;
@@ -379,12 +384,361 @@
       filter: grayscale(1) contrast(1.08);
     }
 
+    .about-person-trigger {
+      position: static;
+      flex: 0 0 auto;
+      width: 35px;
+      height: 35px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 50%;
+      background: rgba(20, 20, 20, 0.68);
+      color: #ffffff;
+      cursor: pointer;
+      opacity: 1;
+      pointer-events: auto;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: opacity 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+    }
+
+    .about-person-trigger[hidden] {
+      display: none;
+    }
+
+    .about-person-trigger:hover,
+    .about-person-trigger:focus-visible {
+      background: rgba(255, 255, 255, 0.20);
+      border-color: rgba(255, 255, 255, 0.50);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .about-person-trigger svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+
+    body[data-theme="light"] .about-person-trigger {
+      background: rgba(235, 235, 235, 0.78);
+      border-color: rgba(19, 19, 19, 0.18);
+      color: #131313;
+    }
+
+    body[data-theme="light"] .about-person-trigger:hover,
+    body[data-theme="light"] .about-person-trigger:focus-visible {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(19, 19, 19, 0.32);
+    }
+
+    .about-person-meta {
+      position: fixed;
+      top: var(--person-meta-top, 50%);
+      left: var(--person-meta-left, 50%);
+      z-index: 39;
+      width: var(--person-meta-width, clamp(260px, 23.5vw, 380px));
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      color: #f7f7f7;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+
+    .about-person-meta.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .about-person-meta__name,
+    .about-person-meta__role {
+      margin: 0;
+      font-family: "Mona Sans", sans-serif;
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .about-person-meta__name {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .about-person-meta__role {
+      margin-top: 5px;
+      color: rgba(247, 247, 247, 0.64);
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    body[data-theme="light"] .about-person-meta {
+      color: #131313;
+    }
+
+    body[data-theme="light"] .about-person-meta__role {
+      color: rgba(19, 19, 19, 0.64);
+    }
+
+    .about-person-panel {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      display: grid;
+      place-items: center;
+      width: 100%;
+      min-height: 100vh;
+      padding: 20px;
+      background: rgba(20, 20, 20, 0.95);
+      color: #f7f7f7;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+
+    body.person-modal-open {
+      overflow: hidden;
+    }
+
+    .about-person-panel.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .about-person-panel__card {
+      width: min(820px, 100%);
+      height: min(486px, calc(100vh - 40px));
+      display: grid;
+      grid-template-columns: minmax(220px, 0.82fr) minmax(0, 1fr);
+      align-items: start;
+      gap: 24px;
+      padding: 18px;
+      border: 0;
+      border-radius: 8px;
+      background: #000000;
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.46);
+      transform: translateY(10px);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      transition: transform 180ms ease;
+    }
+
+    .about-person-panel__image-wrap {
+      width: 100%;
+      max-height: 100%;
+      aspect-ratio: 0.78;
+      align-self: start;
+      overflow: hidden;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .about-person-panel__image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: grayscale(1) contrast(1.08);
+    }
+
+    .about-person-panel.is-visible .about-person-panel__card {
+      transform: translateY(0);
+    }
+
+    .about-person-panel__content {
+      position: relative;
+      min-width: 0;
+      height: 100%;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 4px 0;
+      overflow: hidden;
+    }
+
+    .about-person-panel__scroll-body {
+      flex: 1 1 auto;
+      min-height: 0;
+      margin-top: clamp(54px, 8vw, 112px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .about-person-panel__content::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: block;
+      height: 44px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+
+    .about-person-panel__content.has-scroll-below::after {
+      opacity: 1;
+    }
+
+    .about-person-panel__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .about-person-panel__name {
+      margin: 0;
+      font-family: "Mona Sans", sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .about-person-panel__role,
+    .about-person-panel__body {
+      margin: 0;
+      color: rgba(247, 247, 247, 0.72);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .about-person-panel__role {
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .about-person-panel__body {
+      margin-top: 18px;
+    }
+
+    .about-person-panel__section {
+      margin-top: 24px;
+    }
+
+    .about-person-panel__section:first-of-type {
+      margin-top: 0;
+    }
+
+    .about-person-panel__subtitle {
+      margin: 0 0 8px;
+      color: #f7f7f7;
+      font-family: "Mona Sans", sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .about-person-panel__text {
+      margin: 0;
+      color: rgba(247, 247, 247, 0.72);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .about-person-panel__awards {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: rgba(247, 247, 247, 0.72);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .about-person-panel__awards li + li {
+      margin-top: 4px;
+    }
+
+    .about-person-panel__close {
+      position: relative;
+      flex: 0 0 auto;
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 50%;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+      line-height: 1;
+      font-size: 0;
+      transition: background-color 180ms ease, border-color 180ms ease;
+    }
+
+    .about-person-panel__close::before,
+    .about-person-panel__close::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 11px;
+      height: 1px;
+      background: currentColor;
+      border-radius: 999px;
+      transform-origin: center;
+    }
+
+    .about-person-panel__close::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .about-person-panel__close::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .about-person-panel__close:hover,
+    .about-person-panel__close:focus-visible {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.42);
+      outline: none;
+    }
+
+    body[data-theme="light"] .about-person-panel {
+      background: rgba(20, 20, 20, 0.95);
+    }
+
+    body[data-theme="light"] .about-person-panel__card {
+      background: #000000;
+      color: #f7f7f7;
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.46);
+    }
+
+    body[data-theme="light"] .about-person-panel__content::after {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
+    }
+
+    body[data-theme="light"] .about-person-panel__role,
+    body[data-theme="light"] .about-person-panel__body,
+    body[data-theme="light"] .about-person-panel__text,
+    body[data-theme="light"] .about-person-panel__awards {
+      color: rgba(247, 247, 247, 0.72);
+    }
+
+    body[data-theme="light"] .about-person-panel__subtitle {
+      color: #f7f7f7;
+    }
+
+    body[data-theme="light"] .about-person-panel__close {
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
     .about-wordmark {
       position: fixed;
       left: 50%;
       bottom: 20px;
       z-index: 20;
-      width: min(calc(100vw - 40px), 1852px);
+      width: min(calc(100vw - 40px), 1932px);
       transform-origin: center bottom;
       transform: translate3d(calc(-50% + var(--wordmark-x, 0px)), var(--wordmark-y, 0px), 0) scale(var(--wordmark-scale, 1));
       will-change: transform;
@@ -401,6 +755,10 @@
       position: relative;
       padding: clamp(96px, 11vh, 140px) 20px 250px;
       z-index: 18;
+    }
+
+    .about-mobile-people {
+      display: none;
     }
 
     .about-copy {
@@ -461,6 +819,31 @@
       transform: translate3d(calc(-50% + var(--wordmark-x, 0px)), var(--wordmark-y, 0px), 0) scale(var(--wordmark-scale, 1));
     }
 
+    @media (max-width: 1280px) and (min-width: 901px) {
+      .about-copy {
+        width: min(58vw, 780px);
+      }
+
+      .about-copy__line {
+        font-size: clamp(43px, 4.5vw, 56px);
+      }
+    }
+
+    @media (max-width: 900px) and (min-width: 601px) {
+      .about-figure {
+        right: clamp(96px, 10vw, 150px);
+        width: clamp(230px, 28vw, 300px);
+      }
+
+      .about-copy {
+        width: min(56vw, 560px);
+      }
+
+      .about-copy__line {
+        font-size: clamp(34px, 4.7vw, 42px);
+      }
+    }
+
     @media (max-width: 600px) {
       .page-header {
         position: absolute;
@@ -501,17 +884,14 @@
       .about-hero {
         display: grid;
         grid-template-columns: 1fr;
-        align-content: center;
+        align-content: start;
         gap: 42px;
-        padding: 96px 20px 20px;
+        min-height: auto;
+        padding: 96px 20px 0;
       }
 
       .about-hero__tagline {
-        grid-column: 1;
-        width: 100%;
-        justify-self: start;
-        margin: 0;
-        font-size: clamp(27.3px, 8.45vw, 44.2px);
+        display: none;
       }
 
       .about-scroll-cue {
@@ -519,21 +899,57 @@
       }
 
       .about-figure {
-        position: relative;
-        top: auto;
-        right: auto;
-        grid-column: 1;
-        width: min(78vw, 330px);
+        display: none;
+      }
+
+      .about-hero > .about-person-trigger {
+        display: none;
+      }
+
+      .about-person-meta {
+        display: none;
+      }
+
+      .about-person-trigger {
+        width: 32px;
+        height: 32px;
+      }
+
+      .about-person-panel {
+        padding: 20px;
+      }
+
+      .about-person-panel__card {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        height: min(744px, calc(100vh - 40px));
+        padding: 18px;
+        overflow: hidden;
+      }
+
+      .about-person-panel__image-wrap {
+        max-height: 38vh;
+      }
+
+      .about-person-panel__content {
+        overflow: hidden;
+      }
+
+      .about-person-panel__scroll-body {
+        margin-top: 28px;
+      }
+
+      .about-person-panel__section:first-of-type {
         margin-top: 0;
       }
 
       .about-wordmark {
-        left: 50%;
-        width: calc(100vw - 40px);
+        display: none;
       }
 
       .about-scroll {
-        padding-top: 6vh;
+        padding-top: 74px;
+        padding-bottom: 12vh;
       }
 
       .about-copy {
@@ -542,6 +958,115 @@
 
       .about-copy__line {
         font-size: 33.15px;
+      }
+
+      .about-copy__line + .about-copy__line {
+        margin-top: 0.72em;
+      }
+
+      .about-mobile-people {
+        position: relative;
+        z-index: 18;
+        display: grid;
+        gap: 20px;
+        width: min(100%, calc(100vw - 40px));
+        max-width: calc(100vw - 40px);
+        margin: 0 auto;
+        padding: 0 0 160px;
+        transform: translateX(-40px);
+      }
+
+      .about-mobile-person {
+        position: relative;
+        width: 100%;
+      }
+
+      .about-mobile-person__image {
+        position: relative;
+        aspect-ratio: 0.78;
+        overflow: hidden;
+      }
+
+      .about-mobile-person__image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        filter: grayscale(1) contrast(1.08);
+      }
+
+      .about-mobile-person__button {
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        z-index: 2;
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.34);
+        border-radius: 50%;
+        background: rgba(20, 20, 20, 0.68);
+        color: #ffffff;
+        cursor: pointer;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+      }
+
+      .about-mobile-person__button:hover,
+      .about-mobile-person__button:focus-visible {
+        background: rgba(255, 255, 255, 0.20);
+        border-color: rgba(255, 255, 255, 0.50);
+        outline: none;
+        transform: translateY(-2px);
+      }
+
+      .about-mobile-person__button svg {
+        width: 14px;
+        height: 14px;
+        display: block;
+      }
+
+      body[data-theme="light"] .about-mobile-person__button {
+        background: rgba(235, 235, 235, 0.78);
+        border-color: rgba(19, 19, 19, 0.18);
+        color: #131313;
+      }
+
+      .about-mobile-person__caption {
+        margin-top: 12px;
+      }
+
+      .about-mobile-person__name,
+      .about-mobile-person__role {
+        margin: 0;
+        font-family: "Mona Sans", sans-serif;
+        line-height: 1.15;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .about-mobile-person__name {
+        color: #f7f7f7;
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .about-mobile-person__role {
+        margin-top: 5px;
+        color: rgba(247, 247, 247, 0.64);
+        font-size: 12px;
+        font-weight: 400;
+      }
+
+      body[data-theme="light"] .about-mobile-person__name {
+        color: #131313;
+      }
+
+      body[data-theme="light"] .about-mobile-person__role {
+        color: rgba(19, 19, 19, 0.64);
       }
 
     }
@@ -763,11 +1288,22 @@
         <figure class="about-figure" aria-label="MOND : STUDIO studio team visual">
           <img src="1x/TRAM.JPG" alt="Tram in the city" />
         </figure>
+        <div class="about-person-meta" id="about-person-meta" hidden>
+          <div>
+            <p class="about-person-meta__name" id="about-person-meta-name"></p>
+            <p class="about-person-meta__role" id="about-person-meta-role"></p>
+          </div>
+          <button class="about-person-trigger" id="about-person-trigger" type="button" aria-label="Learn more about this person">
+            <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+              <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
+        </div>
         <button class="about-scroll-cue" type="button" aria-label="Scroll to about text"></button>
       </section>
 
       <div class="about-wordmark" aria-hidden="true">
-        <img src="1x/Asset 6-8.png" alt="" />
+        <img src="SVG/ABOUT LOGO.svg" alt="" />
       </div>
 
       <section class="about-scroll" aria-label="About MOND : STUDIO">
@@ -778,6 +1314,51 @@
           <p class="about-copy__line">Our approach is rooted in research, structure, and collaboration. By understanding context before aesthetics, we create identities and experiences that feel coherent, purposeful, and culturally relevant.</p>
           <p class="about-copy__line">We work across both cultural and commercial sectors, partnering with brands, institutions, and individuals who value thoughtful design and long-term vision.</p>
         </div>
+      </section>
+
+      <section class="about-mobile-people" aria-label="MOND : STUDIO team">
+        <figure class="about-mobile-person">
+          <div class="about-mobile-person__image">
+            <img src="david 2.jpg" alt="David Muresan">
+            <button class="about-mobile-person__button" type="button" data-profile="david 2.jpg" aria-label="Learn more about David Muresan">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+          <figcaption class="about-mobile-person__caption">
+            <p class="about-mobile-person__name">David Muresan</p>
+            <p class="about-mobile-person__role">Art direction / motion design</p>
+          </figcaption>
+        </figure>
+        <figure class="about-mobile-person">
+          <div class="about-mobile-person__image">
+            <img src="Bencz.jpg" alt="Bencz">
+            <button class="about-mobile-person__button" type="button" data-profile="Bencz.jpg" aria-label="Learn more about Bencz">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+          <figcaption class="about-mobile-person__caption">
+            <p class="about-mobile-person__name">Bencz</p>
+            <p class="about-mobile-person__role">Design / visual systems</p>
+          </figcaption>
+        </figure>
+        <figure class="about-mobile-person">
+          <div class="about-mobile-person__image">
+            <img src="Mate.jpg" alt="Horesnyi Mate">
+            <button class="about-mobile-person__button" type="button" data-profile="Mate.jpg" aria-label="Learn more about Horesnyi Mate">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+          <figcaption class="about-mobile-person__caption">
+            <p class="about-mobile-person__name">Horesnyi Mate</p>
+            <p class="about-mobile-person__role">3D / motion design</p>
+          </figcaption>
+        </figure>
       </section>
     </div>
   </main>
@@ -801,6 +1382,33 @@
     </div>
   </footer>
 
+  <aside class="about-person-panel" id="about-person-panel" aria-live="polite" aria-hidden="true">
+    <div class="about-person-panel__card" role="dialog" aria-modal="true" aria-labelledby="about-person-name">
+      <div class="about-person-panel__image-wrap">
+        <img class="about-person-panel__image" id="about-person-image" src="" alt="">
+      </div>
+      <div class="about-person-panel__content">
+        <div class="about-person-panel__top">
+          <div>
+            <h2 class="about-person-panel__name" id="about-person-name"></h2>
+            <p class="about-person-panel__role" id="about-person-role"></p>
+          </div>
+          <button class="about-person-panel__close" id="about-person-close" type="button" aria-label="Close person details"></button>
+        </div>
+        <div class="about-person-panel__scroll-body" id="about-person-scroll-body">
+          <section class="about-person-panel__section">
+            <h3 class="about-person-panel__subtitle" id="about-person-about-title"></h3>
+            <p class="about-person-panel__text" id="about-person-about"></p>
+          </section>
+          <section class="about-person-panel__section">
+            <h3 class="about-person-panel__subtitle">Awards</h3>
+            <ul class="about-person-panel__awards" id="about-person-awards"></ul>
+          </section>
+        </div>
+      </div>
+    </div>
+  </aside>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(() => document.body.classList.add('is-page-loaded'));
@@ -812,6 +1420,21 @@
       const wordmark = document.querySelector('.about-wordmark');
       const figure = document.querySelector('.about-figure');
       const figureImage = figure.querySelector('img');
+      const personTrigger = document.getElementById('about-person-trigger');
+      const personMeta = document.getElementById('about-person-meta');
+      const personMetaName = document.getElementById('about-person-meta-name');
+      const personMetaRole = document.getElementById('about-person-meta-role');
+      const personPanel = document.getElementById('about-person-panel');
+      const personClose = document.getElementById('about-person-close');
+      const personImage = document.getElementById('about-person-image');
+      const personName = document.getElementById('about-person-name');
+      const personRole = document.getElementById('about-person-role');
+      const personAboutTitle = document.getElementById('about-person-about-title');
+      const personAbout = document.getElementById('about-person-about');
+      const personAwards = document.getElementById('about-person-awards');
+      const personContent = document.querySelector('.about-person-panel__content');
+      const personScrollBody = document.getElementById('about-person-scroll-body');
+      const mobilePersonButtons = Array.from(document.querySelectorAll('.about-mobile-person__button'));
       const lines = Array.from(document.querySelectorAll('.about-copy__line'));
       const scrollCue = document.querySelector('.about-scroll-cue');
       const footer = document.getElementById('footer-section');
@@ -820,12 +1443,99 @@
       const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
       const topImageSource = '1x/TRAM.JPG';
       const staffImageSources = ['david 2.jpg', 'Bencz.jpg', 'Mate.jpg'];
+      const staffProfiles = {
+        'david 2.jpg': {
+          name: 'David Muresan',
+          firstName: 'David',
+          role: 'Art direction / motion design',
+          about: 'David works across visual direction, motion, and identity systems, shaping how MOND : STUDIO ideas move from strategy into precise visual execution. His practice connects research, cultural context, and graphic systems, supported by an academic background in design and visual communication.',
+          awards: ['Selected awards and recognitions will be added soon.']
+        },
+        'Bencz.jpg': {
+          name: 'Bencz',
+          firstName: 'Bencz',
+          role: 'Design / visual systems',
+          about: 'Bencz works on structured visual systems, brand language, and digital compositions, keeping the studio output clear, functional, and consistent. Their work practice is rooted in research, typography, and system thinking, with studies in the field of design and visual communication.',
+          awards: ['Selected awards and recognitions will be added soon.']
+        },
+        'Mate.jpg': {
+          name: 'Horesnyi Mate',
+          firstName: 'Mate',
+          role: '3D / motion design',
+          about: 'Mate focuses on 3D and motion-led work, bringing spatial thinking and animated detail into the studio practice. His process combines design education, technical experimentation, and careful art direction to build visual work with depth and movement.',
+          awards: [
+            'Placeholder Award for Experimental Motion, 2026',
+            'Placeholder 3D Design Recognition, 2025',
+            'Placeholder Visual Systems Shortlist, 2025',
+            'Placeholder Emerging Creator Selection, 2024',
+            'Placeholder Digital Craft Mention, 2024',
+            'Placeholder Motion Identity Prize, 2023',
+            'Placeholder Spatial Design Commendation, 2023',
+            'Placeholder Animation Craft Selection, 2022',
+            'Placeholder New Media Design Mention, 2022',
+            'Placeholder Student Design Showcase, 2021'
+          ]
+        }
+      };
       [topImageSource, ...staffImageSources].forEach((src) => {
         const image = new Image();
         image.src = src;
       });
       let ticking = false;
       let activeImageSource = topImageSource;
+
+      const setPanelVisible = (isVisible) => {
+        if (!personPanel) return;
+        personPanel.classList.toggle('is-visible', isVisible);
+        personPanel.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
+        document.body.classList.toggle('person-modal-open', isVisible);
+        if (isVisible) requestAnimationFrame(updateContentScrollCue);
+      };
+
+      const updateContentScrollCue = () => {
+        if (!personContent || !personScrollBody) return;
+        const hasScrollBelow = personScrollBody.scrollTop + personScrollBody.clientHeight < personScrollBody.scrollHeight - 8;
+        personContent.classList.toggle('has-scroll-below', hasScrollBelow);
+      };
+
+      const updatePersonProfile = (isTriggerVisible = true) => {
+        const profile = staffProfiles[activeImageSource];
+        if (personTrigger) {
+          if (profile) {
+            personTrigger.setAttribute('aria-label', `Learn more about ${profile.name}`);
+          }
+        }
+        if (personMeta) {
+          const isMetaVisible = isTriggerVisible && Boolean(profile);
+          personMeta.hidden = !isMetaVisible;
+          personMeta.classList.toggle('is-visible', isMetaVisible);
+        }
+
+        if (!profile) {
+          setPanelVisible(false);
+          return;
+        }
+
+        if (personName) personName.textContent = profile.name;
+        if (personRole) personRole.textContent = profile.role;
+        if (personMetaName) personMetaName.textContent = profile.name;
+        if (personMetaRole) personMetaRole.textContent = profile.role;
+        if (personImage) {
+          personImage.src = activeImageSource;
+          personImage.alt = profile.name;
+        }
+        if (personAboutTitle) personAboutTitle.textContent = `About ${profile.firstName}`;
+        if (personAbout) personAbout.textContent = profile.about;
+        if (personAwards) {
+          personAwards.replaceChildren();
+          profile.awards.forEach((award) => {
+            const item = document.createElement('li');
+            item.textContent = award;
+            personAwards.appendChild(item);
+          });
+        }
+        requestAnimationFrame(updateContentScrollCue);
+      };
 
       const update = () => {
         ticking = false;
@@ -855,6 +1565,11 @@
         root.style.setProperty('--about-image-scale', imageScale.toFixed(4));
         wordmark.style.opacity = wordmarkVisible ? '1' : '0';
 
+        const figureRect = figure.getBoundingClientRect();
+        root.style.setProperty('--person-meta-top', `${figureRect.bottom + 14}px`);
+        root.style.setProperty('--person-meta-left', `${figureRect.left}px`);
+        root.style.setProperty('--person-meta-width', `${figureRect.width}px`);
+
         const activePoint = window.innerHeight * 0.46;
         let activeLine = lines[0];
         let activeDistance = Infinity;
@@ -868,9 +1583,21 @@
           }
         });
 
+        if (window.innerWidth <= 600) {
+          if (scrollY <= 8) activeLine = lines[0];
+          if (personMeta) {
+            personMeta.hidden = true;
+            personMeta.classList.remove('is-visible');
+          }
+          figure.style.opacity = '0';
+          lines.forEach((line) => line.classList.toggle('is-active', line === activeLine));
+          return;
+        }
+
         const activeIndex = Math.max(0, lines.indexOf(activeLine));
+        const staffIndex = Math.min(activeIndex, staffImageSources.length - 1);
         const isTopImage = scrollY < window.innerHeight * 0.12;
-        const nextImageSource = isTopImage ? topImageSource : staffImageSources[activeIndex];
+        const nextImageSource = isTopImage ? topImageSource : staffImageSources[staffIndex];
         const imageVisible = Boolean(nextImageSource) && footerTop > window.innerHeight * 0.08;
 
         if (nextImageSource && nextImageSource !== activeImageSource) {
@@ -878,6 +1605,11 @@
           figureImage.src = nextImageSource;
         }
         figure.style.opacity = imageVisible ? '1' : '0';
+        const isDavidImage = activeImageSource === staffImageSources[0];
+        const isDavidImageFullSize = imageScale >= 1.415;
+        const isTriggerVisible = imageVisible && (!isDavidImage || isDavidImageFullSize);
+        updatePersonProfile(isTriggerVisible);
+        if (!isTriggerVisible) setPanelVisible(false);
 
         lines.forEach((line) => line.classList.toggle('is-active', line === activeLine));
       };
@@ -889,6 +1621,36 @@
       };
 
       update();
+      if (personTrigger) {
+        personTrigger.addEventListener('click', () => {
+          updatePersonProfile();
+          setPanelVisible(true);
+        });
+      }
+      mobilePersonButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const profileSource = button.dataset.profile;
+          if (!profileSource || !staffProfiles[profileSource]) return;
+          activeImageSource = profileSource;
+          figureImage.src = profileSource;
+          updatePersonProfile(true);
+          setPanelVisible(true);
+        });
+      });
+      if (personClose) {
+        personClose.addEventListener('click', () => setPanelVisible(false));
+      }
+      if (personPanel) {
+        personPanel.addEventListener('click', (event) => {
+          if (event.target === personPanel) setPanelVisible(false);
+        });
+      }
+      if (personScrollBody) {
+        personScrollBody.addEventListener('scroll', updateContentScrollCue, { passive: true });
+      }
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setPanelVisible(false);
+      });
       if (scrollCue) {
         scrollCue.addEventListener('click', () => {
           lines[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -896,6 +1658,7 @@
       }
       window.addEventListener('scroll', requestUpdate, { passive: true });
       window.addEventListener('resize', requestUpdate);
+      window.addEventListener('resize', updateContentScrollCue);
     })();
   </script>
   <script defer src="./site-common.js"></script>
