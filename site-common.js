@@ -70,4 +70,119 @@
     updateClock();
     window.setInterval(updateClock, 30 * 1000);
   }
+
+  const shortWords = [
+    "a",
+    "an",
+    "and",
+    "as",
+    "at",
+    "be",
+    "by",
+    "do",
+    "for",
+    "if",
+    "in",
+    "is",
+    "it",
+    "of",
+    "on",
+    "or",
+    "so",
+    "the",
+    "to",
+    "up",
+    "via",
+  ];
+  const shortWordPattern = new RegExp(
+    `(^|[\\s([{'"“‘])(${shortWords.join("|")})([ \\t\\r\\n]+)(?=\\S)`,
+    "giu"
+  );
+  const ignoredTypographyTags = new Set([
+    "SCRIPT",
+    "STYLE",
+    "TEXTAREA",
+    "INPUT",
+    "SELECT",
+    "OPTION",
+    "CODE",
+    "PRE",
+    "KBD",
+    "SAMP",
+  ]);
+
+  const protectShortWords = (root = document.body) => {
+    if (!root) return;
+
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        const parent = node.parentElement;
+        if (!parent || ignoredTypographyTags.has(parent.tagName)) {
+          return NodeFilter.FILTER_REJECT;
+        }
+
+        if (!node.nodeValue || !shortWordPattern.test(node.nodeValue)) {
+          shortWordPattern.lastIndex = 0;
+          return NodeFilter.FILTER_REJECT;
+        }
+
+        shortWordPattern.lastIndex = 0;
+        return NodeFilter.FILTER_ACCEPT;
+      },
+    });
+
+    const nodes = [];
+    let node = walker.nextNode();
+
+    while (node) {
+      nodes.push(node);
+      node = walker.nextNode();
+    }
+
+    nodes.forEach((textNode) => {
+      let nextValue = textNode.nodeValue;
+      let previousValue = "";
+
+      while (nextValue !== previousValue) {
+        previousValue = nextValue;
+        nextValue = nextValue.replace(shortWordPattern, "$1$2\u00a0");
+      }
+
+      textNode.nodeValue = nextValue;
+      shortWordPattern.lastIndex = 0;
+    });
+  };
+
+  protectShortWords();
+
+  const typographyObserver = new MutationObserver((mutations) => {
+    typographyObserver.disconnect();
+
+    mutations.forEach((mutation) => {
+      if (mutation.type === "characterData") {
+        protectShortWords(mutation.target.parentElement);
+        return;
+      }
+
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          protectShortWords(node.parentElement);
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          protectShortWords(node);
+        }
+      });
+    });
+
+    typographyObserver.observe(document.body, {
+      childList: true,
+      characterData: true,
+      subtree: true,
+    });
+  });
+
+  typographyObserver.observe(document.body, {
+    childList: true,
+    characterData: true,
+    subtree: true,
+  });
 })();

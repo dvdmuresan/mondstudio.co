@@ -123,7 +123,7 @@
     }
 
     .page-header {
-      position: fixed;
+      position: absolute;
       top: 20px;
       left: 20px;
       right: 20px;
@@ -794,6 +794,12 @@
       margin-top: 0.16em;
     }
 
+    @media (min-width: 901px) {
+      .about-copy__line + .about-copy__line {
+        margin-top: 1.02em;
+      }
+    }
+
     html.js body .about-hero__tagline,
     html.js body .about-figure,
     html.js body .about-scroll-cue {
@@ -804,7 +810,7 @@
 
     html.js body .about-wordmark {
       opacity: 0;
-      transition: transform 120ms linear, opacity 1200ms ease;
+      transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), opacity 1200ms ease;
     }
 
     html.js body.is-page-loaded .about-hero__tagline,
@@ -1359,6 +1365,20 @@
             <p class="about-mobile-person__role">3D / motion design</p>
           </figcaption>
         </figure>
+        <figure class="about-mobile-person">
+          <div class="about-mobile-person__image">
+            <img src="Janky-Milan.jpg" alt="Janky Milan">
+            <button class="about-mobile-person__button" type="button" data-profile="Janky-Milan.jpg" aria-label="Learn more about Janky Milan">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+          <figcaption class="about-mobile-person__caption">
+            <p class="about-mobile-person__name">Janky Milan</p>
+            <p class="about-mobile-person__role">Type Designer</p>
+          </figcaption>
+        </figure>
       </section>
     </div>
   </main>
@@ -1442,7 +1462,7 @@
 
       const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
       const topImageSource = '1x/TRAM.JPG';
-      const staffImageSources = ['david 2.jpg', 'Bencz.jpg', 'Mate.jpg'];
+      const staffImageSources = ['david 2.jpg', 'Bencz.jpg', 'Mate.jpg', 'Janky-Milan.jpg'];
       const staffProfiles = {
         'david 2.jpg': {
           name: 'David Muresan',
@@ -1475,6 +1495,13 @@
             'Placeholder New Media Design Mention, 2022',
             'Placeholder Student Design Showcase, 2021'
           ]
+        },
+        'Janky-Milan.jpg': {
+          name: 'Janky Milan',
+          firstName: 'Janky',
+          role: 'Type Designer',
+          about: 'Janky Milan works on type design, lettering, and typographic systems for MOND : STUDIO projects.',
+          awards: ['Selected awards and recognitions will be added soon.']
         }
       };
       [topImageSource, ...staffImageSources].forEach((src) => {

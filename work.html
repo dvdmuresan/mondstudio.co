@@ -203,7 +203,7 @@
       gap: 12px;
       padding: 10px 18px;
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      border: 0;
       background: rgba(17, 17, 17, 0.8);
       color: var(--color-fg);
       font-family: "Mona Sans", sans-serif;
@@ -211,7 +211,7 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: border-color 180ms ease, background 180ms ease;
+      transition: background 180ms ease;
     }
 
     .view-toggle__option {
@@ -231,18 +231,16 @@
 
     .view-toggle:focus-visible {
       outline: none;
-      border-color: rgba(255, 255, 255, 0.5);
       background: rgba(17, 17, 17, 0.92);
     }
 
     body[data-theme="light"] .view-toggle {
-      border: 1px solid rgba(0, 0, 0, 0.12);
+      border: 0;
       background: rgba(255, 255, 255, 0.85);
       color: var(--color-fg);
     }
 
     body[data-theme="light"] .view-toggle:focus-visible {
-      border-color: rgba(0, 0, 0, 0.4);
       background: rgba(255, 255, 255, 0.95);
     }
 
