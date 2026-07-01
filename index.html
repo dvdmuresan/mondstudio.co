@@ -408,8 +408,8 @@ html {
       padding: 0;
       padding-bottom: clamp(24px, 6vw, 48px);
       background: transparent;
-      opacity: 0;
-      visibility: hidden;
+      opacity: 1;
+      visibility: visible;
       pointer-events: none;
       transition: opacity 420ms ease, visibility 420ms ease;
     }
@@ -427,6 +427,18 @@ html {
       justify-content: space-between;
       align-items: flex-start;
       gap: clamp(24px, 6vw, 48px);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      z-index: 2147483647;
+    }
+
+    .hero__overlay .hero__top,
+    .hero__overlay .hero__brand,
+    .hero__overlay .hero__menu-toggle {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
 
     .hero__brand {
@@ -2765,7 +2777,7 @@ body[data-theme="light"] .studio-textbox-note {
         top: 20px;
         left: 20px;
         right: 20px;
-        z-index: 10;
+        z-index: 2147483647;
         display: grid;
         grid-template-columns: 1fr auto;
         align-items: center;
@@ -3154,7 +3166,7 @@ body[data-theme="light"] .studio-textbox-note {
       muted
       playsinline
       webkit-playsinline
-      preload="auto"
+      preload="metadata"
     >
       Your browser does not support the video tag.
     </video>
@@ -3186,7 +3198,7 @@ body[data-theme="light"] .studio-textbox-note {
     <div class="hero__overlay" id="hero-overlay" aria-hidden="true">
       <div class="hero__top">
         <a class="hero__brand hero-text-drop" href="index.html" aria-label="MOND : STUDIO home">
-          <img class="hero__brand-image" src="asset4.png" alt="MOND : STUDIO" />
+          <img class="hero__brand-image" src="asset4.png" alt="MOND : STUDIO" width="590" height="63" />
         </a>
         <button class="hero__menu-toggle" id="hero-menu-toggle" type="button" aria-controls="hero-primary-nav" aria-expanded="false" aria-label="Open menu">
           <span class="hero__menu-icon" aria-hidden="true">:</span>
@@ -3199,8 +3211,8 @@ body[data-theme="light"] .studio-textbox-note {
       </div>
 
       <div class="video-overlay-box" id="video-overlay-box">
-        <span class="clickable-text hero-service-tag hero-text-drop" id="branding-text" data-cursor-image="image2.jpg">[BRANDING]</span>
-        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text" data-cursor-image="3d.jpg">[3D DESIGN]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="branding-text" data-cursor-image="optimized/image2.jpg">[BRANDING]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text" data-cursor-image="optimized/3d.jpg">[3D DESIGN]</span>
         <span class="clickable-text hero-service-tag hero-text-drop" id="art-direction-text">[ART DIRECTION]</span>
         <span class="clickable-text hero-service-tag hero-text-drop" id="uiux-text">[UI/UX]</span>
       </div>
@@ -3218,7 +3230,7 @@ body[data-theme="light"] .studio-textbox-note {
     <div class="latest-works-media">
     <a class="pl-1 reveal" href="intermezzo.html">
         <div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Branding</span></div>
-      <img src="image1.jpg" alt="Branding project thumbnail" loading="lazy" />
+      <img src="optimized/image1.jpg" alt="Branding project thumbnail" width="1400" height="712" loading="lazy" />
     </a>
       <div class="pl-1-meta">
         <a class="pl-1-title" href="intermezzo.html">Intermezzo Fesztival</a>
@@ -3230,11 +3242,11 @@ body[data-theme="light"] .studio-textbox-note {
   </div>
 
   <div class="latest-works-duo">
-    <div class="pl-2 reveal" aria-hidden="true"><div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Branding</span></div><img src="image2.jpg" alt="Branding project second image" loading="lazy" /></div>
+    <div class="pl-2 reveal" aria-hidden="true"><div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Branding</span></div><img src="optimized/image2.jpg" alt="Branding project second image" width="1200" height="800" loading="lazy" /></div>
     <div class="pl-3-stack reveal">
       <div class="pl-3" aria-hidden="true">
       <div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Branding</span></div>
-      <video class="pl-video" src="video%203.mp4" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+      <video class="pl-video" src="video%203.mp4" preload="none" muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
     </div>
       <div class="pl-3-meta" style="margin-top: 40px; align-self: flex-end;">
         <div class="pl-3-title">Dream Ville Software</div>
@@ -3246,7 +3258,7 @@ body[data-theme="light"] .studio-textbox-note {
   </div>
 
   <div class="pl-4-block reveal">
-    <div class="pl-4" aria-hidden="true"><div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Book Design</span></div><img src="image4.jpg" alt="Branding project fourth image" loading="lazy" /></div>
+    <div class="pl-4" aria-hidden="true"><div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Book Design</span></div><img src="optimized/image4.jpg" alt="Branding project fourth image" width="1600" height="1467" loading="lazy" /></div>
     <div class="pl-4-meta">
       <div class="pl-4-title">Signals in Silence</div>
       <div class="pl-4-subtitle">
@@ -3268,7 +3280,7 @@ body[data-theme="light"] .studio-textbox-note {
       <video
         class="post-placeholder-panel__video"
         src="video%202.mp4"
-        autoplay
+        preload="none"
         loop
         muted
         playsinline
@@ -3306,7 +3318,7 @@ body[data-theme="light"] .studio-textbox-note {
 
   <script>
     (function enforceAutoplay() {
-      const videos = Array.from(document.querySelectorAll('video[autoplay]'));
+      const videos = Array.from(document.querySelectorAll('.hero__video[autoplay]'));
       if (!videos.length) return;
 
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
@@ -3378,6 +3390,51 @@ body[data-theme="light"] .studio-textbox-note {
       document.addEventListener('touchstart', resumeOnce, { passive: true });
       document.addEventListener('pointerdown', resumeOnce, { passive: true });
       document.addEventListener('keydown', resumeOnce, { passive: true });
+    })();
+  </script>
+
+  <script>
+    (function lazyPlayDecorativeVideos() {
+      const videos = Array.from(document.querySelectorAll('.pl-video, .post-placeholder-panel__video'));
+      if (!videos.length) return;
+
+      const prime = (video) => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
+      };
+
+      const play = (video) => {
+        prime(video);
+        const attempt = video.play();
+        if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+      };
+
+      videos.forEach((video) => {
+        prime(video);
+        video.preload = 'none';
+      });
+
+      if (!('IntersectionObserver' in window)) {
+        videos.forEach(play);
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            video.preload = 'metadata';
+            play(video);
+          } else {
+            video.pause();
+          }
+        });
+      }, { rootMargin: '300px 0px', threshold: 0.01 });
+
+      videos.forEach((video) => observer.observe(video));
     })();
   </script>
 
@@ -3730,8 +3787,6 @@ body[data-theme="light"] .studio-textbox-note {
     })();
   </script>
 
-  <script type="module" src="./smooth-scroll.js"></script>
-
   <script>
     /* Edge marker scroll states */
     (function () {
@@ -3825,7 +3880,7 @@ body[data-theme="light"] .studio-textbox-note {
           if (event.currentTarget.classList.contains('hero-service-tag')) {
             const customImage = event.currentTarget.dataset.cursorImage;
             cursor.classList.add('is-image');
-            cursor.style.backgroundImage = customImage ? `url('${customImage}')` : "url('image1.jpg')";
+            cursor.style.backgroundImage = customImage ? `url('${customImage}')` : "url('optimized/image1.jpg')";
           } else {
             cursor.classList.remove('is-image');
             cursor.style.backgroundImage = '';
@@ -3840,7 +3895,7 @@ body[data-theme="light"] .studio-textbox-note {
       imageHoverTargets.forEach((tag) => {
         tag.addEventListener('mouseenter', () => {
           cursor.classList.add('is-image');
-          cursor.style.backgroundImage = tag.dataset.cursorImage || "url('image1.jpg')";
+          cursor.style.backgroundImage = tag.dataset.cursorImage || "url('optimized/image1.jpg')";
           showCursor();
         });
 

@@ -1837,7 +1837,7 @@
     <div class="hero__overlay is-visible" id="hero-overlay" aria-hidden="false">
       <div class="hero__top">
         <a class="hero__brand hero-text-drop is-visible" href="index.html" aria-label="MOND : STUDIO home">
-          <img class="hero__brand-image" src="asset4.png" alt="MOND : STUDIO" />
+          <img class="hero__brand-image" src="asset4.png" alt="MOND : STUDIO" width="590" height="63" />
         </a>
         <button class="hero__menu-toggle" id="hero-menu-toggle" type="button" aria-controls="hero-primary-nav" aria-expanded="false" aria-label="Open menu">
           <span class="hero__menu-icon" aria-hidden="true">:</span>
@@ -1887,15 +1887,16 @@
       </div>
       <div class="case-gallery">
         <figure class="case-gallery__item case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
-          <img src="image1.jpg" alt="Intermezzo poster artwork" loading="lazy" />
+          <img src="optimized/image1.jpg" alt="Intermezzo poster artwork" width="1400" height="712" loading="lazy" />
         </figure>
         <figure class="case-gallery__item case-gallery__image case-media-reveal" style="--reveal-delay: 360ms;">
-          <img src="Intermezzo poster.jpg" alt="Festival wayfinding signage design" loading="lazy" />
+          <img src="optimized/intermezzo-poster.jpg" alt="Festival wayfinding signage design" width="864" height="1080" loading="lazy" />
         </figure>
         <figure class="case-gallery__wide case-media-reveal" style="--reveal-delay: 500ms;">
           <video
+            class="case-gallery__video"
             src="intermezzo1.mp4"
-            autoplay
+            preload="none"
             muted
             loop
             playsinline
@@ -2014,6 +2015,46 @@
       }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
 
       revealEls.forEach((el) => observer.observe(el));
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const videos = Array.from(document.querySelectorAll(".case-gallery__video"));
+      if (!videos.length) return;
+
+      const play = (video) => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        const attempt = video.play();
+        if (attempt && typeof attempt.catch === "function") attempt.catch(() => {});
+      };
+
+      videos.forEach((video) => {
+        video.preload = "none";
+      });
+
+      if (!("IntersectionObserver" in window)) {
+        videos.forEach(play);
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            video.preload = "metadata";
+            play(video);
+          } else {
+            video.pause();
+          }
+        });
+      }, { rootMargin: "300px 0px", threshold: 0.01 });
+
+      videos.forEach((video) => observer.observe(video));
     })();
   </script>
 

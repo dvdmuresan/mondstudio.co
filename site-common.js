@@ -153,36 +153,13 @@
     });
   };
 
-  protectShortWords();
+  const runTypographyPass = () => protectShortWords();
 
-  const typographyObserver = new MutationObserver((mutations) => {
-    typographyObserver.disconnect();
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(runTypographyPass, { timeout: 1200 });
+  } else {
+    window.setTimeout(runTypographyPass, 0);
+  }
 
-    mutations.forEach((mutation) => {
-      if (mutation.type === "characterData") {
-        protectShortWords(mutation.target.parentElement);
-        return;
-      }
-
-      mutation.addedNodes.forEach((node) => {
-        if (node.nodeType === Node.TEXT_NODE) {
-          protectShortWords(node.parentElement);
-        } else if (node.nodeType === Node.ELEMENT_NODE) {
-          protectShortWords(node);
-        }
-      });
-    });
-
-    typographyObserver.observe(document.body, {
-      childList: true,
-      characterData: true,
-      subtree: true,
-    });
-  });
-
-  typographyObserver.observe(document.body, {
-    childList: true,
-    characterData: true,
-    subtree: true,
-  });
+  window.mondProtectShortWords = protectShortWords;
 })();
