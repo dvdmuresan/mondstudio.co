@@ -2508,6 +2508,11 @@
           if (!panelId) return;
           const isExpanded = button.getAttribute('aria-expanded') === 'true';
           const shouldExpand = !isExpanded;
+          serviceButtons.forEach((otherButton) => {
+            if (otherButton === button) return;
+            otherButton.setAttribute('aria-expanded', 'false');
+            otherButton.closest('.about-service')?.classList.remove('is-open');
+          });
           button.setAttribute('aria-expanded', shouldExpand ? 'true' : 'false');
           button.closest('.about-service')?.classList.toggle('is-open', shouldExpand);
         });
