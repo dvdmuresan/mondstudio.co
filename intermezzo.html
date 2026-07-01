@@ -292,8 +292,8 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      padding: clamp(10px, 6vw, 40px) 0 clamp(48px, 12vw, 120px);
-      margin-top: -800px;
+      padding: 0 0 clamp(48px, 12vw, 120px);
+      margin-top: calc(-100vh + 160px);
       position: relative;
       z-index: 3;
     }
@@ -301,8 +301,16 @@
     .case-section {
       width: calc(100vw - 40px);
       display: grid;
-      gap: clamp(72px, 12vw, 120px);
-      row-gap: clamp(72px, 12vw, 120px);
+      gap: 50px;
+      row-gap: 50px;
+    }
+
+    .case-heading {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+      gap: 0;
+      width: 100%;
     }
 
     .case-intro__copy {
@@ -316,42 +324,68 @@
       font-weight: 400;
       line-height: 0.95;
       margin-left: 0;
-      margin-top: -140px;
-      margin-bottom: 25px;
+      margin-top: 0;
+      margin-bottom: 0;
       letter-spacing: 0;
     }
 
-    .case-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-left: 0;
-      margin-top: 0;
-      margin-bottom: clamp(32px, 10vw, 56px);
+    .case-mobile-info {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 20px;
+      row-gap: 16px;
+      width: min(720px, 100%);
+      margin: 0;
+      color: #f7f7f7;
+      font-family: "Mona Sans", sans-serif;
+      font-size: 13.5px;
+      line-height: 1.24;
+      justify-self: start;
     }
 
-    .case-tag {
+    .case-mobile-info__item {
+      min-width: 0;
+    }
+
+    .case-mobile-info dt,
+    .case-mobile-info dd {
+      margin: 0;
+    }
+
+    .case-mobile-info dt {
+      color: #929292;
+      font-weight: 400;
+    }
+
+    .case-mobile-info dd {
+      color: #f7f7f7;
+      font-weight: 400;
+    }
+
+    .case-mobile-info a {
       display: inline-flex;
       align-items: center;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(255, 255, 255, 0.06);
-      color: #c9c9c9;
-      font-size: 14px;
-      letter-spacing: 0.08px;
-      line-height: 1.2;
-      font-weight: 400;
-      text-transform: none;
+      gap: 6px;
+      color: inherit;
+      text-decoration: none;
     }
 
-    .case-mobile-info {
-      display: none;
+    .case-mobile-info a svg {
+      width: 12px;
+      height: 12px;
+      flex: 0 0 auto;
+      transition: transform 180ms ease;
+    }
+
+    .case-mobile-info a:hover svg,
+    .case-mobile-info a:focus-visible svg {
+      transform: translate(3px, -3px);
     }
 
     .case-description {
-      width: 516px;
-      height: 191px;
+      width: calc((100vw - 40px) / 3);
+      min-width: 0;
+      height: auto;
       color: #FFF;
       font-family: "Helvetica Neue", "Mona Sans", sans-serif;
       font-size: 19.778px;
@@ -363,11 +397,11 @@
     }
 
     .case-description-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 343px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
       align-items: flex-start;
-      padding-left: 230px;
+      padding-left: 0;
     }
 
     .case-credits {
@@ -381,12 +415,88 @@
       line-height: 20px;
     }
 
+    .case-project-nav {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: end;
+      width: 100%;
+      gap: 20px;
+      margin: 110px 0 0;
+    }
+
+    .case-project-nav__item {
+      display: grid;
+      gap: 10px;
+      justify-items: start;
+    }
+
+    .case-project-nav__item--next {
+      justify-items: end;
+      text-align: right;
+    }
+
+    .case-project-nav__label {
+      color: #929292;
+      font-family: "Mona Sans", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.2;
+      text-transform: uppercase;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .case-project-nav__button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: calc(44px / 1.15);
+      padding: 0 calc(22px / 1.15);
+      border-radius: 8px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.20);
+      color: var(--color-white);
+      font-family: "Mona Sans", sans-serif;
+      font-size: calc(15px / 1.15);
+      font-weight: 500;
+      line-height: 1;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 0.6px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition:
+        background-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
+    }
+
+    .case-project-nav__button:hover,
+    .case-project-nav__button:focus-visible {
+      background: rgba(255, 255, 255, 0.25);
+      color: var(--color-white);
+      outline: none;
+      transform: scale(1.05);
+    }
+
+    body[data-theme="light"] .case-project-nav__button {
+      background: rgba(255, 255, 255, 0.65);
+      color: var(--color-fg);
+    }
+
+    body[data-theme="light"] .case-project-nav__button:hover,
+    body[data-theme="light"] .case-project-nav__button:focus-visible {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--color-fg);
+    }
+
     .case-gallery {
       display: flex;
       flex-wrap: nowrap;
       gap: 20px;
       width: 100%;
-      margin: -340px 0 0;
+      margin: 80px 0 0;
       padding: 0;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
@@ -439,6 +549,60 @@
       display: block;
       pointer-events: none;
       user-select: none;
+    }
+
+    @media (min-width: 721px) {
+      .case-gallery {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        align-items: start;
+        gap: 20px;
+        overflow: visible;
+        scroll-snap-type: none;
+        cursor: default;
+      }
+
+      .case-gallery.is-dragging {
+        cursor: default;
+      }
+
+      .case-gallery > figure {
+        width: 100%;
+        height: auto;
+        min-width: 0;
+        flex: initial;
+        scroll-snap-align: none;
+      }
+
+      .case-gallery > figure,
+      .case-gallery > figure * {
+        cursor: default;
+      }
+
+      .case-gallery__image {
+        cursor: zoom-in;
+      }
+
+      .case-gallery__item {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+      }
+
+      .case-gallery__item:nth-child(1) {
+        grid-column: 1 / span 7;
+      }
+
+      .case-gallery__item:nth-child(2) {
+        grid-column: 8 / span 5;
+        margin-top: clamp(72px, 8vw, 140px);
+      }
+
+      .case-gallery__wide {
+        grid-column: 3 / span 10;
+        min-width: 0;
+        margin-top: clamp(12px, 2vw, 28px);
+        aspect-ratio: 16 / 9;
+      }
     }
 
     .case-reveal {
@@ -703,7 +867,7 @@
       font-family: "Mona Sans", sans-serif;
       font-size: 15px;
       font-style: normal;
-      font-weight: 400;
+      font-weight: 200;
       line-height: 22px;
       text-align: left;
     }
@@ -723,12 +887,6 @@
         margin-bottom: 25px;
       }
 
-      .case-tags {
-        margin-left: 0;
-        margin-top: 0;
-        margin-bottom: clamp(28px, 9vw, 44px);
-      }
-
       .case-description {
         width: 100%;
         max-width: 100%;
@@ -745,6 +903,10 @@
         padding: 0 20px;
         box-sizing: border-box;
         row-gap: 32px;
+      }
+
+      .case-heading {
+        display: contents;
       }
 
       .hero {
@@ -770,7 +932,7 @@
 
       .case-main {
         margin-top: 0;
-        padding-top: clamp(24px, 8vw, 48px);
+        padding-top: calc(clamp(24px, 8vw, 48px) + 80px);
       }
 
       .case-intro__copy {
@@ -781,10 +943,6 @@
         width: 100%;
         font-size: clamp(20.4px, 6.24vw, 34.8px);
         line-height: 0.98;
-      }
-
-      .case-tags {
-        display: none;
       }
 
       .case-mobile-info {
@@ -798,6 +956,7 @@
         font-family: "Mona Sans", sans-serif;
         font-size: 13.5px;
         line-height: 1.24;
+        justify-self: stretch;
       }
 
       .case-mobile-info__item {
@@ -839,19 +998,12 @@
         transform: translate(3px, -3px);
       }
 
-      .case-tag {
-        padding: 8px 14px;
-        border-radius: 7px;
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.16);
-        font-family: "Mona Sans", sans-serif;
-        font-weight: 500;
-      }
-
       .case-description-row {
         order: 4;
         display: grid;
+        grid-template-columns: 1fr;
         gap: 40px;
+        width: 100%;
         padding: 0;
         margin: 40px 0 0;
       }
@@ -880,6 +1032,35 @@
         line-height: 23px;
       }
 
+      .case-project-nav {
+        order: 5;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 80px;
+      }
+
+      .case-project-nav__item {
+        justify-items: start;
+        text-align: left;
+      }
+
+      .case-project-nav__item--next {
+        justify-items: end;
+        text-align: right;
+      }
+
+      .case-project-nav__button {
+        width: auto;
+        justify-self: start;
+        min-height: 41px;
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+
+      .case-project-nav__item--next .case-project-nav__button {
+        justify-self: end;
+      }
+
       .hero__top {
         position: fixed;
         top: 20px;
@@ -889,26 +1070,29 @@
         display: grid;
         grid-template-columns: 1fr auto;
         align-items: center;
-        gap: 0 16px;
+        gap: 0 10px;
         width: auto;
         min-height: 41px;
-        padding: 13px 18px;
-        overflow: hidden;
-        background: rgba(255, 255, 255, 0.20);
+        padding: 0;
+        overflow: visible;
+        background: transparent;
         border: 0;
         border-radius: 8px;
         box-shadow: none;
         outline: 0;
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
         color: var(--color-white);
         pointer-events: auto;
-        transition: background-color 180ms ease, color 180ms ease;
+        transition:
+          background-color 220ms ease,
+          color 180ms ease,
+          padding 300ms cubic-bezier(.2, .8, .2, 1),
+          gap 300ms cubic-bezier(.2, .8, .2, 1);
       }
 
       .hero__top:hover,
       .hero__top:focus-within {
-        background: rgba(255, 255, 255, 0.25);
         color: var(--color-white);
       }
 
@@ -923,13 +1107,11 @@
       }
 
       body[data-theme="light"] .hero__top {
-        background: rgba(255, 255, 255, 0.65);
         color: var(--color-fg);
       }
 
       body[data-theme="light"] .hero__top:hover,
       body[data-theme="light"] .hero__top:focus-within {
-        background: rgba(255, 255, 255, 0.9);
         color: var(--color-fg);
       }
 
@@ -941,6 +1123,18 @@
         align-items: center;
         width: fit-content;
         min-width: 0;
+        min-height: 41px;
+        padding: 13px 18px;
+        box-sizing: border-box;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.20);
+        border-radius: 8px;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        transition:
+          background-color 220ms ease,
+          padding 300ms cubic-bezier(.2, .8, .2, 1),
+          border-radius 300ms cubic-bezier(.2, .8, .2, 1);
       }
 
       .hero__brand-image {
@@ -955,14 +1149,26 @@
         align-items: center;
         justify-content: center;
         justify-self: end;
-        width: 24px;
-        height: 24px;
-        padding: 0;
+        width: 50px;
+        min-height: 41px;
+        height: 41px;
+        padding: 0 13px;
         border: 0;
-        border-radius: 0;
-        background: transparent;
-        color: var(--color-fg);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.20);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        color: inherit;
         cursor: pointer;
+        transition:
+          background-color 220ms ease,
+          width 300ms cubic-bezier(.2, .8, .2, 1),
+          padding 300ms cubic-bezier(.2, .8, .2, 1),
+          border-radius 300ms cubic-bezier(.2, .8, .2, 1);
+      }
+
+      .hero__menu-icon {
+        transform: translate(0, -3px);
       }
 
       .hero__menu-toggle:focus-visible {
@@ -975,23 +1181,28 @@
         z-index: 1;
         grid-column: 1 / -1;
         display: grid;
-        justify-items: center;
+        justify-items: start;
         align-self: stretch;
-        gap: 22px;
+        gap: 18px;
         max-height: 0;
         margin: 0;
-        padding-top: 0;
-        padding-bottom: 0;
+        padding: 0 18px;
         overflow: hidden;
-        text-align: center;
-        align-items: center;
+        text-align: left;
+        align-items: start;
+        background: rgba(255, 255, 255, 0.20);
+        border-radius: 8px;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
         opacity: 1;
         transform: none;
         pointer-events: none;
         transition:
           max-height 360ms cubic-bezier(.2, .8, .2, 1),
+          margin-top 300ms cubic-bezier(.2, .8, .2, 1),
           padding-top 360ms cubic-bezier(.2, .8, .2, 1),
-          padding-bottom 360ms cubic-bezier(.2, .8, .2, 1);
+          padding-bottom 360ms cubic-bezier(.2, .8, .2, 1),
+          background-color 180ms ease;
         transition-delay: 180ms;
         will-change: max-height, padding-top, padding-bottom;
       }
@@ -1002,15 +1213,30 @@
 
       .hero__top.is-open .hero__nav {
         max-height: 240px;
-        padding-top: 60px;
-        padding-bottom: 32px;
+        margin-top: 10px;
+        padding-top: 24px;
+        padding-bottom: 24px;
         pointer-events: auto;
         transition-delay: 0s;
       }
 
+      .hero__top.is-open {
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
+      body[data-theme="light"] .hero__nav {
+        background: rgba(255, 255, 255, 0.65);
+      }
+
+      .hero__top.is-open .hero__menu-icon {
+        transform: translate(4px, 0) rotate(90deg);
+      }
+
       .hero__nav a {
-        font-size: 29px;
-        font-weight: 400;
+        font-size: 26.1px;
+        font-weight: 460;
         line-height: 1.05;
         letter-spacing: 0.04em;
         opacity: 0;
@@ -1555,20 +1781,53 @@
 
     @media (max-width: 640px) {
       .footer-section,
-      .site-footer.footer-section {
+      .site-footer.footer-section,
+      .site-footer {
         width: calc(100vw - 20px);
         max-width: calc(100vw - 20px);
         margin-left: 10px;
         margin-right: 10px;
         margin-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 16px;
+        box-sizing: border-box;
+        min-height: auto;
       }
 
       .site-footer .footer-contact-block,
       .footer-contact-block {
         width: 100%;
         max-width: 100%;
+      }
+
+      .footer-brand-minimal,
+      .site-footer .footer-brand-minimal {
+        margin-bottom: 38px;
+      }
+
+      .footer-brand-minimal__logo,
+      .site-footer .footer-brand-minimal__logo {
+        width: 133.96px;
+        height: 14.28px;
+      }
+
+      .footer-social-minimal,
+      .site-footer .footer-social-minimal {
+        gap: clamp(22px, 5.6vw, 29px);
+        font-size: clamp(16px, 4.8vw, 21px);
+      }
+
+      .site-footer .footer-contact-block,
+      .footer-contact-block {
+        margin-top: calc((clamp(64px, 12vw, 72px) + 30px) * 0.8);
+        font-size: 13.44px;
+        line-height: 21.12px;
+      }
+
+      .site-footer .footer-copy-minimal,
+      .footer-copy-minimal {
+        margin-top: calc((clamp(48px, 12vw, 64px) + 20px) * 0.8);
+        font-size: 11.2px;
+        line-height: 17.6px;
       }
     }
   </style>
@@ -1594,39 +1853,37 @@
 
   <main class="case-main" id="about" data-theme-target>
     <section class="case-section">
-      <h1 class="case-intro__copy case-reveal">Intermezzo Festival</h1>
-      <dl class="case-mobile-info case-reveal" style="--reveal-delay: 100ms;">
-        <div class="case-mobile-info__item">
-          <dt>Client:</dt>
-          <dd>
-            <a href="https://zenehaza.hu" target="_blank" rel="noopener noreferrer">
-              Magyar Zene Haza
-              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </a>
-          </dd>
-        </div>
-        <div class="case-mobile-info__item">
-          <dt>Project:</dt>
-          <dd>Intermezzo Fesztival</dd>
-        </div>
-        <div class="case-mobile-info__item">
-          <dt>Year:</dt>
-          <dd>2025</dd>
-        </div>
-        <div class="case-mobile-info__item">
-          <dt>Tag:</dt>
-          <dd>Visual identity</dd>
-        </div>
-        <div class="case-mobile-info__item">
-          <dt>Creatives:</dt>
-          <dd>Muresan David, Lazar Csenge, Horesnyi Mate</dd>
-        </div>
-      </dl>
-      <div class="case-tags case-reveal" style="--reveal-delay: 140ms;">
-        <span class="case-tag">Visual Identity</span>
-        <span class="case-tag">Brand Strategy</span>
+      <div class="case-heading">
+        <h1 class="case-intro__copy">Intermezzo<br>Festival</h1>
+        <dl class="case-mobile-info case-reveal" style="--reveal-delay: 100ms;">
+          <div class="case-mobile-info__item">
+            <dt>Client:</dt>
+            <dd>
+              <a href="https://zenehaza.hu" target="_blank" rel="noopener noreferrer">
+                Magyar Zene Haza
+                <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                  <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+            </dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Project:</dt>
+            <dd>Intermezzo Fesztival</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Year:</dt>
+            <dd>2025</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Tag:</dt>
+            <dd>Visual identity</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Creatives:</dt>
+            <dd>Muresan David, Lazar Csenge, Horesnyi Mate</dd>
+          </div>
+        </dl>
       </div>
       <div class="case-gallery">
         <figure class="case-gallery__item case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
@@ -1660,6 +1917,16 @@
           3D animation: Horesnyi Mate
         </div>
       </div>
+      <nav class="case-project-nav case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
+        <div class="case-project-nav__item">
+          <span class="case-project-nav__label">PREVIOUS:</span>
+          <a class="case-project-nav__button" href="work.html">SELF REFLECTION</a>
+        </div>
+        <div class="case-project-nav__item case-project-nav__item--next">
+          <span class="case-project-nav__label">NEXT:</span>
+          <a class="case-project-nav__button" href="work.html">DREAM VILLE</a>
+        </div>
+      </nav>
     </section>
   </main>
 

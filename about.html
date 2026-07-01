@@ -249,7 +249,7 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6.4px;
       font-size: 19px;
       text-align: right;
       align-items: flex-end;
@@ -270,8 +270,7 @@
     }
 
     body[data-theme="light"] .hero__nav,
-    body[data-theme="light"] .about-hero__tagline,
-    body[data-theme="light"] .about-scroll-cue {
+    body[data-theme="light"] .about-hero__tagline {
       color: #131313;
     }
 
@@ -314,70 +313,255 @@
     }
 
     .about-hero {
+      --about-hero-content-top: calc(clamp(96px, 11vh, 140px) + 60px);
       position: relative;
       width: 100%;
-      min-height: 100vh;
+      min-height: calc(100vh - 100px);
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       align-items: center;
       padding: 20px;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .about-hero__tagline {
       grid-column: 1 / 3;
       grid-row: 1;
       align-self: start;
-      justify-self: end;
-      margin: calc(clamp(96px, 11vh, 140px) - 20px) 0 0;
-      width: min(100%, 680px);
+      justify-self: start;
+      margin: var(--about-hero-content-top) 0 0;
+      width: min(66vw, 1260px);
       color: #f7f7f7;
       font-family: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
-      font-size: clamp(27.3px, 3.055vw, 50.7px);
+      font-size: 63.75px;
       font-style: normal;
       font-weight: 400;
       line-height: 1.02;
       letter-spacing: 0;
     }
 
-    .about-scroll-cue {
-      appearance: none;
-      border: 0;
-      background: transparent;
-      padding: 0;
-      position: absolute;
-      left: calc(50% - min(100%, 680px));
-      top: calc(clamp(96px, 11vh, 140px) + clamp(260px, 23.5vw, 380px) / 0.78 - 56px);
-      width: 38px;
-      height: 38px;
-      z-index: 12;
+    .about-hero__subtitle {
+      grid-column: 1 / 3;
+      grid-row: 1;
+      align-self: start;
+      justify-self: start;
+      width: calc((100vw - 40px) / 3);
+      min-height: 1.35em;
+      margin: calc(clamp(96px, 11vh, 140px) - 20px + 150px) 0 0;
       color: #f7f7f7;
+      font-family: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
+      font-size: calc(63.75px / 1.618);
+      font-weight: 400;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    body[data-theme="light"] .about-hero__subtitle {
+      color: #131313;
+    }
+
+    .about-hero-info {
+      grid-column: 3 / 5;
+      grid-row: 1;
+      align-self: start;
+      justify-self: stretch;
+      position: sticky;
+      top: var(--about-hero-content-top);
+      z-index: 22;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin: var(--about-hero-content-top) 0 0;
+      color: #f7f7f7;
+      font-family: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 13.5px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .about-hero-info__title,
+    .about-hero-info__body {
+      margin: 0;
+    }
+
+    .about-hero-info__title {
+      color: #929292;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .about-hero-info__title--stacked {
+      margin-top: 48px;
+    }
+
+    .about-hero-info__body {
+      margin-top: 8px;
+      display: grid;
+      gap: 3px;
+    }
+
+    .about-hero-info__body p {
+      margin: 0;
+    }
+
+    .about-hero-info__services {
+      gap: 8px;
+      justify-items: start;
+    }
+
+    .about-service {
+      display: grid;
+      gap: 8px;
+      justify-items: start;
+      border-radius: 8px;
+    }
+
+    .about-hero-info a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .about-hero-info a:hover,
+    .about-hero-info a:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      outline: none;
+    }
+
+    .about-service__button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: calc((44px / 1.15) * 0.8625);
+      padding: 0 calc((22px / 1.15) * 0.8625);
+      border-radius: 8px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.20);
+      color: var(--color-white);
+      font-family: "Mona Sans", sans-serif;
+      font-size: calc((15px / 1.15) * 0.8625);
+      font-weight: 500;
+      line-height: 1;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 0.6px;
+      text-decoration: none;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       cursor: pointer;
+      transition:
+        background-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
     }
 
-    .about-scroll-cue::before,
-    .about-scroll-cue::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      background: currentColor;
+    .about-service__button:hover,
+    .about-service__button:focus-visible {
+      background: rgba(255, 255, 255, 0.25);
+      color: var(--color-white);
+      text-decoration: none;
+      outline: none;
+      transform: scale(1.05);
     }
 
-    .about-scroll-cue::before {
-      top: 2px;
-      width: 2px;
-      height: 30px;
+    .about-service.is-open .about-service__button {
+      background: rgba(255, 255, 255, 0.25);
     }
 
-    .about-scroll-cue::after {
-      bottom: 4px;
+    .about-service.is-open .about-service__button:hover,
+    .about-service.is-open .about-service__button:focus-visible {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
+    }
+
+    .about-service__plus {
+      display: inline-grid;
+      place-items: center;
       width: 14px;
       height: 14px;
-      border-right: 2px solid currentColor;
-      border-bottom: 2px solid currentColor;
-      background: transparent;
-      transform: translateX(-50%) rotate(45deg);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.22);
+      font-size: 1.1em;
+      line-height: 1;
+      transition: transform 180ms ease;
+    }
+
+    .about-service__button[aria-expanded="true"] .about-service__plus {
+      transform: rotate(45deg);
+    }
+
+    .about-service__panel {
+      width: min(280px, 100%);
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 calc((22px / 1.15) * 0.8625);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0);
+      color: #a8a8a8;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.62;
+      opacity: 0;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition:
+        max-height 360ms cubic-bezier(.2, .8, .2, 1),
+        padding-top 300ms cubic-bezier(.2, .8, .2, 1),
+        padding-bottom 300ms cubic-bezier(.2, .8, .2, 1),
+        opacity 220ms ease,
+        background-color 220ms ease;
+    }
+
+    .about-service__button[aria-expanded="true"] + .about-service__panel {
+      max-height: 260px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      background: rgba(255, 255, 255, 0.20);
+      opacity: 1;
+    }
+
+    .about-service__panel ul {
+      display: grid;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    body[data-theme="light"] .about-hero-info {
+      color: #131313;
+    }
+
+    body[data-theme="light"] .about-hero-info__title {
+      color: #6f6f6f;
+    }
+
+    body[data-theme="light"] .about-service__button {
+      background: rgba(255, 255, 255, 0.65);
+      color: var(--color-fg);
+    }
+
+    body[data-theme="light"] .about-service__button:hover,
+    body[data-theme="light"] .about-service__button:focus-visible {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--color-fg);
+    }
+
+    body[data-theme="light"] .about-service.is-open .about-service__button {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    body[data-theme="light"] .about-service__panel {
+      color: #5f5f5f;
+    }
+
+    body[data-theme="light"] .about-service__button[aria-expanded="true"] + .about-service__panel {
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    body[data-theme="light"] .about-service__plus {
+      background: rgba(19, 19, 19, 0.10);
     }
 
     .about-figure {
@@ -405,6 +589,10 @@
       display: block;
       object-fit: cover;
       filter: grayscale(1) contrast(1.08);
+    }
+
+    .about-figure.is-janky-active {
+      top: calc(clamp(96px, 11vh, 140px) - 50px);
     }
 
     .about-person-trigger {
@@ -759,9 +947,9 @@
     .about-wordmark {
       position: fixed;
       left: 50%;
-      bottom: 20px;
+      bottom: 245px;
       z-index: 20;
-      width: min(calc(100vw - 40px), 1932px);
+      width: calc(100vw - 40px);
       transform-origin: center bottom;
       transform: translate3d(calc(-50% + var(--wordmark-x, 0px)), var(--wordmark-y, 0px), 0) scale(var(--wordmark-scale, 1));
       will-change: transform;
@@ -776,11 +964,15 @@
 
     .about-scroll {
       position: relative;
-      padding: clamp(96px, 11vh, 140px) 20px 250px;
+      padding: max(0px, calc(clamp(96px, 11vh, 140px) - 100px)) 20px 250px;
       z-index: 18;
     }
 
     .about-mobile-people {
+      display: none;
+    }
+
+    .about-mobile-info {
       display: none;
     }
 
@@ -823,9 +1015,7 @@
       }
     }
 
-    html.js body .about-hero__tagline,
-    html.js body .about-figure,
-    html.js body .about-scroll-cue {
+    html.js body .about-figure {
       opacity: 0;
       transform: translateY(60px);
       transition: transform 1200ms cubic-bezier(.2, .9, .2, 1), opacity 1200ms ease;
@@ -836,9 +1026,7 @@
       transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), opacity 1200ms ease;
     }
 
-    html.js body.is-page-loaded .about-hero__tagline,
-    html.js body.is-page-loaded .about-figure,
-    html.js body.is-page-loaded .about-scroll-cue {
+    html.js body.is-page-loaded .about-figure {
       opacity: 1;
       transform: translateY(0) scale(var(--about-image-scale, 1));
     }
@@ -893,26 +1081,29 @@
         display: grid;
         grid-template-columns: 1fr auto;
         align-items: center;
-        gap: 0 16px;
+        gap: 0 10px;
         width: 100%;
         min-height: 41px;
-        padding: 13px 18px;
-        overflow: hidden;
+        padding: 0;
+        overflow: visible;
         pointer-events: auto;
-        background: rgba(255, 255, 255, 0.20);
+        background: transparent;
         border: 0;
         border-radius: 8px;
         box-shadow: none;
         outline: 0;
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
         color: var(--color-white);
-        transition: background-color 180ms ease, color 180ms ease;
+        transition:
+          background-color 220ms ease,
+          color 180ms ease,
+          padding 300ms cubic-bezier(.2, .8, .2, 1),
+          gap 300ms cubic-bezier(.2, .8, .2, 1);
       }
 
       .hero__top:hover,
       .hero__top:focus-within {
-        background: rgba(255, 255, 255, 0.25);
         color: var(--color-white);
       }
 
@@ -927,13 +1118,11 @@
       }
 
       body[data-theme="light"] .hero__top {
-        background: rgba(255, 255, 255, 0.65);
         color: var(--color-fg);
       }
 
       body[data-theme="light"] .hero__top:hover,
       body[data-theme="light"] .hero__top:focus-within {
-        background: rgba(255, 255, 255, 0.9);
         color: var(--color-fg);
       }
 
@@ -942,23 +1131,28 @@
         z-index: 1;
         grid-column: 1 / -1;
         display: grid;
-        justify-items: center;
+        justify-items: start;
         align-self: stretch;
-        gap: 22px;
+        gap: 18px;
         max-height: 0;
         margin: 0;
-        padding-top: 0;
-        padding-bottom: 0;
+        padding: 0 18px;
         overflow: hidden;
-        text-align: center;
-        align-items: center;
+        text-align: left;
+        align-items: start;
+        background: rgba(255, 255, 255, 0.20);
+        border-radius: 8px;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
         opacity: 1;
         transform: none;
         pointer-events: none;
         transition:
           max-height 360ms cubic-bezier(.2, .8, .2, 1),
+          margin-top 300ms cubic-bezier(.2, .8, .2, 1),
           padding-top 360ms cubic-bezier(.2, .8, .2, 1),
-          padding-bottom 360ms cubic-bezier(.2, .8, .2, 1);
+          padding-bottom 360ms cubic-bezier(.2, .8, .2, 1),
+          background-color 180ms ease;
         transition-delay: 180ms;
       }
 
@@ -966,6 +1160,22 @@
         position: static;
         z-index: 1;
         margin: 0;
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        min-width: 0;
+        min-height: 41px;
+        padding: 13px 18px;
+        box-sizing: border-box;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.20);
+        border-radius: 8px;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        transition:
+          background-color 220ms ease,
+          padding 300ms cubic-bezier(.2, .8, .2, 1),
+          border-radius 300ms cubic-bezier(.2, .8, .2, 1);
       }
 
       .hero__brand-image {
@@ -980,30 +1190,54 @@
         align-items: center;
         justify-content: center;
         justify-self: end;
-        width: 24px;
-        height: 24px;
-        padding: 0;
+        width: 50px;
+        min-height: 41px;
+        height: 41px;
+        padding: 0 13px;
         border: 0;
-        background: transparent;
-        color: #f7f7f7;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.20);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        color: inherit;
         cursor: pointer;
+        transition:
+          background-color 220ms ease,
+          width 300ms cubic-bezier(.2, .8, .2, 1),
+          padding 300ms cubic-bezier(.2, .8, .2, 1),
+          border-radius 300ms cubic-bezier(.2, .8, .2, 1);
       }
 
-      body[data-theme="light"] .hero__menu-toggle {
-        color: #131313;
+      .hero__menu-icon {
+        transform: translate(0, -3px);
       }
 
       .hero__top.is-open .hero__nav {
         max-height: 240px;
-        padding-top: 60px;
-        padding-bottom: 32px;
+        margin-top: 10px;
+        padding-top: 24px;
+        padding-bottom: 24px;
         pointer-events: auto;
         transition-delay: 0s;
       }
 
+      .hero__top.is-open {
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
+      body[data-theme="light"] .hero__nav {
+        background: rgba(255, 255, 255, 0.65);
+      }
+
+      .hero__top.is-open .hero__menu-icon {
+        transform: translate(4px, 0) rotate(90deg);
+      }
+
       .hero__nav a {
-        font-size: 29px;
-        font-weight: 400;
+        font-size: 26.1px;
+        font-weight: 460;
         line-height: 1.05;
         visibility: hidden;
         opacity: 0;
@@ -1027,14 +1261,88 @@
         align-content: start;
         gap: 42px;
         min-height: auto;
+        padding: 0 20px;
+      }
+
+      .about-mobile-info {
+        position: relative;
+        z-index: 18;
+        display: grid;
+        gap: 74px;
         padding: 96px 20px 0;
+        color: #f7f7f7;
+        font-family: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
+        font-size: 13.5px;
+        line-height: 1.35;
+      }
+
+      .about-mobile-info__title {
+        margin: 20px 0 0;
+        color: inherit;
+        font-size: 33.15px;
+        font-weight: 500;
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .about-mobile-info__services {
+        display: grid;
+        gap: 8px;
+        justify-items: start;
+      }
+
+      .about-mobile-info__meta {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .about-mobile-info a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .about-mobile-info a:hover,
+      .about-mobile-info a:focus-visible {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        outline: none;
+      }
+
+      body[data-theme="light"] .about-mobile-info {
+        color: #131313;
+      }
+
+      .about-mobile-info .about-service__button {
+        height: calc((44px / 1.15) * 0.8625 * 1.15);
+        padding: 0 calc((22px / 1.15) * 0.8625 * 1.15);
+        font-size: calc((15px / 1.15) * 0.8625 * 1.15);
+      }
+
+      .about-mobile-info .about-service__plus {
+        width: calc(14px * 1.15);
+        height: calc(14px * 1.15);
+      }
+
+      .about-mobile-info .about-service {
+        width: 100%;
+      }
+
+      .about-mobile-info .about-service__panel {
+        width: 100%;
+        max-width: 100%;
+        font-size: calc(12px * 1.2);
       }
 
       .about-hero__tagline {
         display: none;
       }
 
-      .about-scroll-cue {
+      .about-hero__subtitle {
+        display: none;
+      }
+
+      .about-hero-info {
         display: none;
       }
 
@@ -1301,6 +1609,7 @@
       max-width: calc(100% - 40px);
       color: #BABABA;
       font-size: 15px;
+      font-weight: 200;
       line-height: 22px;
       text-align: left;
       white-space: nowrap;
@@ -1447,6 +1756,7 @@
 
       .about-hero,
       .about-scroll,
+      .about-mobile-info,
       .about-mobile-people {
         padding-left: 10px;
         padding-right: 10px;
@@ -1467,15 +1777,46 @@
         margin-left: 10px;
         margin-right: 10px;
         margin-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 16px;
         box-sizing: border-box;
+        min-height: auto;
       }
 
       .site-footer .footer-contact-block,
       .footer-contact-block {
         width: 100%;
         max-width: 100%;
+      }
+
+      .footer-brand-minimal,
+      .site-footer .footer-brand-minimal {
+        margin-bottom: 38px;
+      }
+
+      .footer-brand-minimal__logo,
+      .site-footer .footer-brand-minimal__logo {
+        width: 133.96px;
+        height: 14.28px;
+      }
+
+      .footer-social-minimal,
+      .site-footer .footer-social-minimal {
+        gap: clamp(22px, 5.6vw, 29px);
+        font-size: clamp(16px, 4.8vw, 21px);
+      }
+
+      .site-footer .footer-contact-block,
+      .footer-contact-block {
+        margin-top: calc((clamp(64px, 12vw, 72px) + 30px) * 0.8);
+        font-size: 13.44px;
+        line-height: 21.12px;
+      }
+
+      .site-footer .footer-copy-minimal,
+      .footer-copy-minimal {
+        margin-top: calc((clamp(48px, 12vw, 64px) + 20px) * 0.8);
+        font-size: 11.2px;
+        line-height: 17.6px;
       }
     }
   </style>
@@ -1516,10 +1857,212 @@
 
   <main id="about">
     <div class="about-page">
+      <section class="about-mobile-info" aria-label="Services, contact, and office">
+        <h1 class="about-mobile-info__title">Intention<br>is our aesthetics.</h1>
+        <div>
+          <p class="about-hero-info__title">Services</p>
+          <div class="about-mobile-info__services about-hero-info__body">
+            <div class="about-service">
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-creative-direction">
+                Creative Direction <span class="about-service__plus" aria-hidden="true">+</span>
+              </button>
+              <div class="about-service__panel" id="mobile-service-creative-direction">
+                <ul>
+                  <li>Brand creation from zero</li>
+                  <li>Brand evolution &amp; refinement</li>
+                  <li>Defining brand focus and relevance</li>
+                  <li>Go-to-market and launch strategy</li>
+                  <li>Ongoing brand optimization</li>
+                  <li>Design system growth and modularity</li>
+                  <li>Narrative-led brand communication</li>
+                </ul>
+              </div>
+            </div>
+            <div class="about-service">
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-strategy">
+                Strategy <span class="about-service__plus" aria-hidden="true">+</span>
+              </button>
+              <div class="about-service__panel" id="mobile-service-strategy">
+                <ul>
+                  <li>Brand creation from zero</li>
+                  <li>Brand evolution &amp; refinement</li>
+                  <li>Defining brand focus and relevance</li>
+                  <li>Go-to-market and launch strategy</li>
+                  <li>Ongoing brand optimization</li>
+                  <li>Design system growth and modularity</li>
+                  <li>Narrative-led brand communication</li>
+                </ul>
+              </div>
+            </div>
+            <div class="about-service">
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-visual-identity">
+                Visual Identity <span class="about-service__plus" aria-hidden="true">+</span>
+              </button>
+              <div class="about-service__panel" id="mobile-service-visual-identity">
+                <ul>
+                  <li>Brand creation from zero</li>
+                  <li>Brand evolution &amp; refinement</li>
+                  <li>Defining brand focus and relevance</li>
+                  <li>Go-to-market and launch strategy</li>
+                  <li>Ongoing brand optimization</li>
+                  <li>Design system growth and modularity</li>
+                  <li>Narrative-led brand communication</li>
+                </ul>
+              </div>
+            </div>
+            <div class="about-service">
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-graphic-design">
+                Graphic Design <span class="about-service__plus" aria-hidden="true">+</span>
+              </button>
+              <div class="about-service__panel" id="mobile-service-graphic-design">
+                <ul>
+                  <li>Brand creation from zero</li>
+                  <li>Brand evolution &amp; refinement</li>
+                  <li>Defining brand focus and relevance</li>
+                  <li>Go-to-market and launch strategy</li>
+                  <li>Ongoing brand optimization</li>
+                  <li>Design system growth and modularity</li>
+                  <li>Narrative-led brand communication</li>
+                </ul>
+              </div>
+            </div>
+            <div class="about-service">
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-motion-design">
+                Motion Design <span class="about-service__plus" aria-hidden="true">+</span>
+              </button>
+              <div class="about-service__panel" id="mobile-service-motion-design">
+                <ul>
+                  <li>Brand creation from zero</li>
+                  <li>Brand evolution &amp; refinement</li>
+                  <li>Defining brand focus and relevance</li>
+                  <li>Go-to-market and launch strategy</li>
+                  <li>Ongoing brand optimization</li>
+                  <li>Design system growth and modularity</li>
+                  <li>Narrative-led brand communication</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-mobile-info__meta">
+          <div>
+            <p class="about-hero-info__title">Contact</p>
+            <p class="about-hero-info__body"><a href="mailto:hello@mondstudio.co">hello@mondstudio.co</a></p>
+          </div>
+          <div>
+            <p class="about-hero-info__title">Office</p>
+            <p class="about-hero-info__body">
+              Cluj-Napoca, Romania<br>
+              Dorobantilor Street 28.<br>
+              400546
+            </p>
+          </div>
+        </div>
+      </section>
       <section class="about-hero" aria-labelledby="about-title">
         <h1 class="about-hero__tagline" id="about-title">Intention<br>is our aesthetics.</h1>
-        <figure class="about-figure" aria-label="MOND : STUDIO studio team visual">
-          <img src="1x/TRAM.JPG" alt="Tram in the city" />
+        <p class="about-hero__subtitle"></p>
+        <div class="about-hero-info" aria-label="Contact and services">
+          <div class="about-hero-info__column">
+            <p class="about-hero-info__title">Contact</p>
+            <div class="about-hero-info__body">
+              <p><a href="mailto:hello@mondstudio.co">hello@mondstudio.co</a></p>
+            </div>
+            <p class="about-hero-info__title about-hero-info__title--stacked">Office</p>
+            <p class="about-hero-info__body">
+              Cluj-Napoca, Romania<br>
+              Dorobantilor Street 28.<br>
+              400546
+            </p>
+          </div>
+          <div class="about-hero-info__column">
+            <p class="about-hero-info__title">Services</p>
+            <div class="about-hero-info__body about-hero-info__services">
+              <div class="about-service">
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-creative-direction">
+                  Creative Direction <span class="about-service__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="about-service__panel" id="service-creative-direction">
+                  <ul>
+                    <li>Brand creation from zero</li>
+                    <li>Brand evolution &amp; refinement</li>
+                    <li>Defining brand focus and relevance</li>
+                    <li>Go-to-market and launch strategy</li>
+                    <li>Ongoing brand optimization</li>
+                    <li>Design system growth and modularity</li>
+                    <li>Narrative-led brand communication</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="about-service">
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-strategy">
+                  Strategy <span class="about-service__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="about-service__panel" id="service-strategy">
+                  <ul>
+                    <li>Brand creation from zero</li>
+                    <li>Brand evolution &amp; refinement</li>
+                    <li>Defining brand focus and relevance</li>
+                    <li>Go-to-market and launch strategy</li>
+                    <li>Ongoing brand optimization</li>
+                    <li>Design system growth and modularity</li>
+                    <li>Narrative-led brand communication</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="about-service">
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-visual-identity">
+                  Visual Identity <span class="about-service__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="about-service__panel" id="service-visual-identity">
+                  <ul>
+                    <li>Brand creation from zero</li>
+                    <li>Brand evolution &amp; refinement</li>
+                    <li>Defining brand focus and relevance</li>
+                    <li>Go-to-market and launch strategy</li>
+                    <li>Ongoing brand optimization</li>
+                    <li>Design system growth and modularity</li>
+                    <li>Narrative-led brand communication</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="about-service">
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-graphic-design">
+                  Graphic Design <span class="about-service__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="about-service__panel" id="service-graphic-design">
+                  <ul>
+                    <li>Brand creation from zero</li>
+                    <li>Brand evolution &amp; refinement</li>
+                    <li>Defining brand focus and relevance</li>
+                    <li>Go-to-market and launch strategy</li>
+                    <li>Ongoing brand optimization</li>
+                    <li>Design system growth and modularity</li>
+                    <li>Narrative-led brand communication</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="about-service">
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-motion-design">
+                  Motion Design <span class="about-service__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="about-service__panel" id="service-motion-design">
+                  <ul>
+                    <li>Brand creation from zero</li>
+                    <li>Brand evolution &amp; refinement</li>
+                    <li>Defining brand focus and relevance</li>
+                    <li>Go-to-market and launch strategy</li>
+                    <li>Ongoing brand optimization</li>
+                    <li>Design system growth and modularity</li>
+                    <li>Narrative-led brand communication</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figure class="about-figure" aria-label="MOND : STUDIO team visual">
+          <img src="david 2.jpg" alt="David Muresan" />
         </figure>
         <div class="about-person-meta" id="about-person-meta" hidden>
           <div>
@@ -1532,7 +2075,6 @@
             </svg>
           </button>
         </div>
-        <button class="about-scroll-cue" type="button" aria-label="Scroll to about text"></button>
       </section>
 
       <div class="about-wordmark" aria-hidden="true">
@@ -1694,7 +2236,7 @@
       const root = document.documentElement;
       const wordmark = document.querySelector('.about-wordmark');
       const figure = document.querySelector('.about-figure');
-      const figureImage = figure.querySelector('img');
+      const figureImage = figure?.querySelector('img');
       const personTrigger = document.getElementById('about-person-trigger');
       const personMeta = document.getElementById('about-person-meta');
       const personMetaName = document.getElementById('about-person-meta-name');
@@ -1711,12 +2253,10 @@
       const personScrollBody = document.getElementById('about-person-scroll-body');
       const mobilePersonButtons = Array.from(document.querySelectorAll('.about-mobile-person__button'));
       const lines = Array.from(document.querySelectorAll('.about-copy__line'));
-      const scrollCue = document.querySelector('.about-scroll-cue');
       const footer = document.getElementById('footer-section');
-      if (!wordmark || !figure || !figureImage || !lines.length) return;
+      if (!wordmark || !lines.length) return;
 
       const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
-      const topImageSource = '1x/TRAM.JPG';
       const staffImageSources = ['david 2.jpg', 'Bencz.jpg', 'Mate.jpg', 'Janky-Milan.jpg'];
       const staffProfiles = {
         'david 2.jpg': {
@@ -1759,12 +2299,12 @@
           awards: ['Selected awards and recognitions will be added soon.']
         }
       };
-      [topImageSource, ...staffImageSources].forEach((src) => {
+      staffImageSources.forEach((src) => {
         const image = new Image();
         image.src = src;
       });
       let ticking = false;
-      let activeImageSource = topImageSource;
+      let activeImageSource = staffImageSources[0];
 
       const setPanelVisible = (isVisible) => {
         if (!personPanel) return;
@@ -1830,12 +2370,14 @@
         const targetCenter = window.innerWidth - 20 - (unscaledWidth * finalScale) / 2;
         const startCenter = window.innerWidth / 2;
         const targetX = targetCenter - startCenter;
-        const targetY = window.innerWidth <= 600 ? -8 : -10;
+        const wordmarkBaseBottom = window.innerWidth <= 600 ? 20 : 245;
+        const targetY = wordmarkBaseBottom - 20;
         const scale = 1 + (finalScale - 1) * eased;
         const imageScale = 1 + 0.42 * eased;
+        const isWordmarkShrunkForty = eased >= 0.4;
         const footerTop = footer ? footer.getBoundingClientRect().top : Infinity;
         const scaledHeight = unscaledHeight * scale;
-        const logoBottom = window.innerHeight - 20 + targetY * eased;
+        const logoBottom = window.innerHeight - wordmarkBaseBottom + targetY * eased;
         const logoTop = logoBottom - scaledHeight;
         const wordmarkVisible = footerTop > logoTop + scaledHeight + 24;
         document.body.classList.toggle('has-scrolled', scrollY > 0);
@@ -1847,10 +2389,12 @@
         root.style.setProperty('--about-image-scale', imageScale.toFixed(4));
         wordmark.style.opacity = wordmarkVisible ? '1' : '0';
 
-        const figureRect = figure.getBoundingClientRect();
-        root.style.setProperty('--person-meta-top', `${figureRect.bottom + 14}px`);
-        root.style.setProperty('--person-meta-left', `${figureRect.left}px`);
-        root.style.setProperty('--person-meta-width', `${figureRect.width}px`);
+        if (figure) {
+          const figureRect = figure.getBoundingClientRect();
+          root.style.setProperty('--person-meta-top', `${figureRect.bottom + 14}px`);
+          root.style.setProperty('--person-meta-left', `${figureRect.left}px`);
+          root.style.setProperty('--person-meta-width', `${figureRect.width}px`);
+        }
 
         const activePoint = window.innerHeight * 0.46;
         let activeLine = lines[0];
@@ -1871,16 +2415,32 @@
             personMeta.hidden = true;
             personMeta.classList.remove('is-visible');
           }
-          figure.style.opacity = '0';
+          if (figure) figure.style.opacity = '0';
           lines.forEach((line) => line.classList.toggle('is-active', line === activeLine));
           return;
         }
 
+        if (!figure || !figureImage) {
+          if (personMeta) {
+            personMeta.hidden = true;
+            personMeta.classList.remove('is-visible');
+          }
+          setPanelVisible(false);
+          lines.forEach((line) => line.classList.toggle('is-active', isWordmarkShrunkForty && line === activeLine));
+          return;
+        }
+
         const activeIndex = Math.max(0, lines.indexOf(activeLine));
-        const staffIndex = Math.min(activeIndex, staffImageSources.length - 1);
-        const isTopImage = scrollY < window.innerHeight * 0.12;
-        const nextImageSource = isTopImage ? topImageSource : staffImageSources[staffIndex];
-        const imageVisible = Boolean(nextImageSource) && footerTop > window.innerHeight * 0.08;
+        const staffIndexByLine = [0, 0, 1, 2, 3];
+        const staffIndex = staffIndexByLine[activeIndex] ?? staffImageSources.length - 1;
+        const firstLineRect = lines[0].getBoundingClientRect();
+        const firstLineReachedTopThird = firstLineRect.top <= window.innerHeight / 3;
+        const firstLineReachedTop = firstLineRect.top <= 0;
+        const nextImageSource = firstLineReachedTop ? staffImageSources[staffIndex] : staffImageSources[0];
+        const isNextImageDavid = nextImageSource === staffImageSources[0];
+        const imageVisible = Boolean(nextImageSource)
+          && (!isNextImageDavid || firstLineReachedTopThird)
+          && footerTop > window.innerHeight * 0.08;
 
         if (nextImageSource && nextImageSource !== activeImageSource) {
           activeImageSource = nextImageSource;
@@ -1888,12 +2448,13 @@
         }
         figure.style.opacity = imageVisible ? '1' : '0';
         const isDavidImage = activeImageSource === staffImageSources[0];
+        figure.classList.toggle('is-janky-active', activeImageSource === 'Janky-Milan.jpg');
         const isDavidImageFullSize = imageScale >= 1.415;
         const isTriggerVisible = imageVisible && (!isDavidImage || isDavidImageFullSize);
         updatePersonProfile(isTriggerVisible);
         if (!isTriggerVisible) setPanelVisible(false);
 
-        lines.forEach((line) => line.classList.toggle('is-active', line === activeLine));
+        lines.forEach((line) => line.classList.toggle('is-active', isWordmarkShrunkForty && line === activeLine));
       };
 
       const requestUpdate = () => {
@@ -1914,7 +2475,7 @@
           const profileSource = button.dataset.profile;
           if (!profileSource || !staffProfiles[profileSource]) return;
           activeImageSource = profileSource;
-          figureImage.src = profileSource;
+          if (figureImage) figureImage.src = profileSource;
           updatePersonProfile(true);
           setPanelVisible(true);
         });
@@ -1933,14 +2494,24 @@
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') setPanelVisible(false);
       });
-      if (scrollCue) {
-        scrollCue.addEventListener('click', () => {
-          lines[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-      }
       window.addEventListener('scroll', requestUpdate, { passive: true });
       window.addEventListener('resize', requestUpdate);
       window.addEventListener('resize', updateContentScrollCue);
+    })();
+  </script>
+  <script>
+    (() => {
+      const serviceButtons = Array.from(document.querySelectorAll('.about-service__button'));
+      serviceButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const panelId = button.getAttribute('aria-controls');
+          if (!panelId) return;
+          const isExpanded = button.getAttribute('aria-expanded') === 'true';
+          const shouldExpand = !isExpanded;
+          button.setAttribute('aria-expanded', shouldExpand ? 'true' : 'false');
+          button.closest('.about-service')?.classList.toggle('is-open', shouldExpand);
+        });
+      });
     })();
   </script>
   <script defer src="./site-common.js"></script>
