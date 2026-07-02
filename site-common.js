@@ -32,7 +32,7 @@
     document.body.style.colorScheme = resolved;
   };
 
-  applyTheme("dark");
+  applyTheme(document.body.dataset.theme || "dark");
 
   const clockConfigs = [
     { el: document.getElementById("ro-clock"), timeZone: "Europe/Bucharest" },
