@@ -261,8 +261,15 @@
     }
 
     .hero__nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 8px;
+      background: transparent;
       opacity: 1;
-      transition: opacity 180ms ease;
+      transition: opacity 180ms ease, color 180ms ease;
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
@@ -934,17 +941,23 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     }
 
     @media (min-width: 721px) {
+      :root {
+        --projects-sidebar-width: clamp(230px, 16.8vw, 290px);
+        --projects-sidebar-pad: clamp(18px, 1.4vw, 24px);
+        --projects-sidebar-section-gap: clamp(56px, 6.5vh, 70px);
+        --projects-sidebar-title-gap: clamp(56px, 8.5vh, 92px);
+      }
+
       .hero-header {
-        position: fixed;
-        inset: 0 0 auto;
+        position: relative;
         z-index: 120;
-        min-height: 0;
+        min-height: 60px;
         pointer-events: none;
       }
 
       .hero__top {
-        position: static;
-        padding: 0;
+        position: relative;
+        padding: 20px;
       }
 
       .hero__brand {
@@ -952,7 +965,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       }
 
       .hero__nav {
-        position: fixed;
+        position: absolute;
         top: 20px;
         left: auto;
         right: 20px;
@@ -970,9 +983,13 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         padding: 60px 0 140px;
       }
 
+      body.view-image main {
+        padding-top: 14px;
+      }
+
       .projects {
         display: grid;
-        grid-template-columns: minmax(154px, 16.8vw) minmax(0, 1fr);
+        grid-template-columns: var(--projects-sidebar-width) minmax(0, 1fr);
         gap: 10px;
         width: calc(100vw - 40px);
         margin: 0 20px;
@@ -981,25 +998,31 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
       .projects-sidebar {
         position: fixed;
-        top: 20px;
-        bottom: 20px;
-        left: 20px;
+        top: 10px;
+        bottom: 10px;
+        left: 10px;
         z-index: 90;
         display: flex;
         flex-direction: column;
-        width: max(154px, 16.8vw);
+        width: var(--projects-sidebar-width);
         min-height: 0;
-        padding: 20px;
+        padding: var(--projects-sidebar-pad);
         border-radius: 7px;
         background: #0c0c0c;
         color: var(--color-fg);
         font-family: "Mona Sans", sans-serif;
+        overflow: hidden auto;
+        scrollbar-width: none;
+      }
+
+      .projects-sidebar::-webkit-scrollbar {
+        display: none;
       }
 
       .projects-sidebar__brand {
         display: inline-flex;
         width: fit-content;
-        margin-bottom: 70px;
+        margin-bottom: var(--projects-sidebar-section-gap);
       }
 
       .projects-sidebar__brand img {
@@ -1031,15 +1054,17 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       }
 
       .projects-filter__group + .projects-filter__group {
-        margin-top: 70px;
+        margin-top: var(--projects-sidebar-section-gap);
       }
 
       .projects-filter__title {
-        margin: 25px 0 92px;
+        margin: clamp(18px, 2.4vh, 25px) 0 var(--projects-sidebar-title-gap);
         color: var(--color-fg);
-        font-size: 21px;
+        width: min-content;
+        font-size: 35.5px;
         font-weight: 450;
         line-height: 1.1;
+        min-height: calc(35.5px * 1.1 * 2);
       }
 
       .projects-filter__eyebrow {
@@ -1149,11 +1174,11 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         text-transform: uppercase;
         text-align: center;
         font-family: "Mona Sans", sans-serif;
-        font-size: calc(15px / 1.15);
+        font-size: calc((15px / 1.15) * 0.8625);
         font-weight: 500;
+        line-height: 1;
         letter-spacing: 0.6px;
-        text-decoration: underline;
-        text-underline-offset: 3px;
+        text-decoration: none;
         transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
       }
 
@@ -1161,8 +1186,8 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        height: calc(44px / 1.15);
-        padding: 0 calc(22px / 1.15);
+        height: calc((44px / 1.15) * 0.8625);
+        padding: 0 calc((22px / 1.15) * 0.8625);
         border-radius: 8px;
       }
 
@@ -1430,6 +1455,30 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         display: block;
         column-count: 2;
         column-gap: 10px;
+      }
+    }
+
+    @media (min-width: 721px) and (max-height: 860px) {
+      :root {
+        --projects-sidebar-pad: 18px;
+        --projects-sidebar-section-gap: 48px;
+        --projects-sidebar-title-gap: 52px;
+      }
+
+      .projects-filter__title {
+        margin-top: 14px;
+      }
+
+      .projects-filter__group {
+        gap: 7px;
+      }
+
+      .projects-filter__eyebrow {
+        margin-bottom: 10px;
+      }
+
+      .projects-filter__button {
+        line-height: 14px;
       }
     }
 
@@ -2199,12 +2248,17 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       .hero__top > .hero__nav > a,
       .hero__nav a {
         position: relative;
-        display: block !important;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
         flex: 0 0 auto;
         width: fit-content;
         max-width: calc(100vw - 56px);
         margin: 0;
-        padding: 0;
+        min-height: 52px;
+        padding: 0 18px;
+        border-radius: 8px;
+        background: transparent;
         text-align: left;
         font-size: 33px;
         font-weight: 450;
@@ -2286,7 +2340,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
   <header class="hero-header">
     <div class="hero__top">
-      <a class="hero__brand" href="index.html" aria-label="MOND : STUDIO home">
+      <a class="hero__brand" href="./index.html" aria-label="MOND : STUDIO home">
         <img class="hero__brand-image" src="asset4.png" alt="MOND : STUDIO" width="590" height="63" />
       </a>
       <button class="view-toggle" type="button" id="view-toggle" aria-pressed="true">
@@ -2301,7 +2355,6 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         <a href="work.html"><span class="hero__nav-word">WORK</span></a>
         <a href="about.html"><span class="hero__nav-word">ABOUT</span></a>
         <a href="https://cal.eu/mondstudio"><span class="hero__nav-word">CONTACT</span></a>
-        <a class="hero__nav-talk" href="https://cal.eu/mondstudio"><span class="hero__nav-word">LET'S</span> <span class="hero__nav-word">TALK</span></a>
       </nav>
     </div>
   </header>
@@ -2368,7 +2421,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
   <main>
     <section class="projects" aria-label="Selected projects">
       <aside class="projects-sidebar" aria-label="Project filters">
-        <a class="projects-sidebar__brand" href="index.html" aria-label="MOND : STUDIO home">
+        <a class="projects-sidebar__brand" href="./index.html" aria-label="MOND : STUDIO home">
           <img src="asset4.png" alt="MOND : STUDIO" width="590" height="63" />
         </a>
         <div class="projects-filter" role="list" aria-label="Filter projects by service">
