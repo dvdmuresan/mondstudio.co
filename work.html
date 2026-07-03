@@ -469,6 +469,43 @@
       opacity: 1;
     }
 
+    .project-page-transition {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483647;
+      background: transparent;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: background-color 360ms ease;
+    }
+
+    .project-page-transition.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .project-page-transition__image {
+      position: fixed;
+      object-fit: cover;
+      will-change: top, left, width, height, border-radius, opacity;
+      transition:
+        top 920ms cubic-bezier(0.76, 0, 0.24, 1),
+        left 920ms cubic-bezier(0.76, 0, 0.24, 1),
+        width 920ms cubic-bezier(0.76, 0, 0.24, 1),
+        height 920ms cubic-bezier(0.76, 0, 0.24, 1),
+        border-radius 920ms cubic-bezier(0.76, 0, 0.24, 1),
+        opacity 360ms ease;
+    }
+
+    .project-page-transition.is-fading .project-page-transition__image {
+      opacity: 0;
+    }
+
+    .project-page-transition.is-fading {
+      background: #f7f7f7;
+    }
+
     .projects-gallery {
       width: 100%;
       margin: 0;
@@ -1046,6 +1083,21 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         gap: 8px;
       }
 
+      .projects-sidebar-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 820ms ease,
+          transform 960ms cubic-bezier(.2, .9, .2, 1);
+        transition-delay: var(--sidebar-reveal-delay, 0ms);
+        will-change: opacity, transform;
+      }
+
+      html.js body.is-page-loaded .projects-sidebar-reveal {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       .projects-filter__group {
         display: flex;
         flex-direction: column;
@@ -1070,7 +1122,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       .projects-filter__eyebrow {
         margin: 0 0 14px;
         color: var(--color-fg);
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 550;
         line-height: 1;
         text-transform: uppercase;
@@ -1214,6 +1266,14 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         color: var(--color-fg);
       }
 
+      @media (prefers-reduced-motion: reduce) {
+        .projects-sidebar-reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
       .projects-left {
         width: 100%;
         min-width: 0;
@@ -1354,6 +1414,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
       .projects-gallery__caption-title {
         display: block;
+        font-weight: 400;
       }
 
       .projects-gallery__caption-tags {
@@ -2338,6 +2399,83 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     });
   </script>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const transitionLinks = Array.from(document.querySelectorAll('[data-project-transition="intermezzo"]'));
+      if (!transitionLinks.length) return;
+
+      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      transitionLinks.forEach((transitionLink) => {
+        transitionLink.addEventListener('click', (event) => {
+        if (
+          prefersReducedMotion ||
+          event.defaultPrevented ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey ||
+          event.button !== 0
+        ) {
+          return;
+        }
+
+        const sourceImage = transitionLink.querySelector('img');
+        if (!sourceImage) return;
+
+        event.preventDefault();
+
+        const rect = sourceImage.getBoundingClientRect();
+        const imageSrc = transitionLink.dataset.transitionImage || sourceImage.currentSrc || sourceImage.src;
+        const overlay = document.createElement('div');
+        const image = document.createElement('img');
+
+        overlay.className = 'project-page-transition is-active';
+        image.className = 'project-page-transition__image';
+        image.src = imageSrc;
+        image.alt = '';
+        image.setAttribute('aria-hidden', 'true');
+        image.style.top = `${rect.top}px`;
+        image.style.left = `${rect.left}px`;
+        image.style.width = `${rect.width}px`;
+        image.style.height = `${rect.height}px`;
+        image.style.borderRadius = window.getComputedStyle(sourceImage).borderRadius || '0px';
+
+        overlay.appendChild(image);
+        document.body.appendChild(overlay);
+
+        try {
+          sessionStorage.setItem('mond:work-to-intermezzo', JSON.stringify({
+            imageSrc,
+            timestamp: Date.now()
+          }));
+        } catch (error) {
+          // The visual transition can continue without persisted state.
+        }
+
+        sourceImage.style.opacity = '0';
+        image.getBoundingClientRect();
+
+        requestAnimationFrame(() => {
+          image.style.top = '0px';
+          image.style.left = '0px';
+          image.style.width = '100vw';
+          image.style.height = '100vh';
+          image.style.borderRadius = '0px';
+        });
+
+        window.setTimeout(() => {
+          overlay.classList.add('is-fading');
+        }, 620);
+
+        window.setTimeout(() => {
+          window.location.href = transitionLink.href;
+        }, 1040);
+      });
+      });
+    });
+  </script>
+
   <header class="hero-header">
     <div class="hero__top">
       <a class="hero__brand" href="./index.html" aria-label="MOND : STUDIO home">
@@ -2425,28 +2563,22 @@ body[data-theme="light"] .footer-social-minimal a:focus {
           <img src="asset4.png" alt="MOND : STUDIO" width="590" height="63" />
         </a>
         <div class="projects-filter" role="list" aria-label="Filter projects by service">
-          <p class="projects-filter__title" id="projects-filter-title">ALL WORKS</p>
-          <div class="projects-filter__group">
+          <p class="projects-filter__title projects-sidebar-reveal" id="projects-filter-title" style="--sidebar-reveal-delay: 80ms;">ALL WORKS</p>
+          <div class="projects-filter__group projects-sidebar-reveal" style="--sidebar-reveal-delay: 220ms;">
             <p class="projects-filter__eyebrow">Services</p>
-            <button class="projects-filter__button" type="button" data-filter="visual-identity" aria-pressed="false"><span>Visual Identity</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="branding" aria-pressed="false"><span>Branding</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="record-design" aria-pressed="false"><span>Record Design</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="book-design" aria-pressed="false"><span>Book Design</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="product-design" aria-pressed="false"><span>Product Design</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
             <button class="projects-filter__button" type="button" data-filter="creative-direction" aria-pressed="false"><span>Creative Direction</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="strategy" aria-pressed="false"><span>Strategy</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
+            <button class="projects-filter__button" type="button" data-filter="visual-identity" aria-pressed="false"><span>Visual Identity</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
             <button class="projects-filter__button" type="button" data-filter="motion-design" aria-pressed="false"><span>Motion Design</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
+            <button class="projects-filter__button" type="button" data-filter="3d-design" aria-pressed="false"><span>3D Design</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
+            <button class="projects-filter__button" type="button" data-filter="animation-illustration" aria-pressed="false"><span>Animation/Illustration</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
           </div>
-          <div class="projects-filter__group">
+          <div class="projects-filter__group projects-sidebar-reveal" style="--sidebar-reveal-delay: 360ms;">
             <p class="projects-filter__eyebrow">Industries</p>
             <button class="projects-filter__button" type="button" data-filter="art" aria-pressed="false"><span>Art</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="architecture" aria-pressed="false"><span>Architecture</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="technology" aria-pressed="false"><span>Technology</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
             <button class="projects-filter__button" type="button" data-filter="health" aria-pressed="false"><span>Health</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="sport" aria-pressed="false"><span>Sport</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="fashion" aria-pressed="false"><span>Fashion</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
+            <button class="projects-filter__button" type="button" data-filter="technology" aria-pressed="false"><span>Technology</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
             <button class="projects-filter__button" type="button" data-filter="beauty" aria-pressed="false"><span>Beauty</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="sustainability" aria-pressed="false"><span>Sustainability</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
+            <button class="projects-filter__button" type="button" data-filter="industrial" aria-pressed="false"><span>Industrial</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
           </div>
         </div>
         <a class="projects-sidebar__cta" href="https://cal.eu/mondstudio">
@@ -2480,7 +2612,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <td>2023</td>
               </tr>
               <tr class="project-row">
-                <td><a href="#">Signals in silence - book design</a></td>
+                <td><a href="intermezzo.html">Signals in silence - book design</a></td>
                 <td><span class="projects-type">Book Design</span></td>
                 <td>2022</td>
               </tr>
@@ -2499,13 +2631,13 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         <div class="projects-gallery" aria-label="Project image gallery">
           <div class="projects-gallery__grid">
             <figure data-tags="visual-identity creative-direction strategy motion-design art architecture">
-              <a class="projects-gallery__link" href="intermezzo.html">
+              <a class="projects-gallery__link" href="intermezzo.html" data-project-transition="intermezzo" data-transition-image="optimized/image1.jpg">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
                   <img src="optimized/image1.jpg" alt="Maier Jewelry branding image" width="1400" height="712" loading="lazy" />
                 </div>
                 <figcaption class="projects-gallery__caption">
-                  <span class="projects-gallery__caption-title">Intermezzo Fesztival - visual identity</span>
+                  <span class="projects-gallery__caption-title">Intermezzo Fesztival</span>
                   <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Creative Direction</span><span>Art</span></span>
                 </figcaption>
               </a>
@@ -2516,7 +2648,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <img src="optimized/image2.jpg" alt="Signal Forge branding image" width="1200" height="800" loading="lazy" />
               </div>
               <figcaption class="projects-gallery__caption">
-                <span class="projects-gallery__caption-title">Dream Ville Software - branding</span>
+                <span class="projects-gallery__caption-title">Dream Ville Software</span>
                 <span class="projects-gallery__caption-tags"><span>Branding</span><span>Strategy</span><span>Technology</span></span>
               </figcaption>
             </figure>
@@ -2526,19 +2658,21 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <img src="optimized/image6.jpg" alt="Quiet Systems product design" width="1800" height="1012" loading="lazy" />
               </div>
               <figcaption class="projects-gallery__caption">
-                <span class="projects-gallery__caption-title">Walk with me - record label</span>
+                <span class="projects-gallery__caption-title">Walk with me</span>
                 <span class="projects-gallery__caption-tags"><span>Record Design</span><span>Visual Identity</span><span>Art</span></span>
               </figcaption>
             </figure>
             <figure data-tags="book-design graphic-design sustainability architecture">
-              <div class="projects-gallery__item">
-                <div class="projects-gallery__badge"><span>Book Design</span></div>
-                <img src="optimized/image4.jpg" alt="Pulse Labs brand strategy visual" width="1600" height="1467" loading="lazy" />
-              </div>
-              <figcaption class="projects-gallery__caption">
-                <span class="projects-gallery__caption-title">Signals in silence - book design</span>
-                <span class="projects-gallery__caption-tags"><span>Book Design</span><span>Sustainability</span><span>Architecture</span></span>
-              </figcaption>
+              <a class="projects-gallery__link" href="intermezzo.html" data-project-transition="intermezzo" data-transition-image="optimized/image4.jpg">
+                <div class="projects-gallery__item">
+                  <div class="projects-gallery__badge"><span>Book Design</span></div>
+                  <img src="optimized/image4.jpg" alt="Pulse Labs brand strategy visual" width="1600" height="1467" loading="lazy" />
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">Signals in silence</span>
+                  <span class="projects-gallery__caption-tags"><span>Book Design</span><span>Sustainability</span><span>Architecture</span></span>
+                </figcaption>
+              </a>
             </figure>
             <figure data-tags="product-design creative-direction strategy health sport beauty">
               <div class="projects-gallery__item">
@@ -2546,7 +2680,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <img src="optimized/image5.jpg" alt="Self reflection - product design" width="1200" height="1600" loading="lazy" />
               </div>
               <figcaption class="projects-gallery__caption">
-                <span class="projects-gallery__caption-title">Self reflection - product design</span>
+                <span class="projects-gallery__caption-title">Self reflection</span>
                 <span class="projects-gallery__caption-tags"><span>Product Design</span><span>Strategy</span><span>Health</span></span>
               </figcaption>
             </figure>

@@ -235,6 +235,36 @@
       opacity: 1;
     }
 
+    .hero-text-drop {
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 420ms ease, transform 420ms cubic-bezier(.2,.9,.2,1);
+      will-change: opacity, transform;
+      pointer-events: none;
+    }
+
+    .hero-text-drop.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    body.is-page-loaded .hero__nav {
+      animation: heroNavFade 1800ms cubic-bezier(.2, .9, .2, 1) forwards;
+      pointer-events: auto;
+    }
+
+    @keyframes heroNavFade {
+      0% {
+        opacity: 0;
+        transform: translateY(-16px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .hero__nav-talk {
       display: none;
     }
@@ -283,7 +313,7 @@
       width: min(66vw, 1260px);
       color: #f7f7f7;
       font-family: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
-      font-size: 63.75px;
+      font-size: 59.29px;
       font-style: normal;
       font-weight: 600;
       line-height: 1.02;
@@ -468,6 +498,7 @@
       padding-top: 12px;
       padding-bottom: 12px;
       background: rgba(255, 255, 255, 0.20);
+      color: #ffffff;
       opacity: 1;
     }
 
@@ -508,6 +539,7 @@
 
     body[data-theme="light"] .about-service__button[aria-expanded="true"] + .about-service__panel {
       background: rgba(255, 255, 255, 0.65);
+      color: #131313;
     }
 
     body[data-theme="light"] .about-service__plus {
@@ -984,7 +1016,7 @@
     .about-copy__line {
       margin: 0;
       color: rgba(247, 247, 247, 0.16);
-      font-size: 63.75px;
+      font-size: 51px;
       font-weight: 600;
       line-height: 1.02;
       letter-spacing: 0;
@@ -1042,7 +1074,7 @@
 
       .about-hero__tagline {
         width: min(48vw, 720px);
-        font-size: clamp(52px, 4.1vw, 60px);
+        font-size: clamp(48.36px, 3.813vw, 55.8px);
       }
 
       .about-hero__subtitle {
@@ -1086,11 +1118,11 @@
       }
 
       .about-copy__line {
-        font-size: clamp(43px, 4.5vw, 56px);
+        font-size: clamp(34.4px, 3.6vw, 44.8px);
       }
 
       .about-hero__tagline {
-        font-size: clamp(43px, 4.5vw, 56px);
+        font-size: clamp(39.99px, 4.185vw, 52.08px);
       }
 
       .about-talk {
@@ -1106,7 +1138,7 @@
 
       .about-hero__tagline {
         width: min(46vw, 660px);
-        font-size: clamp(48px, 4vw, 56px);
+        font-size: clamp(44.64px, 3.72vw, 52.08px);
       }
 
       .about-hero__subtitle {
@@ -1151,11 +1183,11 @@
       }
 
       .about-copy__line {
-        font-size: clamp(34px, 4.7vw, 42px);
+        font-size: clamp(27.2px, 3.76vw, 33.6px);
       }
 
       .about-hero__tagline {
-        font-size: clamp(34px, 4.7vw, 42px);
+        font-size: clamp(31.62px, 4.371vw, 39.06px);
       }
 
       .about-talk {
@@ -1409,7 +1441,7 @@
       }
 
       .about-copy__line {
-        font-size: 33.15px;
+        font-size: 26.52px;
       }
 
       .about-talk {
@@ -1633,6 +1665,51 @@
     .site-footer .footer-email {
       color: #BABABA;
       text-decoration: underline;
+      cursor: pointer;
+    }
+
+    a[href^="mailto:"] {
+      cursor: pointer;
+    }
+
+    .copied-cursor-tag {
+      --copy-cursor-x: -9999px;
+      --copy-cursor-y: -9999px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: calc((44px / 1.15) * 0.8625);
+      padding: 0 calc((22px / 1.15) * 0.8625);
+      border-radius: 8px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.20);
+      color: var(--color-white);
+      font-family: "Mona Sans", sans-serif;
+      font-size: calc((15px / 1.15) * 0.8625);
+      font-weight: 500;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: 0.6px;
+      opacity: 0;
+      pointer-events: none;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transform: translate3d(var(--copy-cursor-x), var(--copy-cursor-y), 0) translate(12px, 12px) scale(.96);
+      transition:
+        opacity 180ms ease,
+        transform 180ms ease,
+        background-color 180ms ease,
+        color 180ms ease;
+      will-change: transform, opacity;
+    }
+
+    .copied-cursor-tag.is-visible {
+      opacity: 1;
+      transform: translate3d(var(--copy-cursor-x), var(--copy-cursor-y), 0) translate(12px, 12px) scale(1);
     }
 
     .site-footer,
@@ -1656,6 +1733,11 @@
     body[data-theme="light"] .site-footer {
       background: #ffffff;
       border: 1px solid #e5e5e5;
+      color: #131313;
+    }
+
+    body[data-theme="light"] .copied-cursor-tag {
+      background: rgba(19, 19, 19, 0.12);
       color: #131313;
     }
 
@@ -2146,7 +2228,7 @@
 <body>
   <header class="page-header">
     <div class="hero__top">
-      <a class="hero__brand" href="index.html" aria-label="MOND : STUDIO home">
+      <a class="hero__brand hero-text-drop" href="index.html" aria-label="MOND : STUDIO home">
         <img class="hero__brand-image" src="asset4.png" alt="MOND : STUDIO" width="590" height="63" />
       </a>
       <button class="hero__menu-toggle" id="hero-menu-toggle" type="button" aria-controls="hero-primary-nav" aria-expanded="false" aria-label="Open menu">
@@ -2228,82 +2310,61 @@
           <p class="about-hero-info__title">Services</p>
           <div class="about-mobile-info__services about-hero-info__body">
             <div class="about-service">
-              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-creative-direction">
-                Creative Direction <span class="about-service__plus" aria-hidden="true">+</span>
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-brand">
+                Brand <span class="about-service__plus" aria-hidden="true">+</span>
               </button>
-              <div class="about-service__panel" id="mobile-service-creative-direction">
+              <div class="about-service__panel" id="mobile-service-brand">
                 <ul>
-                  <li>Brand creation from zero</li>
-                  <li>Brand evolution &amp; refinement</li>
-                  <li>Defining brand focus and relevance</li>
-                  <li>Go-to-market and launch strategy</li>
-                  <li>Ongoing brand optimization</li>
-                  <li>Design system growth and modularity</li>
-                  <li>Narrative-led brand communication</li>
+                  <li>Research &amp; Insights</li>
+                  <li>Brand Strategy</li>
+                  <li>Brand Architecture</li>
+                  <li>Visual Identity</li>
+                  <li>Verbal Identity</li>
+                  <li>Naming</li>
+                  <li>Brand Guidelines</li>
                 </ul>
               </div>
             </div>
             <div class="about-service">
-              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-strategy">
-                Strategy <span class="about-service__plus" aria-hidden="true">+</span>
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-campaign">
+                Campaign <span class="about-service__plus" aria-hidden="true">+</span>
               </button>
-              <div class="about-service__panel" id="mobile-service-strategy">
+              <div class="about-service__panel" id="mobile-service-campaign">
                 <ul>
-                  <li>Brand creation from zero</li>
-                  <li>Brand evolution &amp; refinement</li>
-                  <li>Defining brand focus and relevance</li>
-                  <li>Go-to-market and launch strategy</li>
-                  <li>Ongoing brand optimization</li>
-                  <li>Design system growth and modularity</li>
-                  <li>Narrative-led brand communication</li>
+                  <li>Campaign Strategy</li>
+                  <li>Creative Direction</li>
+                  <li>Art Direction</li>
+                  <li>Campaign Development</li>
+                  <li>Launch Campaigns</li>
+                  <li>Content Systems</li>
                 </ul>
               </div>
             </div>
             <div class="about-service">
-              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-visual-identity">
-                Visual Identity <span class="about-service__plus" aria-hidden="true">+</span>
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-product">
+                Product <span class="about-service__plus" aria-hidden="true">+</span>
               </button>
-              <div class="about-service__panel" id="mobile-service-visual-identity">
+              <div class="about-service__panel" id="mobile-service-product">
                 <ul>
-                  <li>Brand creation from zero</li>
-                  <li>Brand evolution &amp; refinement</li>
-                  <li>Defining brand focus and relevance</li>
-                  <li>Go-to-market and launch strategy</li>
-                  <li>Ongoing brand optimization</li>
-                  <li>Design system growth and modularity</li>
-                  <li>Narrative-led brand communication</li>
+                  <li>UX Design</li>
+                  <li>UI Design</li>
+                  <li>Design Systems</li>
+                  <li>E-Commerce</li>
                 </ul>
               </div>
             </div>
             <div class="about-service">
-              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-graphic-design">
-                Graphic Design <span class="about-service__plus" aria-hidden="true">+</span>
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-motion">
+                Motion <span class="about-service__plus" aria-hidden="true">+</span>
               </button>
-              <div class="about-service__panel" id="mobile-service-graphic-design">
+              <div class="about-service__panel" id="mobile-service-motion">
                 <ul>
-                  <li>Brand creation from zero</li>
-                  <li>Brand evolution &amp; refinement</li>
-                  <li>Defining brand focus and relevance</li>
-                  <li>Go-to-market and launch strategy</li>
-                  <li>Ongoing brand optimization</li>
-                  <li>Design system growth and modularity</li>
-                  <li>Narrative-led brand communication</li>
-                </ul>
-              </div>
-            </div>
-            <div class="about-service">
-              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-motion-design">
-                Motion Design <span class="about-service__plus" aria-hidden="true">+</span>
-              </button>
-              <div class="about-service__panel" id="mobile-service-motion-design">
-                <ul>
-                  <li>Brand creation from zero</li>
-                  <li>Brand evolution &amp; refinement</li>
-                  <li>Defining brand focus and relevance</li>
-                  <li>Go-to-market and launch strategy</li>
-                  <li>Ongoing brand optimization</li>
-                  <li>Design system growth and modularity</li>
-                  <li>Narrative-led brand communication</li>
+                  <li>2D &amp; 3D Motion</li>
+                  <li>Brand Asset Motion</li>
+                  <li>Frame-by-Frame Animation</li>
+                  <li>3D Animation</li>
+                  <li>Motion Identity</li>
+                  <li>Social Motion Graphics</li>
                 </ul>
               </div>
             </div>
@@ -2344,82 +2405,61 @@
             <p class="about-hero-info__title">Services</p>
             <div class="about-hero-info__body about-hero-info__services">
               <div class="about-service">
-                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-creative-direction">
-                  Creative Direction <span class="about-service__plus" aria-hidden="true">+</span>
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-brand">
+                  Brand <span class="about-service__plus" aria-hidden="true">+</span>
                 </button>
-                <div class="about-service__panel" id="service-creative-direction">
+                <div class="about-service__panel" id="service-brand">
                   <ul>
-                    <li>Brand creation from zero</li>
-                    <li>Brand evolution &amp; refinement</li>
-                    <li>Defining brand focus and relevance</li>
-                    <li>Go-to-market and launch strategy</li>
-                    <li>Ongoing brand optimization</li>
-                    <li>Design system growth and modularity</li>
-                    <li>Narrative-led brand communication</li>
+                    <li>Research &amp; Insights</li>
+                    <li>Brand Strategy</li>
+                    <li>Brand Architecture</li>
+                    <li>Visual Identity</li>
+                    <li>Verbal Identity</li>
+                    <li>Naming</li>
+                    <li>Brand Guidelines</li>
                   </ul>
                 </div>
               </div>
               <div class="about-service">
-                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-strategy">
-                  Strategy <span class="about-service__plus" aria-hidden="true">+</span>
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-campaign">
+                  Campaign <span class="about-service__plus" aria-hidden="true">+</span>
                 </button>
-                <div class="about-service__panel" id="service-strategy">
+                <div class="about-service__panel" id="service-campaign">
                   <ul>
-                    <li>Brand creation from zero</li>
-                    <li>Brand evolution &amp; refinement</li>
-                    <li>Defining brand focus and relevance</li>
-                    <li>Go-to-market and launch strategy</li>
-                    <li>Ongoing brand optimization</li>
-                    <li>Design system growth and modularity</li>
-                    <li>Narrative-led brand communication</li>
+                    <li>Campaign Strategy</li>
+                    <li>Creative Direction</li>
+                    <li>Art Direction</li>
+                    <li>Campaign Development</li>
+                    <li>Launch Campaigns</li>
+                    <li>Content Systems</li>
                   </ul>
                 </div>
               </div>
               <div class="about-service">
-                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-visual-identity">
-                  Visual Identity <span class="about-service__plus" aria-hidden="true">+</span>
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-product">
+                  Product <span class="about-service__plus" aria-hidden="true">+</span>
                 </button>
-                <div class="about-service__panel" id="service-visual-identity">
+                <div class="about-service__panel" id="service-product">
                   <ul>
-                    <li>Brand creation from zero</li>
-                    <li>Brand evolution &amp; refinement</li>
-                    <li>Defining brand focus and relevance</li>
-                    <li>Go-to-market and launch strategy</li>
-                    <li>Ongoing brand optimization</li>
-                    <li>Design system growth and modularity</li>
-                    <li>Narrative-led brand communication</li>
+                    <li>UX Design</li>
+                    <li>UI Design</li>
+                    <li>Design Systems</li>
+                    <li>E-Commerce</li>
                   </ul>
                 </div>
               </div>
               <div class="about-service">
-                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-graphic-design">
-                  Graphic Design <span class="about-service__plus" aria-hidden="true">+</span>
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-motion">
+                  Motion <span class="about-service__plus" aria-hidden="true">+</span>
                 </button>
-                <div class="about-service__panel" id="service-graphic-design">
+                <div class="about-service__panel" id="service-motion">
                   <ul>
-                    <li>Brand creation from zero</li>
-                    <li>Brand evolution &amp; refinement</li>
-                    <li>Defining brand focus and relevance</li>
-                    <li>Go-to-market and launch strategy</li>
-                    <li>Ongoing brand optimization</li>
-                    <li>Design system growth and modularity</li>
-                    <li>Narrative-led brand communication</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="about-service">
-                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-motion-design">
-                  Motion Design <span class="about-service__plus" aria-hidden="true">+</span>
-                </button>
-                <div class="about-service__panel" id="service-motion-design">
-                  <ul>
-                    <li>Brand creation from zero</li>
-                    <li>Brand evolution &amp; refinement</li>
-                    <li>Defining brand focus and relevance</li>
-                    <li>Go-to-market and launch strategy</li>
-                    <li>Ongoing brand optimization</li>
-                    <li>Design system growth and modularity</li>
-                    <li>Narrative-led brand communication</li>
+                    <li>2D &amp; 3D Motion</li>
+                    <li>Brand Asset Motion</li>
+                    <li>Frame-by-Frame Animation</li>
+                    <li>3D Animation</li>
+                    <li>Motion Identity</li>
+                    <li>Social Motion Graphics</li>
                   </ul>
                 </div>
               </div>
@@ -2572,7 +2612,14 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      requestAnimationFrame(() => document.body.classList.add('is-page-loaded'));
+      requestAnimationFrame(() => {
+        document.body.classList.add('is-page-loaded');
+        document.querySelectorAll('.hero-text-drop').forEach((node, index) => {
+          window.setTimeout(() => {
+            node.classList.add('is-visible');
+          }, 120 + index * 160);
+        });
+      });
     });
   </script>
   <script>
@@ -2865,6 +2912,66 @@
           });
           button.setAttribute('aria-expanded', shouldExpand ? 'true' : 'false');
           button.closest('.about-service')?.classList.toggle('is-open', shouldExpand);
+        });
+      });
+    })();
+  </script>
+  <script>
+    (() => {
+      const emailLinks = Array.from(document.querySelectorAll('a[href^="mailto:"]'));
+      if (!emailLinks.length) return;
+
+      const copiedTag = document.createElement('span');
+      copiedTag.className = 'copied-cursor-tag';
+      copiedTag.setAttribute('aria-hidden', 'true');
+      copiedTag.textContent = 'Copied!';
+      document.body.appendChild(copiedTag);
+
+      let hideTimer;
+
+      const positionCopiedTag = (event) => {
+        copiedTag.style.setProperty('--copy-cursor-x', `${event.clientX}px`);
+        copiedTag.style.setProperty('--copy-cursor-y', `${event.clientY}px`);
+      };
+
+      const fallbackCopy = (value) => {
+        const textArea = document.createElement('textarea');
+        textArea.value = value;
+        textArea.setAttribute('readonly', '');
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        textArea.remove();
+      };
+
+      const copyEmail = async (value) => {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(value);
+          return;
+        }
+        fallbackCopy(value);
+      };
+
+      emailLinks.forEach((emailLink) => {
+        emailLink.addEventListener('pointermove', positionCopiedTag);
+        emailLink.addEventListener('click', async (event) => {
+          event.preventDefault();
+          positionCopiedTag(event);
+
+          const email = emailLink.textContent.trim();
+          try {
+            await copyEmail(email);
+          } catch (error) {
+            fallbackCopy(email);
+          }
+
+          copiedTag.classList.add('is-visible');
+          window.clearTimeout(hideTimer);
+          hideTimer = window.setTimeout(() => {
+            copiedTag.classList.remove('is-visible');
+          }, 1200);
         });
       });
     })();

@@ -332,7 +332,7 @@ html {
       color: #fff;
       font-family: "Mona Sans", sans-serif;
       font-size: calc(15px / 1.15);
-      letter-spacing: 0.6px;
+      letter-spacing: 0;
       line-height: 1;
       text-transform: uppercase;
       transition: background-color 180ms ease, color 180ms ease;
@@ -460,7 +460,7 @@ html {
       top: 20px;
       left: 20px;
       font-size: 19px;
-      letter-spacing: 0.2px;
+      letter-spacing: 0;
       line-height: 1;
       color: var(--color-fg);
     }
@@ -499,7 +499,7 @@ html {
       opacity: 1;
       transition: opacity 180ms ease;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0;
     }
 
     .hero__nav-talk {
@@ -891,15 +891,15 @@ html {
     }
 
     .latest-works-label {
-      width: 317px;
-      height: 34px;
+      width: 397px;
+      height: auto;
       flex-shrink: 0;
       color: var(--color-fg);
       font-family: "Mona Sans", sans-serif;
-      font-size: 43px;
+      font-size: 54px;
       font-style: normal;
       font-weight: 500;
-      line-height: 42px;
+      line-height: 52px;
     }
 
     .pl-1 {
@@ -1070,6 +1070,66 @@ html {
       }
     }
 
+    @media (min-width: 721px) and (max-width: 900px) and (orientation: portrait) {
+      .hero-description {
+        width: calc(100vw - 40px);
+        height: auto;
+        margin: clamp(96px, 12vh, 132px) 20px 0;
+        font-size: clamp(42px, 6.8vw, 54px);
+        line-height: 1.04;
+      }
+
+      .hero__video,
+      .hero__video.is-stage-2 {
+        width: min(calc(100vw - 40px), calc((100svh - 180px) * 1432 / 731));
+        max-width: calc(100vw - 40px);
+        height: auto;
+        max-height: min(calc(100svh - 180px), 520px);
+      }
+
+      .hero__video.is-stage-1 {
+        width: calc(100vw - 40px);
+        max-width: calc(100vw - 40px);
+        height: calc(100svh - 40px);
+        max-height: calc(100svh - 40px);
+      }
+
+      .latest-works-row,
+      .latest-works-duo,
+      .pl-4-block {
+        width: calc(100vw - 40px);
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .latest-works-label {
+        font-size: clamp(42px, 6.8vw, 54px);
+        line-height: 1.04;
+      }
+
+      .pl-1 {
+        width: 100%;
+      }
+
+      .pl-4-caption-wrapper {
+        width: calc(100vw - 40px);
+        flex-direction: column;
+        gap: 24px;
+        padding: 0;
+      }
+
+      .pl-4-caption {
+        font-size: clamp(40px, 6vw, 48px);
+        line-height: 1.08;
+      }
+
+      .pl-4-services {
+        width: min(560px, 100%);
+        font-size: 15px;
+        line-height: 1.35;
+      }
+    }
+
     @media (min-width: 901px) and (max-width: 1440px) {
       .hero-description {
         width: min(1120px, calc(100vw - 40px));
@@ -1092,8 +1152,8 @@ html {
       }
 
       .latest-works-label {
-        font-size: clamp(34px, 3vw, 43px);
-        line-height: 1;
+        font-size: clamp(46px, 3.65vw, 54px);
+        line-height: 1.04;
       }
 
       .latest-works-duo {
@@ -1188,7 +1248,7 @@ html {
       background: rgba(255, 255, 255, 0.08);
       color: var(--color-white);
       font-size: calc(16px / 1.15);
-      letter-spacing: 0.04em;
+      letter-spacing: 0;
       transition: transform 160ms ease, background 160ms ease;
     }
 
@@ -1638,7 +1698,7 @@ body[data-theme="light"] .studio-textbox-note {
       font-family: "Mona Sans", sans-serif;
       font-size: clamp(20px, 2.4vw, 28px);
       font-weight: 600;
-      letter-spacing: 0.04em;
+      letter-spacing: 0;
       text-transform: uppercase;
       text-align: center;
       text-align: left;
@@ -1747,7 +1807,7 @@ body[data-theme="light"] .studio-textbox-note {
       text-align: center;
       font-family: "Mona Sans", sans-serif;
       font-size: calc(15px / 1.15);
-      letter-spacing: 0.6px;
+      letter-spacing: 0;
       text-decoration: none;
       transition: background-color 180ms ease, color 180ms ease;
     }
@@ -2285,7 +2345,7 @@ body[data-theme="light"] .studio-textbox-note {
       font-size: calc(15px / 1.15);
       text-transform: uppercase;
       text-align: center;
-      letter-spacing: 0.8px;
+      letter-spacing: 0;
       margin-top: 40px;
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
@@ -2318,6 +2378,42 @@ body[data-theme="light"] .studio-textbox-note {
         width: min(1125px, calc(100vw - 40px));
         height: clamp(470px, 39.6vw, 570px);
         margin: clamp(80px, 7vw, 100px) auto clamp(140px, 13vw, 200px);
+      }
+    }
+
+    @media (min-width: 761px) and (max-width: 900px) and (orientation: portrait) {
+      .post-placeholder-panel {
+        width: calc(100vw - 40px);
+        height: auto;
+        min-height: 0;
+        margin: clamp(72px, 10vw, 96px) auto clamp(120px, 16vw, 160px);
+        padding: 20px;
+        padding-bottom: 28px;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .post-placeholder-panel__image {
+        width: 100%;
+        height: auto;
+        margin: 0;
+      }
+
+      .post-placeholder-panel__image video {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .post-placeholder-panel__copy {
+        width: 100%;
+        max-width: 420px;
+      }
+
+      .post-placeholder-panel__button {
+        margin-top: 24px;
       }
     }
 
@@ -2442,7 +2538,7 @@ body[data-theme="light"] .studio-textbox-note {
       font-family: "Mona Sans", sans-serif;
       font-size: clamp(20px, 4vw, 26px);
       font-weight: 500;
-      letter-spacing: 0.04em;
+      letter-spacing: 0;
       text-decoration: none;
       text-transform: uppercase;
       transition: color 180ms ease;
@@ -3103,7 +3199,7 @@ body[data-theme="light"] .studio-textbox-note {
         font-size: 33px;
         font-weight: 460;
         line-height: 1.52;
-        letter-spacing: 0.04em;
+        letter-spacing: 0;
         opacity: 1;
         transform: none;
         visibility: hidden;
@@ -3444,7 +3540,7 @@ body[data-theme="light"] .studio-textbox-note {
   </header>
 
   <div class="hero-description fade-in-bottom" style="animation-duration: 1800ms;">
-    Every detail begins with intention. We design to reveal meaning — shaping experiences that move people, define culture, and reflect the world we want to build.
+    Intention is our aesthetic. We create work that reveals meaning — designing for brands, institutions, and individuals who see thoughtful design as a way to shape culture.
   </div>
 
   <div class="latest-works-row">
