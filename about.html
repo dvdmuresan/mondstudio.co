@@ -686,10 +686,12 @@
       width: 100%;
       min-height: 100vh;
       padding: 20px;
-      background: rgba(20, 20, 20, 0.95);
+      background: rgba(20, 20, 20, 0.34);
       color: #f7f7f7;
       opacity: 0;
       pointer-events: none;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       transition: opacity 180ms ease;
     }
 
@@ -898,7 +900,7 @@
     }
 
     body[data-theme="light"] .about-person-panel {
-      background: rgba(20, 20, 20, 0.95);
+      background: rgba(247, 247, 247, 0.34);
     }
 
     body[data-theme="light"] .about-person-panel__card {
