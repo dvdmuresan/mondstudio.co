@@ -2083,7 +2083,7 @@
       }
 
       .hero__top.is-open .hero__brand {
-        transform: translateX(10px);
+        transform: translateX(0);
       }
 
       body.has-scrolled .hero__top:not(.is-open) .hero__brand {
@@ -2152,7 +2152,7 @@
         min-height: 100dvh;
         max-height: none;
         margin: 0;
-        padding: 130px 28px 28px 18px;
+        padding: 130px 28px 28px 8px;
         box-sizing: border-box;
         overflow: hidden;
         text-align: left;
@@ -2167,6 +2167,7 @@
         transition: opacity 320ms ease, visibility 0s linear, background-color 0s linear;
         transition-delay: 0s, 320ms, 0s;
         will-change: opacity;
+        animation: none !important;
       }
 
       .hero__top.is-open > .hero__nav,
@@ -2192,7 +2193,7 @@
         opacity: 0;
         transform: translate3d(0, 0, 0);
         transition: opacity 320ms ease, visibility 0s linear, background-color 0s linear;
-        transition-delay: 0s, 930ms, 0s;
+        transition-delay: 0s, 320ms, 0s;
       }
 
       body[data-theme="light"] .hero__nav {
@@ -2234,7 +2235,9 @@
         white-space: nowrap;
         opacity: 0;
         transform: translateY(18px);
-        transition: opacity 930ms cubic-bezier(.16, 1, .3, 1), transform 930ms cubic-bezier(.16, 1, .3, 1);
+        transition:
+          opacity 720ms cubic-bezier(.16, 1, .3, 1),
+          transform 720ms cubic-bezier(.16, 1, .3, 1);
         will-change: opacity, transform;
       }
 
@@ -2244,25 +2247,29 @@
       }
 
       .hero__top.is-open .hero__nav a:nth-child(1) .hero__nav-word {
-        transition-delay: 520ms;
+        transition-delay: 120ms;
       }
 
       .hero__top.is-open .hero__nav a:nth-child(2) .hero__nav-word {
-        transition-delay: 650ms;
+        transition-delay: 220ms;
       }
 
       .hero__top.is-open .hero__nav a:nth-child(3) .hero__nav-word {
-        transition-delay: 780ms;
+        transition-delay: 320ms;
       }
 
-      .hero__top.is-open .hero__nav a:nth-child(4) .hero__nav-word {
-        transition-delay: 910ms;
+      .hero__top.is-open .hero__nav a:nth-child(4) .hero__nav-word:nth-child(1) {
+        transition-delay: 420ms;
+      }
+
+      .hero__top.is-open .hero__nav a:nth-child(4) .hero__nav-word:nth-child(2) {
+        transition-delay: 500ms;
       }
 
       .hero__nav a.hero__nav-talk {
         display: inline-block;
         position: fixed;
-        left: 28px;
+        left: 18px;
         bottom: 20px;
         width: fit-content;
         max-width: calc(100vw - 56px);
@@ -2412,7 +2419,7 @@
           header.classList.remove('is-open');
           closingTimer = window.setTimeout(() => {
             header.classList.remove('is-closing');
-          }, 1410);
+          }, 340);
         }
       };
 
