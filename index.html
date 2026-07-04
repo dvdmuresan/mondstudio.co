@@ -360,6 +360,39 @@ html {
       display: inline-flex;
     }
 
+    .project-page-transition {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483647;
+      background: transparent;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+      transition: opacity 180ms ease, visibility 0s linear 180ms;
+    }
+
+    .project-page-transition.is-active {
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0s;
+    }
+
+    .project-page-transition__panel {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #f7f7f7;
+      transform: translate3d(0, 100%, 0);
+      will-change: transform;
+      transition: transform 860ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .project-page-transition.is-active .project-page-transition__panel {
+      transform: translate3d(0, 0, 0);
+    }
+
     .hero__theme-toggle {
       position: absolute;
       left: 20px;
@@ -2946,8 +2979,8 @@ body[data-theme="light"] .studio-textbox-note {
 
       .hero__video {
         display: block;
-        width: min(calc(100vw - 40px), calc((100svh - 130px) * 373 / 471));
-        height: min(calc((100vw - 40px) * 471 / 373), calc(100svh - 130px));
+        width: min(calc(100vw - 20px), calc((100svh - 130px) * 373 / 471));
+        height: min(calc((100vw - 20px) * 471 / 373), calc(100svh - 130px));
         max-height: calc(100svh - 130px);
         left: 50%;
         top: 50%;
@@ -3381,14 +3414,14 @@ body[data-theme="light"] .studio-textbox-note {
       .site-footer .footer-contact-block,
       .footer-contact-block {
         left: 16px;
-        bottom: 16px;
+        bottom: 68px;
         width: calc(100% - 32px);
         max-width: calc(100% - 32px);
       }
 
       .footer-brand-minimal,
       .site-footer .footer-brand-minimal {
-        top: 16px;
+        top: 26px;
         left: 16px;
         margin-bottom: 0;
       }
@@ -3401,12 +3434,13 @@ body[data-theme="light"] .studio-textbox-note {
 
       .footer-social-minimal,
       .site-footer .footer-social-minimal {
-        top: 16px;
-        right: 16px;
+        top: 82px;
+        left: 16px;
+        right: auto;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: flex-start;
         gap: clamp(12px, 4vw, 18px);
-        text-align: right;
+        text-align: left;
       }
 
       .site-footer .footer-social-minimal a {
@@ -3423,8 +3457,15 @@ body[data-theme="light"] .studio-textbox-note {
 
       .site-footer .footer-copy-minimal,
       .footer-copy-minimal {
-        display: none;
+        display: block;
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 20px;
         margin-top: 0;
+        width: calc(100% - 32px);
+        max-width: calc(100% - 32px);
+        text-align: left;
         font-size: 11.2px;
         line-height: 17.6px;
       }
@@ -3548,12 +3589,12 @@ body[data-theme="light"] .studio-textbox-note {
       Latest works
     </div>
     <div class="latest-works-media">
-    <a class="pl-1 reveal" href="intermezzo.html">
+    <a class="pl-1 reveal" href="intermezzo.html" data-project-transition="intermezzo" data-transition-image="optimized/image1.jpg">
         <div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Branding</span></div>
       <img src="optimized/image1.jpg" alt="Branding project thumbnail" width="1400" height="712" loading="lazy" />
     </a>
       <div class="pl-1-meta">
-        <a class="pl-1-title" href="intermezzo.html">Intermezzo Fesztival</a>
+        <a class="pl-1-title" href="intermezzo.html" data-project-transition="intermezzo" data-transition-image="optimized/image1.jpg">Intermezzo Fesztival</a>
         <div class="pl-1-subtitle">
           Visual identity made for a one day event and Budapests iconic music venues.
         </div>
@@ -4177,6 +4218,65 @@ body[data-theme="light"] .studio-textbox-note {
 
       revealEls.forEach((el) => observer.observe(el));
     })();
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const transitionLinks = Array.from(document.querySelectorAll('[data-project-transition="intermezzo"]'));
+      if (!transitionLinks.length) return;
+
+      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      transitionLinks.forEach((transitionLink) => {
+        transitionLink.addEventListener('click', (event) => {
+          if (
+            prefersReducedMotion ||
+            event.defaultPrevented ||
+            event.metaKey ||
+            event.ctrlKey ||
+            event.shiftKey ||
+            event.altKey ||
+            event.button !== 0
+          ) {
+            return;
+          }
+
+          const sourceImage = transitionLink.querySelector('img');
+          if (!sourceImage && !transitionLink.dataset.transitionImage) return;
+
+          event.preventDefault();
+
+          const imageSrc = transitionLink.dataset.transitionImage || sourceImage.currentSrc || sourceImage.src;
+          const overlay = document.createElement('div');
+          const panel = document.createElement('div');
+
+          overlay.className = 'project-page-transition';
+          panel.className = 'project-page-transition__panel';
+
+          overlay.appendChild(panel);
+          document.body.appendChild(overlay);
+
+          try {
+            sessionStorage.setItem('mond:work-to-intermezzo', JSON.stringify({
+              imageSrc,
+              timestamp: Date.now()
+            }));
+          } catch (error) {
+            // The destination page can still load normally without persisted transition state.
+          }
+
+          overlay.getBoundingClientRect();
+
+          requestAnimationFrame(() => {
+            overlay.classList.add('is-active');
+          });
+
+          window.setTimeout(() => {
+            window.location.href = transitionLink.href;
+          }, 860);
+        });
+      });
+    });
   </script>
 
   <script>

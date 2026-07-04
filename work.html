@@ -258,6 +258,9 @@
       color: var(--color-fg);
       font-weight: 450;
       font-family: "Mona Sans", sans-serif;
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
     }
 
     .hero__nav a {
@@ -276,6 +279,12 @@
 
     .hero__nav-talk {
       display: none;
+    }
+
+    @media (min-width: 601px) {
+      .hero__nav a.hero__nav-talk {
+        display: none !important;
+      }
     }
 
     .hero__menu-toggle {
@@ -306,6 +315,22 @@
     .hero__nav:hover a:focus-visible,
     .hero__nav:focus-within a:focus-visible {
       opacity: 1;
+    }
+
+    body.is-page-loaded .hero__nav {
+      animation: heroNavFade 1800ms cubic-bezier(.2, .9, .2, 1) forwards;
+      pointer-events: auto;
+    }
+
+    @keyframes heroNavFade {
+      0% {
+        opacity: 0;
+        transform: translateY(-16px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     main {
@@ -477,33 +502,29 @@
       pointer-events: none;
       opacity: 0;
       visibility: hidden;
-      transition: background-color 360ms ease;
+      overflow: hidden;
+      transition: opacity 180ms ease, visibility 0s linear 180ms;
     }
 
     .project-page-transition.is-active {
       opacity: 1;
       visibility: visible;
+      transition-delay: 0s;
     }
 
-    .project-page-transition__image {
-      position: fixed;
-      object-fit: cover;
-      will-change: top, left, width, height, border-radius, opacity;
-      transition:
-        top 920ms cubic-bezier(0.76, 0, 0.24, 1),
-        left 920ms cubic-bezier(0.76, 0, 0.24, 1),
-        width 920ms cubic-bezier(0.76, 0, 0.24, 1),
-        height 920ms cubic-bezier(0.76, 0, 0.24, 1),
-        border-radius 920ms cubic-bezier(0.76, 0, 0.24, 1),
-        opacity 360ms ease;
-    }
-
-    .project-page-transition.is-fading .project-page-transition__image {
-      opacity: 0;
-    }
-
-    .project-page-transition.is-fading {
+    .project-page-transition__panel {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       background: #f7f7f7;
+      transform: translate3d(0, 100%, 0);
+      will-change: transform;
+      transition: transform 860ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .project-page-transition.is-active .project-page-transition__panel {
+      transform: translate3d(0, 0, 0);
     }
 
     .projects-gallery {
@@ -2069,15 +2090,19 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         margin-left: 10px;
         margin-right: 10px;
         margin-bottom: 10px;
-        padding: 16px;
+        padding: 26px 16px 16px;
         box-sizing: border-box;
-        min-height: auto;
+        min-height: clamp(300px, 76vw, 390px);
       }
 
       .site-footer .footer-contact-block,
       .footer-contact-block {
-        width: 100%;
-        max-width: 100%;
+        position: absolute;
+        left: 16px;
+        right: auto;
+        bottom: 68px;
+        width: calc(100% - 32px);
+        max-width: calc(100% - 32px);
       }
 
       .footer-brand-minimal,
@@ -2099,14 +2124,22 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
       .site-footer .footer-contact-block,
       .footer-contact-block {
-        margin-top: calc((clamp(64px, 12vw, 72px) + 30px) * 0.8);
+        margin-top: 0;
         font-size: 13.44px;
         line-height: 21.12px;
       }
 
       .site-footer .footer-copy-minimal,
       .footer-copy-minimal {
-        margin-top: calc((clamp(48px, 12vw, 64px) + 20px) * 0.8);
+        position: absolute;
+        display: block;
+        left: 16px;
+        right: 16px;
+        bottom: 20px;
+        margin-top: 0;
+        width: calc(100% - 32px);
+        max-width: calc(100% - 32px);
+        text-align: left;
         font-size: 11.2px;
         line-height: 17.6px;
       }
@@ -2431,27 +2464,18 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         }
 
         const sourceImage = transitionLink.querySelector('img');
-        if (!sourceImage) return;
+        if (!sourceImage && !transitionLink.dataset.transitionImage) return;
 
         event.preventDefault();
 
-        const rect = sourceImage.getBoundingClientRect();
         const imageSrc = transitionLink.dataset.transitionImage || sourceImage.currentSrc || sourceImage.src;
         const overlay = document.createElement('div');
-        const image = document.createElement('img');
+        const panel = document.createElement('div');
 
-        overlay.className = 'project-page-transition is-active';
-        image.className = 'project-page-transition__image';
-        image.src = imageSrc;
-        image.alt = '';
-        image.setAttribute('aria-hidden', 'true');
-        image.style.top = `${rect.top}px`;
-        image.style.left = `${rect.left}px`;
-        image.style.width = `${rect.width}px`;
-        image.style.height = `${rect.height}px`;
-        image.style.borderRadius = window.getComputedStyle(sourceImage).borderRadius || '0px';
+        overlay.className = 'project-page-transition';
+        panel.className = 'project-page-transition__panel';
 
-        overlay.appendChild(image);
+        overlay.appendChild(panel);
         document.body.appendChild(overlay);
 
         try {
@@ -2463,24 +2487,15 @@ body[data-theme="light"] .footer-social-minimal a:focus {
           // The visual transition can continue without persisted state.
         }
 
-        sourceImage.style.opacity = '0';
-        image.getBoundingClientRect();
+        overlay.getBoundingClientRect();
 
         requestAnimationFrame(() => {
-          image.style.top = '0px';
-          image.style.left = '0px';
-          image.style.width = '100vw';
-          image.style.height = '100vh';
-          image.style.borderRadius = '0px';
+          overlay.classList.add('is-active');
         });
 
         window.setTimeout(() => {
-          overlay.classList.add('is-fading');
-        }, 620);
-
-        window.setTimeout(() => {
           window.location.href = transitionLink.href;
-        }, 1040);
+        }, 860);
       });
       });
     });

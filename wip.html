@@ -264,13 +264,16 @@
       event.preventDefault();
 
       if (field.value.trim() === PASSWORD) {
+        let canStoreAccess = true;
+
         try {
           sessionStorage.setItem(STORAGE_KEY, "true");
         } catch (error) {
+          canStoreAccess = false;
           // Continue into the site even when session storage is unavailable.
         }
 
-        window.location.href = "index.html";
+        window.location.href = canStoreAccess ? "index.html" : "index.html?access=1";
         return;
       }
 
