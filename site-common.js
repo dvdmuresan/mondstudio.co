@@ -39,7 +39,7 @@
     }
 
     if (!hasAccess) {
-      window.location.href = "wip.html";
+      window.location.href = "/wip.html";
       return;
     }
   }
