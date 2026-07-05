@@ -254,7 +254,7 @@
 
     try {
       if (sessionStorage.getItem(STORAGE_KEY) === "true") {
-        window.location.href = "/home/";
+        window.location.href = "index.html";
       }
     } catch (error) {
       // If storage is unavailable, visitors can still submit the form.
@@ -264,16 +264,13 @@
       event.preventDefault();
 
       if (field.value.trim() === PASSWORD) {
-        let canStoreAccess = true;
-
         try {
           sessionStorage.setItem(STORAGE_KEY, "true");
         } catch (error) {
-          canStoreAccess = false;
           // Continue into the site even when session storage is unavailable.
         }
 
-        window.location.href = canStoreAccess ? "index.html" : "index.html?access=1";
+        window.location.href = "index.html";
         return;
       }
 

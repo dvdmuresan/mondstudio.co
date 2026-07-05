@@ -4,42 +4,15 @@
 
   if (currentPage !== "wip.html") {
     let hasAccess = false;
-    let storageUnavailable = false;
-    let accessFallback = false;
 
     try {
       hasAccess = window.sessionStorage.getItem(accessStorageKey) === "true";
     } catch (error) {
-      storageUnavailable = true;
-    }
-
-    try {
-      const params = new URLSearchParams(window.location.search);
-      accessFallback = params.get("access") === "1";
-
-      if (accessFallback) {
-        hasAccess = true;
-        params.delete("access");
-
-        const nextSearch = params.toString();
-        const nextUrl = `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`;
-        window.history.replaceState(null, "", nextUrl);
-      }
-    } catch (error) {
-      accessFallback = window.location.search.indexOf("access=1") !== -1;
-      hasAccess = hasAccess || accessFallback;
-    }
-
-    if (hasAccess && accessFallback && !storageUnavailable) {
-      try {
-        window.sessionStorage.setItem(accessStorageKey, "true");
-      } catch (error) {
-        storageUnavailable = true;
-      }
+      hasAccess = false;
     }
 
     if (!hasAccess) {
-      window.location.href = "/wip.html";
+      window.location.href = "wip.html";
       return;
     }
   }
