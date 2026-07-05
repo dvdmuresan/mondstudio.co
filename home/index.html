@@ -2896,6 +2896,12 @@ body[data-theme="light"] .studio-textbox-note {
     }
 
     @media (max-width: 720px) {
+      .hero {
+        height: 100svh;
+        min-height: 100svh;
+        max-height: 100svh;
+      }
+
       body {
         touch-action: pan-y;
       }
@@ -3143,10 +3149,8 @@ body[data-theme="light"] .studio-textbox-note {
         align-items: flex-start;
         gap: 18px;
         width: 100vw;
-        height: 100vh;
-        height: 100dvh;
-        min-height: 100vh;
-        min-height: 100dvh;
+        height: 100svh;
+        min-height: 100svh;
         max-height: none;
         margin: 0;
         padding: 130px 28px 28px 8px;
@@ -3339,8 +3343,8 @@ body[data-theme="light"] .studio-textbox-note {
     @keyframes mobileHeroMorph {
       0% {
         width: 100vw;
-        height: 100vh;
-        max-height: 100vh;
+        height: 100svh;
+        max-height: 100svh;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -3478,8 +3482,8 @@ body[data-theme="light"] .studio-textbox-note {
       @keyframes mobileHeroMorph {
         0% {
           width: 100vw;
-          height: 100vh;
-          max-height: 100vh;
+          height: 100svh;
+          max-height: 100svh;
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%);
