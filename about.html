@@ -1359,7 +1359,16 @@
       }
 
       .about-mobile-info .about-service {
-        width: 100%;
+        width: auto;
+        max-width: 100%;
+      }
+
+      .about-mobile-info .about-service.is-open {
+        width: max-content;
+      }
+
+      .about-mobile-info .about-service.is-open .about-service__button {
+        width: auto;
       }
 
       .about-mobile-info .about-service__panel {
@@ -1955,7 +1964,85 @@
       }
     }
 
+    @media (max-width: 640px) {
+      .footer-section,
+      .site-footer.footer-section,
+      .site-footer {
+        min-height: auto;
+      }
+
+      .site-footer .footer-content,
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+      }
+
+      .site-footer .footer-brand-minimal,
+      .site-footer .footer-social-minimal,
+      .site-footer .footer-contact-block,
+      .site-footer .footer-copy-minimal,
+      .footer-brand-minimal,
+      .footer-social-minimal,
+      .footer-contact-block,
+      .footer-copy-minimal {
+        position: static;
+        inset: auto;
+        width: auto;
+        max-width: 100%;
+        margin: 0;
+      }
+
+      .site-footer .footer-brand-minimal,
+      .footer-brand-minimal {
+        margin-bottom: 50px;
+      }
+
+      .site-footer .footer-social-minimal,
+      .footer-social-minimal {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 50px;
+        text-align: left;
+      }
+
+      .site-footer .footer-contact-block,
+      .footer-contact-block {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+        white-space: normal;
+      }
+
+      .site-footer .footer-copy-minimal,
+      .footer-copy-minimal {
+        display: block;
+        text-align: left;
+      }
+    }
+
     @media (max-width: 720px) {
+      html,
+      body {
+        min-height: 100svh;
+        overflow-x: hidden;
+        overflow-anchor: none;
+        overscroll-behavior-x: none;
+      }
+
+      body {
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .hero__top > .hero__nav,
+      .hero__nav {
+        height: 100svh;
+        min-height: 100svh;
+      }
+
       .page-header {
         position: fixed;
         top: 20px;
@@ -2030,7 +2117,7 @@
       }
 
       .hero__top.is-open .hero__brand {
-        transform: translateX(10px);
+        transform: translateX(0);
       }
 
       body.has-scrolled .hero__top:not(.is-open) .hero__brand {
@@ -2093,20 +2180,20 @@
         min-height: 100dvh;
         max-height: none;
         margin: 0;
-        padding: 130px 28px 28px 18px;
+        padding: 130px 10px 28px 10px;
         box-sizing: border-box;
         overflow: hidden;
         text-align: left;
-        background: rgba(0, 0, 0, 0.48);
+        background: transparent;
         border-radius: 0;
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
+        backdrop-filter: blur(0);
+        -webkit-backdrop-filter: blur(0);
         opacity: 0;
         transform: translate3d(0, 0, 0);
         pointer-events: none;
         visibility: hidden;
-        transition: opacity 320ms ease, visibility 0s linear, background-color 0s linear;
-        transition-delay: 0s, 320ms, 0s;
+        transition: opacity 320ms ease, visibility 0s linear, background-color 320ms ease, backdrop-filter 320ms ease, -webkit-backdrop-filter 320ms ease;
+        transition-delay: 0s, 320ms, 0s, 0s, 0s;
         will-change: opacity;
       }
 
@@ -2116,7 +2203,10 @@
         transform: translate3d(0, 0, 0);
         visibility: visible;
         pointer-events: auto;
-        transition-delay: 0s, 0s, 0s;
+        background: rgba(0, 0, 0, 0.48);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        transition-delay: 0s, 0s, 0s, 0s, 0s;
       }
 
       .hero__top.is-preopening > .hero__nav,
@@ -2132,12 +2222,21 @@
       .hero__top.is-closing .hero__nav {
         opacity: 0;
         transform: translate3d(0, 0, 0);
-        transition: opacity 320ms ease, visibility 0s linear, background-color 0s linear;
-        transition-delay: 0s, 930ms, 0s;
+        background: transparent;
+        backdrop-filter: blur(0);
+        -webkit-backdrop-filter: blur(0);
+        transition: opacity 320ms ease, visibility 0s linear, background-color 320ms ease, backdrop-filter 320ms ease, -webkit-backdrop-filter 320ms ease;
+        transition-delay: 0s, 320ms, 0s, 0s, 0s;
       }
 
-      body[data-theme="light"] .hero__nav {
+      body[data-theme="light"] .hero__top.is-open .hero__nav {
         background: rgba(255, 255, 255, 0.72);
+      }
+
+      .hero__top > .hero__nav,
+      .hero__nav {
+        height: 100svh;
+        min-height: 100svh;
       }
 
       .hero__top.is-open .hero__menu-icon {
@@ -2184,6 +2283,13 @@
         transform: translateY(0);
       }
 
+      .hero__top.is-closing .hero__nav-word {
+        opacity: 0;
+        transform: translateY(0);
+        transition: opacity 160ms ease, transform 160ms ease;
+        transition-delay: 0s !important;
+      }
+
       .hero__top.is-open .hero__nav a:nth-child(1) .hero__nav-word {
         transition-delay: 520ms;
       }
@@ -2203,10 +2309,10 @@
       .hero__nav a.hero__nav-talk {
         display: inline-block;
         position: fixed;
-        left: 28px;
+        left: 10px;
         bottom: 20px;
         width: fit-content;
-        max-width: calc(100vw - 56px);
+        max-width: calc(100vw - 20px);
         line-height: 1.1;
         color: rgba(255, 255, 255, 0.62);
         text-decoration: none;
@@ -2271,7 +2377,7 @@
           header.classList.remove('is-open');
           closingTimer = window.setTimeout(() => {
             header.classList.remove('is-closing');
-          }, 1410);
+          }, 340);
         }
       };
 
@@ -2616,8 +2722,7 @@
       <div class="footer-contact-block">
         Cluj-Napoca, Romania <span id="ro-clock" aria-label="Cluj-Napoca local time"></span><br>
         Budapest, Hungary <span id="hu-clock" aria-label="Budapest local time"></span><br>
-        <a class="footer-email" href="mailto:hello@mondstudio.co?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.co</a><br>
-        +40 766 502 401
+        <a class="footer-email" href="mailto:hello@mondstudio.co?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.co</a>
       </div>
       <div class="footer-copy-minimal">©2026 MOND : STUDIO. All Rights Reserved.</div>
     </div>
@@ -2686,6 +2791,7 @@
       const lines = Array.from(document.querySelectorAll('.about-copy__line'));
       const aboutCopy = document.querySelector('.about-copy');
       const footer = document.getElementById('footer-section');
+      const isCoarsePointer = window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches;
       if (!wordmark || !lines.length) return;
 
       const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
@@ -2932,8 +3038,10 @@
         if (event.key === 'Escape') setPanelVisible(false);
       });
       window.addEventListener('scroll', requestUpdate, { passive: true });
-      window.addEventListener('resize', requestUpdate);
-      window.addEventListener('resize', updateContentScrollCue);
+      if (!isCoarsePointer) {
+        window.addEventListener('resize', requestUpdate);
+        window.addEventListener('resize', updateContentScrollCue);
+      }
     })();
   </script>
   <script>
@@ -2952,66 +3060,6 @@
           });
           button.setAttribute('aria-expanded', shouldExpand ? 'true' : 'false');
           button.closest('.about-service')?.classList.toggle('is-open', shouldExpand);
-        });
-      });
-    })();
-  </script>
-  <script>
-    (() => {
-      const emailLinks = Array.from(document.querySelectorAll('a[href^="mailto:"]'));
-      if (!emailLinks.length) return;
-
-      const copiedTag = document.createElement('span');
-      copiedTag.className = 'copied-cursor-tag';
-      copiedTag.setAttribute('aria-hidden', 'true');
-      copiedTag.textContent = 'Copied!';
-      document.body.appendChild(copiedTag);
-
-      let hideTimer;
-
-      const positionCopiedTag = (event) => {
-        copiedTag.style.setProperty('--copy-cursor-x', `${event.clientX}px`);
-        copiedTag.style.setProperty('--copy-cursor-y', `${event.clientY}px`);
-      };
-
-      const fallbackCopy = (value) => {
-        const textArea = document.createElement('textarea');
-        textArea.value = value;
-        textArea.setAttribute('readonly', '');
-        textArea.style.position = 'fixed';
-        textArea.style.left = '-9999px';
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        textArea.remove();
-      };
-
-      const copyEmail = async (value) => {
-        if (navigator.clipboard?.writeText) {
-          await navigator.clipboard.writeText(value);
-          return;
-        }
-        fallbackCopy(value);
-      };
-
-      emailLinks.forEach((emailLink) => {
-        emailLink.addEventListener('pointermove', positionCopiedTag);
-        emailLink.addEventListener('click', async (event) => {
-          event.preventDefault();
-          positionCopiedTag(event);
-
-          const email = emailLink.textContent.trim();
-          try {
-            await copyEmail(email);
-          } catch (error) {
-            fallbackCopy(email);
-          }
-
-          copiedTag.classList.add('is-visible');
-          window.clearTimeout(hideTimer);
-          hideTimer = window.setTimeout(() => {
-            copiedTag.classList.remove('is-visible');
-          }, 1200);
         });
       });
     })();
