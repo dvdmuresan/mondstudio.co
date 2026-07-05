@@ -13,6 +13,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MOND : STUDIO — Landing</title>
+  <meta name="description" content="MOND : STUDIO is a creative studio working across strategy, visual identity, graphic design, motion design, digital design, and campaigns." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="canonical" href="https://www.mondstudio.co/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MOND : STUDIO" />
+  <meta property="og:description" content="Creative direction, strategy, visual identity, graphic design, motion design, digital design, and campaigns." />
+  <meta property="og:url" content="https://www.mondstudio.co/" />
+  <meta property="og:image" content="https://www.mondstudio.co/optimized/image1.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://use.typekit.net" />
   <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
   <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
@@ -524,6 +533,7 @@ html {
     .project-page-transition__panel {
       position: absolute;
       inset: 0;
+      z-index: 1;
       width: 100%;
       height: 100%;
       background: #f7f7f7;
@@ -537,7 +547,35 @@ html {
     }
 
     .project-page-transition__title {
-      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+      display: block;
+      width: calc(100% - 40px);
+      color: #131313;
+      font-family: "Mona Sans", sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0;
+      text-align: center;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translate3d(-50%, -50%, 0);
+      transition: opacity 180ms ease 120ms;
+      pointer-events: none;
+      will-change: opacity;
+    }
+
+    .project-page-transition.is-active .project-page-transition__title {
+      opacity: 1;
+    }
+
+    .project-page-transition.is-title-exiting .project-page-transition__title {
+      opacity: 0;
+      transition-duration: 200ms;
+      transition-delay: 0ms;
     }
 
     .sr-only {
@@ -2974,27 +3012,6 @@ body[data-theme="light"] .studio-textbox-note {
         color: #d0d0d0;
       }
 
-      .project-page-transition__title {
-        position: absolute;
-        top: 20px;
-        left: 10px;
-        z-index: 2;
-        display: block;
-        color: #131313;
-        font-family: "Mona Sans", sans-serif;
-        font-size: clamp(20.4px, 6.24vw, 34.8px);
-        font-weight: 450;
-        line-height: 0.98;
-        letter-spacing: 0;
-        transform: translate3d(0, 100vh, 0);
-        transition: transform 560ms cubic-bezier(0.76, 0, 0.24, 1);
-        will-change: transform;
-      }
-
-      .project-page-transition.is-active .project-page-transition__title {
-        transform: translate3d(0, 0, 0);
-      }
-
       .pl-4-caption-wrapper {
         margin-top: calc(clamp(80px, 11vw, 160px) + 50px);
       }
@@ -3384,32 +3401,6 @@ body[data-theme="light"] .studio-textbox-note {
       }
     }
 
-    @keyframes mobileHeroMorph {
-      0% {
-        width: 100vw;
-        height: 100svh;
-        max-height: 100svh;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 0;
-        filter: blur(0);
-      }
-      35% {
-        border-radius: 4px;
-        filter: blur(0.8px);
-      }
-      100% {
-        width: calc(100vw - 40px);
-        height: auto;
-        aspect-ratio: 4 / 5;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, calc(-50% + 20px));
-        border-radius: 8px;
-        filter: blur(0);
-      }
-    }
   </style>
   <style>
     @media (max-width: 768px) {
@@ -3574,6 +3565,21 @@ body[data-theme="light"] .studio-textbox-note {
       }
     }
 
+    @media (min-width: 641px) {
+      .site-footer .footer-content,
+      .footer-content {
+        display: block;
+      }
+
+      .site-footer .footer-social-minimal,
+      .footer-social-minimal {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        margin: 0;
+      }
+    }
+
     @media (max-width: 720px) {
       html,
       body {
@@ -3587,13 +3593,36 @@ body[data-theme="light"] .studio-textbox-note {
         -webkit-overflow-scrolling: touch;
       }
 
-      .hero,
-      .hero__video,
-      .hero__video.is-stage-1,
-      .hero__video.is-stage-2 {
+      .hero {
         height: 100svh;
         min-height: 100svh;
         max-height: 100svh;
+      }
+
+      .hero__video,
+      .hero__video.is-stage-1,
+      .hero__video.is-stage-2 {
+        --mobile-video-area-top: 101px;
+        --mobile-video-area-bottom: 20px;
+        display: block;
+        width: min(
+          calc(100vw - 20px),
+          calc((100svh - var(--mobile-video-area-top) - var(--mobile-video-area-bottom)) * 4 / 5)
+        );
+        height: min(
+          calc((100vw - 20px) * 5 / 4),
+          calc(100svh - var(--mobile-video-area-top) - var(--mobile-video-area-bottom))
+        );
+        min-height: 0;
+        max-height: calc(100svh - var(--mobile-video-area-top) - var(--mobile-video-area-bottom));
+        aspect-ratio: 4 / 5;
+        left: 50%;
+        top: calc(var(--mobile-video-area-top) + ((100svh - var(--mobile-video-area-top) - var(--mobile-video-area-bottom)) / 2) - 40px);
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        object-position: center;
+        border-radius: 8px;
+        overflow-anchor: none;
       }
 
       .hero__top > .hero__nav,
@@ -3618,12 +3647,19 @@ body[data-theme="light"] .studio-textbox-note {
           filter: blur(0.8px);
         }
         100% {
-          width: calc(100vw - 20px);
-          height: auto;
+          width: min(
+            calc(100vw - 20px),
+            calc((100svh - 101px - 20px) * 4 / 5)
+          );
+          height: min(
+            calc((100vw - 20px) * 5 / 4),
+            calc(100svh - 101px - 20px)
+          );
+          max-height: calc(100svh - 101px - 20px);
           aspect-ratio: 4 / 5;
           left: 50%;
-          top: 50%;
-          transform: translate(-50%, calc(-50% + 20px));
+          top: calc(101px + ((100svh - 101px - 20px) / 2) - 40px);
+          transform: translate(-50%, -50%);
           border-radius: 8px;
           filter: blur(0);
         }
@@ -3836,7 +3872,7 @@ body[data-theme="light"] .studio-textbox-note {
           overlay.className = 'project-page-transition';
           panel.className = 'project-page-transition__panel';
           title.className = 'project-page-transition__title';
-          title.innerHTML = 'Intermezzo<br>Festival';
+          title.textContent = 'Intermezzo Fesztival';
 
           overlay.appendChild(panel);
           overlay.appendChild(title);
@@ -3855,6 +3891,10 @@ body[data-theme="light"] .studio-textbox-note {
           requestAnimationFrame(() => {
             overlay.classList.add('is-active');
           });
+
+          window.setTimeout(() => {
+            overlay.classList.add('is-title-exiting');
+          }, 360);
 
           window.setTimeout(() => {
             window.location.href = transitionLink.href;

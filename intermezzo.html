@@ -13,6 +13,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MOND : STUDIO — Intermezzo Festival</title>
+  <meta name="description" content="Intermezzo Festival visual identity by MOND : STUDIO for Magyar Zene Haza." />
+  <meta name="theme-color" content="#f7f7f7" />
+  <link rel="canonical" href="https://www.mondstudio.co/intermezzo.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Intermezzo Festival — MOND : STUDIO" />
+  <meta property="og:description" content="A visual identity for Intermezzo Festival, a one-day music event hosted at Magyar Zene Haza in Budapest." />
+  <meta property="og:url" content="https://www.mondstudio.co/intermezzo.html" />
+  <meta property="og:image" content="https://www.mondstudio.co/optimized/intermezzo-poster.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://use.typekit.net" />
   <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
   <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
@@ -767,7 +776,7 @@
 
     .case-media-reveal.is-visible {
       animation: case-gallery-item-reveal 680ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
-      animation-delay: var(--reveal-delay, 0ms);
+      animation-delay: 0ms;
     }
 
     @keyframes case-gallery-item-reveal {
@@ -2061,6 +2070,21 @@
       }
     }
 
+    @media (min-width: 641px) {
+      .site-footer .footer-content,
+      .footer-content {
+        display: block;
+      }
+
+      .site-footer .footer-social-minimal,
+      .footer-social-minimal {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        margin: 0;
+      }
+    }
+
     @media (max-width: 720px) {
       html,
       body {
@@ -2645,10 +2669,10 @@
       </div>
       <div class="case-gallery">
         <figure class="case-gallery__item case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
-          <img src="optimized/image1.jpg" alt="Intermezzo poster artwork" width="1400" height="712" loading="lazy" />
+          <img src="optimized/image1.jpg" alt="Intermezzo poster artwork" width="1400" height="712" loading="eager" />
         </figure>
         <figure class="case-gallery__item case-gallery__image case-media-reveal" style="--reveal-delay: 360ms;">
-          <img src="optimized/intermezzo-poster.jpg" alt="Festival wayfinding signage design" width="864" height="1080" loading="lazy" />
+          <img src="optimized/intermezzo-poster.jpg" alt="Festival wayfinding signage design" width="864" height="1080" loading="eager" />
         </figure>
         <figure class="case-gallery__wide case-media-reveal" style="--reveal-delay: 500ms;">
           <video
@@ -2662,10 +2686,10 @@
           ></video>
         </figure>
         <figure class="case-gallery__item case-gallery__image case-media-reveal case-gallery__desktop-duplicate" style="--reveal-delay: 620ms;">
-          <img src="optimized/image1.jpg" alt="Intermezzo poster artwork detail" width="1400" height="712" loading="lazy" />
+          <img src="optimized/image1.jpg" alt="Intermezzo poster artwork detail" width="1400" height="712" loading="eager" />
         </figure>
         <figure class="case-gallery__wide case-media-reveal case-gallery__desktop-duplicate" style="--reveal-delay: 740ms;">
-          <img src="optimized/intermezzo-poster.jpg" alt="Intermezzo Festival poster detail" width="864" height="1080" loading="lazy" />
+          <img src="optimized/intermezzo-poster.jpg" alt="Intermezzo Festival poster detail" width="864" height="1080" loading="eager" />
         </figure>
         <figure class="case-gallery__item case-media-reveal case-gallery__desktop-duplicate" style="--reveal-delay: 860ms;">
           <video
@@ -2740,11 +2764,16 @@
     /* Case reveal animations */
     (function () {
       const root = document.documentElement;
-      const revealEls = document.querySelectorAll('.case-reveal, .case-media-reveal');
-      if (!revealEls.length) return;
+      const revealEls = document.querySelectorAll('.case-reveal');
+      const mediaEls = document.querySelectorAll('.case-media-reveal');
+      if (!revealEls.length && !mediaEls.length) return;
 
       const activate = (el) => el.classList.add('is-visible');
       const startReveal = () => {
+        mediaEls.forEach(activate);
+
+        if (!revealEls.length) return;
+
         if (!('IntersectionObserver' in window)) {
           revealEls.forEach(activate);
           return;

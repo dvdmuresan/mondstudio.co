@@ -13,6 +13,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MOND : STUDIO — Work</title>
+  <meta name="description" content="Selected work from MOND : STUDIO across visual identity, strategy, campaigns, motion, and digital design." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="canonical" href="https://www.mondstudio.co/work.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MOND : STUDIO — Work" />
+  <meta property="og:description" content="Selected identity, strategy, campaign, motion, and digital design projects by MOND : STUDIO." />
+  <meta property="og:url" content="https://www.mondstudio.co/work.html" />
+  <meta property="og:image" content="https://www.mondstudio.co/optimized/image1.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://use.typekit.net" />
   <link rel="icon" type="image/png" href="1x/Asset 8-8.png" />
   <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
@@ -258,6 +267,16 @@
       color: var(--color-fg);
       font-weight: 450;
       font-family: "Mona Sans", sans-serif;
+      opacity: 0;
+      transform: translateY(-16px);
+      pointer-events: none;
+    }
+
+    @media (min-width: 721px) {
+      body.is-page-loaded .hero__nav {
+        animation: heroNavFade 1800ms cubic-bezier(.2, .9, .2, 1) forwards;
+        pointer-events: auto;
+      }
     }
 
     .hero__nav a {
@@ -276,6 +295,17 @@
 
     .hero__nav-talk {
       display: none;
+    }
+
+    @keyframes heroNavFade {
+      0% {
+        opacity: 0;
+        transform: translateY(-16px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero__menu-toggle {
@@ -2168,6 +2198,21 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       }
     }
 
+    @media (min-width: 641px) {
+      .site-footer .footer-content,
+      .footer-content {
+        display: block;
+      }
+
+      .site-footer .footer-social-minimal,
+      .footer-social-minimal {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        margin: 0;
+      }
+    }
+
     @media (max-width: 720px) {
       html,
       body {
@@ -2569,7 +2614,6 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         <a href="work.html"><span class="hero__nav-word">WORK</span></a>
         <a href="about.html"><span class="hero__nav-word">ABOUT</span></a>
         <a href="https://cal.eu/mondstudio"><span class="hero__nav-word">CONTACT</span></a>
-        <a class="hero__nav-talk" href="https://cal.eu/mondstudio"><span class="hero__nav-word">LET'S</span> <span class="hero__nav-word">TALK</span></a>
       </nav>
     </div>
   </header>
