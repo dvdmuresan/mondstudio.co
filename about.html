@@ -398,60 +398,6 @@
       justify-items: start;
     }
 
-    .about-sidebar-tags {
-      display: grid;
-      gap: 28px;
-      align-content: start;
-      justify-items: start;
-    }
-
-    .about-sidebar-tags__group {
-      display: grid;
-      gap: 8px;
-      justify-items: start;
-    }
-
-    .about-sidebar-tags__items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: flex-start;
-    }
-
-    .about-sidebar-tags__tag {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: calc((44px / 1.15) * 0.8625);
-      padding: 0 calc((22px / 1.15) * 0.8625);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.20);
-      color: var(--color-white);
-      font-family: "Mona Sans", sans-serif;
-      font-size: calc((15px / 1.15) * 0.8625);
-      font-weight: 500;
-      line-height: 1;
-      text-transform: none;
-      text-align: center;
-      letter-spacing: 0.6px;
-      text-decoration: none;
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      transition:
-        background-color 180ms ease,
-        color 180ms ease,
-        transform 180ms ease;
-    }
-
-    a.about-sidebar-tags__tag:hover,
-    a.about-sidebar-tags__tag:focus-visible {
-      background: rgba(255, 255, 255, 0.25);
-      color: var(--color-white);
-      text-decoration: none;
-      outline: none;
-      transform: scale(1.05);
-    }
-
     .about-service {
       display: grid;
       gap: 8px;
@@ -583,17 +529,6 @@
 
     body[data-theme="light"] .about-service__button {
       background: rgba(255, 255, 255, 0.65);
-      color: var(--color-fg);
-    }
-
-    body[data-theme="light"] .about-sidebar-tags__tag {
-      background: rgba(255, 255, 255, 0.65);
-      color: var(--color-fg);
-    }
-
-    body[data-theme="light"] a.about-sidebar-tags__tag:hover,
-    body[data-theme="light"] a.about-sidebar-tags__tag:focus-visible {
-      background: rgba(255, 255, 255, 0.9);
       color: var(--color-fg);
     }
 
@@ -2499,59 +2434,207 @@
 
   <main id="about">
     <div class="about-page">
-      <section class="about-mobile-info" aria-label="Studio navigation, services, industries, and contact">
+      <section class="about-mobile-info" aria-label="Services, contact, and office">
         <h1 class="about-mobile-info__title">Intention<br>is our aesthetics.</h1>
-        <div class="about-sidebar-tags">
-          <div class="about-sidebar-tags__group">
-            <a class="about-sidebar-tags__tag" href="index.html">MOND:STUDIO</a>
-            <a class="about-sidebar-tags__tag" href="work.html">All Works</a>
-          </div>
-          <div class="about-sidebar-tags__group">
-            <p class="about-hero-info__title">Services</p>
-            <div class="about-sidebar-tags__items">
-              <span class="about-sidebar-tags__tag">Visual Identity</span>
-              <span class="about-sidebar-tags__tag">Brand Strategy</span>
-              <span class="about-sidebar-tags__tag">Creative Direction</span>
-              <span class="about-sidebar-tags__tag">Motion</span>
+        <div>
+          <p class="about-hero-info__title">Services</p>
+          <div class="about-mobile-info__services about-hero-info__body">
+            <div class="about-service">
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-creative-direction">
+                Creative Direction <span class="about-service__plus" aria-hidden="true">+</span>
+              </button>
+              <div class="about-service__panel" id="mobile-service-creative-direction">
+                <ul>
+                  <li>Brand creation from zero</li>
+                  <li>Brand evolution &amp; refinement</li>
+                  <li>Defining brand focus and relevance</li>
+                  <li>Go-to-market and launch strategy</li>
+                  <li>Ongoing brand optimization</li>
+                  <li>Design system growth and modularity</li>
+                  <li>Narrative-led brand communication</li>
+                </ul>
+              </div>
+            </div>
+            <div class="about-service">
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-strategy">
+                Strategy <span class="about-service__plus" aria-hidden="true">+</span>
+              </button>
+              <div class="about-service__panel" id="mobile-service-strategy">
+                <ul>
+                  <li>Brand creation from zero</li>
+                  <li>Brand evolution &amp; refinement</li>
+                  <li>Defining brand focus and relevance</li>
+                  <li>Go-to-market and launch strategy</li>
+                  <li>Ongoing brand optimization</li>
+                  <li>Design system growth and modularity</li>
+                  <li>Narrative-led brand communication</li>
+                </ul>
+              </div>
+            </div>
+            <div class="about-service">
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-visual-identity">
+                Visual Identity <span class="about-service__plus" aria-hidden="true">+</span>
+              </button>
+              <div class="about-service__panel" id="mobile-service-visual-identity">
+                <ul>
+                  <li>Brand creation from zero</li>
+                  <li>Brand evolution &amp; refinement</li>
+                  <li>Defining brand focus and relevance</li>
+                  <li>Go-to-market and launch strategy</li>
+                  <li>Ongoing brand optimization</li>
+                  <li>Design system growth and modularity</li>
+                  <li>Narrative-led brand communication</li>
+                </ul>
+              </div>
+            </div>
+            <div class="about-service">
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-graphic-design">
+                Graphic Design <span class="about-service__plus" aria-hidden="true">+</span>
+              </button>
+              <div class="about-service__panel" id="mobile-service-graphic-design">
+                <ul>
+                  <li>Brand creation from zero</li>
+                  <li>Brand evolution &amp; refinement</li>
+                  <li>Defining brand focus and relevance</li>
+                  <li>Go-to-market and launch strategy</li>
+                  <li>Ongoing brand optimization</li>
+                  <li>Design system growth and modularity</li>
+                  <li>Narrative-led brand communication</li>
+                </ul>
+              </div>
+            </div>
+            <div class="about-service">
+              <button class="about-service__button" type="button" aria-expanded="false" aria-controls="mobile-service-motion-design">
+                Motion Design <span class="about-service__plus" aria-hidden="true">+</span>
+              </button>
+              <div class="about-service__panel" id="mobile-service-motion-design">
+                <ul>
+                  <li>Brand creation from zero</li>
+                  <li>Brand evolution &amp; refinement</li>
+                  <li>Defining brand focus and relevance</li>
+                  <li>Go-to-market and launch strategy</li>
+                  <li>Ongoing brand optimization</li>
+                  <li>Design system growth and modularity</li>
+                  <li>Narrative-led brand communication</li>
+                </ul>
+              </div>
             </div>
           </div>
-          <div class="about-sidebar-tags__group">
-            <p class="about-hero-info__title">Industries</p>
-            <div class="about-sidebar-tags__items">
-              <span class="about-sidebar-tags__tag">Culture</span>
-              <span class="about-sidebar-tags__tag">Technology</span>
-              <span class="about-sidebar-tags__tag">Architecture</span>
-              <span class="about-sidebar-tags__tag">Fashion</span>
-            </div>
+        </div>
+        <div class="about-mobile-info__meta">
+          <div>
+            <p class="about-hero-info__title">Contact</p>
+            <p class="about-hero-info__body"><a href="mailto:hello@mondstudio.co">hello@mondstudio.co</a></p>
           </div>
-          <a class="about-sidebar-tags__tag" href="mailto:hello@mondstudio.co">Let's Talk</a>
+          <div>
+            <p class="about-hero-info__title">Office</p>
+            <p class="about-hero-info__body">
+              Cluj-Napoca, Romania<br>
+              Dorobantilor Street 28.<br>
+              400546
+            </p>
+          </div>
         </div>
       </section>
       <section class="about-hero" aria-labelledby="about-title">
         <h1 class="about-hero__tagline" id="about-title">Intention<br>is our aesthetics.</h1>
         <p class="about-hero__subtitle"></p>
-        <div class="about-hero-info" aria-label="Studio navigation, services, industries, and contact">
-          <div class="about-hero-info__column about-sidebar-tags">
-            <div class="about-sidebar-tags__group">
-              <a class="about-sidebar-tags__tag" href="index.html">MOND:STUDIO</a>
-              <a class="about-sidebar-tags__tag" href="work.html">All Works</a>
+        <div class="about-hero-info" aria-label="Contact and services">
+          <div class="about-hero-info__column">
+            <p class="about-hero-info__title">Contact</p>
+            <div class="about-hero-info__body">
+              <p><a href="mailto:hello@mondstudio.co">hello@mondstudio.co</a></p>
             </div>
-            <a class="about-sidebar-tags__tag" href="mailto:hello@mondstudio.co">Let's Talk</a>
+            <p class="about-hero-info__title about-hero-info__title--stacked">Office</p>
+            <p class="about-hero-info__body">
+              Cluj-Napoca, Romania<br>
+              Dorobantilor Street 28.<br>
+              400546
+            </p>
           </div>
-          <div class="about-hero-info__column about-sidebar-tags">
+          <div class="about-hero-info__column">
             <p class="about-hero-info__title">Services</p>
-            <div class="about-sidebar-tags__items">
-              <span class="about-sidebar-tags__tag">Visual Identity</span>
-              <span class="about-sidebar-tags__tag">Brand Strategy</span>
-              <span class="about-sidebar-tags__tag">Creative Direction</span>
-              <span class="about-sidebar-tags__tag">Motion</span>
-            </div>
-            <p class="about-hero-info__title">Industries</p>
-            <div class="about-sidebar-tags__items">
-              <span class="about-sidebar-tags__tag">Culture</span>
-              <span class="about-sidebar-tags__tag">Technology</span>
-              <span class="about-sidebar-tags__tag">Architecture</span>
-              <span class="about-sidebar-tags__tag">Fashion</span>
+            <div class="about-hero-info__body about-hero-info__services">
+              <div class="about-service">
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-creative-direction">
+                  Creative Direction <span class="about-service__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="about-service__panel" id="service-creative-direction">
+                  <ul>
+                    <li>Brand creation from zero</li>
+                    <li>Brand evolution &amp; refinement</li>
+                    <li>Defining brand focus and relevance</li>
+                    <li>Go-to-market and launch strategy</li>
+                    <li>Ongoing brand optimization</li>
+                    <li>Design system growth and modularity</li>
+                    <li>Narrative-led brand communication</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="about-service">
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-strategy">
+                  Strategy <span class="about-service__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="about-service__panel" id="service-strategy">
+                  <ul>
+                    <li>Brand creation from zero</li>
+                    <li>Brand evolution &amp; refinement</li>
+                    <li>Defining brand focus and relevance</li>
+                    <li>Go-to-market and launch strategy</li>
+                    <li>Ongoing brand optimization</li>
+                    <li>Design system growth and modularity</li>
+                    <li>Narrative-led brand communication</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="about-service">
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-visual-identity">
+                  Visual Identity <span class="about-service__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="about-service__panel" id="service-visual-identity">
+                  <ul>
+                    <li>Brand creation from zero</li>
+                    <li>Brand evolution &amp; refinement</li>
+                    <li>Defining brand focus and relevance</li>
+                    <li>Go-to-market and launch strategy</li>
+                    <li>Ongoing brand optimization</li>
+                    <li>Design system growth and modularity</li>
+                    <li>Narrative-led brand communication</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="about-service">
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-graphic-design">
+                  Graphic Design <span class="about-service__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="about-service__panel" id="service-graphic-design">
+                  <ul>
+                    <li>Brand creation from zero</li>
+                    <li>Brand evolution &amp; refinement</li>
+                    <li>Defining brand focus and relevance</li>
+                    <li>Go-to-market and launch strategy</li>
+                    <li>Ongoing brand optimization</li>
+                    <li>Design system growth and modularity</li>
+                    <li>Narrative-led brand communication</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="about-service">
+                <button class="about-service__button" type="button" aria-expanded="false" aria-controls="service-motion-design">
+                  Motion Design <span class="about-service__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="about-service__panel" id="service-motion-design">
+                  <ul>
+                    <li>Brand creation from zero</li>
+                    <li>Brand evolution &amp; refinement</li>
+                    <li>Defining brand focus and relevance</li>
+                    <li>Go-to-market and launch strategy</li>
+                    <li>Ongoing brand optimization</li>
+                    <li>Design system growth and modularity</li>
+                    <li>Narrative-led brand communication</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
