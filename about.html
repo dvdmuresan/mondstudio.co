@@ -278,6 +278,78 @@
       display: none;
     }
 
+    .hero__cta {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      z-index: 31;
+      display: inline-flex;
+      align-items: center;
+      padding: 0;
+      border: 0;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.20);
+      color: var(--color-white);
+      font-family: "Mona Sans", sans-serif;
+      font-size: calc(15px / 1.15);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.6px;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      pointer-events: auto;
+      transition: background-color 180ms ease, color 180ms ease;
+    }
+
+    .hero__cta.hero-text-drop {
+      transform: translateX(-50%) translateY(-20px);
+    }
+
+    .hero__cta.hero-text-drop.is-visible {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .hero__cta-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: calc(44px / 1.15);
+      padding: 0 calc(22px / 1.15);
+      border-radius: 8px;
+      color: var(--color-white);
+      transition: transform 180ms ease;
+    }
+
+    .hero__cta:hover,
+    .hero__cta:focus-visible {
+      background: rgba(255, 255, 255, 0.25);
+      color: var(--color-white);
+      outline: none;
+    }
+
+    .hero__cta:hover .hero__cta-label,
+    .hero__cta:focus-visible .hero__cta-label {
+      transform: scale(1.05);
+    }
+
+    body[data-theme="light"] .hero__cta {
+      background: rgba(255, 255, 255, 0.65);
+      color: #131313;
+    }
+
+    body[data-theme="light"] .hero__cta-label {
+      color: #131313;
+    }
+
+    body[data-theme="light"] .hero__cta:hover,
+    body[data-theme="light"] .hero__cta:focus-visible {
+      background: rgba(255, 255, 255, 0.9);
+      color: #131313;
+    }
+
     .hero__menu-toggle {
       display: none;
     }
@@ -695,10 +767,12 @@
       width: 100%;
       min-height: 100vh;
       padding: 20px;
-      background: rgba(20, 20, 20, 0.95);
+      background: rgba(20, 20, 20, 0.10);
       color: #f7f7f7;
       opacity: 0;
       pointer-events: none;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       transition: opacity 180ms ease;
     }
 
@@ -721,7 +795,7 @@
       padding: 18px;
       border: 0;
       border-radius: 8px;
-      background: #000000;
+      background: rgba(0, 0, 0, 0.58);
       box-shadow: 0 22px 70px rgba(0, 0, 0, 0.46);
       transform: translateY(10px);
       backdrop-filter: blur(22px);
@@ -907,11 +981,11 @@
     }
 
     body[data-theme="light"] .about-person-panel {
-      background: rgba(20, 20, 20, 0.95);
+      background: rgba(247, 247, 247, 0.10);
     }
 
     body[data-theme="light"] .about-person-panel__card {
-      background: #000000;
+      background: rgba(0, 0, 0, 0.58);
       color: #f7f7f7;
       box-shadow: 0 22px 70px rgba(0, 0, 0, 0.46);
     }
@@ -1007,7 +1081,7 @@
 
     .about-talk a {
       color: inherit;
-      text-decoration: underline;
+      text-decoration: none;
       text-underline-offset: 0.08em;
     }
 
@@ -1201,6 +1275,156 @@
 
       .about-talk {
         font-size: clamp(34px, 4.7vw, 42px);
+      }
+    }
+
+    @media (min-width: 901px) and (max-width: 1728px) {
+      .about-hero {
+        --about-hero-content-top: calc(clamp(78px, 8.5vh, 112px) + 44px);
+      }
+
+      .about-hero__tagline {
+        width: min(46vw, 700px);
+        font-size: clamp(42px, 3.55vw, 56px);
+      }
+
+      .about-hero__subtitle {
+        width: min(30vw, 410px);
+        margin-top: calc(clamp(78px, 8.5vh, 112px) - 20px + clamp(104px, 8.6vw, 138px));
+        font-size: clamp(30px, 2.35vw, 37px);
+      }
+
+      .about-hero-info {
+        gap: clamp(12px, 1.2vw, 18px);
+        font-size: clamp(12px, 0.88vw, 13.2px);
+      }
+
+      .about-figure {
+        top: clamp(78px, 8.5vh, 112px);
+        right: clamp(170px, 13vw, 250px);
+        width: clamp(230px, 18.5vw, 330px);
+      }
+
+      .about-figure.is-janky-active {
+        top: calc(clamp(78px, 8.5vh, 112px) - 38px);
+      }
+
+      .about-copy {
+        width: min(56vw, 820px);
+      }
+
+      .about-copy__line {
+        font-size: clamp(34px, 3.05vw, 50px);
+      }
+
+      .about-talk {
+        font-size: clamp(42px, 3.55vw, 58px);
+      }
+
+      .about-wordmark {
+        bottom: clamp(160px, 15vh, 230px);
+      }
+    }
+
+    @media (min-width: 901px) and (max-width: 1512px) {
+      .about-hero {
+        min-height: calc(100svh - 60px);
+      }
+
+      .about-hero__tagline {
+        width: min(44vw, 600px);
+        font-size: clamp(38px, 3.32vw, 48px);
+      }
+
+      .about-hero__subtitle {
+        width: min(29vw, 360px);
+        font-size: clamp(28px, 2.25vw, 34px);
+      }
+
+      .about-hero-info {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        font-size: clamp(11.6px, 0.92vw, 12.6px);
+      }
+
+      .about-service__button {
+        min-height: 32px;
+        height: auto;
+        padding: 9px 14px;
+        font-size: 11px;
+        line-height: 1.05;
+      }
+
+      .about-figure {
+        right: clamp(142px, 11.4vw, 190px);
+        width: clamp(216px, 18vw, 272px);
+      }
+
+      .about-copy {
+        width: min(54vw, 660px);
+      }
+
+      .about-copy__line {
+        font-size: clamp(32px, 2.9vw, 42px);
+      }
+    }
+
+    @media (min-width: 901px) and (max-width: 1600px) {
+      .about-hero {
+        --about-hero-content-top: calc(clamp(72px, 7.8vh, 104px) + 42px);
+      }
+
+      .about-hero__tagline {
+        width: min(43vw, 640px);
+        font-size: clamp(38px, 3.15vw, 50px);
+        line-height: 1.04;
+      }
+
+      .about-hero__subtitle {
+        width: min(28vw, 380px);
+        margin-top: calc(clamp(72px, 7.8vh, 104px) - 20px + clamp(96px, 7.6vw, 126px));
+        font-size: clamp(27px, 2.08vw, 33px);
+      }
+
+      .about-hero-info {
+        font-size: clamp(11.5px, 0.82vw, 12.8px);
+        line-height: 1.32;
+      }
+
+      .about-figure {
+        top: clamp(72px, 7.8vh, 104px);
+        right: clamp(142px, 10.6vw, 210px);
+        width: clamp(216px, 16.8vw, 286px);
+      }
+
+      .about-copy {
+        width: min(52vw, 720px);
+      }
+
+      .about-copy__line,
+      .about-talk {
+        line-height: 1.04;
+      }
+    }
+
+    @media (min-width: 901px) and (max-height: 820px) {
+      .about-hero {
+        --about-hero-content-top: calc(clamp(70px, 7.6vh, 92px) + 38px);
+      }
+
+      .about-hero__subtitle {
+        margin-top: calc(clamp(70px, 7.6vh, 92px) - 20px + 102px);
+      }
+
+      .about-hero-info__title--stacked {
+        margin-top: 28px;
+      }
+
+      .about-wordmark {
+        bottom: clamp(130px, 13vh, 178px);
+      }
+
+      .about-scroll {
+        padding-bottom: clamp(160px, 17vh, 220px);
       }
     }
 
@@ -2050,7 +2274,61 @@
       }
     }
 
+    @media (min-width: 641px) and (max-width: 1024px) and (orientation: portrait) {
+      .site-footer.footer-section,
+      .site-footer {
+        min-height: 290px;
+        padding: 20px;
+      }
+
+      .site-footer .footer-brand-minimal,
+      .site-footer .footer-social-minimal,
+      .site-footer .footer-contact-block,
+      .site-footer .footer-copy-minimal {
+        position: absolute;
+        margin: 0;
+      }
+
+      .site-footer .footer-brand-minimal {
+        top: 20px;
+        left: 20px;
+      }
+
+      .site-footer .footer-social-minimal {
+        top: 20px;
+        right: 20px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 24px;
+      }
+
+      .site-footer .footer-social-minimal a {
+        margin-right: 0;
+        font-size: 18px;
+      }
+
+      .site-footer .footer-contact-block {
+        left: 20px;
+        bottom: 20px;
+        width: auto;
+        max-width: 48%;
+        white-space: normal;
+      }
+
+      .site-footer .footer-copy-minimal {
+        right: 20px;
+        bottom: 20px;
+        width: auto;
+        max-width: 46%;
+        text-align: right;
+      }
+    }
+
     @media (max-width: 720px) {
+      .hero__cta {
+        display: none;
+      }
+
       html,
       body {
         min-height: 100svh;
@@ -2359,7 +2637,7 @@
   <header class="page-header">
     <div class="hero__top">
       <a class="hero__brand hero-text-drop" href="index.html" aria-label="MOND : STUDIO home">
-        <img class="hero__brand-image" src="asset4.png" alt="MOND : STUDIO" width="590" height="63" />
+        <img class="hero__brand-image" src="asset4.png" alt="MOND : STUDIO" width="590" height="63" decoding="async" />
       </a>
       <button class="hero__menu-toggle" id="hero-menu-toggle" type="button" aria-controls="hero-primary-nav" aria-expanded="false" aria-label="Open menu">
         <span class="hero__menu-icon" aria-hidden="true">:</span>
@@ -2371,6 +2649,9 @@
         <a class="hero__nav-talk" href="https://cal.eu/mondstudio"><span class="hero__nav-word">LET'S</span> <span class="hero__nav-word">TALK</span></a>
       </nav>
     </div>
+    <a class="hero__cta hero-text-drop" href="https://cal.eu/mondstudio">
+      <span class="hero__cta-label">LET'S TALK</span>
+    </a>
   </header>
 
   <script>
@@ -2639,7 +2920,7 @@
           </div>
         </div>
         <figure class="about-figure" aria-label="MOND : STUDIO team visual">
-          <img src="optimized/david-2.jpg" alt="David Muresan" width="675" height="900" />
+          <img src="optimized/david-2.jpg" alt="David Muresan" width="675" height="900" fetchpriority="high" decoding="async" />
         </figure>
         <div class="about-person-meta" id="about-person-meta" hidden>
           <div>
@@ -2655,7 +2936,7 @@
       </section>
 
       <div class="about-wordmark" aria-hidden="true">
-        <img src="SVG/ABOUT LOGO.svg" alt="" />
+        <img src="SVG/ABOUT LOGO.svg" alt="" width="566" height="60" loading="lazy" decoding="async" />
       </div>
 
       <section class="about-scroll" aria-label="About MOND : STUDIO">
@@ -2671,7 +2952,7 @@
       <section class="about-mobile-people" aria-label="MOND : STUDIO team">
         <figure class="about-mobile-person">
           <div class="about-mobile-person__image">
-            <img src="optimized/david-2.jpg" alt="David Muresan" width="675" height="900">
+            <img src="optimized/david-2.jpg" alt="David Muresan" width="675" height="900" loading="lazy" decoding="async">
             <button class="about-mobile-person__button" type="button" data-profile="optimized/david-2.jpg" aria-label="Learn more about David Muresan">
               <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                 <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -2685,7 +2966,7 @@
         </figure>
         <figure class="about-mobile-person">
           <div class="about-mobile-person__image">
-            <img src="optimized/bencz.jpg" alt="Bencz" width="600" height="900">
+            <img src="optimized/bencz.jpg" alt="Bencz" width="600" height="900" loading="lazy" decoding="async">
             <button class="about-mobile-person__button" type="button" data-profile="optimized/bencz.jpg" aria-label="Learn more about Bencz">
               <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                 <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -2699,7 +2980,7 @@
         </figure>
         <figure class="about-mobile-person">
           <div class="about-mobile-person__image">
-            <img src="Mate.jpg" alt="Horesnyi Mate" width="568" height="568">
+            <img src="Mate.jpg" alt="Horesnyi Mate" width="568" height="568" loading="lazy" decoding="async">
             <button class="about-mobile-person__button" type="button" data-profile="Mate.jpg" aria-label="Learn more about Horesnyi Mate">
               <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                 <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -2713,7 +2994,7 @@
         </figure>
         <figure class="about-mobile-person">
           <div class="about-mobile-person__image">
-            <img src="optimized/janky-milan.jpg" alt="Janky Milan" width="720" height="900">
+            <img src="optimized/janky-milan.jpg" alt="Janky Milan" width="720" height="900" loading="lazy" decoding="async">
             <button class="about-mobile-person__button" type="button" data-profile="optimized/janky-milan.jpg" aria-label="Learn more about Janky Milan">
               <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                 <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -2727,7 +3008,7 @@
         </figure>
       </section>
       <section class="about-footer-image" aria-label="MOND : STUDIO visual">
-        <img src="about image.jpg" alt="MOND : STUDIO studio visual" width="930" height="620" loading="lazy">
+        <img src="about image.jpg" alt="MOND : STUDIO studio visual" width="930" height="620" loading="lazy" decoding="async">
       </section>
       <section class="about-talk" aria-label="Contact MOND : STUDIO">
         <p class="about-talk__label">Let's Talk:</p>
@@ -2757,7 +3038,7 @@
   <aside class="about-person-panel" id="about-person-panel" aria-live="polite" aria-hidden="true">
     <div class="about-person-panel__card" role="dialog" aria-modal="true" aria-labelledby="about-person-name">
       <div class="about-person-panel__image-wrap">
-        <img class="about-person-panel__image" id="about-person-image" src="" alt="">
+        <img class="about-person-panel__image" id="about-person-image" src="" alt="" loading="lazy" decoding="async">
       </div>
       <div class="about-person-panel__content">
         <div class="about-person-panel__top">

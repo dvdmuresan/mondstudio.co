@@ -1596,6 +1596,112 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       }
     }
 
+    @media (min-width: 901px) and (max-width: 1728px) {
+      main {
+        padding-top: clamp(96px, 11vw, 150px);
+        padding-bottom: clamp(96px, 14vw, 170px);
+      }
+
+      .projects-left,
+      .rock-model,
+      .footer-section {
+        max-width: calc(100vw - 40px);
+      }
+
+      .projects-table th,
+      .projects-table td {
+        height: clamp(58px, 4.5vw, 72px);
+        line-height: clamp(58px, 4.5vw, 72px);
+      }
+
+      .projects-table tbody tr {
+        font-size: clamp(13.5px, 0.95vw, 15px);
+      }
+
+      .projects-type {
+        padding: 7px 14px;
+        font-size: 12px;
+      }
+
+      .rock-model {
+        height: clamp(320px, 27vw, 420px);
+        max-height: clamp(320px, 27vw, 420px);
+        margin-top: clamp(64px, 7vw, 100px);
+        margin-bottom: clamp(64px, 7vw, 100px);
+      }
+
+      .footer-social-minimal {
+        gap: clamp(28px, 5vw, 72px);
+      }
+    }
+
+    @media (min-width: 721px) and (max-width: 1512px) {
+      :root {
+        --projects-sidebar-width: clamp(210px, 15vw, 250px);
+        --projects-sidebar-pad: clamp(16px, 1.2vw, 20px);
+        --projects-sidebar-section-gap: clamp(44px, 5.2vh, 62px);
+        --projects-sidebar-title-gap: clamp(46px, 6.8vh, 76px);
+      }
+
+      .projects-filter__title {
+        font-size: clamp(30px, 2.35vw, 35.5px);
+      }
+
+      .projects-filter__button {
+        font-size: clamp(11px, 0.82vw, 12px);
+      }
+    }
+
+    @media (min-width: 721px) and (max-width: 1600px) {
+      :root {
+        --projects-sidebar-width: clamp(204px, 14vw, 238px);
+        --projects-sidebar-section-gap: clamp(38px, 4.7vh, 56px);
+        --projects-sidebar-title-gap: clamp(40px, 6vh, 68px);
+      }
+
+      main {
+        padding-top: clamp(88px, 9vw, 132px);
+        padding-bottom: clamp(88px, 11vw, 150px);
+      }
+
+      .projects-table th,
+      .projects-table td {
+        height: clamp(54px, 4vw, 66px);
+        line-height: clamp(54px, 4vw, 66px);
+      }
+
+      .projects-table tbody tr {
+        font-size: clamp(13px, 0.88vw, 14.5px);
+      }
+
+      .rock-model {
+        height: clamp(300px, 24vw, 390px);
+        max-height: clamp(300px, 24vw, 390px);
+      }
+    }
+
+    @media (min-width: 721px) and (max-height: 820px) {
+      main {
+        padding-top: clamp(84px, 10vh, 120px);
+        padding-bottom: clamp(84px, 12vh, 140px);
+      }
+
+      .projects-filter__title {
+        margin-top: 10px;
+        margin-bottom: var(--projects-sidebar-title-gap);
+      }
+
+      .projects-filter__group {
+        gap: 6px;
+      }
+
+      .projects-table th,
+      .projects-table td {
+        height: 58px;
+        line-height: 58px;
+      }
+    }
+
     @media (max-width: 720px) {
       .hero__nav {
         display: none;
@@ -2213,6 +2319,56 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       }
     }
 
+    @media (min-width: 641px) and (max-width: 1024px) and (orientation: portrait) {
+      .site-footer.footer-section,
+      .site-footer {
+        min-height: 290px;
+        padding: 20px;
+      }
+
+      .site-footer .footer-brand-minimal,
+      .site-footer .footer-social-minimal,
+      .site-footer .footer-contact-block,
+      .site-footer .footer-copy-minimal {
+        position: absolute;
+        margin: 0;
+      }
+
+      .site-footer .footer-brand-minimal {
+        top: 20px;
+        left: 20px;
+      }
+
+      .site-footer .footer-social-minimal {
+        top: 20px;
+        right: 20px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 24px;
+      }
+
+      .site-footer .footer-social-minimal a {
+        margin-right: 0;
+        font-size: 18px;
+      }
+
+      .site-footer .footer-contact-block {
+        left: 20px;
+        bottom: 20px;
+        width: auto;
+        max-width: 48%;
+        white-space: normal;
+      }
+
+      .site-footer .footer-copy-minimal {
+        right: 20px;
+        bottom: 20px;
+        width: auto;
+        max-width: 46%;
+        text-align: right;
+      }
+    }
+
     @media (max-width: 720px) {
       html,
       body {
@@ -2600,7 +2756,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
   <header class="hero-header">
     <div class="hero__top">
       <a class="hero__brand" href="./index.html" aria-label="MOND : STUDIO home">
-        <img class="hero__brand-image" src="asset4.png" alt="MOND : STUDIO" width="590" height="63" />
+        <img class="hero__brand-image" src="asset4.png" alt="MOND : STUDIO" width="590" height="63" decoding="async" />
       </a>
       <button class="view-toggle" type="button" id="view-toggle" aria-pressed="true">
         <span class="view-toggle__option view-toggle__option--active" data-view="image">IMAGE</span>
@@ -2681,7 +2837,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     <section class="projects" aria-label="Selected projects">
       <aside class="projects-sidebar" aria-label="Project filters">
         <a class="projects-sidebar__brand" href="./index.html" aria-label="MOND : STUDIO home">
-          <img src="asset4.png" alt="MOND : STUDIO" width="590" height="63" />
+          <img src="asset4.png" alt="MOND : STUDIO" width="590" height="63" loading="lazy" decoding="async" />
         </a>
         <div class="projects-filter" role="list" aria-label="Filter projects by service">
           <p class="projects-filter__title projects-sidebar-reveal" id="projects-filter-title" style="--sidebar-reveal-delay: 80ms;">ALL WORKS</p>
@@ -2761,7 +2917,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               <a class="projects-gallery__link" href="intermezzo.html" data-project-transition="intermezzo" data-transition-image="optimized/image1.jpg">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
-                  <img src="optimized/image1.jpg" alt="Maier Jewelry branding image" width="1400" height="712" loading="lazy" />
+                  <img src="optimized/image1.jpg" alt="Maier Jewelry branding image" width="1400" height="712" loading="lazy" decoding="async" />
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Intermezzo Fesztival</span>
@@ -2772,7 +2928,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
             <figure data-tags="branding strategy visual-identity technology">
               <div class="projects-gallery__item">
                 <div class="projects-gallery__badge"><span>Branding</span></div>
-                <img src="optimized/image2.jpg" alt="Signal Forge branding image" width="1200" height="800" loading="lazy" />
+                <img src="optimized/image2.jpg" alt="Signal Forge branding image" width="1200" height="800" loading="lazy" decoding="async" />
               </div>
               <figcaption class="projects-gallery__caption">
                 <span class="projects-gallery__caption-title">Dream Ville Software</span>
@@ -2782,7 +2938,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
             <figure data-tags="record-design graphic-design visual-identity art fashion">
               <div class="projects-gallery__item">
                 <div class="projects-gallery__badge"><span>Record Design</span></div>
-                <img src="optimized/image6.jpg" alt="Quiet Systems product design" width="1800" height="1012" loading="lazy" />
+                <img src="optimized/image6.jpg" alt="Quiet Systems product design" width="1800" height="1012" loading="lazy" decoding="async" />
               </div>
               <figcaption class="projects-gallery__caption">
                 <span class="projects-gallery__caption-title">Walk with me</span>
@@ -2793,7 +2949,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               <a class="projects-gallery__link" href="intermezzo.html" data-project-transition="intermezzo" data-transition-image="optimized/image4.jpg">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Book Design</span></div>
-                  <img src="optimized/image4.jpg" alt="Pulse Labs brand strategy visual" width="1600" height="1467" loading="lazy" />
+                  <img src="optimized/image4.jpg" alt="Pulse Labs brand strategy visual" width="1600" height="1467" loading="lazy" decoding="async" />
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Signals in silence</span>
@@ -2804,7 +2960,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
             <figure data-tags="product-design creative-direction strategy health sport beauty">
               <div class="projects-gallery__item">
                 <div class="projects-gallery__badge"><span>Product Design</span></div>
-                <img src="optimized/image5.jpg" alt="Self reflection - product design" width="1200" height="1600" loading="lazy" />
+                <img src="optimized/image5.jpg" alt="Self reflection - product design" width="1200" height="1600" loading="lazy" decoding="async" />
               </div>
               <figcaption class="projects-gallery__caption">
                 <span class="projects-gallery__caption-title">Self reflection</span>
