@@ -830,6 +830,52 @@ html {
       margin: 0;
     }
 
+    .pl-4-service {
+      transition: color 160ms ease;
+    }
+
+    .pl-4-service-preview {
+      position: fixed;
+      z-index: 80;
+      display: none;
+      width: 143.36px;
+      height: 179.2px;
+      overflow: hidden;
+      border-radius: 4px;
+      opacity: 0;
+      transform: translateY(4px) scale(0.96);
+      pointer-events: none;
+      transition: opacity 160ms ease, transform 180ms cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .pl-4-service-preview img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (min-width: 861px) and (hover: hover) and (pointer: fine) {
+      .pl-4-service {
+        cursor: pointer;
+      }
+
+      .pl-4-service:hover,
+      .pl-4-service:focus-visible {
+        color: var(--color-fg);
+        outline: none;
+      }
+
+      .pl-4-service-preview {
+        display: block;
+      }
+
+      .pl-4-service-preview.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
     body[data-theme="light"] .pl-4-services {
       color: #A3A3A3;
     }
@@ -3689,13 +3735,43 @@ body[data-theme="light"] .studio-textbox-note {
     }
 
     @media (max-width: 600px) {
+      .landing-project-carousel {
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x proximity;
+        touch-action: pan-x pan-y;
+      }
+
+      .landing-project-carousel__track {
+        animation: none;
+        transform: none;
+        will-change: auto;
+      }
+
       .landing-project-carousel__group {
         gap: 10px;
         padding-right: 10px;
       }
 
+      .landing-project-carousel__group[aria-hidden="true"] {
+        display: none;
+      }
+
       .landing-project-carousel__item {
         width: min(90vw, 494px);
+        aspect-ratio: 4 / 5;
+        scroll-snap-align: start;
+      }
+
+      .landing-project-carousel__item::after,
+      .landing-project-carousel__track:has(.landing-project-carousel__item:hover) .landing-project-carousel__item:not(:hover)::after,
+      .landing-project-carousel__track:has(.landing-project-carousel__item:focus-within) .landing-project-carousel__item:not(:focus-within)::after {
+        background: transparent;
+        transition: none;
+      }
+
+      .landing-project-carousel__item:hover,
+      .landing-project-carousel__item:focus-within {
+        z-index: auto;
       }
     }
 
@@ -4252,10 +4328,18 @@ body[data-theme="light"] .studio-textbox-note {
 
 <div class="pl-4-caption-wrapper reveal">
     <div class="pl-4-caption"><span>Design</span><span>with intention.</span></div>
-    <div class="pl-4-services">
-      Creative Direction, Strategy, Visual Identity,<br>
-      Graphic Design, Motion Design, Digital Design, Campaign
+    <div class="pl-4-services" id="pl-4-services">
+      <span class="pl-4-service" tabindex="0" data-preview-image="optimized/image1.jpg">Creative Direction</span>,
+      <span class="pl-4-service" tabindex="0" data-preview-image="optimized/image5.jpg">Strategy</span>,
+      <span class="pl-4-service" tabindex="0" data-preview-image="optimized/image2.jpg">Visual Identity</span>,<br>
+      <span class="pl-4-service" tabindex="0" data-preview-image="optimized/image4.jpg">Graphic Design</span>,
+      <span class="pl-4-service" tabindex="0" data-preview-image="optimized/image6.jpg">Motion Design</span>,
+      <span class="pl-4-service" tabindex="0" data-preview-image="optimized/3d.jpg">Digital Design</span>,
+      <span class="pl-4-service" tabindex="0" data-preview-image="optimized/intermezzo-poster.jpg">Campaign</span>
     </div>
+  </div>
+  <div class="pl-4-service-preview" id="pl-4-service-preview" aria-hidden="true">
+    <img src="optimized/image1.jpg" alt="" decoding="async">
   </div>
 
   <section class="landing-project-carousel" aria-label="Selected project thumbnails">
@@ -4321,6 +4405,7 @@ body[data-theme="light"] .studio-textbox-note {
       if (!carousel || !track) return;
 
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isMobileCarousel = window.matchMedia('(max-width: 600px)').matches;
 
       if (!prefersReducedMotion) {
         carousel.classList.add('is-reveal-ready');
@@ -4332,7 +4417,7 @@ body[data-theme="light"] .studio-textbox-note {
         revealObserver.observe(carousel);
       }
 
-      if (prefersReducedMotion) return;
+      if (prefersReducedMotion || isMobileCarousel) return;
 
       let rateFrame = 0;
       let currentRate = 1;
@@ -5108,6 +5193,53 @@ body[data-theme="light"] .studio-textbox-note {
         });
         link.addEventListener('mousemove', moveCursor);
       });
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const serviceBox = document.getElementById('pl-4-services');
+      const services = Array.from(document.querySelectorAll('.pl-4-service'));
+      const preview = document.getElementById('pl-4-service-preview');
+      const previewImage = preview?.querySelector('img');
+      const desktopHover = window.matchMedia('(min-width: 861px) and (hover: hover) and (pointer: fine)');
+      if (!serviceBox || !services.length || !preview || !previewImage) return;
+
+      const positionPreview = () => {
+        if (!desktopHover.matches) return;
+        const box = serviceBox.getBoundingClientRect();
+        const previewWidth = 143.36;
+        const previewHeight = 179.2;
+        const gap = 14;
+        const left = box.right + gap + previewWidth <= window.innerWidth - 20
+          ? box.right + gap
+          : box.left - previewWidth - gap;
+        const top = box.top + Math.max(0, (box.height - previewHeight) / 2);
+        preview.style.left = `${Math.max(20, left)}px`;
+        preview.style.top = `${Math.max(20, Math.min(top, window.innerHeight - previewHeight - 20))}px`;
+      };
+
+      const showPreview = (service) => {
+        if (!desktopHover.matches) return;
+        const source = service.dataset.previewImage;
+        if (!source) return;
+        positionPreview();
+        previewImage.src = source;
+        preview.classList.add('is-visible');
+      };
+
+      const hidePreview = () => preview.classList.remove('is-visible');
+
+      services.forEach((service) => {
+        service.addEventListener('mouseenter', () => showPreview(service));
+        service.addEventListener('mouseleave', hidePreview);
+        service.addEventListener('focus', () => showPreview(service));
+        service.addEventListener('blur', hidePreview);
+      });
+
+      window.addEventListener('resize', positionPreview);
+      window.addEventListener('scroll', positionPreview, { passive: true });
+      desktopHover.addEventListener('change', hidePreview);
     })();
   </script>
 
