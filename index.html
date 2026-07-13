@@ -3343,8 +3343,15 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       body.has-scrolled .hero__top:not(.is-open) .hero__brand {
-        opacity: 0;
+        animation: none;
+        opacity: 0 !important;
+        visibility: hidden;
         pointer-events: none;
+      }
+
+      body.has-scrolled .hero__top.is-open .hero__brand {
+        opacity: 1;
+        visibility: visible;
       }
 
       .hero__brand-image {
@@ -3742,9 +3749,8 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       .landing-project-carousel__track {
-        animation: none;
-        transform: none;
-        will-change: auto;
+        animation: landingProjectCarousel 32s linear infinite;
+        will-change: transform;
       }
 
       .landing-project-carousel__group {
@@ -3753,7 +3759,7 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       .landing-project-carousel__group[aria-hidden="true"] {
-        display: none;
+        display: flex;
       }
 
       .landing-project-carousel__item {
