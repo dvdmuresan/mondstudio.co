@@ -1,22 +1,4 @@
 (() => {
-  const accessStorageKey = "mondAccessGranted";
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
-
-  if (currentPage !== "wip.html") {
-    let hasAccess = false;
-
-    try {
-      hasAccess = window.sessionStorage.getItem(accessStorageKey) === "true";
-    } catch (error) {
-      hasAccess = false;
-    }
-
-    if (!hasAccess) {
-      window.location.href = "wip.html";
-      return;
-    }
-  }
-
   const applyTheme = (theme) => {
     const resolved = theme === "light" ? "light" : "dark";
     document.body.dataset.theme = resolved;

@@ -1485,6 +1485,22 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         font-weight: 550;
       }
 
+      body[data-theme="light"] .projects-gallery figure.is-media-bright .projects-gallery__caption,
+      body[data-theme="light"] .projects-gallery figure.is-media-bright .projects-gallery__caption:hover,
+      body[data-theme="light"] .projects-gallery figure.is-media-bright .projects-gallery__caption:focus-visible,
+      .projects-gallery figure.is-media-bright .projects-gallery__caption {
+        color: #151515;
+        text-shadow: 0 1px 18px rgba(255, 255, 255, 0.52);
+      }
+
+      .projects-gallery figure.is-media-bright .projects-gallery__caption-tags {
+        color: rgba(15, 15, 15, 0.76);
+      }
+
+      .projects-gallery figure.is-media-bright .projects-gallery__caption-tags span {
+        background: rgba(0, 0, 0, 0.13);
+      }
+
       .projects-gallery figure.is-layout-portrait .projects-gallery__item {
         aspect-ratio: 1 / 1.26;
       }
@@ -2705,7 +2721,21 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const transitionLinks = Array.from(document.querySelectorAll('[data-project-transition="intermezzo"]'));
+      const projectPages = new Set([
+        'intermezzo.html',
+        'lesser-of-two-evils.html',
+        'friss-kakas.html',
+        're-mind.html',
+        'walk-with-me.html',
+        'marty-restaurants.html',
+        'dream-ville-software.html',
+        'maier-jewelry.html',
+        'olivo-bistro.html'
+      ]);
+      const transitionLinks = Array.from(document.querySelectorAll('a[href]')).filter((link) => {
+        const page = new URL(link.href, window.location.href).pathname.split('/').pop();
+        return projectPages.has(page);
+      });
       if (!transitionLinks.length) return;
 
       const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2889,14 +2919,44 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <td>2024</td>
               </tr>
               <tr class="project-row">
-                <td><a href="#">Dream Ville Software - branding</a></td>
+                <td><a href="lesser-of-two-evils.html">Lesser of Two Evils - motion design</a></td>
+                <td><span class="projects-type">Motion Design</span></td>
+                <td>—</td>
+              </tr>
+              <tr class="project-row">
+                <td><a href="friss-kakas.html">Friss Kakas</a></td>
+                <td><span class="projects-type">Project</span></td>
+                <td>—</td>
+              </tr>
+              <tr class="project-row">
+                <td><a href="re-mind.html">RE:MIND</a></td>
+                <td><span class="projects-type">Project</span></td>
+                <td>—</td>
+              </tr>
+              <tr class="project-row">
+                <td><a href="dream-ville-software.html">Dream Ville Software - branding</a></td>
                 <td><span class="projects-type">Branding</span></td>
                 <td>2023</td>
               </tr>
               <tr class="project-row">
-                <td><a href="#">Walk with me - record label</a></td>
+                <td><a href="maier-jewelry.html">Maier Jewelry - branding</a></td>
+                <td><span class="projects-type">Branding</span></td>
+                <td>—</td>
+              </tr>
+              <tr class="project-row">
+                <td><a href="olivo-bistro.html">Olivo Bistro</a></td>
+                <td><span class="projects-type">Project</span></td>
+                <td>—</td>
+              </tr>
+              <tr class="project-row">
+                <td><a href="walk-with-me.html">Walk with me - record label</a></td>
                 <td><span class="projects-type">Record Design</span></td>
                 <td>2023</td>
+              </tr>
+              <tr class="project-row">
+                <td><a href="marty-restaurants.html">Marty Restaurants</a></td>
+                <td><span class="projects-type">Project</span></td>
+                <td>—</td>
               </tr>
               <tr class="project-row">
                 <td><a href="intermezzo.html">Signals in silence - book design</a></td>
@@ -2921,7 +2981,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               <a class="projects-gallery__link" href="intermezzo.html" data-project-transition="intermezzo" data-transition-image="optimized/image1.jpg">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
-                  <img src="optimized/image1.jpg" alt="Maier Jewelry branding image" width="1400" height="712" loading="lazy" decoding="async" />
+                  <video src="intermezzo1.mp4" poster="optimized/image1.jpg" muted loop playsinline preload="metadata" aria-label="Intermezzo Festival animated project preview"></video>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Intermezzo Fesztival</span>
@@ -2929,25 +2989,101 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
+            <figure data-tags="motion-design creative-direction art">
+              <a class="projects-gallery__link" href="lesser-of-two-evils.html">
+                <div class="projects-gallery__item">
+                  <div class="projects-gallery__badge"><span>Motion Design</span></div>
+                  <img src="projects/lesser-of-two-evils/optimized/hazai_final_still_014.jpg" alt="Lesser of Two Evils illustrated animation still" width="2400" height="1297" loading="lazy" decoding="async" />
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">Lesser of Two Evils</span>
+                  <span class="projects-gallery__caption-tags"><span>Motion Design</span><span>Creative Direction</span><span>Art</span></span>
+                </figcaption>
+              </a>
+            </figure>
+            <figure data-tags="">
+              <a class="projects-gallery__link" href="friss-kakas.html">
+                <div class="projects-gallery__item">
+                  <div class="projects-gallery__badge"><span>Project</span></div>
+                  <img src="projects/friss-kakas/optimized/digitalis_plakat_02.jpg" alt="Friss Kakas illustrated project artwork" width="2400" height="1539" loading="lazy" decoding="async" />
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">Friss Kakas</span>
+                  <span class="projects-gallery__caption-tags"><span>Project details coming soon</span></span>
+                </figcaption>
+              </a>
+            </figure>
+            <figure data-tags="">
+              <a class="projects-gallery__link" href="re-mind.html">
+                <div class="projects-gallery__item">
+                  <div class="projects-gallery__badge"><span>Project</span></div>
+                  <video src="projects/re-mind/REMIND-LAYERS OF PACKAGING.mp4" poster="projects/re-mind/optimized/system-overview.jpg" muted loop playsinline preload="metadata" aria-label="RE:MIND animated project preview"></video>
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">RE:MIND</span>
+                  <span class="projects-gallery__caption-tags"><span>Project details coming soon</span></span>
+                </figcaption>
+              </a>
+            </figure>
             <figure data-tags="branding strategy visual-identity technology">
-              <div class="projects-gallery__item">
-                <div class="projects-gallery__badge"><span>Branding</span></div>
-                <img src="optimized/image2.jpg" alt="Signal Forge branding image" width="1200" height="800" loading="lazy" decoding="async" />
-              </div>
-              <figcaption class="projects-gallery__caption">
-                <span class="projects-gallery__caption-title">Dream Ville Software</span>
-                <span class="projects-gallery__caption-tags"><span>Branding</span><span>Strategy</span><span>Technology</span></span>
-              </figcaption>
+              <a class="projects-gallery__link" href="dream-ville-software.html">
+                <div class="projects-gallery__item">
+                  <div class="projects-gallery__badge"><span>Branding</span></div>
+                  <img src="optimized/image2.jpg" alt="Dream Ville Software branded notebook" width="1200" height="800" loading="lazy" decoding="async" />
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">Dream Ville Software</span>
+                  <span class="projects-gallery__caption-tags"><span>Branding</span><span>Strategy</span><span>Technology</span></span>
+                </figcaption>
+              </a>
+            </figure>
+            <figure data-tags="branding visual-identity fashion">
+              <a class="projects-gallery__link" href="maier-jewelry.html">
+                <div class="projects-gallery__item">
+                  <div class="projects-gallery__badge"><span>Branding</span></div>
+                  <img src="projects/maier-jewelry/optimized/maier-packaging.jpg" alt="Maier Jewelry branded packaging boxes" width="2000" height="1250" loading="lazy" decoding="async" />
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">Maier Jewelry</span>
+                  <span class="projects-gallery__caption-tags"><span>Branding</span><span>Visual Identity</span><span>Fashion</span></span>
+                </figcaption>
+              </a>
+            </figure>
+            <figure data-tags="">
+              <a class="projects-gallery__link" href="olivo-bistro.html">
+                <div class="projects-gallery__item">
+                  <div class="projects-gallery__badge"><span>Project</span></div>
+                  <img src="projects/olivo-bistro/placeholder-landscape.svg" alt="Olivo Bistro project placeholder" width="1600" height="900" loading="lazy" decoding="async" />
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">Olivo Bistro</span>
+                  <span class="projects-gallery__caption-tags"><span>Project details coming soon</span></span>
+                </figcaption>
+              </a>
             </figure>
             <figure data-tags="record-design graphic-design visual-identity art fashion">
-              <div class="projects-gallery__item">
-                <div class="projects-gallery__badge"><span>Record Design</span></div>
-                <img src="optimized/image6.jpg" alt="Quiet Systems product design" width="1800" height="1012" loading="lazy" decoding="async" />
-              </div>
-              <figcaption class="projects-gallery__caption">
-                <span class="projects-gallery__caption-title">Walk with me</span>
-                <span class="projects-gallery__caption-tags"><span>Record Design</span><span>Visual Identity</span><span>Art</span></span>
-              </figcaption>
+              <a class="projects-gallery__link" href="walk-with-me.html">
+                <div class="projects-gallery__item">
+                  <div class="projects-gallery__badge"><span>Record Design</span></div>
+                  <video src="projects/walk-with-me/Comp 1.mp4" poster="projects/walk-with-me/optimized/open-sleeve.jpg" muted loop playsinline preload="metadata" aria-label="WALK WITH ME animated project preview"></video>
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">Walk with me</span>
+                  <span class="projects-gallery__caption-tags"><span>Record Design</span><span>Visual Identity</span><span>Art</span></span>
+                </figcaption>
+              </a>
+            </figure>
+            <figure data-tags="">
+              <a class="projects-gallery__link" href="marty-restaurants.html">
+                <div class="projects-gallery__item">
+                  <div class="projects-gallery__badge"><span>Project</span></div>
+                  <img src="projects/marty-restaurants/placeholder-landscape.svg" alt="MARTY RESTAURANTS project placeholder" width="1600" height="900" loading="lazy" decoding="async" />
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">Marty Restaurants</span>
+                  <span class="projects-gallery__caption-tags"><span>Project details coming soon</span></span>
+                </figcaption>
+              </a>
             </figure>
             <figure data-tags="book-design graphic-design sustainability architecture">
               <a class="projects-gallery__link" href="intermezzo.html" data-project-transition="intermezzo" data-transition-image="optimized/image4.jpg">
@@ -3288,6 +3424,73 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         }
       }
     });
+  </script>
+
+  <script>
+    (() => {
+      const galleryMedia = Array.from(document.querySelectorAll('.projects-gallery__item img, .projects-gallery__item video'));
+      const sampleCanvas = document.createElement('canvas');
+      const sampleContext = sampleCanvas.getContext('2d', { willReadFrequently: true });
+      sampleCanvas.width = 24;
+      sampleCanvas.height = 8;
+
+      const updateMediaContrast = (media) => {
+        if (!sampleContext) return;
+        const sourceWidth = media.videoWidth || media.naturalWidth;
+        const sourceHeight = media.videoHeight || media.naturalHeight;
+        if (!sourceWidth || !sourceHeight) return;
+
+        try {
+          sampleContext.clearRect(0, 0, 24, 8);
+          sampleContext.drawImage(media, 0, sourceHeight * 0.58, sourceWidth, sourceHeight * 0.42, 0, 0, 24, 8);
+          const pixels = sampleContext.getImageData(0, 0, 24, 8).data;
+          let luminance = 0;
+          for (let index = 0; index < pixels.length; index += 4) {
+            luminance += 0.2126 * pixels[index] + 0.7152 * pixels[index + 1] + 0.0722 * pixels[index + 2];
+          }
+          const figure = media.closest('figure');
+          if (figure) figure.classList.toggle('is-media-bright', luminance / (pixels.length / 4) > 158);
+        } catch (error) {
+          // Keep the default light treatment if a frame cannot be sampled.
+        }
+      };
+
+      galleryMedia.forEach((media) => {
+        if (media.tagName === 'IMG') {
+          if (media.complete) updateMediaContrast(media);
+          media.addEventListener('load', () => updateMediaContrast(media), { once: true });
+        } else {
+          media.addEventListener('loadeddata', () => updateMediaContrast(media));
+          media.addEventListener('timeupdate', () => updateMediaContrast(media));
+        }
+      });
+
+      const previews = Array.from(document.querySelectorAll('.projects-gallery__item video'));
+      if (!previews.length) return;
+
+      const playPreview = (video) => {
+        video.muted = true;
+        const playback = video.play();
+        if (playback && typeof playback.catch === 'function') playback.catch(() => {});
+      };
+
+      if (!('IntersectionObserver' in window)) {
+        previews.forEach(playPreview);
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            playPreview(entry.target);
+          } else {
+            entry.target.pause();
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '120px 0px' });
+
+      previews.forEach((video) => observer.observe(video));
+    })();
   </script>
 
   <script type="module" src="./work-3d-loader.js"></script>

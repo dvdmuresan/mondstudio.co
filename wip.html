@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=index.html">
   <title>MOND : STUDIO - Work in Progress</title>
   <link rel="preconnect" href="https://use.typekit.net">
   <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css">
@@ -235,51 +236,10 @@
     </div>
   </div>
 
-  <main>
-    <section class="wip" aria-label="Password access">
-      <h1 class="wip__title">Work in progress</h1>
-      <form class="wip__form" id="password-form">
-        <label class="sr-only" for="password">Password</label>
-        <input class="wip__field" id="password" name="password" type="password" autocomplete="current-password" placeholder="Password" required>
-        <button class="wip__button" type="submit">Enter</button>
-        <p class="wip__message" id="message" aria-live="polite"></p>
-      </form>
-    </section>
-  </main>
+  <main></main>
 
   <script>
-    const PASSWORD = "*MDS";
-    const STORAGE_KEY = "mondAccessGranted";
-    const form = document.querySelector("#password-form");
-    const field = document.querySelector("#password");
-    const message = document.querySelector("#message");
-
-    try {
-      if (sessionStorage.getItem(STORAGE_KEY) === "true") {
-        window.location.href = "index.html";
-      }
-    } catch (error) {
-      // If storage is unavailable, visitors can still submit the form.
-    }
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      if (field.value.trim() === PASSWORD) {
-        try {
-          sessionStorage.setItem(STORAGE_KEY, "true");
-        } catch (error) {
-          // Continue into the site even when session storage is unavailable.
-        }
-
-        window.location.href = "index.html";
-        return;
-      }
-
-      message.textContent = "Incorrect password.";
-      field.value = "";
-      field.focus();
-    });
+    window.location.replace("index.html");
   </script>
 </body>
 </html>
