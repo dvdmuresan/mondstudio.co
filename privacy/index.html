@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Analytics consent default must run before Google Analytics. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    try {
+      if (localStorage.getItem('mond_cookie_consent') === 'accepted') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+    } catch (error) {
+      // Keep analytics denied when preference storage is unavailable.
+    }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHS2KKDC09"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-EHS2KKDC09');
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MOND:STUDIO — Privacy Policy</title>
+  <meta name="description" content="Privacy information for the MOND:STUDIO website, including analytics, cookies, consent choices and data protection rights." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#f7f7f7" />
+  <link rel="canonical" href="https://www.mondstudio.co/privacy/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Privacy Policy — MOND:STUDIO" />
+  <meta property="og:description" content="Information about how MOND:STUDIO processes website data, uses Google Analytics and manages analytics consent." />
+  <meta property="og:url" content="https://www.mondstudio.co/privacy/" />
+  <link rel="preconnect" href="https://use.typekit.net" />
+  <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/did4gvj.css" />
+  <link rel="icon" type="image/png" href="/1x/Asset 8-8.png" />
+  <style>
+    @font-face {
+      font-family: "Mona Sans";
+      src: url("/Mona_Sans/MonaSans-VariableFont_wdth,wght.ttf") format("truetype");
+      font-weight: 200 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --page-bg: #000000;
+      --page-fg: #f5f5f5;
+      --page-muted: #a5a5a5;
+      --page-line: #1a1a1a;
+      --grid-lines: linear-gradient(
+        to right,
+        transparent 0,
+        transparent calc(25% - .5px),
+        #1a1a1a calc(25% - .5px),
+        #1a1a1a calc(25% + .5px),
+        transparent calc(25% + .5px),
+        transparent calc(50% - .5px),
+        #1a1a1a calc(50% - .5px),
+        #1a1a1a calc(50% + .5px),
+        transparent calc(50% + .5px),
+        transparent calc(75% - .5px),
+        #1a1a1a calc(75% - .5px),
+        #1a1a1a calc(75% + .5px),
+        transparent calc(75% + .5px),
+        transparent 100%
+      );
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--page-bg); scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background-color: var(--page-bg);
+      color: var(--page-fg);
+      font-family: "Mona Sans", Arial, sans-serif;
+      font-size: 12.8px;
+      line-height: 1.55;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: var(--grid-lines);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      pointer-events: none;
+    }
+    .privacy-header,
+    .privacy-main,
+    .site-footer {
+      position: relative;
+      z-index: 1;
+    }
+    a { color: inherit; text-underline-offset: 3px; }
+    a:hover { text-decoration-thickness: 2px; }
+
+    .privacy-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      width: 100%;
+      height: 110px;
+      pointer-events: none;
+    }
+    .privacy-brand {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: block;
+      pointer-events: auto;
+    }
+    .privacy-brand img { display: block; width: auto; height: 17.85px; object-fit: contain; }
+    .privacy-nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      text-align: right;
+      pointer-events: auto;
+    }
+    .privacy-nav a {
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 18px;
+      letter-spacing: .04em;
+      text-decoration: none;
+      opacity: 1;
+      transition: opacity 180ms ease;
+    }
+    .privacy-nav:hover a,
+    .privacy-nav:focus-within a { opacity: .3; }
+    .privacy-nav:hover a:hover,
+    .privacy-nav:hover a:focus-visible,
+    .privacy-nav:focus-within a:focus-visible { opacity: 1; }
+
+    .privacy-main {
+      width: calc(100% - 40px);
+      margin: clamp(130px, 15vw, 210px) 20px 160px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: clamp(120px, 14vw, 240px);
+      row-gap: clamp(110px, 16vh, 190px);
+      align-items: start;
+    }
+    .privacy-title {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      z-index: 6;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      color: #ffffff;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      line-height: 21.6px;
+      white-space: nowrap;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .privacy-title__part {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .privacy-title__part--left {
+      left: 20px;
+      text-align: left;
+    }
+    .privacy-title__part--right {
+      right: 20px;
+      text-align: right;
+    }
+    .privacy-content {
+      display: contents;
+      color: rgb(155, 156, 152);
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21.6px;
+      letter-spacing: -0.015em;
+    }
+    .privacy-intro {
+      grid-column: 1;
+      width: 50%;
+      margin: 0;
+      padding: 0;
+      justify-self: end;
+      color: #ffffff;
+      text-align: justify;
+      text-align-last: left;
+      hyphens: none;
+      -webkit-hyphens: none;
+      font-size: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+    }
+    .privacy-section {
+      display: block;
+      width: 50%;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      align-self: start;
+    }
+    .privacy-section:nth-of-type(odd) {
+      grid-column: 1;
+      justify-self: end;
+    }
+    .privacy-section:nth-of-type(even) {
+      grid-column: 2;
+      justify-self: start;
+    }
+    .privacy-section h2 {
+      margin: 0 0 32px;
+      padding: 0;
+      color: #ffffff;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      line-height: 21.6px;
+      text-transform: none;
+    }
+    .privacy-section > p,
+    .privacy-section > address,
+    .privacy-section > ul {
+      width: 100%;
+      padding: 0;
+      text-align: justify;
+      text-align-last: left;
+      hyphens: auto;
+    }
+    .privacy-section p { margin: 0 0 16px; }
+    .privacy-section p:last-child { margin-bottom: 0; }
+    .privacy-section ul {
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+    }
+    .privacy-section li + li { margin-top: 7px; }
+    .privacy-content strong { font-weight: 500; }
+    .controller-address {
+      margin: 0 0 16px;
+      font-style: normal;
+    }
+    code {
+      font-family: "degular-mono", monospace;
+      font-size: .95em;
+    }
+
+    .privacy-magnet {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      z-index: 5;
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 96px;
+      color: #ffffff;
+      font-family: "Mona Sans", Arial, sans-serif;
+      font-size: 42px;
+      font-weight: 500;
+      line-height: 1;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .site-footer {
+      position: relative;
+      width: min(100%, calc(100vw - 40px));
+      min-height: calc(550px * 0.708 - 100px);
+      max-width: calc(100vw - 40px);
+      margin: 20px auto;
+      padding: 20px;
+      box-sizing: border-box;
+      display: block;
+      border-radius: 7px;
+      background: #0c0c0c;
+      color: var(--page-fg);
+    }
+    .site-footer .footer-brand-minimal {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #bababa;
+    }
+    .footer-brand-minimal__logo {
+      display: block;
+      width: 167.45px;
+      height: 17.85px;
+      background-color: currentColor;
+      -webkit-mask-image: url("/asset4.png");
+      mask-image: url("/asset4.png");
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-size: contain;
+      mask-size: contain;
+      -webkit-mask-position: left center;
+      mask-position: left center;
+    }
+    .site-footer .footer-copy-minimal {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      width: min(345px, calc(100% - 40px));
+      color: #bababa;
+      text-align: right;
+      font-size: 13px;
+      line-height: normal;
+    }
+    .site-footer .footer-social-minimal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: clamp(40px, 8vw, 100px);
+      color: #bababa;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .site-footer .footer-social-minimal a {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 20px;
+      color: #bababa;
+      font-family: "Mona Sans", sans-serif;
+      font-size: clamp(20px, 4vw, 26px);
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 180ms ease;
+    }
+    .site-footer .footer-social-minimal a:last-child { margin-right: 0; }
+    .site-footer .footer-social-minimal a:hover,
+    .site-footer .footer-social-minimal a:focus {
+      color: #fff;
+      outline: none;
+    }
+    .site-footer .footer-contact-block {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      width: max-content;
+      max-width: calc(100% - 40px);
+      color: #bababa;
+      font-size: 15px;
+      font-weight: 200;
+      line-height: 22px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .site-footer .footer-email { color: #bababa; text-decoration: underline; }
+    .site-footer,
+    .site-footer * { font-family: "degular-mono", monospace; }
+    .site-footer .footer-social-minimal,
+    .site-footer .footer-social-minimal a { font-family: "Mona Sans", sans-serif; }
+
+    @media (min-width: 641px) {
+      .site-footer .footer-content { display: block; }
+      .site-footer .footer-social-minimal {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        margin: 0;
+      }
+    }
+
+    @media (min-width: 721px) {
+      .site-footer {
+        background: transparent;
+        border-color: transparent;
+      }
+      .site-footer .footer-brand-minimal { transform: translate(-20px, 90px); }
+      .site-footer .footer-social-minimal { transform: translate(20px, 90px); }
+      .site-footer .footer-contact-block { transform: translate(-20px, 20px); }
+      .site-footer .footer-copy-minimal { transform: translate(20px, 20px); }
+    }
+
+    :focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+    @media (max-width: 720px) {
+      .privacy-brand { left: 10px; }
+      .privacy-brand img { height: 23px; max-width: min(306px, calc(100vw - 128px)); }
+      .privacy-nav { right: 10px; }
+      .privacy-main {
+        display: block;
+        width: calc(100% - 20px);
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 130px;
+        margin-bottom: 90px;
+      }
+      .privacy-content {
+        display: block;
+      }
+      .privacy-title {
+        position: static;
+        width: 100%;
+        margin: 0 0 56px;
+        font-size: 18px;
+        line-height: 21.6px;
+        transform: none;
+      }
+      .privacy-title__part {
+        position: static;
+        display: inline;
+        transform: none;
+      }
+      .privacy-intro {
+        display: block;
+        width: 100%;
+        margin: 0 0 80px;
+        padding-right: 0;
+        justify-self: stretch;
+        text-align: left;
+      }
+      .privacy-section {
+        display: block;
+        width: 100%;
+        justify-self: stretch;
+        min-height: 0;
+        margin-top: 0;
+        padding-bottom: 72px;
+        transform: none;
+      }
+      .privacy-section:nth-of-type(odd),
+      .privacy-section:nth-of-type(even),
+      .privacy-section:nth-of-type(3n + 2),
+      .privacy-section:nth-of-type(4n) {
+        grid-column: auto;
+        justify-self: stretch;
+        margin-top: 0;
+      }
+      .privacy-section h2,
+      .privacy-section > p,
+      .privacy-section > address,
+      .privacy-section > ul {
+        grid-column: 1;
+        width: 100%;
+        padding-right: 0;
+      }
+      .privacy-section h2 { margin-bottom: 28px; }
+      .privacy-section > p,
+      .privacy-section > address,
+      .privacy-section > ul {
+        text-align: left;
+        hyphens: none;
+        -webkit-hyphens: none;
+      }
+      .privacy-magnet { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .site-footer {
+        width: calc(100vw - 20px);
+        max-width: calc(100vw - 20px);
+        min-height: auto;
+        margin: 20px 10px 10px;
+        padding: 16px;
+        box-sizing: border-box;
+      }
+      .site-footer .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+      }
+      .site-footer .footer-brand-minimal,
+      .site-footer .footer-social-minimal,
+      .site-footer .footer-contact-block,
+      .site-footer .footer-copy-minimal {
+        position: static;
+        inset: auto;
+        width: auto;
+        max-width: 100%;
+        margin: 0;
+        transform: none;
+      }
+      .site-footer .footer-brand-minimal { margin-bottom: 50px; }
+      .site-footer .footer-brand-minimal__logo { width: 133.96px; height: 14.28px; }
+      .site-footer .footer-social-minimal {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 50px;
+        text-align: left;
+      }
+      .site-footer .footer-social-minimal a {
+        margin-right: 0;
+        font-size: clamp(15px, 4.6vw, 20px);
+      }
+      .site-footer .footer-contact-block {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+        font-size: 13.44px;
+        line-height: 21.12px;
+        white-space: normal;
+      }
+      .site-footer .footer-copy-minimal {
+        display: block;
+        font-size: 11.2px;
+        line-height: 17.6px;
+        text-align: left;
+      }
+      .mond-footer-legal { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <header class="privacy-header">
+    <a class="privacy-brand" href="/" aria-label="MOND : STUDIO home">
+      <img src="/asset4.png" alt="MOND : STUDIO" width="590" height="63" />
+    </a>
+    <nav class="privacy-nav" aria-label="Primary navigation">
+      <a href="/work/">WORK</a>
+      <a href="/about/">ABOUT</a>
+      <a href="https://cal.eu/mondstudio">CONTACT</a>
+    </nav>
+  </header>
+
+  <div class="privacy-magnet" aria-hidden="true">:</div>
+
+  <main class="privacy-main">
+    <h1 class="privacy-title"><span class="privacy-title__part privacy-title__part--left">Privacy</span> <span class="privacy-title__part privacy-title__part--right">Policy</span></h1>
+    <div class="privacy-content">
+      <p class="privacy-intro">This Privacy Policy explains how MOND STUDIO SRL processes information when you visit mondstudio.co, including how website analytics and consent preferences are handled.</p>
+
+      <section class="privacy-section" aria-labelledby="controller-heading">
+        <h2 id="controller-heading">Data Controller</h2>
+        <p>The website is operated by:</p>
+        <address class="controller-address">
+          MOND STUDIO SRL<br />
+          CUI: RO48689032<br />
+          Email: <a href="mailto:hello@mondstudio.co">hello@mondstudio.co</a>
+        </address>
+        <p>MOND STUDIO SRL acts as the data controller for the processing activities described in this Privacy Policy.</p>
+      </section>
+
+      <section class="privacy-section" aria-labelledby="information-heading">
+        <h2 id="information-heading">Information We Process</h2>
+        <p>The website may process:</p>
+        <ul>
+          <li>Technical information generated when the website is accessed.</li>
+          <li>Website usage and interaction data through Google Analytics.</li>
+          <li>Analytics consent preferences stored locally in your browser.</li>
+          <li>Information you voluntarily send when contacting MOND:STUDIO by email or through an external contact or booking service.</li>
+        </ul>
+      </section>
+
+      <section class="privacy-section" aria-labelledby="analytics-heading">
+        <h2 id="analytics-heading">Google Analytics</h2>
+        <p>MOND:STUDIO uses Google Analytics to understand how visitors use the website and to improve its content and performance.</p>
+        <p>Google Analytics loads when the website opens. Before analytics consent is granted, analytics storage is denied. In this state, Google Analytics does not read or write first-party analytics cookies, but it may send cookieless consent and measurement signals to Google.</p>
+        <p>If you choose ACCEPT, analytics storage is granted and Google Analytics may use first-party analytics cookies, including cookies such as <code>_ga</code> and <code>_ga_*</code>, for subsequent measurement.</p>
+        <p>Advertising-related consent remains disabled on this website.</p>
+      </section>
+
+      <section class="privacy-section" aria-labelledby="basis-heading">
+        <h2 id="basis-heading">Purpose and Legal Basis</h2>
+        <p><strong>Analytics:</strong> The purpose is to understand website usage and improve website content and performance. The legal basis for analytics cookies and storage is your consent.</p>
+        <p><strong>Consent preference:</strong> The website stores <code>mond_cookie_consent</code> locally in your browser to remember whether you accepted or declined analytics. This preference is necessary to remember and respect your choice.</p>
+        <p><strong>Contact correspondence:</strong> If you contact MOND:STUDIO voluntarily, information supplied in the communication may be processed in order to respond to your request.</p>
+      </section>
+
+      <section class="privacy-section" aria-labelledby="cookies-heading">
+        <h2 id="cookies-heading">Cookies and Local Storage</h2>
+        <p>Before analytics consent, <code>analytics_storage</code> is denied and first-party Google Analytics cookies are not enabled.</p>
+        <p>After ACCEPT, Google Analytics may create first-party analytics cookies such as <code>_ga</code> and <code>_ga_*</code>.</p>
+        <p>After DECLINE, analytics storage remains denied and the website attempts to remove existing first-party Google Analytics cookies where technically possible.</p>
+        <p>The local-storage preference <code>mond_cookie_consent</code> can contain <code>accepted</code> or <code>declined</code>. It is used only to remember your analytics-consent choice and is not advertising storage.</p>
+      </section>
+
+      <section class="privacy-section" aria-labelledby="choice-heading">
+        <h2 id="choice-heading">Changing Your Choice</h2>
+        <p>You can change your analytics choice at any time by selecting COOKIE SETTINGS in the website footer.</p>
+        <p>If analytics consent is withdrawn, analytics storage is set to denied and the website attempts to remove existing first-party Google Analytics cookies where technically possible.</p>
+        <p>Withdrawal of consent does not affect processing that occurred lawfully before consent was withdrawn.</p>
+      </section>
+
+      <section class="privacy-section" aria-labelledby="third-parties-heading">
+        <h2 id="third-parties-heading">Google Analytics and Third Parties</h2>
+        <p>Google Analytics is provided by Google. Technical and measurement information may be transmitted to Google when the service operates. You can learn more in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy &amp; Terms</a>.</p>
+      </section>
+
+      <section class="privacy-section" aria-labelledby="retention-heading">
+        <h2 id="retention-heading">Data Retention</h2>
+        <p>Personal data and analytics information are retained only for as long as necessary for the purposes described in this Policy, subject to applicable legal requirements and the retention settings configured within the relevant services.</p>
+        <p>Google Analytics retention periods are managed through the website's Google Analytics configuration and may be updated from time to time.</p>
+        <p>Contact correspondence may be retained for as long as reasonably necessary to respond to the request and manage any resulting professional or legal relationship.</p>
+      </section>
+
+      <section class="privacy-section" aria-labelledby="rights-heading">
+        <h2 id="rights-heading">Your Rights</h2>
+        <p>Where applicable under data-protection law, you may have the right to:</p>
+        <ul>
+          <li>Access your personal data.</li>
+          <li>Request correction or deletion.</li>
+          <li>Request restriction of processing.</li>
+          <li>Object to certain processing.</li>
+          <li>Data portability where applicable.</li>
+          <li>Withdraw consent at any time where processing is based on consent.</li>
+          <li>Lodge a complaint with the competent data-protection supervisory authority.</li>
+        </ul>
+        <p>In Romania, the supervisory authority is the Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP).</p>
+      </section>
+
+      <section class="privacy-section" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact</h2>
+        <p>For questions about this Privacy Policy or requests relating to personal data, contact:</p>
+        <p><a href="mailto:hello@mondstudio.co">hello@mondstudio.co</a></p>
+      </section>
+
+      <section class="privacy-section" aria-labelledby="changes-heading">
+        <h2 id="changes-heading">Changes to This Privacy Policy</h2>
+        <p>This Privacy Policy may be updated when the website, services or applicable legal requirements change.</p>
+        <p>Last updated: August 2026</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer footer-section visible" id="footer-section" aria-hidden="false">
+    <div class="footer-content">
+      <div class="footer-brand-minimal" aria-label="MOND : STUDIO">
+        <span class="footer-brand-minimal__logo" aria-hidden="true"></span>
+      </div>
+      <nav class="footer-social-minimal" aria-label="Footer social links">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
+        <a href="https://www.instagram.com/studio_mond/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+      </nav>
+      <div class="footer-contact-block">
+        Cluj-Napoca, Romania <span id="ro-clock" aria-label="Cluj-Napoca local time"></span><br>
+        Budapest, Hungary <span id="hu-clock" aria-label="Budapest local time"></span><br>
+        <a class="footer-email" href="mailto:hello@mondstudio.co?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.co</a>
+      </div>
+      <div class="footer-copy-minimal">©2026 MOND : STUDIO. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <script defer src="/site-common.js"></script>
+</body>
+</html>

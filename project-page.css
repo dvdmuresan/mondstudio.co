@@ -358,28 +358,30 @@
       height: auto;
       color: #FFF;
       font-family: "Helvetica Neue", "Mona Sans", sans-serif;
-      font-size: clamp(27px, 3.84vw, 54px);
+      font-size: 72px;
       font-style: normal;
-      font-weight: 400;
+      font-weight: 500;
       line-height: 0.95;
       margin-left: 0;
       margin-top: 0;
       margin-bottom: 0;
-      letter-spacing: 0;
+      letter-spacing: -0.04em;
       white-space: nowrap;
     }
 
     .case-mobile-info {
       display: grid;
       grid-template-columns: calc(12.5vw - 10px) calc(12.5vw - 10px) minmax(0, 1fr);
-      column-gap: 10px;
-      row-gap: 16px;
+      column-gap: clamp(32px, 3vw, 64px);
+      row-gap: 26px;
       width: calc(50vw - 20px);
       margin: 0;
       color: #f7f7f7;
       font-family: "Mona Sans", sans-serif;
-      font-size: 13.5px;
-      line-height: 1.24;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 19px;
       justify-self: start;
     }
 
@@ -393,13 +395,16 @@
     }
 
     .case-mobile-info dt {
-      color: #929292;
+      color: rgb(155, 156, 150);
       font-weight: 500;
     }
 
     .case-mobile-info dd {
       color: #f7f7f7;
       font-weight: 500;
+      max-width: 100%;
+      overflow-wrap: break-word;
+      text-wrap: pretty;
     }
 
     .case-mobile-info a {
@@ -423,15 +428,15 @@
     }
 
     .case-description {
-      width: calc((100vw - 40px) / 2);
+      width: 80%;
       min-width: 0;
       height: auto;
       color: #FFF;
       font-family: "Helvetica Neue", "Mona Sans", sans-serif;
-      font-size: 19.778px;
+      font-size: 17px;
       font-style: normal;
       font-weight: 400;
-      line-height: normal;
+      line-height: 19px;
       margin-top: 0;
       margin-bottom: 0;
     }
@@ -449,14 +454,36 @@
     }
 
     .case-credits {
-      width: 232px;
-      height: 86px;
+      display: grid;
+      grid-template-columns: max-content minmax(0, 1fr);
+      column-gap: 24px;
+      row-gap: 4px;
+      width: 100%;
+      height: auto;
       color: #929292;
       font-family: "Mona Sans", sans-serif;
-      font-size: 15px;
+      font-size: 17px;
       font-style: normal;
       font-weight: 400;
-      line-height: 20px;
+      line-height: 15px;
+    }
+
+    .case-credits dt,
+    .case-credits dd {
+      margin: 0;
+    }
+
+    .case-description h2 {
+      color: rgb(155, 156, 150);
+      font-size: 17px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 19px;
+      text-transform: none;
+    }
+
+    .case-credit-label {
+      color: rgb(155, 156, 150);
     }
 
     .case-project-nav {
@@ -613,6 +640,54 @@
       display: block;
       pointer-events: none;
       user-select: none;
+    }
+
+    .case-gallery figure video[data-manual-playback] {
+      pointer-events: auto;
+      cursor: auto;
+    }
+
+    .case-video-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+      width: clamp(84px, 10vw, 150px);
+      aspect-ratio: 1;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(247, 247, 247, 0.88);
+      color: #111;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transform: translate(-50%, -50%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .case-video-play[hidden] {
+      display: none;
+    }
+
+    .case-video-play span {
+      display: block;
+      width: 0;
+      height: 0;
+      margin-left: 12%;
+      border-top: clamp(14px, 1.8vw, 26px) solid transparent;
+      border-bottom: clamp(14px, 1.8vw, 26px) solid transparent;
+      border-left: clamp(22px, 2.8vw, 40px) solid currentColor;
+    }
+
+    .case-video-play:hover {
+      background: #f7f7f7;
+    }
+
+    .case-video-play:focus-visible {
+      outline: 2px solid #111;
+      outline-offset: 4px;
     }
 
     @media (min-width: 721px) {
@@ -1108,7 +1183,7 @@
       }
 
       .case-description {
-        width: 100%;
+        width: 80%;
       }
     }
 
@@ -1169,8 +1244,8 @@
       }
 
       .case-description {
-        width: 100%;
-        max-width: 100%;
+        width: 80%;
+        max-width: 80%;
         height: auto;
         font-size: clamp(18px, 3.5vw, 20px);
         margin-left: 0;
@@ -1231,7 +1306,7 @@
       }
 
       .case-description {
-        width: 100%;
+        width: 80%;
         margin-top: 0;
         font-size: clamp(18px, 3vw, 21px);
         line-height: 1.28;
@@ -1378,6 +1453,8 @@
       }
 
       .case-description {
+        width: 80%;
+        max-width: 80%;
         margin-left: 0;
         margin-top: 0;
         font-size: 16px;
@@ -2675,7 +2752,60 @@
     }
 
     body[data-theme="light"] .case-mobile-info dt,
-    body[data-theme="light"] .case-credits,
     body[data-theme="light"] .case-project-nav__label {
+      color: rgb(155, 156, 150);
+    }
+
+    body[data-theme="light"] .case-credits {
       color: #5a5a5a;
+    }
+
+    body[data-theme="light"] .case-credit-label,
+    body[data-theme="light"] .case-description h2 {
+      color: rgb(155, 156, 150);
+    }
+
+    .case-intro__copy {
+      font-weight: 500;
+      letter-spacing: -0.04em;
+    }
+
+    .case-mobile-info,
+    .case-mobile-info dt,
+    .case-mobile-info dd {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 19px;
+    }
+
+    .case-mobile-info {
+      row-gap: 26px;
+    }
+
+    .case-description,
+    .case-description h2,
+    .case-description p {
+      font-size: 17px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 19px;
+    }
+
+    .case-credits {
+      font-size: 17px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 15px;
+    }
+
+    @media (min-width: 721px) {
+      .case-intro__copy {
+        font-size: 72px;
+      }
+
+      .case-mobile-info {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: clamp(32px, 3vw, 64px);
+      }
     }

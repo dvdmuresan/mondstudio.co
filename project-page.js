@@ -42,7 +42,7 @@
     })();
 
     (() => {
-      const videos = Array.from(document.querySelectorAll(".case-gallery__video"));
+      const videos = Array.from(document.querySelectorAll(".case-gallery__video:not([data-manual-playback])"));
       if (!videos.length) return;
 
       const play = (video) => {
@@ -79,6 +79,31 @@
       videos.forEach((video) => observer.observe(video));
     })();
 
+    (() => {
+      const manualVideos = document.querySelectorAll("video[data-manual-playback]");
+
+      manualVideos.forEach((video) => {
+        const playButton = video.parentElement?.querySelector(".case-video-play");
+        if (!playButton) return;
+
+        const updateButton = () => {
+          playButton.hidden = !video.paused && !video.ended;
+        };
+
+        playButton.addEventListener("click", () => {
+          const attempt = video.play();
+          if (attempt && typeof attempt.catch === "function") {
+            attempt.catch(() => updateButton());
+          }
+        });
+
+        video.addEventListener("play", updateButton);
+        video.addEventListener("pause", updateButton);
+        video.addEventListener("ended", updateButton);
+        updateButton();
+      });
+    })();
+
     // Enable click-and-drag scrolling on the gallery.
     (() => {
       const galleries = document.querySelectorAll(".case-gallery");
@@ -98,6 +123,7 @@
         };
 
         gallery.addEventListener("pointerdown", (e) => {
+          if (e.target.closest("video[data-manual-playback], .case-video-play")) return;
           isDragging = true;
           hasDragged = false;
           startX = e.clientX;

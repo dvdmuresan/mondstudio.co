@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title description">
+  <title id="title">Multitool landscape media placeholder</title>
+  <desc id="description">Temporary Multitool media placeholder to be replaced with final project artwork.</desc>
+  <rect width="1600" height="900" fill="#171717"/>
+  <path d="M0 0 1600 900M1600 0 0 900" stroke="#303030" stroke-width="2"/>
+  <text x="80" y="760" fill="#f5f5f5" font-family="Arial, sans-serif" font-size="72">MULTITOOL</text>
+  <text x="84" y="824" fill="#8a8a8a" font-family="Arial, sans-serif" font-size="28">LANDSCAPE MEDIA PLACEHOLDER</text>
+</svg>

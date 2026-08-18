@@ -1,4 +1,208 @@
 (() => {
+  const CONSENT_KEY = "mond_cookie_consent";
+
+  const readConsent = () => {
+    try {
+      const value = window.localStorage.getItem(CONSENT_KEY);
+      return value === "accepted" || value === "declined" ? value : null;
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const writeConsent = (value) => {
+    try {
+      window.localStorage.setItem(CONSENT_KEY, value);
+    } catch (error) {
+      // Consent still applies for this page when storage is unavailable.
+    }
+  };
+
+  const removeAnalyticsCookies = () => {
+    const cookieNames = document.cookie
+      .split(";")
+      .map((cookie) => cookie.split("=")[0].trim())
+      .filter((name) => name === "_ga" || name.startsWith("_ga_"));
+    const hostname = window.location.hostname;
+    const domains = ["", hostname, `.${hostname}`];
+
+    cookieNames.forEach((name) => {
+      domains.forEach((domain) => {
+        const domainPart = domain ? `; domain=${domain}` : "";
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${domainPart}; SameSite=Lax`;
+      });
+    });
+  };
+
+  const setupConsentControls = () => {
+    if (document.getElementById("mond-consent")) return;
+
+    const style = document.createElement("style");
+    style.textContent = `
+      .mond-consent {
+        position: fixed;
+        z-index: 2147483646;
+        right: 20px;
+        bottom: 20px;
+        width: min(420px, calc(100vw - 40px));
+        box-sizing: border-box;
+        padding: 16px;
+        border: 0;
+        border-radius: 7px;
+        background: rgba(255, 255, 255, 0.20);
+        color: #fff;
+        font-family: "Mona Sans", Arial, sans-serif;
+        font-size: 13px;
+        line-height: 1.4;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+      .mond-consent,
+      .mond-consent * {
+        font-family: "Mona Sans", Arial, sans-serif;
+      }
+      body[data-theme="light"] .mond-consent {
+        background: rgba(255, 255, 255, 0.65);
+        color: #131313;
+      }
+      .mond-consent[hidden] { display: none; }
+      .mond-consent__text { margin: 0 0 14px; }
+      .mond-consent__actions { display: flex; gap: 18px; }
+      .mond-consent__button,
+      .mond-cookie-settings,
+      .mond-footer-privacy {
+        appearance: none;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      .mond-consent__button.is-selected {
+        border-bottom: 1px solid currentColor;
+      }
+      .mond-consent__button:focus-visible,
+      .mond-cookie-settings:focus-visible,
+      .mond-footer-privacy:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 4px;
+      }
+      .mond-footer-legal {
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+        margin-top: 12px;
+      }
+      .mond-cookie-settings,
+      .mond-footer-privacy {
+        opacity: .75;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        letter-spacing: inherit;
+        text-decoration: none;
+      }
+      @media (max-width: 600px) {
+        .mond-consent {
+          right: 12px;
+          bottom: 12px;
+          width: calc(100vw - 24px);
+          padding: 14px;
+        }
+        .mond-footer-legal {
+          width: 100%;
+          justify-content: flex-start;
+          align-items: center;
+          text-align: left;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    const banner = document.createElement("section");
+    banner.id = "mond-consent";
+    banner.className = "mond-consent";
+    banner.setAttribute("aria-label", "Analytics consent");
+    const savedConsent = readConsent();
+    banner.innerHTML = `
+      <p class="mond-consent__text">We use analytics to understand how the website is used.</p>
+      <div class="mond-consent__actions">
+        <button class="mond-consent__button${savedConsent === "accepted" ? " is-selected" : ""}" type="button" data-consent="accepted" aria-pressed="${savedConsent === "accepted"}">Accept</button>
+        <button class="mond-consent__button${savedConsent === "declined" ? " is-selected" : ""}" type="button" data-consent="declined" aria-pressed="${savedConsent === "declined"}">Decline</button>
+      </div>
+    `;
+    banner.hidden = Boolean(savedConsent);
+    document.body.appendChild(banner);
+
+    const settingsButton = document.createElement("button");
+    settingsButton.type = "button";
+    settingsButton.className = "mond-cookie-settings";
+    settingsButton.textContent = "Cookie settings";
+    settingsButton.setAttribute("aria-controls", banner.id);
+    settingsButton.setAttribute("aria-expanded", "false");
+    const footerTarget = document.querySelector(".site-footer .footer-copy-minimal") || document.querySelector("footer") || document.body;
+    const footerLegal = document.createElement("div");
+    footerLegal.className = "mond-footer-legal";
+    const privacyLink = document.createElement("a");
+    privacyLink.className = "mond-footer-privacy";
+    privacyLink.href = "/privacy/";
+    privacyLink.textContent = "Privacy";
+    footerLegal.append(privacyLink, settingsButton);
+    footerTarget.appendChild(footerLegal);
+
+    let reopened = false;
+    const closeBanner = () => {
+      banner.hidden = true;
+      reopened = false;
+      settingsButton.setAttribute("aria-expanded", "false");
+    };
+
+    banner.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-consent]");
+      if (!button) return;
+      const value = button.dataset.consent;
+      window.gtag?.("consent", "update", {
+        analytics_storage: value === "accepted" ? "granted" : "denied",
+      });
+      writeConsent(value);
+      banner.querySelectorAll("button[data-consent]").forEach((consentButton) => {
+        const isSelected = consentButton.dataset.consent === value;
+        consentButton.classList.toggle("is-selected", isSelected);
+        consentButton.setAttribute("aria-pressed", String(isSelected));
+      });
+      if (value === "declined") removeAnalyticsCookies();
+      closeBanner();
+      settingsButton.focus();
+    });
+
+    settingsButton.addEventListener("click", () => {
+      reopened = true;
+      banner.hidden = false;
+      settingsButton.setAttribute("aria-expanded", "true");
+      banner.querySelector("button").focus();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || !reopened || banner.hidden) return;
+      closeBanner();
+      settingsButton.focus();
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupConsentControls, { once: true });
+  } else {
+    setupConsentControls();
+  }
+
   const applyTheme = (theme) => {
     const resolved = theme === "light" ? "light" : "dark";
     document.body.dataset.theme = resolved;

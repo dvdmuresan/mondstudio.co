@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Analytics consent default must run before Google Analytics. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    try {
+      if (localStorage.getItem('mond_cookie_consent') === 'accepted') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+    } catch (error) {
+      // Keep analytics denied when preference storage is unavailable.
+    }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHS2KKDC09"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-EHS2KKDC09');
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base href="/">
+  <title>MOND:STUDIO — Multitool</title>
+  <meta name="description" content="Multitool is a modular concept product by Bencze Sáránszky, designed for stage-production technicians working with lighting systems at festivals and clubs." />
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#f7f7f7" />
+  <link rel="canonical" href="https://www.mondstudio.co/multitool/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Multitool — MOND:STUDIO" />
+  <meta property="og:description" content="A modular concept tool for stage-production technicians, combining interchangeable functions with a magnetic attachment system for fast-moving live-event environments." />
+  <meta property="og:url" content="https://www.mondstudio.co/multitool/" />
+  <meta property="og:image" content="https://www.mondstudio.co/projects/multi-tool/multitool-orange-front-view.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Multitool",
+      "url": "https://www.mondstudio.co/multitool/",
+      "description": "Multitool is a modular concept product by Bencze Sáránszky, designed for stage-production technicians working with lighting systems at festivals and clubs.",
+      "image": "https://www.mondstudio.co/projects/multi-tool/multitool-orange-front-view.webp",
+      "creator": {
+        "@type": "Person",
+        "name": "Bencze Sáránszky"
+      },
+      "locationCreated": "Budapest, Hungary",
+      "dateCreated": "2025"
+    }
+  </script>
+  <link rel="preconnect" href="https://use.typekit.net" />
+  <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/did4gvj.css" />
+  <link rel="icon" type="image/png" href="1x/Asset 8-8.png" />
+  <script>
+    try {
+      const transitionState = sessionStorage.getItem('mond:work-to-intermezzo');
+      if (transitionState) {
+        document.documentElement.classList.add('project-entry-transition');
+      }
+    } catch (error) {
+      // Ignore storage failures; the page still loads normally.
+    }
+  </script>
+  <link rel="stylesheet" href="project-page.css?v=20260802-2" />
+  <style>
+    .case-project-nav--portal {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      align-items: end;
+    }
+
+    .case-project-nav--portal .case-project-nav__item {
+      justify-items: start;
+    }
+
+    .case-project-nav--portal .case-project-nav__item--next {
+      justify-items: end;
+      text-align: right;
+    }
+
+    body[data-theme="light"] .case-project-nav--portal .case-project-nav__button {
+      height: auto;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      color: rgb(155, 156, 150);
+      font-size: clamp(24px, 3vw, 48px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      transform: none;
+    }
+
+    body[data-theme="light"] .case-project-nav--portal .case-project-nav__button:hover {
+      background: transparent;
+      color: #131313;
+      transform: none;
+      outline: none;
+      border: 0;
+      box-shadow: none;
+    }
+
+    body[data-theme="light"] .case-project-nav--portal .case-project-nav__button:focus-visible {
+      background: transparent;
+      color: #131313;
+      transform: none;
+      outline: 1px solid currentColor;
+      outline-offset: 6px;
+    }
+
+    .case-project-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      display: none;
+      width: 160px;
+      height: 160px;
+      border-radius: 12px;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .case-project-nav--portal .case-project-nav__button:hover {
+        cursor: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .case-project-nav--portal {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .case-project-nav--portal .case-project-nav__item--next {
+        justify-items: start;
+        text-align: left;
+      }
+
+      .case-project-cursor {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <div class="case-page-transition" id="case-page-transition" aria-hidden="true">
+    <div class="case-page-transition__panel"></div>
+  </div>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const revealHeroText = () => {
+        const items = Array.from(document.querySelectorAll('.hero-text-drop'));
+        if (!items.length) return;
+
+        items.forEach((item, index) => {
+          window.setTimeout(() => {
+            item.classList.add('is-visible');
+          }, index * 160);
+        });
+      };
+
+      if (!root.classList.contains('project-entry-transition')) return;
+
+      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      try {
+        JSON.parse(sessionStorage.getItem('mond:work-to-intermezzo') || '{}');
+      } catch (error) {
+        // The transition can continue without persisted state.
+      }
+
+      if (prefersReducedMotion) {
+        root.classList.remove('project-entry-transition');
+        revealHeroText();
+        try {
+          sessionStorage.removeItem('mond:work-to-intermezzo');
+        } catch (error) {}
+        return;
+      }
+
+      window.setTimeout(() => {
+        root.classList.add('is-panel-exiting');
+      }, 40);
+
+      window.setTimeout(() => {
+        root.classList.add('is-project-entry-ready');
+        revealHeroText();
+      }, 220);
+
+      window.setTimeout(() => {
+        root.classList.add('is-case-reveal-ready');
+        window.dispatchEvent(new CustomEvent('mond:intermezzo-entry-reveal'));
+      }, 340);
+
+      window.setTimeout(() => {
+        root.classList.remove('project-entry-transition');
+        root.classList.remove('is-panel-exiting');
+        root.classList.remove('is-project-entry-ready');
+        root.classList.remove('is-case-reveal-ready');
+        try {
+          sessionStorage.removeItem('mond:work-to-intermezzo');
+        } catch (error) {}
+      }, 900);
+    })();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const root = document.documentElement;
+      if (root.classList.contains('project-entry-transition')) return;
+
+      const items = Array.from(document.querySelectorAll('.hero-text-drop'));
+      items.forEach((item, index) => {
+        window.setTimeout(() => {
+          item.classList.add('is-visible');
+        }, 120 + index * 160);
+      });
+    });
+  </script>
+  <header class="hero">
+    <div class="hero__overlay is-visible" id="hero-overlay" aria-hidden="false">
+      <div class="hero__top">
+        <a class="hero__brand hero-text-drop" href="/" aria-label="MOND : STUDIO home">
+          <img class="hero__brand-image" src="SVG/LOGO-BLACK.svg" alt="MOND : STUDIO" width="590" height="63" decoding="async" />
+          <span class="hero__brand-project" aria-hidden="true">Multitool</span>
+        </a>
+        <button class="hero__menu-toggle" id="hero-menu-toggle" type="button" aria-controls="hero-primary-nav" aria-expanded="false" aria-label="Open menu">
+          <span class="hero__menu-icon" aria-hidden="true">:</span>
+        </button>
+        <nav class="hero__nav" id="hero-primary-nav" aria-label="Primary navigation">
+          <a href="/work/"><span class="hero__nav-word">WORK</span></a>
+          <a href="/about/"><span class="hero__nav-word">ABOUT</span></a>
+          <a href="https://cal.eu/mondstudio"><span class="hero__nav-word">CONTACT</span></a>
+          <a class="hero__nav-talk" href="https://cal.eu/mondstudio"><span class="hero__nav-word">LET'S</span> <span class="hero__nav-word">TALK</span></a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    (function () {
+      const header = document.querySelector('.hero__top');
+      const menuToggle = document.getElementById('hero-menu-toggle');
+      const nav = document.getElementById('hero-primary-nav');
+
+      if (!header || !menuToggle || !nav) return;
+
+      let closingTimer;
+
+      const setMenuOpen = (isOpen) => {
+        window.clearTimeout(closingTimer);
+        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+
+        if (isOpen) {
+          header.classList.remove('is-open');
+          header.classList.remove('is-closing');
+          header.classList.add('is-preopening');
+          nav.getBoundingClientRect();
+          window.requestAnimationFrame(() => {
+            header.classList.remove('is-preopening');
+            header.classList.add('is-open');
+          });
+        } else {
+          header.classList.remove('is-preopening');
+          header.classList.toggle('is-closing', header.classList.contains('is-open'));
+          header.classList.remove('is-open');
+          closingTimer = window.setTimeout(() => {
+            header.classList.remove('is-closing');
+          }, 340);
+        }
+      };
+
+      menuToggle.addEventListener('click', () => {
+        setMenuOpen(!header.classList.contains('is-open'));
+      });
+
+      nav.addEventListener('click', (event) => {
+        if (event.target.closest('a')) {
+          setMenuOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          setMenuOpen(false);
+        }
+      });
+
+      const updateScrolledState = () => {
+        document.body.classList.toggle('has-scrolled', window.scrollY > 0);
+      };
+
+      updateScrolledState();
+      window.addEventListener('scroll', updateScrolledState, { passive: true });
+    })();
+  </script>
+
+  <main class="case-main" id="about" data-theme-target>
+    <section class="case-section">
+      <div class="case-heading">
+        <h1 class="case-intro__copy case-reveal" style="--reveal-delay: 40ms;">Multitool</h1>
+        <dl class="case-mobile-info case-reveal" style="--reveal-delay: 100ms;">
+          <div class="case-mobile-info__item">
+            <dt>Project:</dt>
+            <dd>Multitool</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Year:</dt>
+            <dd>2025</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Location:</dt>
+            <dd>Budapest, Hungary</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Project Type:</dt>
+            <dd>Concept Product Design</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Services:</dt>
+            <dd>3D Design, Product Design, Industrial Design</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Industry:</dt>
+            <dd>Product Design, Industrial Design</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Creator:</dt>
+            <dd>Bencze Sáránszky</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="case-gallery">
+        <figure class="case-gallery__wide case-media-reveal" style="--reveal-delay: 220ms; aspect-ratio: 16 / 9;">
+          <video
+            class="case-gallery__video"
+            src="projects/multi-tool/multitool-product-concept-landscape.mp4"
+            poster="projects/multi-tool/multitool-orange-front-view.webp"
+            preload="metadata"
+            controls
+            playsinline
+            data-manual-playback
+            aria-label="Multitool product concept animation in landscape format"
+          ></video>
+          <button class="case-video-play" type="button" aria-label="Play Multitool product concept animation">
+            <span aria-hidden="true"></span>
+          </button>
+        </figure>
+        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 360ms;">
+          <img src="projects/multi-tool/multitool-orange-front-view.webp" alt="Orange Multitool concept shown from the front" width="2400" height="1350" loading="eager" fetchpriority="high" decoding="async" />
+        </figure>
+        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 500ms;">
+          <img src="projects/multi-tool/multitool-orange-black-configurations.webp" alt="Multitool concept shown in orange and black configurations" width="2400" height="1350" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 620ms;">
+          <img src="projects/multi-tool/multitool-modular-exploded-view.webp" alt="Exploded view of the black Multitool concept with separated fasteners and frame" width="2400" height="1350" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 740ms;">
+          <img src="projects/multi-tool/multitool-black-three-quarter-view.webp" alt="Black Multitool concept shown at an angled three-quarter view" width="2400" height="1350" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="case-gallery__item case-media-reveal" style="--reveal-delay: 860ms; aspect-ratio: 9 / 16;">
+          <video
+            class="case-gallery__video"
+            src="projects/multi-tool/multitool-product-concept-portrait.mp4"
+            preload="metadata"
+            controls
+            playsinline
+            data-manual-playback
+            aria-label="Multitool product concept animation in portrait format"
+          ></video>
+          <button class="case-video-play" type="button" aria-label="Play portrait Multitool product concept animation">
+            <span aria-hidden="true"></span>
+          </button>
+        </figure>
+      </div>
+      <div class="case-description-row">
+        <div class="case-description case-reveal">
+          <h2 class="case-project-nav__label" style="margin: 0 0 8px;">Project</h2>
+          <p style="margin: 0;">Multitool is a concept product designed for technicians working in stage production for festivals, clubs and live events. The tool brings together a set of functions commonly used during the assembly and adjustment of lighting and stage systems, reducing the need to carry multiple separate tools while working on site. Conceived as a compact object for fast-paced production environments, it is designed to remain accessible throughout the setup process.</p>
+          <h2 class="case-project-nav__label" style="margin: 24px 0 8px;">Approach</h2>
+          <p style="margin: 0;">The concept is built around modularity and adaptability. Different tool elements can be exchanged to create a configuration that better fits the needs of individual technicians, while the compact body keeps the most frequently used functions within immediate reach. A magnetic attachment system also allows Multitool to connect to a phone or other compatible surface, helping keep it close at hand during installation work. The design combines industrial functionality with a modular product system intended to adapt to different workflows and specialist requirements.</p>
+        </div>
+        <dl class="case-credits case-reveal" style="--reveal-delay: 160ms;">
+          <dt class="case-credit-label">Design</dt>
+          <dd>Bencze Sáránszky</dd>
+        </dl>
+      </div>
+      <nav class="case-project-nav case-project-nav--portal case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
+        <div class="case-project-nav__item">
+          <a class="case-project-nav__button" href="/work/" data-cursor-image="projects/multi-tool/multitool-black-three-quarter-view.webp">ALL PROJECTS</a>
+        </div>
+        <div class="case-project-nav__item case-project-nav__item--next">
+          <a class="case-project-nav__button" href="/work/" data-cursor-image="projects/multi-tool/multitool-orange-front-view.webp">ALL PROJECTS</a>
+        </div>
+      </nav>
+      <div class="case-project-cursor" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="Multitool image slideshow" aria-hidden="true">
+    <button class="image-lightbox__button image-lightbox__close" type="button" aria-label="Close image slideshow">x</button>
+    <button class="image-lightbox__button image-lightbox__prev" type="button" aria-label="Previous image">&lsaquo;</button>
+    <div class="image-lightbox__stage">
+      <img class="image-lightbox__image" src="" alt="" decoding="async" />
+    </div>
+    <button class="image-lightbox__button image-lightbox__next" type="button" aria-label="Next image">&rsaquo;</button>
+    <div class="image-lightbox__counter" aria-live="polite"></div>
+  </div>
+
+  <footer class="site-footer footer-section visible" id="footer-section" aria-hidden="false">
+    <div class="footer-content">
+      <div class="footer-brand-minimal" aria-label="MOND : STUDIO">
+        <span class="footer-brand-minimal__logo" aria-hidden="true"></span>
+      </div>
+      <nav class="footer-social-minimal" aria-label="Footer social links">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
+        <a href="https://www.instagram.com/studio_mond/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+      </nav>
+      <div class="footer-contact-block">
+        Cluj-Napoca, Romania <span id="ro-clock" aria-label="Cluj-Napoca local time"></span><br>
+        Budapest, Hungary <span id="hu-clock" aria-label="Budapest local time"></span><br>
+        <a class="footer-email" href="mailto:hello@mondstudio.co?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.co</a>
+      </div>
+      <div class="footer-copy-minimal">©2026 MOND : STUDIO. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <script defer src="./project-page.js"></script>
+  <script defer src="./site-common.js"></script>
+  <script>
+    (() => {
+      const cursor = document.querySelector('.case-project-cursor');
+      const links = document.querySelectorAll('.case-project-nav--portal [data-cursor-image]');
+      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+      if (!cursor || !links.length || !canHover.matches) return;
+
+      const moveCursor = (event) => {
+        cursor.style.left = `${event.clientX}px`;
+        cursor.style.top = `${event.clientY}px`;
+      };
+
+      links.forEach((link) => {
+        link.addEventListener('mouseenter', (event) => {
+          cursor.style.backgroundImage = `url('${link.dataset.cursorImage}')`;
+          cursor.style.display = 'block';
+          moveCursor(event);
+        });
+        link.addEventListener('mousemove', moveCursor);
+        link.addEventListener('mouseleave', () => {
+          cursor.style.display = 'none';
+          cursor.style.backgroundImage = '';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,29 +1,58 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHS2KKDC09"></script>
+  <!-- Analytics consent default must run before Google Analytics. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    try {
+      if (localStorage.getItem('mond_cookie_consent') === 'accepted') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+    } catch (error) {
+      // Keep analytics denied when preference storage is unavailable.
+    }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHS2KKDC09"></script>
+  <script>
     gtag('js', new Date());
-
     gtag('config', 'G-EHS2KKDC09');
   </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <base href="/">
   <title>MOND:STUDIO — Dream Ville Software</title>
-  <meta name="description" content="Dream Ville Software branding by MOND : STUDIO." />
+  <meta name="description" content="Visual identity and art direction for Dream Ville Software, a Cluj-Napoca technology startup working in software development and AI." />
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#f7f7f7" />
   <link rel="canonical" href="https://www.mondstudio.co/dream-ville-software/" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Dream Ville Software — MOND : STUDIO" />
-  <meta property="og:description" content="Dream Ville Software branding by MOND : STUDIO." />
+  <meta property="og:title" content="Dream Ville Software — MOND:STUDIO" />
+  <meta property="og:description" content="A minimalist, clean and bold visual identity for Dream Ville Software, created to support a growing technology and AI startup." />
   <meta property="og:url" content="https://www.mondstudio.co/dream-ville-software/" />
   <meta property="og:image" content="https://www.mondstudio.co/optimized/image2.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Dream Ville Software",
+      "url": "https://www.mondstudio.co/dream-ville-software/",
+      "description": "Visual identity and art direction for Dream Ville Software, a Cluj-Napoca technology startup working in software development and AI.",
+      "image": "https://www.mondstudio.co/optimized/image2.jpg",
+      "creator": {
+        "@id": "https://www.mondstudio.co/#studio"
+      },
+      "locationCreated": "Cluj-Napoca, Romania"
+    }
+  </script>
   <link rel="preconnect" href="https://use.typekit.net" />
   <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
   <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
@@ -198,12 +227,12 @@
   <main class="case-main" id="about" data-theme-target>
     <section class="case-section">
       <div class="case-heading">
-        <h1 class="case-intro__copy case-reveal" style="--reveal-delay: 40ms;">DREAM VILLE SOFTWARE</h1>
+        <h1 class="case-intro__copy case-reveal" style="--reveal-delay: 40ms;">Dream Ville Software</h1>
         <dl class="case-mobile-info case-reveal" style="--reveal-delay: 100ms;">
           <div class="case-mobile-info__item">
             <dt>Client:</dt>
             <dd>
-              To be confirmed
+              Dream Ville Software
             </dd>
           </div>
           <div class="case-mobile-info__item">
@@ -215,12 +244,20 @@
             <dd>2023</dd>
           </div>
           <div class="case-mobile-info__item">
-            <dt>Tag:</dt>
-            <dd>Branding</dd>
+            <dt>Location:</dt>
+            <dd>Cluj-Napoca, Romania</dd>
           </div>
           <div class="case-mobile-info__item">
-            <dt>Creatives:</dt>
-            <dd>To be confirmed</dd>
+            <dt>Project Type:</dt>
+            <dd>Brand Identity</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Services:</dt>
+            <dd>Art Direction, Visual Identity</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Industry:</dt>
+            <dd>Technology, AI</dd>
           </div>
         </dl>
       </div>
@@ -233,12 +270,16 @@
         </figure>
       </div>
       <div class="case-description-row">
-        <p class="case-description case-reveal">
-          <span class="case-description__line">Project description coming soon.</span>
-        </p>
-        <div class="case-credits case-reveal" style="--reveal-delay: 160ms;">
-          Credits coming soon
+        <div class="case-description case-reveal">
+          <h2 class="case-project-nav__label" style="margin: 0 0 8px;">Project</h2>
+          <p style="margin: 0;">Dream Ville Software is a Cluj-Napoca-based technology startup working in software development and AI. As the company was establishing its presence and positioning, MOND:STUDIO was brought in to create a visual identity and creative direction that could give the brand a clear, confident and contemporary expression. The project focused on building a coherent foundation that would support the startup across its digital presence, communication and future growth.</p>
+          <h2 class="case-project-nav__label" style="margin: 24px 0 8px;">Approach</h2>
+          <p style="margin: 0;">The identity was developed around a minimalist, clean and bold visual language. Rather than relying on complex technological imagery, the system uses clarity, strong composition and restrained graphic elements to communicate confidence and precision. The visual identity and art direction were designed to feel adaptable and distinctive while remaining functional across different digital and branded applications, giving Dream Ville Software a consistent framework for communicating as the company evolves.</p>
         </div>
+        <dl class="case-credits case-reveal" style="--reveal-delay: 160ms;">
+          <dt class="case-credit-label">Art Direction and Graphic Design</dt>
+          <dd>Muresan David</dd>
+        </dl>
       </div>
       <nav class="case-project-nav case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
         <div class="case-project-nav__item">

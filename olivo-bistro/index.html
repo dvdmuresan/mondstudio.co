@@ -1,29 +1,58 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHS2KKDC09"></script>
+  <!-- Analytics consent default must run before Google Analytics. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    try {
+      if (localStorage.getItem('mond_cookie_consent') === 'accepted') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+    } catch (error) {
+      // Keep analytics denied when preference storage is unavailable.
+    }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHS2KKDC09"></script>
+  <script>
     gtag('js', new Date());
-
     gtag('config', 'G-EHS2KKDC09');
   </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <base href="/">
   <title>MOND:STUDIO — Olivo Bistro</title>
-  <meta name="description" content="Olivo Bistro — a project by MOND : STUDIO." />
+  <meta name="description" content="Brand repositioning, visual identity and art direction for Olivo Bistro in Cluj-Napoca, creating a clearer distinction within the wider Olivo brand." />
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#f7f7f7" />
   <link rel="canonical" href="https://www.mondstudio.co/olivo-bistro/" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Olivo Bistro — MOND : STUDIO" />
-  <meta property="og:description" content="Olivo Bistro — a project by MOND : STUDIO." />
+  <meta property="og:title" content="Olivo Bistro — MOND:STUDIO" />
+  <meta property="og:description" content="A new symbol and visual direction for Olivo Bistro, designed to strengthen its identity and distinguish it from Olivo’s specialty-coffee locations." />
   <meta property="og:url" content="https://www.mondstudio.co/olivo-bistro/" />
   <meta property="og:image" content="https://www.mondstudio.co/projects/olivo-bistro/placeholder-landscape.svg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Olivo Bistro",
+      "url": "https://www.mondstudio.co/olivo-bistro/",
+      "description": "Brand repositioning, visual identity and art direction for Olivo Bistro in Cluj-Napoca, creating a clearer distinction within the wider Olivo brand.",
+      "image": "https://www.mondstudio.co/projects/olivo-bistro/placeholder-landscape.svg",
+      "creator": {
+        "@id": "https://www.mondstudio.co/#studio"
+      },
+      "locationCreated": "Cluj-Napoca, Romania"
+    }
+  </script>
   <link rel="preconnect" href="https://use.typekit.net" />
   <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
   <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
@@ -198,12 +227,12 @@
   <main class="case-main" id="about" data-theme-target>
     <section class="case-section">
       <div class="case-heading">
-        <h1 class="case-intro__copy case-reveal" style="--reveal-delay: 40ms;">OLIVO BISTRO</h1>
+        <h1 class="case-intro__copy case-reveal" style="--reveal-delay: 40ms;">Olivo Bistro</h1>
         <dl class="case-mobile-info case-reveal" style="--reveal-delay: 100ms;">
           <div class="case-mobile-info__item">
             <dt>Client:</dt>
             <dd>
-              To be confirmed
+              Olivo Bistro
             </dd>
           </div>
           <div class="case-mobile-info__item">
@@ -212,15 +241,23 @@
           </div>
           <div class="case-mobile-info__item">
             <dt>Year:</dt>
-            <dd>To be confirmed</dd>
+            <dd>2024</dd>
           </div>
           <div class="case-mobile-info__item">
-            <dt>Tag:</dt>
-            <dd>To be confirmed</dd>
+            <dt>Location:</dt>
+            <dd>Cluj-Napoca, Romania</dd>
           </div>
           <div class="case-mobile-info__item">
-            <dt>Creatives:</dt>
-            <dd>To be confirmed</dd>
+            <dt>Project Type:</dt>
+            <dd>Brand Repositioning</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Services:</dt>
+            <dd>Branding, Visual Identity, Art Direction, Graphic Design</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Industry:</dt>
+            <dd>Hospitality, Food &amp; Beverage</dd>
           </div>
         </dl>
       </div>
@@ -233,12 +270,17 @@
         </figure>
       </div>
       <div class="case-description-row">
-        <p class="case-description case-reveal">
-          <span class="case-description__line">Project description coming soon.</span>
-        </p>
-        <div class="case-credits case-reveal" style="--reveal-delay: 160ms;">
-          Credits coming soon
+        <div class="case-description case-reveal">
+          <h2 class="case-project-nav__label" style="margin: 0 0 8px;">Project</h2>
+          <p style="margin: 0;">Olivo Bistro is part of an established hospitality brand in Cluj-Napoca, operating in a context where the Olivo name was already strongly associated with specialty coffee. As the bistro developed its own offer and character, the brand needed a clearer visual identity that could distinguish the restaurant experience from the other Olivo locations in the city. The project focused on strengthening this differentiation while preserving the recognition and existing equity of the Olivo name.</p>
+          <h2 class="case-project-nav__label" style="margin: 24px 0 8px;">Approach</h2>
+          <p style="margin: 0;">MOND:STUDIO approached the project as a strategic brand repositioning. A new symbol was introduced alongside the existing logotype to give Olivo Bistro a more distinctive and recognizable visual signature, while a refreshed graphic direction was developed for the menu and supporting communication. The resulting identity creates a clearer separation between the bistro and Olivo’s specialty-coffee locations, giving the restaurant a more autonomous presence while maintaining a visible connection to the wider Olivo brand.</p>
         </div>
+        <dl class="case-credits case-reveal" style="--reveal-delay: 160ms;">
+          <dt class="case-credit-label">Art Direction</dt><dd>Muresan David</dd>
+          <dt class="case-credit-label">Logo Design</dt><dd>Muresan David</dd>
+          <dt class="case-credit-label">Graphic Design</dt><dd>Cristian Tohătan</dd>
+        </dl>
       </div>
       <nav class="case-project-nav case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
         <div class="case-project-nav__item">

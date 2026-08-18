@@ -1,13 +1,28 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHS2KKDC09"></script>
+  <!-- Analytics consent default must run before Google Analytics. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    try {
+      if (localStorage.getItem('mond_cookie_consent') === 'accepted') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+    } catch (error) {
+      // Keep analytics denied when preference storage is unavailable.
+    }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHS2KKDC09"></script>
+  <script>
     gtag('js', new Date());
-
     gtag('config', 'G-EHS2KKDC09');
   </script>
   <meta charset="utf-8" />
@@ -54,6 +69,124 @@
     }
   </script>
   <link rel="stylesheet" href="project-page.css?v=20260802-2" />
+  <style>
+    .maier-gallery {
+      gap: 20px;
+    }
+
+    .maier-gallery > .case-gallery__row {
+      gap: 20px;
+    }
+
+    .case-project-nav--portal {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      align-items: end;
+    }
+
+    .case-project-nav--portal .case-project-nav__item {
+      justify-items: start;
+    }
+
+    .case-project-nav--portal .case-project-nav__item--next {
+      justify-items: end;
+      text-align: right;
+    }
+
+    body[data-theme="light"] .case-project-nav--portal .case-project-nav__button {
+      height: auto;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: rgb(155, 156, 150);
+      font-size: clamp(24px, 3vw, 48px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      transform: none;
+    }
+
+    body[data-theme="light"] .case-project-nav--portal .case-project-nav__button:hover {
+      border: 0;
+      outline: none;
+      background: transparent;
+      color: #131313;
+      box-shadow: none;
+      transform: none;
+    }
+
+    body[data-theme="light"] .case-project-nav--portal .case-project-nav__button:focus-visible {
+      background: transparent;
+      color: #131313;
+      outline: 1px solid currentColor;
+      outline-offset: 6px;
+      transform: none;
+    }
+
+    .case-project-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      display: none;
+      width: 160px;
+      height: 160px;
+      border-radius: 12px;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .case-project-nav--portal .case-project-nav__button:hover {
+        cursor: none;
+      }
+    }
+
+    @media (min-width: 721px) {
+      .maier-gallery .maier-gallery__row--feature {
+        grid-template-columns: minmax(0, 2.25fr) minmax(0, 1fr);
+      }
+
+      .maier-gallery .maier-gallery__row--equal {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .maier-gallery .maier-gallery__row--identity {
+        grid-template-columns: minmax(0, 501fr) minmax(0, 1396fr);
+      }
+
+      .maier-gallery .maier-gallery__row--left-wide {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .maier-gallery,
+      .maier-gallery > .case-gallery__row {
+        gap: 20px;
+      }
+
+      .case-project-nav--portal {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .case-project-nav--portal .case-project-nav__item--next {
+        justify-items: start;
+        text-align: left;
+      }
+
+      .case-project-cursor {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body data-theme="light">
   <div class="case-page-transition" id="case-page-transition" aria-hidden="true">
@@ -242,36 +375,44 @@
           </div>
         </dl>
       </div>
-      <div class="case-gallery case-gallery--rows">
+      <div class="case-gallery case-gallery--rows maier-gallery">
         <div class="case-gallery__row case-gallery__row--1">
           <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
-            <img src="projects/maier-jewelry/optimized/maier-jewelry-packaging-design.jpg" alt="Maier Jewelry branded packaging boxes" width="2000" height="1250" loading="eager" fetchpriority="high" decoding="async" />
+            <img src="projects/maier-jewelry/FIGMA/Group 16.jpg" alt="Maier Jewelry wordmark in ivory on a black background" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="async" />
           </figure>
         </div>
-        <div class="case-gallery__row case-gallery__row--3">
-          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 360ms;">
-            <img src="projects/maier-jewelry/maier-jewelry-silver-bracelet.jpg" alt="Hand wearing a Maier Jewelry silver bracelet" width="4000" height="5328" loading="lazy" decoding="async" />
+        <div class="case-gallery__row maier-gallery__row--feature">
+          <figure class="case-media-reveal" style="--reveal-delay: 360ms;">
+            <video class="case-gallery__video" src="projects/maier-jewelry/FIGMA/Maier - Anim.mp4" preload="none" muted loop playsinline aria-label="Maier Jewelry animated visual identity"></video>
           </figure>
           <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 500ms;">
-            <img src="projects/maier-jewelry/maier-jewelry-silver-rings-hands.jpg" alt="Two hands wearing multiple Maier Jewelry silver rings" width="3611" height="4810" loading="lazy" decoding="async" />
+            <img src="projects/maier-jewelry/FIGMA/maier-jewelry-silver-m-necklace 2.jpg" alt="Maier Jewelry M-shaped pendant held against a white shirt" width="580" height="772" loading="lazy" decoding="async" />
           </figure>
         </div>
-        <div class="case-gallery__row case-gallery__row--3">
+        <div class="case-gallery__row maier-gallery__row--equal">
           <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 620ms;">
-            <img src="projects/maier-jewelry/maier-jewelry-silver-gemstone-ring.jpg" alt="Hand wearing a Maier Jewelry silver ring with a semi-precious stone" width="4000" height="5328" loading="lazy" decoding="async" />
+            <img src="projects/maier-jewelry/FIGMA/Group 17.jpg" alt="Maier Jewelry stones with soul concept graphic" width="947" height="1085" loading="lazy" decoding="async" />
           </figure>
           <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 740ms;">
-            <img src="projects/maier-jewelry/maier-jewelry-silver-m-necklace.jpg" alt="Maier Jewelry silver necklace with an M-shaped pendant" width="4000" height="5328" loading="lazy" decoding="async" />
+            <img src="projects/maier-jewelry/FIGMA/Mask group.jpg" alt="Person carrying a canvas tote bag printed with the Maier wordmark" width="947" height="1085" loading="lazy" decoding="async" />
           </figure>
         </div>
-        <div class="case-gallery__row case-gallery__row--1">
+        <div class="case-gallery__row maier-gallery__row--identity">
           <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 860ms;">
-            <img src="projects/maier-jewelry/maier-jewelry-silver-ring-styling.jpeg" alt="Two hands wearing different Maier Jewelry silver rings" width="4032" height="3024" loading="lazy" decoding="async" />
+            <img src="projects/maier-jewelry/FIGMA/maier-jewelry-silver-gemstone-ring 2.jpg" alt="Hand wearing a Maier Jewelry silver ring with a red gemstone" width="501" height="667" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 980ms;">
+            <img src="projects/maier-jewelry/FIGMA/Group 18.jpg" alt="Maier Jewelry wordmark applications in ivory, green and brown" width="1396" height="1117" loading="lazy" decoding="async" />
           </figure>
         </div>
         <div class="case-gallery__row case-gallery__row--1">
-          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 980ms;">
-            <img src="projects/maier-jewelry/maier-jewelry-silver-ring-white-background.png" alt="Maier Jewelry silver ring on a white background" width="1024" height="1536" loading="lazy" decoding="async" />
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 1100ms;">
+            <img src="projects/maier-jewelry/FIGMA/Mask group-1.jpg" alt="Maier Jewelry online shop displayed on a phone held in one hand" width="1920" height="1080" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row maier-gallery__row--left-wide">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 1220ms;">
+            <img src="projects/maier-jewelry/FIGMA/Mask group-2.jpg" alt="Two hands wearing an assortment of Maier Jewelry silver rings" width="1396" height="1117" loading="lazy" decoding="async" />
           </figure>
         </div>
       </div>
@@ -282,20 +423,20 @@
           <h2 class="case-project-nav__label" style="margin: 24px 0 8px;">Approach</h2>
           <p style="margin: 0;">MOND:STUDIO approached the project as a rebranding process focused on translating Maier Jewelry’s values of freedom, balance and authenticity into a more refined visual system. The new identity was developed to feel distinctive without becoming overly decorative, allowing the jewelry and its material qualities to remain central. Across visual identity, art direction and packaging, the system was designed to support the brand’s transition toward a more mature, crafted and coherent expression.</p>
         </div>
-        <div class="case-credits case-reveal" style="--reveal-delay: 160ms;">
-          Art Direction &amp; Graphic Design: Mureșan David
-        </div>
+        <dl class="case-credits case-reveal" style="--reveal-delay: 160ms;">
+          <dt class="case-credit-label">Art Direction &amp; Graphic Design</dt>
+          <dd>Mureșan David</dd>
+        </dl>
       </div>
-      <nav class="case-project-nav case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
+      <nav class="case-project-nav case-project-nav--portal case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
         <div class="case-project-nav__item">
-          <span class="case-project-nav__label">PREVIOUS:</span>
-          <a class="case-project-nav__button" href="/dream-ville-software/">DREAM VILLE SOFTWARE</a>
+          <a class="case-project-nav__button" href="/dream-ville-software/" data-cursor-image="optimized/image2.jpg">DREAM VILLE SOFTWARE</a>
         </div>
         <div class="case-project-nav__item case-project-nav__item--next">
-          <span class="case-project-nav__label">NEXT:</span>
-          <a class="case-project-nav__button" href="/olivo-bistro/">OLIVO BISTRO</a>
+          <a class="case-project-nav__button" href="/olivo-bistro/" data-cursor-image="projects/olivo-bistro/placeholder-landscape.svg">OLIVO BISTRO</a>
         </div>
       </nav>
+      <div class="case-project-cursor" aria-hidden="true"></div>
     </section>
   </main>
 
@@ -329,5 +470,32 @@
 
   <script defer src="./project-page.js"></script>
   <script defer src="./site-common.js"></script>
+  <script>
+    (() => {
+      const cursor = document.querySelector('.case-project-cursor');
+      const links = document.querySelectorAll('.case-project-nav--portal [data-cursor-image]');
+      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+      if (!cursor || !links.length || !canHover.matches) return;
+
+      const moveCursor = (event) => {
+        cursor.style.left = `${event.clientX}px`;
+        cursor.style.top = `${event.clientY}px`;
+      };
+
+      links.forEach((link) => {
+        link.addEventListener('mouseenter', (event) => {
+          cursor.style.backgroundImage = `url('${link.dataset.cursorImage}')`;
+          cursor.style.display = 'block';
+          moveCursor(event);
+        });
+        link.addEventListener('mousemove', moveCursor);
+        link.addEventListener('mouseleave', () => {
+          cursor.style.display = 'none';
+          cursor.style.backgroundImage = '';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

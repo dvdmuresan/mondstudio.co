@@ -1,29 +1,64 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHS2KKDC09"></script>
+  <!-- Analytics consent default must run before Google Analytics. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    try {
+      if (localStorage.getItem('mond_cookie_consent') === 'accepted') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+    } catch (error) {
+      // Keep analytics denied when preference storage is unavailable.
+    }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHS2KKDC09"></script>
+  <script>
     gtag('js', new Date());
-
     gtag('config', 'G-EHS2KKDC09');
   </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <base href="/">
-  <title>MOND:STUDIO — Friss Kakas</title>
-  <meta name="description" content="Friss Kakas — a project by MOND : STUDIO." />
+  <title>MOND:STUDIO — Friss Kakas Animation Film Days Spot</title>
+  <meta name="description" content="Promotional 2D animation for Friss Kakas Animation Film Days in Budapest, created for the premiere event of MOME Animation diploma films." />
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#f7f7f7" />
   <link rel="canonical" href="https://www.mondstudio.co/friss-kakas/" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Friss Kakas — MOND : STUDIO" />
-  <meta property="og:description" content="Friss Kakas — a project by MOND : STUDIO." />
+  <meta property="og:title" content="Friss Kakas Animation Film Days Spot — MOND:STUDIO" />
+  <meta property="og:description" content="A playful 2D animated spot for Friss Kakas Animation Film Days, created to introduce MOME Animation’s diploma-film premiere event in Budapest." />
   <meta property="og:url" content="https://www.mondstudio.co/friss-kakas/" />
   <meta property="og:image" content="https://www.mondstudio.co/projects/friss-kakas/optimized/digitalis_plakat_02.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Friss Kakas Animation Film Days Spot",
+      "url": "https://www.mondstudio.co/friss-kakas/",
+      "description": "Promotional 2D animation for Friss Kakas Animation Film Days in Budapest, created for the premiere event of MOME Animation diploma films.",
+      "image": "https://www.mondstudio.co/projects/friss-kakas/optimized/digitalis_plakat_02.jpg",
+      "creator": {
+        "@type": "Person",
+        "name": "Máté Horesnyi"
+      },
+      "producer": {
+        "@type": "Organization",
+        "name": "Moholy-Nagy University of Art and Design Budapest"
+      },
+      "locationCreated": "Budapest, Hungary",
+      "dateCreated": "2025-01"
+    }
+  </script>
   <link rel="preconnect" href="https://use.typekit.net" />
   <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
   <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
@@ -121,7 +156,7 @@
       <div class="hero__top">
         <a class="hero__brand hero-text-drop" href="/" aria-label="MOND : STUDIO home">
           <img class="hero__brand-image" src="SVG/LOGO-BLACK.svg" alt="MOND : STUDIO" width="590" height="63" decoding="async" />
-          <span class="hero__brand-project" aria-hidden="true">Friss Kakas</span>
+          <span class="hero__brand-project" aria-hidden="true">Friss Kakas Animation Film Days Spot</span>
         </a>
         <button class="hero__menu-toggle" id="hero-menu-toggle" type="button" aria-controls="hero-primary-nav" aria-expanded="false" aria-label="Open menu">
           <span class="hero__menu-icon" aria-hidden="true">:</span>
@@ -198,33 +233,54 @@
   <main class="case-main" id="about" data-theme-target>
     <section class="case-section">
       <div class="case-heading">
-        <h1 class="case-intro__copy case-reveal" style="--reveal-delay: 40ms;">Friss Kakas</h1>
+        <h1 class="case-intro__copy case-reveal" style="--reveal-delay: 40ms;">Friss KAKAS<br>Animation Film Days Spot</h1>
         <dl class="case-mobile-info case-reveal" style="--reveal-delay: 100ms;">
           <div class="case-mobile-info__item">
-            <dt>Client:</dt>
-            <dd>
-              To be confirmed
-            </dd>
+            <dt>Production:</dt>
+            <dd>Moholy-Nagy University of Art and Design Budapest</dd>
           </div>
           <div class="case-mobile-info__item">
             <dt>Project:</dt>
-            <dd>Friss Kakas</dd>
+            <dd>Friss Kakas Animation Film Days Spot</dd>
           </div>
           <div class="case-mobile-info__item">
             <dt>Year:</dt>
-            <dd>To be confirmed</dd>
+            <dd>2025</dd>
           </div>
           <div class="case-mobile-info__item">
-            <dt>Tag:</dt>
-            <dd>To be confirmed</dd>
+            <dt>Location:</dt>
+            <dd>Budapest, Hungary</dd>
           </div>
           <div class="case-mobile-info__item">
-            <dt>Creatives:</dt>
-            <dd>To be confirmed</dd>
+            <dt>Project Type:</dt>
+            <dd>Promotional Animation Film</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Services:</dt>
+            <dd>Art Direction, Illustration, 2D Animation, Motion Design</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Industry:</dt>
+            <dd>Culture, Film, Animation</dd>
           </div>
         </dl>
       </div>
       <div class="case-gallery">
+        <figure class="case-gallery__wide case-media-reveal" style="--reveal-delay: 220ms; aspect-ratio: 16 / 9;">
+          <video
+            class="case-gallery__video"
+            src="projects/friss-kakas/FRISS_KAKAS_SPOT.mp4"
+            poster="projects/friss-kakas/optimized/digitalis_plakat_02.jpg"
+            preload="metadata"
+            controls
+            playsinline
+            data-manual-playback
+            aria-label="Friss Kakas Animation Film Days promotional film"
+          ></video>
+          <button class="case-video-play" type="button" aria-label="Play Friss Kakas Animation Film Days promotional film">
+            <span aria-hidden="true"></span>
+          </button>
+        </figure>
         <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
           <img src="projects/friss-kakas/optimized/digitalis_plakat_02.jpg" alt="Friss Kakas illustrated poster composition featuring surreal characters" width="2400" height="1539" loading="eager" fetchpriority="high" decoding="async" />
         </figure>
@@ -254,12 +310,20 @@
         </figure>
       </div>
       <div class="case-description-row">
-        <p class="case-description case-reveal">
-          <span class="case-description__line">Project description coming soon.</span>
-        </p>
-        <div class="case-credits case-reveal" style="--reveal-delay: 160ms;">
-          Credits coming soon
+        <div class="case-description case-reveal">
+          <h2 class="case-project-nav__label" style="margin: 0 0 8px;">Project</h2>
+          <p style="margin: 0;">Friss Kakas Animation Film Days Spot is a promotional animation created for the premiere event of MOME Animation diploma films in Budapest. Directed and designed by Máté Horesnyi and produced by Moholy-Nagy University of Art and Design Budapest, the film introduces the event through a playful animated world centred around the rooster motif associated with Friss Kakas.</p>
+          <h2 class="case-project-nav__label" style="margin: 24px 0 8px;">Approach</h2>
+          <p style="margin: 0;">The spot uses a deliberately surreal and energetic visual language built through 2D animation, expressive character design and exaggerated movement. Rather than treating the rooster as a static symbol, the film turns it into a flexible narrative device that moves through a series of unexpected visual situations. The result is a compact, highly distinctive piece that functions both as event communication and as an independent animation, reflecting the experimental character of contemporary student animation.</p>
         </div>
+        <dl class="case-credits case-reveal" style="--reveal-delay: 160ms;">
+          <dt class="case-credit-label">Director</dt><dd>Máté Horesnyi</dd>
+          <dt class="case-credit-label">Design</dt><dd>Máté Horesnyi</dd>
+          <dt class="case-credit-label">Editor</dt><dd>Máté Horesnyi</dd>
+          <dt class="case-credit-label">Producer</dt><dd>Zsuzsanna Vincze</dd>
+          <dt class="case-credit-label">Music</dt><dd>Alex Riczkó</dd>
+          <dt class="case-credit-label">Sound Design</dt><dd>Alex Riczkó</dd>
+        </dl>
       </div>
       <nav class="case-project-nav case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
         <div class="case-project-nav__item">
