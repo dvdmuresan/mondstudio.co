@@ -69,6 +69,12 @@
     }
   </script>
   <link rel="stylesheet" href="project-page.css?v=20260802-2" />
+  <style>
+    .marty-gallery,
+    .marty-gallery > .case-gallery__row {
+      gap: 20px;
+    }
+  </style>
 </head>
 <body data-theme="light">
   <div class="case-page-transition" id="case-page-transition" aria-hidden="true">
@@ -261,13 +267,42 @@
           </div>
         </dl>
       </div>
-      <div class="case-gallery">
-        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
-          <img src="projects/marty-restaurants/placeholder-landscape.svg" alt="MARTY RESTAURANTS artwork placeholder" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async" />
-        </figure>
-        <figure class="case-gallery__item case-gallery__image case-media-reveal" style="--reveal-delay: 360ms;">
-          <img src="projects/marty-restaurants/placeholder-portrait.svg" alt="MARTY RESTAURANTS portrait artwork placeholder" width="1080" height="1350" loading="lazy" decoding="async" />
-        </figure>
+      <div class="case-gallery case-gallery--rows marty-gallery">
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
+            <img src="projects/marty-restaurants/images/Marty-Resturant-menu-01.jpg" alt="Marty Restaurants menu cover photographed on grass and small white flowers" width="4000" height="2250" loading="eager" fetchpriority="high" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 360ms;">
+            <img src="projects/marty-restaurants/images/Marty-Resturant-menu-02.jpg" alt="Open Marty Restaurants menu displaying plated dishes on a wooden bench" width="4000" height="2250" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 500ms;">
+            <img src="projects/marty-restaurants/images/Marty-Resturant-menu-03.jpg" alt="Open green Marty Restaurants drinks menu photographed in patterned shade" width="4000" height="2250" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 620ms;">
+            <img src="projects/marty-restaurants/images/Marty-Resturant-menu-04.jpg" alt="Open purple Marty Restaurants menu displaying plated dishes in sunlight" width="4000" height="2250" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 740ms;">
+            <img src="projects/marty-restaurants/images/Marty-Resturant-menu-05.jpg" alt="Open blue Marty Restaurants menu displaying plated dishes on pavement" width="4000" height="2250" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 860ms;">
+            <img src="projects/marty-restaurants/images/Marty-Resturant-menu-06.jpg" alt="Open plant-based Marty Restaurants menu photographed beside dark gravel" width="4000" height="2250" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 980ms;">
+            <img src="projects/marty-restaurants/images/Marty-Resturant-menu-07.jpg" alt="Open keto Marty Restaurants menu photographed in directional sunlight" width="4000" height="2250" loading="lazy" decoding="async" />
+          </figure>
+        </div>
       </div>
       <div class="case-description-row">
         <div class="case-description case-reveal">
@@ -282,16 +317,15 @@
           <dt class="case-credit-label">Graphic Design</dt><dd>Cristian Tohătan</dd>
         </dl>
       </div>
-      <nav class="case-project-nav case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
+      <nav class="case-project-nav case-project-nav--portal case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
         <div class="case-project-nav__item">
-          <span class="case-project-nav__label">PREVIOUS:</span>
-          <a class="case-project-nav__button" href="/walk-with-me/">WALK WITH ME</a>
+          <a class="case-project-nav__button" href="/walk-with-me/" data-cursor-image="projects/walk-with-me/optimized/open-sleeve.jpg">WALK WITH ME</a>
         </div>
         <div class="case-project-nav__item case-project-nav__item--next">
-          <span class="case-project-nav__label">NEXT:</span>
-          <a class="case-project-nav__button" href="/dream-ville-software/">DREAM VILLE SOFTWARE</a>
+          <a class="case-project-nav__button" href="/dream-ville-software/" data-cursor-image="optimized/image2.jpg">DREAM VILLE SOFTWARE</a>
         </div>
       </nav>
+      <div class="case-project-cursor" aria-hidden="true"></div>
     </section>
   </main>
 

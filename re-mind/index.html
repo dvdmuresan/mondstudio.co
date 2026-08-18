@@ -69,6 +69,27 @@
     }
   </script>
   <link rel="stylesheet" href="project-page.css?v=20260802-2" />
+  <style>
+    .remind-gallery,
+    .remind-gallery > .case-gallery__row {
+      gap: 20px;
+    }
+
+    @media (min-width: 721px) {
+      .remind-gallery .remind-gallery__row--overview {
+        grid-template-columns: minmax(0, 2.25fr) minmax(0, 1fr);
+      }
+
+      .remind-gallery .remind-gallery__row--pair,
+      .remind-gallery .remind-gallery__row--interaction {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .remind-gallery .remind-gallery__row--interaction {
+        align-items: end;
+      }
+    }
+  </style>
 </head>
 <body data-theme="light">
   <div class="case-page-transition" id="case-page-transition" aria-hidden="true">
@@ -255,37 +276,46 @@
           </div>
         </dl>
       </div>
-      <div class="case-gallery">
-        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
-          <img src="projects/re-mind/optimized/re-mind-cardboard-calendar-front.jpg" alt="RE:MIND cardboard calendar viewed from the front" width="2400" height="1605" loading="eager" fetchpriority="high" decoding="async" />
-        </figure>
-        <figure class="case-gallery__landscape case-media-reveal" style="--reveal-delay: 360ms;">
-          <video class="case-gallery__video" src="projects/re-mind/re-mind-packaging-layers-animation.mp4" poster="projects/re-mind/optimized/re-mind-reflection-toolkit-overview.jpg" preload="none" muted loop playsinline aria-label="RE:MIND packaging layers animation"></video>
-        </figure>
-        <figure class="case-gallery__item case-gallery__image case-media-reveal" style="--reveal-delay: 500ms;">
-          <img src="projects/re-mind/optimized/re-mind-reflection-toolkit-overview.jpg" alt="RE:MIND modular calendar and reflection toolkit overview" width="2400" height="2400" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__item case-gallery__image case-media-reveal" style="--reveal-delay: 620ms;">
-          <img src="projects/re-mind/optimized/re-mind-modular-components.jpg" alt="RE:MIND modular cardboard components arranged vertically" width="1600" height="2400" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__landscape case-media-reveal" style="--reveal-delay: 740ms;">
-          <video class="case-gallery__video" src="projects/re-mind/re-mind-digital-interaction.mp4" poster="projects/re-mind/optimized/re-mind-card-system-detail.jpg" preload="none" muted loop playsinline aria-label="RE:MIND digital interaction demonstration"></video>
-        </figure>
-        <figure class="case-gallery__landscape case-gallery__image case-media-reveal" style="--reveal-delay: 860ms;">
-          <img src="projects/re-mind/optimized/re-mind-card-system-detail.jpg" alt="RE:MIND physical product detail and card system" width="2400" height="1599" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__wide case-media-reveal" style="--reveal-delay: 980ms;">
-          <video class="case-gallery__video" src="projects/re-mind/re-mind-calendar-interaction.mp4" poster="projects/re-mind/optimized/re-mind-cardboard-calendar-front.jpg" preload="none" muted loop playsinline aria-label="RE:MIND calendar interaction demonstration"></video>
-        </figure>
-        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 1100ms;">
-          <img src="projects/re-mind/optimized/re-mind-packaging-components-detail.jpg" alt="RE:MIND packaging and component detail" width="2400" height="1600" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__landscape case-media-reveal" style="--reveal-delay: 1220ms;">
-          <video class="case-gallery__video" src="projects/re-mind/re-mind-packaging-construction.mp4" poster="projects/re-mind/optimized/re-mind-packaging-assembly.jpg" preload="none" muted loop playsinline aria-label="RE:MIND packaging construction demonstration"></video>
-        </figure>
-        <figure class="case-gallery__item case-gallery__image case-media-reveal" style="--reveal-delay: 1340ms;">
-          <img src="projects/re-mind/optimized/re-mind-packaging-assembly.jpg" alt="RE:MIND isometric packaging assembly instructions" width="2400" height="2382" loading="lazy" decoding="async" />
-        </figure>
+      <div class="case-gallery case-gallery--rows remind-gallery">
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
+            <img src="projects/re-mind/Muresan David -2.jpg" alt="RE:MIND cardboard perpetual calendar viewed from the front" width="3800" height="2542" loading="eager" fetchpriority="high" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row remind-gallery__row--overview">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 360ms;">
+            <img src="projects/re-mind/Muresan-David--1.jpg" alt="RE:MIND calendar, card boxes and packaging components arranged together" width="3899" height="3899" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 500ms;">
+            <img src="projects/re-mind/Muresan David - 4.jpg" alt="RE:MIND modular card boxes and packaging components" width="5698" height="3800" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-media-reveal" style="--reveal-delay: 620ms;">
+            <video class="case-gallery__video" src="projects/re-mind/re-mind-packaging-layers-animation.mp4" poster="projects/re-mind/optimized/re-mind-reflection-toolkit-overview.jpg" preload="none" muted loop playsinline aria-label="RE:MIND packaging layers animation"></video>
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 740ms;">
+            <img src="projects/re-mind/Muresan David - 3.jpg" alt="RE:MIND blue, black and white visual-journalling cards arranged in a grid" width="3800" height="2533" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row remind-gallery__row--pair">
+          <figure class="case-media-reveal" style="--reveal-delay: 860ms;">
+            <video class="case-gallery__video" src="projects/re-mind/re-mind-digital-interaction.mp4" poster="projects/re-mind/optimized/re-mind-card-system-detail.jpg" preload="none" muted loop playsinline aria-label="RE:MIND visual-journalling card animation"></video>
+          </figure>
+          <figure class="case-media-reveal" style="--reveal-delay: 980ms;">
+            <video class="case-gallery__video" src="projects/re-mind/re-mind-packaging-construction.mp4" poster="projects/re-mind/optimized/re-mind-packaging-assembly.jpg" preload="none" muted loop playsinline aria-label="RE:MIND packaging construction animation"></video>
+          </figure>
+        </div>
+        <div class="case-gallery__row remind-gallery__row--interaction">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 1100ms;">
+            <img src="projects/re-mind/Muresan David - 5.jpg" alt="Hand placing a RE:MIND card into a wooden card box" width="2533" height="3800" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-media-reveal" style="--reveal-delay: 1220ms;">
+            <video class="case-gallery__video" src="projects/re-mind/re-mind-calendar-interaction.mp4" poster="projects/re-mind/optimized/re-mind-cardboard-calendar-front.jpg" preload="none" muted loop playsinline aria-label="RE:MIND calendar interaction animation"></video>
+          </figure>
+        </div>
       </div>
       <div class="case-description-row">
         <div class="case-description case-reveal">
@@ -295,21 +325,19 @@
           <p style="margin: 0;">The project takes the form of a perpetual calendar accompanied by a modular card system. Together, they create a physical framework for visual journalling, allowing users to organise, interpret, and track their internal states without relying on automated scoring or algorithmic recommendations. Through repeated interaction, users gradually build a personal coding system based on their own observations, creating a record that remains open to interpretation rather than reducing experience to fixed data points. The visual identity and packaging were developed as integral parts of this system, reinforcing its tactile, reflective, and non-prescriptive character.</p>
         </div>
         <dl class="case-credits case-reveal" style="--reveal-delay: 160ms;">
-          <dt class="case-credit-label">Art Direction</dt><dd>Muresan David</dd>
-          <dt class="case-credit-label">Product Design</dt><dd>Muresan David</dd>
-          <dt class="case-credit-label">Graphic Design and Motion</dt><dd>Muresan David</dd>
+          <dt class="case-credit-label">Art Direction<br>Product Design<br>Graphic Design and Motion</dt>
+          <dd>Muresan David</dd>
         </dl>
       </div>
-      <nav class="case-project-nav case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
+      <nav class="case-project-nav case-project-nav--portal case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
         <div class="case-project-nav__item">
-          <span class="case-project-nav__label">PREVIOUS:</span>
-          <a class="case-project-nav__button" href="/friss-kakas/">FRISS KAKAS</a>
+          <a class="case-project-nav__button" href="/friss-kakas/" data-cursor-image="projects/friss-kakas/optimized/digitalis_plakat_02.jpg">FRISS KAKAS</a>
         </div>
         <div class="case-project-nav__item case-project-nav__item--next">
-          <span class="case-project-nav__label">NEXT:</span>
-          <a class="case-project-nav__button" href="/walk-with-me/">WALK WITH ME</a>
+          <a class="case-project-nav__button" href="/walk-with-me/" data-cursor-image="projects/walk-with-me/optimized/open-sleeve.jpg">WALK WITH ME</a>
         </div>
       </nav>
+      <div class="case-project-cursor" aria-hidden="true"></div>
     </section>
   </main>
 

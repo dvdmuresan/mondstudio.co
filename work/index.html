@@ -2729,7 +2729,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     }
   </style>
 </head>
-<body class="view-image">
+<body class="view-image" data-hide-footer-legal>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(() => document.body.classList.add('is-page-loaded'));
@@ -2739,6 +2739,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const projectPages = new Set([
+        '/multitool/',
         '/intermezzo/',
         '/lesser-of-two-evils/',
         '/friss-kakas/',
@@ -2931,6 +2932,11 @@ body[data-theme="light"] .footer-social-minimal a:focus {
             </thead>
             <tbody>
               <tr class="project-row">
+                <td><a href="/multitool/">Multitool</a></td>
+                <td><span class="projects-type">Product Design</span></td>
+                <td>2025</td>
+              </tr>
+              <tr class="project-row">
                 <td><a href="/intermezzo/">Intermezzo Fesztival - visual identity</a></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>2024</td>
@@ -2975,16 +2981,6 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <td><span class="projects-type">Project</span></td>
                 <td>—</td>
               </tr>
-              <tr class="project-row">
-                <td><a href="/intermezzo/">Signals in silence - book design</a></td>
-                <td><span class="projects-type">Book Design</span></td>
-                <td>2022</td>
-              </tr>
-              <tr class="project-row">
-                <td><a href="#">Self reflection - product design</a></td>
-                <td><span class="projects-type">Product Design</span></td>
-                <td>2022</td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -2994,6 +2990,18 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         <div class="projects-thumb" id="projects-thumb" aria-hidden="true"></div>
         <div class="projects-gallery" aria-label="Project image gallery">
           <div class="projects-gallery__grid">
+            <figure data-tags="product-design technology">
+              <a class="projects-gallery__link" href="/multitool/">
+                <div class="projects-gallery__item">
+                  <div class="projects-gallery__badge"><span>Product Design</span></div>
+                  <video src="projects/multi-tool/multitool-product-concept-landscape.mp4" poster="projects/multi-tool/multitool-orange-front-view.webp" muted loop playsinline preload="metadata" aria-label="Multitool product concept animation"></video>
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">Multitool</span>
+                  <span class="projects-gallery__caption-tags"><span>Product Design</span><span>Industrial Design</span><span>3D Design</span></span>
+                </figcaption>
+              </a>
+            </figure>
             <figure data-tags="visual-identity creative-direction strategy motion-design art architecture">
               <a class="projects-gallery__link" href="/intermezzo/" data-project-transition="intermezzo" data-transition-image="optimized/intermezzo-festival-visual-identity.jpg">
                 <div class="projects-gallery__item">
@@ -3058,7 +3066,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               <a class="projects-gallery__link" href="/maier-jewelry/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Branding</span></div>
-                  <img src="projects/maier-jewelry/optimized/maier-jewelry-packaging-design.jpg" alt="Maier Jewelry branded packaging boxes" width="2000" height="1250" loading="lazy" decoding="async" />
+                  <video src="projects/maier-jewelry/FIGMA/maier-jewelry-visual-identity-animation.mp4" poster="projects/maier-jewelry/FIGMA/maier-jewelry-wordmark-identity.jpg" muted loop playsinline preload="metadata" aria-label="Maier Jewelry visual identity animation"></video>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Maier Jewelry</span>
@@ -3094,35 +3102,13 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               <a class="projects-gallery__link" href="/marty-restaurants/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Project</span></div>
-                  <img src="projects/marty-restaurants/placeholder-landscape.svg" alt="MARTY RESTAURANTS project placeholder" width="1600" height="900" loading="lazy" decoding="async" />
+                  <img src="projects/marty-restaurants/images/Marty-Resturant-menu-01.jpg" alt="Marty Restaurants menu cover photographed on grass and small white flowers" width="4000" height="2250" loading="lazy" decoding="async" />
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Marty Restaurants</span>
                   <span class="projects-gallery__caption-tags"><span>Project details coming soon</span></span>
                 </figcaption>
               </a>
-            </figure>
-            <figure data-tags="book-design graphic-design sustainability architecture">
-              <a class="projects-gallery__link" href="/intermezzo/" data-project-transition="intermezzo" data-transition-image="optimized/image4.jpg">
-                <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Book Design</span></div>
-                  <img src="optimized/image4.jpg" alt="Pulse Labs brand strategy visual" width="1600" height="1467" loading="lazy" decoding="async" />
-                </div>
-                <figcaption class="projects-gallery__caption">
-                  <span class="projects-gallery__caption-title">Signals in silence</span>
-                  <span class="projects-gallery__caption-tags"><span>Book Design</span><span>Sustainability</span><span>Architecture</span></span>
-                </figcaption>
-              </a>
-            </figure>
-            <figure data-tags="product-design creative-direction strategy health sport beauty">
-              <div class="projects-gallery__item">
-                <div class="projects-gallery__badge"><span>Product Design</span></div>
-                <img src="optimized/image5.jpg" alt="Self reflection - product design" width="1200" height="1600" loading="lazy" decoding="async" />
-              </div>
-              <figcaption class="projects-gallery__caption">
-                <span class="projects-gallery__caption-title">Self reflection</span>
-                <span class="projects-gallery__caption-tags"><span>Product Design</span><span>Strategy</span><span>Health</span></span>
-              </figcaption>
             </figure>
           </div>
         </div>

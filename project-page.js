@@ -42,6 +42,32 @@
     })();
 
     (() => {
+      const cursor = document.querySelector('.case-project-cursor');
+      const links = document.querySelectorAll('.case-project-nav--portal [data-cursor-image]');
+      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+      if (!cursor || !links.length || !canHover.matches) return;
+
+      const moveCursor = (event) => {
+        cursor.style.left = `${event.clientX}px`;
+        cursor.style.top = `${event.clientY}px`;
+      };
+
+      links.forEach((link) => {
+        link.addEventListener('mouseenter', (event) => {
+          cursor.style.backgroundImage = `url('${link.dataset.cursorImage}')`;
+          cursor.style.display = 'block';
+          moveCursor(event);
+        });
+        link.addEventListener('mousemove', moveCursor);
+        link.addEventListener('mouseleave', () => {
+          cursor.style.display = 'none';
+          cursor.style.backgroundImage = '';
+        });
+      });
+    })();
+
+    (() => {
       const videos = Array.from(document.querySelectorAll(".case-gallery__video:not([data-manual-playback])"));
       if (!videos.length) return;
 

@@ -30,14 +30,14 @@
   <base href="/">
   <title>MOND:STUDIO — Lesser of Two Evils</title>
   <meta name="description" content="Lesser of Two Evils is a mixed-media animated short by Máté Horesnyi, adapted from four stories by Attila Hazai using 2D, digital and 16mm stop motion." />
-  <meta name="robots" content="noindex, follow">
+  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#f7f7f7" />
   <link rel="canonical" href="https://www.mondstudio.co/lesser-of-two-evils/" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Lesser of Two Evils — MOND:STUDIO" />
   <meta property="og:description" content="A mixed-media animated short by Máté Horesnyi combining paper animation, digital 2D and 16mm stop motion in an adaptation of Attila Hazai." />
   <meta property="og:url" content="https://www.mondstudio.co/lesser-of-two-evils/" />
-  <meta property="og:image" content="https://www.mondstudio.co/projects/lesser-of-two-evils/optimized/hazai_final_still_014.jpg" />
+  <meta property="og:image" content="https://www.mondstudio.co/projects/lesser-of-two-evils/optimized/lesser-of-two-evils-fish-character-cockpit.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <script type="application/ld+json">
     {
@@ -46,7 +46,7 @@
       "name": "Lesser of Two Evils",
       "url": "https://www.mondstudio.co/lesser-of-two-evils/",
       "description": "Lesser of Two Evils is a mixed-media animated short by Máté Horesnyi, adapted from four stories by Attila Hazai using 2D, digital and 16mm stop motion.",
-      "image": "https://www.mondstudio.co/projects/lesser-of-two-evils/optimized/hazai_final_still_014.jpg",
+      "image": "https://www.mondstudio.co/projects/lesser-of-two-evils/optimized/lesser-of-two-evils-fish-character-cockpit.jpg",
       "creator": {
         "@type": "Person",
         "name": "Máté Horesnyi"
@@ -79,6 +79,26 @@
     }
   </script>
   <link rel="stylesheet" href="project-page.css?v=20260802-2" />
+  <style>
+    .lesser-gallery,
+    .lesser-gallery > .case-gallery__row {
+      gap: 20px;
+    }
+
+    @media (min-width: 721px) {
+      .lesser-gallery .lesser-gallery__row--left {
+        grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+      }
+
+      .lesser-gallery .lesser-gallery__row--right {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .lesser-gallery .lesser-gallery__row--right > figure {
+        grid-column: 2;
+      }
+    }
+  </style>
 </head>
 <body data-theme="light">
   <div class="case-page-transition" id="case-page-transition" aria-hidden="true">
@@ -277,25 +297,47 @@
           </div>
         </dl>
       </div>
-      <div class="case-gallery">
-        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
-          <img src="projects/lesser-of-two-evils/optimized/hazai_final_still_014.jpg" alt="Fish-headed character seated at an aircraft control panel" width="2400" height="1297" loading="eager" fetchpriority="high" decoding="async" />
-        </figure>
-        <figure class="case-gallery__landscape case-gallery__image case-media-reveal" style="--reveal-delay: 360ms;">
-          <img src="projects/lesser-of-two-evils/optimized/hazai_final_still_05.jpg" alt="Illustrated desk scene with an ashtray, record, telephone, and matchbox" width="2400" height="1297" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__landscape case-gallery__image case-media-reveal" style="--reveal-delay: 500ms;">
-          <img src="projects/lesser-of-two-evils/optimized/hazai_final_still_013.jpg" alt="Illustrated vehicle dashboard split between a driver and passenger" width="2400" height="1297" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 620ms;">
-          <img src="projects/lesser-of-two-evils/optimized/fish_transform.jpg" alt="Character transformation sheet showing a man changing into a fish" width="2400" height="1023" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__landscape case-gallery__image case-media-reveal" style="--reveal-delay: 740ms;">
-          <img src="projects/lesser-of-two-evils/optimized/imre_doboz.jpg" alt="Character layout sheet composed from modular rectangular forms" width="2400" height="866" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__landscape case-gallery__image case-media-reveal" style="--reveal-delay: 860ms;">
-          <img src="projects/lesser-of-two-evils/optimized/trakovsky_hommage.jpg" alt="Pencil storyboard study of a wooden house and an empty dissolving frame" width="2400" height="941" loading="lazy" decoding="async" />
-        </figure>
+      <div class="case-gallery case-gallery--rows lesser-gallery">
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-media-reveal" style="--reveal-delay: 220ms;">
+            <video class="case-gallery__video" src="projects/lesser-of-two-evils/lesser-of-two-evils-lead-animation.mp4" poster="projects/lesser-of-two-evils/optimized/lesser-of-two-evils-fish-character-cockpit.jpg" width="1440" height="810" muted loop playsinline preload="none" aria-label="Lesser of Two Evils fish-headed character animation"></video>
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 360ms;">
+            <img src="projects/lesser-of-two-evils/optimized/lesser-of-two-evils-vehicle-dashboard.jpg" alt="Illustrated vehicle dashboard scene from Lesser of Two Evils" width="2400" height="1297" loading="eager" fetchpriority="high" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row lesser-gallery__row--left">
+          <figure class="case-media-reveal" style="--reveal-delay: 500ms;">
+            <video class="case-gallery__video" src="projects/lesser-of-two-evils/lesser-of-two-evils-night-scene-animation.mp4" width="1080" height="1080" muted loop playsinline preload="none" aria-label="Lesser of Two Evils nighttime character animation"></video>
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 620ms;">
+            <img src="projects/lesser-of-two-evils/optimized/lesser-of-two-evils-character-layout-study.jpg" alt="Character layout sheet composed from modular rectangular forms" width="2400" height="866" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-media-reveal" style="--reveal-delay: 740ms;">
+            <video class="case-gallery__video" src="projects/lesser-of-two-evils/lesser-of-two-evils-widescreen-animation.mp4" width="1440" height="810" muted loop playsinline preload="none" aria-label="Lesser of Two Evils rotating illustrated frame animation"></video>
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 860ms;">
+            <img src="projects/lesser-of-two-evils/optimized/lesser-of-two-evils-character-transformation.jpg" alt="Character transformation sheet showing a man changing into a fish" width="2400" height="1023" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row lesser-gallery__row--right">
+          <figure class="case-media-reveal" style="--reveal-delay: 980ms;">
+            <video class="case-gallery__video" src="projects/lesser-of-two-evils/lesser-of-two-evils-falling-character-animation.mp4" width="1080" height="1350" muted loop playsinline preload="none" aria-label="Lesser of Two Evils falling character animation"></video>
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 1100ms;">
+            <img src="projects/lesser-of-two-evils/optimized/lesser-of-two-evils-desk-scene.jpg" alt="Illustrated desk scene with everyday objects from Lesser of Two Evils" width="2400" height="1297" loading="lazy" decoding="async" />
+          </figure>
+        </div>
       </div>
       <div class="case-description-row">
         <div class="case-description case-reveal">
@@ -314,16 +356,15 @@
           <dt class="case-credit-label">Animation</dt><dd>Nikoletta Veress, Koska Zoltán, Erika Riha, Máté Horesnyi, Nóra Magyari</dd>
         </dl>
       </div>
-      <nav class="case-project-nav case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
+      <nav class="case-project-nav case-project-nav--portal case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
         <div class="case-project-nav__item">
-          <span class="case-project-nav__label">PREVIOUS:</span>
-          <a class="case-project-nav__button" href="/intermezzo/">INTERMEZZO FESTIVAL</a>
+          <a class="case-project-nav__button" href="/intermezzo/" data-cursor-image="optimized/intermezzo-festival-visual-identity.jpg">INTERMEZZO FESTIVAL</a>
         </div>
         <div class="case-project-nav__item case-project-nav__item--next">
-          <span class="case-project-nav__label">NEXT:</span>
-          <a class="case-project-nav__button" href="/friss-kakas/">FRISS KAKAS</a>
+          <a class="case-project-nav__button" href="/friss-kakas/" data-cursor-image="projects/friss-kakas/optimized/digitalis_plakat_02.jpg">FRISS KAKAS</a>
         </div>
       </nav>
+      <div class="case-project-cursor" aria-hidden="true"></div>
     </section>
   </main>
 

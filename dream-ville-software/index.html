@@ -69,6 +69,27 @@
     }
   </script>
   <link rel="stylesheet" href="project-page.css?v=20260802-2" />
+  <style>
+    .dream-ville-gallery,
+    .dream-ville-gallery > .case-gallery__row {
+      gap: 20px;
+    }
+
+    @media (min-width: 721px) {
+      .dream-ville-gallery .dream-ville-gallery__row--identity {
+        grid-template-columns: minmax(0, 2.28fr) minmax(0, 1fr);
+      }
+
+      .dream-ville-gallery .dream-ville-gallery__row--cards,
+      .dream-ville-gallery .dream-ville-gallery__row--objects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .dream-ville-gallery .dream-ville-gallery__row--poster {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+      }
+    }
+  </style>
 </head>
 <body data-theme="light">
   <div class="case-page-transition" id="case-page-transition" aria-hidden="true">
@@ -261,13 +282,61 @@
           </div>
         </dl>
       </div>
-      <div class="case-gallery">
-        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
-          <img src="optimized/image2.jpg" alt="Dream Ville Software branded notebook in directional light" width="1200" height="800" loading="eager" fetchpriority="high" decoding="async" />
-        </figure>
-        <figure class="case-gallery__item case-gallery__image case-media-reveal" style="--reveal-delay: 360ms;">
-          <img src="projects/dream-ville-software/placeholder-portrait.svg" alt="Dream Ville Software additional artwork placeholder" width="1080" height="1350" loading="lazy" decoding="async" />
-        </figure>
+      <div class="case-gallery case-gallery--rows dream-ville-gallery">
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
+            <img src="projects/dream-ville-software/IMAGES/DVS-portfolio - FINAL- 2024-01 2.jpg" alt="Dream Ville Software wordmark on a black background" width="1915" height="1077" loading="eager" fetchpriority="high" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row dream-ville-gallery__row--identity">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 360ms;">
+            <img src="projects/dream-ville-software/IMAGES/Mask group-1.jpg" alt="Dream Ville Software identity system with wordmarks and company information" width="1316" height="1316" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 500ms;">
+            <img src="projects/dream-ville-software/IMAGES/Mask group.jpg" alt="Dream Ville Software pixelated cloud symbol on black" width="576" height="576" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 560ms;">
+            <img src="projects/dream-ville-software/IMAGES/DVS-portfolio - FINAL- 2024-03 1.jpg" alt="Dream Ville Software technology keywords arranged in the brand color system" width="1909" height="1074" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row dream-ville-gallery__row--cards">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 620ms;">
+            <img src="projects/dream-ville-software/IMAGES/Mask group-2.jpg" alt="Purple Dream Ville Software business-card identity presentation" width="942" height="1082" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 740ms;">
+            <img src="projects/dream-ville-software/IMAGES/Mask group-3.jpg" alt="Dream Ville Software business cards photographed on a metal grid" width="942" height="649" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 800ms;">
+            <img src="projects/dream-ville-software/IMAGES/DVS-portfolio - FINAL- 2024-13 1.jpg" alt="Dream Ville Software cloud infrastructure campaign graphic" width="1920" height="1080" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 830ms;">
+            <img src="projects/dream-ville-software/IMAGES/DVS-portfolio - FINAL- 2024-14 2.jpg" alt="Dream Ville Software website interface shown on a laptop" width="1932" height="1087" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row dream-ville-gallery__row--objects">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 860ms;">
+            <img src="projects/dream-ville-software/IMAGES/Mask group-4.jpg" alt="Dream Ville Software employee identification badge" width="947" height="1091" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 980ms;">
+            <img src="projects/dream-ville-software/IMAGES/Mask group-5.jpg" alt="Dream Ville Software branded notebook with a fluorescent green accent" width="947" height="1091" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row dream-ville-gallery__row--poster">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 1100ms;">
+            <img src="projects/dream-ville-software/IMAGES/Mask group-6.jpg" alt="Dream Ville Software typographic posters displayed on a tiled wall" width="1403" height="1213" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 1220ms;">
+            <img src="projects/dream-ville-software/IMAGES/DVS-portfolio - FINAL- 2024-22 1.jpg" alt="Dream Ville Software campaign displayed on a large-format billboard" width="1920" height="1080" loading="lazy" decoding="async" />
+          </figure>
+        </div>
       </div>
       <div class="case-description-row">
         <div class="case-description case-reveal">
@@ -281,16 +350,15 @@
           <dd>Muresan David</dd>
         </dl>
       </div>
-      <nav class="case-project-nav case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
+      <nav class="case-project-nav case-project-nav--portal case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
         <div class="case-project-nav__item">
-          <span class="case-project-nav__label">PREVIOUS:</span>
-          <a class="case-project-nav__button" href="/marty-restaurants/">MARTY RESTAURANTS</a>
+          <a class="case-project-nav__button" href="/marty-restaurants/" data-cursor-image="projects/marty-restaurants/placeholder-landscape.svg">MARTY RESTAURANTS</a>
         </div>
         <div class="case-project-nav__item case-project-nav__item--next">
-          <span class="case-project-nav__label">NEXT:</span>
-          <a class="case-project-nav__button" href="/maier-jewelry/">MAIER JEWELRY</a>
+          <a class="case-project-nav__button" href="/maier-jewelry/" data-cursor-image="projects/maier-jewelry/FIGMA/maier-jewelry-wordmark-identity.jpg">MAIER JEWELRY</a>
         </div>
       </nav>
+      <div class="case-project-cursor" aria-hidden="true"></div>
     </section>
   </main>
 

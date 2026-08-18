@@ -108,7 +108,12 @@
         font-weight: inherit;
         line-height: inherit;
         letter-spacing: inherit;
+        text-transform: none;
         text-decoration: none;
+      }
+      .mond-footer-copyright {
+        display: block;
+        margin-top: 12px;
       }
       @media (max-width: 600px) {
         .mond-consent {
@@ -148,15 +153,28 @@
     settingsButton.textContent = "Cookie settings";
     settingsButton.setAttribute("aria-controls", banner.id);
     settingsButton.setAttribute("aria-expanded", "false");
-    const footerTarget = document.querySelector(".site-footer .footer-copy-minimal") || document.querySelector("footer") || document.body;
-    const footerLegal = document.createElement("div");
-    footerLegal.className = "mond-footer-legal";
-    const privacyLink = document.createElement("a");
-    privacyLink.className = "mond-footer-privacy";
-    privacyLink.href = "/privacy/";
-    privacyLink.textContent = "Privacy";
-    footerLegal.append(privacyLink, settingsButton);
-    footerTarget.appendChild(footerLegal);
+    if (!document.body.hasAttribute("data-hide-footer-legal")) {
+      const footerTarget = document.querySelector(".site-footer .footer-copy-minimal") || document.querySelector("footer") || document.body;
+      const copyrightText = Array.from(footerTarget.childNodes)
+        .filter((node) => node.nodeType === Node.TEXT_NODE)
+        .map((node) => node.textContent.trim())
+        .filter(Boolean)
+        .join(" ") || "©2026 MOND : STUDIO. All Rights Reserved.";
+      Array.from(footerTarget.childNodes)
+        .filter((node) => node.nodeType === Node.TEXT_NODE)
+        .forEach((node) => node.remove());
+      const footerLegal = document.createElement("div");
+      footerLegal.className = "mond-footer-legal";
+      const privacyLink = document.createElement("a");
+      privacyLink.className = "mond-footer-privacy";
+      privacyLink.href = "/privacy/";
+      privacyLink.textContent = "Privacy";
+      footerLegal.append(privacyLink, settingsButton);
+      const copyright = document.createElement("span");
+      copyright.className = "mond-footer-copyright";
+      copyright.textContent = copyrightText;
+      footerTarget.append(footerLegal, copyright);
+    }
 
     let reopened = false;
     const closeBanner = () => {

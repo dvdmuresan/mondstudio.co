@@ -173,13 +173,19 @@
       }
 
       .case-project-nav--portal {
-        grid-template-columns: 1fr;
-        gap: 24px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
       }
 
       .case-project-nav--portal .case-project-nav__item--next {
-        justify-items: start;
-        text-align: left;
+        justify-items: end;
+        text-align: right;
+      }
+
+      body[data-theme="light"] .case-project-nav--portal .case-project-nav__button {
+        font-size: clamp(12px, 3.75vw, 16px);
+        line-height: 1;
+        letter-spacing: -0.035em;
       }
 
       .case-project-cursor {
@@ -474,32 +480,5 @@
 
   <script defer src="./project-page.js"></script>
   <script defer src="./site-common.js"></script>
-  <script>
-    (() => {
-      const cursor = document.querySelector('.case-project-cursor');
-      const links = document.querySelectorAll('.case-project-nav--portal [data-cursor-image]');
-      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)');
-
-      if (!cursor || !links.length || !canHover.matches) return;
-
-      const moveCursor = (event) => {
-        cursor.style.left = `${event.clientX}px`;
-        cursor.style.top = `${event.clientY}px`;
-      };
-
-      links.forEach((link) => {
-        link.addEventListener('mouseenter', (event) => {
-          cursor.style.backgroundImage = `url('${link.dataset.cursorImage}')`;
-          cursor.style.display = 'block';
-          moveCursor(event);
-        });
-        link.addEventListener('mousemove', moveCursor);
-        link.addEventListener('mouseleave', () => {
-          cursor.style.display = 'none';
-          cursor.style.backgroundImage = '';
-        });
-      });
-    })();
-  </script>
 </body>
 </html>
