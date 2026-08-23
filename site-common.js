@@ -173,6 +173,11 @@
     const transitionKey = "mond:work-to-intermezzo";
     const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
+    window.addEventListener("pageshow", (event) => {
+      if (!event.persisted) return;
+      document.querySelectorAll(".mond-page-transition").forEach((overlay) => overlay.remove());
+    });
+
     const createOverlay = (arriving = false, landing = false) => {
       const overlay = document.createElement("div");
       const panel = document.createElement("div");

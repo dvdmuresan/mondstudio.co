@@ -1557,6 +1557,14 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       }
     }
 
+    @media (min-width: 721px) {
+      body:not(.view-image) .projects-table-container,
+      body:not(.view-image) .rock-model,
+      body:not(.view-image) .projects-thumb {
+        display: block !important;
+      }
+    }
+
     body.view-image .projects-table-container {
       opacity: 0;
       transform: translateY(-16px);
@@ -3489,6 +3497,13 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     })();
   </script>
 
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.158.0/build/three.module.js"
+      }
+    }
+  </script>
   <script type="module" src="./work-3d-loader.js"></script>
   <script defer src="./site-common.js"></script>
 </body>
