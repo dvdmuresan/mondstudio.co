@@ -69,6 +69,8 @@
 
       const targetRotation = { x: -0.3, y: 0 };
       const currentRotation = { x: -0.3, y: 0 };
+      let animationFrame = null;
+      let isVisible = true;
 
       function updateRendererSize() {
         const rect = container.getBoundingClientRect();
@@ -80,6 +82,9 @@
       }
 
       function animate() {
+        animationFrame = null;
+        if (!isVisible || document.hidden) return;
+
         if (model) {
           currentRotation.x += (targetRotation.x - currentRotation.x) * 0.08;
           currentRotation.y += (targetRotation.y - currentRotation.y) * 0.08;
@@ -87,7 +92,13 @@
           model.rotation.y = currentRotation.y;
         }
         renderer.render(scene, camera);
-        requestAnimationFrame(animate);
+        animationFrame = requestAnimationFrame(animate);
+      }
+
+      function startAnimation() {
+        if (animationFrame === null && isVisible && !document.hidden) {
+          animationFrame = requestAnimationFrame(animate);
+        }
       }
 
       function handlePointer(x, y) {
@@ -134,7 +145,21 @@
         window.addEventListener('resize', updateRendererSize, { passive: true });
       }
 
+      if ('IntersectionObserver' in window) {
+        const visibilityObserver = new IntersectionObserver((entries) => {
+          isVisible = entries[0]?.isIntersecting ?? true;
+          if (isVisible) {
+            startAnimation();
+          } else if (animationFrame !== null) {
+            cancelAnimationFrame(animationFrame);
+            animationFrame = null;
+          }
+        });
+        visibilityObserver.observe(container);
+      }
+
+      document.addEventListener('visibilitychange', startAnimation);
+
       updateRendererSize();
-      animate();
+      startAnimation();
     }
-  </script>
