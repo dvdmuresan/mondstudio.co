@@ -1,30 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Analytics consent default must run before Google Analytics. -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      analytics_storage: 'denied',
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied'
-    });
-    try {
-      if (localStorage.getItem('mond_cookie_consent') === 'accepted') {
-        gtag('consent', 'update', { analytics_storage: 'granted' });
-      }
-    } catch (error) {
-      // Keep analytics denied when preference storage is unavailable.
-    }
-  </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHS2KKDC09"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'G-EHS2KKDC09');
-  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MOND:STUDIO — Branding &amp; Design Studio</title>

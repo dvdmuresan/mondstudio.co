@@ -1,224 +1,242 @@
 (() => {
-  const CONSENT_KEY = "mond_cookie_consent";
+  const setupSiteStyles = () => {
 
-  const readConsent = () => {
-    try {
-      const value = window.localStorage.getItem(CONSENT_KEY);
-      return value === "accepted" || value === "declined" ? value : null;
-    } catch (error) {
-      return null;
+    const isProjectPage = Boolean(document.querySelector('link[href*="project-page.css"]'));
+    document.documentElement.classList.add(isProjectPage ? "mond-project-page" : "mond-mobile-footer-enabled");
+    if (isProjectPage) {
+      document.querySelectorAll(".case-project-nav").forEach((nav) => nav.classList.add("is-visible"));
     }
-  };
-
-  const writeConsent = (value) => {
-    try {
-      window.localStorage.setItem(CONSENT_KEY, value);
-    } catch (error) {
-      // Consent still applies for this page when storage is unavailable.
-    }
-  };
-
-  const removeAnalyticsCookies = () => {
-    const cookieNames = document.cookie
-      .split(";")
-      .map((cookie) => cookie.split("=")[0].trim())
-      .filter((name) => name === "_ga" || name.startsWith("_ga_"));
-    const hostname = window.location.hostname;
-    const domains = ["", hostname, `.${hostname}`];
-
-    cookieNames.forEach((name) => {
-      domains.forEach((domain) => {
-        const domainPart = domain ? `; domain=${domain}` : "";
-        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${domainPart}; SameSite=Lax`;
-      });
-    });
-  };
-
-  const setupConsentControls = () => {
-    if (document.getElementById("mond-consent")) return;
 
     const style = document.createElement("style");
     style.textContent = `
-      .mond-consent {
+      @media (max-width: 600px) {
+        .mond-project-page .site-footer {
+          display: none !important;
+        }
+      }
+      .mond-page-transition {
         position: fixed;
-        z-index: 2147483646;
-        right: 20px;
-        bottom: 20px;
-        width: min(420px, calc(100vw - 40px));
-        box-sizing: border-box;
-        padding: 16px;
-        border: 0;
-        border-radius: 7px;
-        background: rgba(255, 255, 255, 0.20);
-        color: #fff;
-        font-family: "Mona Sans", Arial, sans-serif;
-        font-size: 13px;
-        line-height: 1.4;
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
+        inset: 0;
+        z-index: 2147483647;
+        visibility: hidden;
+        overflow: hidden;
+        pointer-events: none;
       }
-      .mond-consent,
-      .mond-consent * {
-        font-family: "Mona Sans", Arial, sans-serif;
+      .mond-page-transition.is-active {
+        visibility: visible;
       }
-      body[data-theme="light"] .mond-consent {
-        background: rgba(255, 255, 255, 0.65);
-        color: #131313;
+      .mond-page-transition__panel {
+        position: absolute;
+        inset: 0;
+        background: #f7f7f7;
+        transform: translate3d(0, 100%, 0);
+        transition: transform 560ms cubic-bezier(0.76, 0, 0.24, 1);
+        will-change: transform;
       }
-      .mond-consent[hidden] { display: none; }
-      .mond-consent__text { margin: 0 0 14px; }
-      .mond-consent__actions { display: flex; gap: 18px; }
-      .mond-consent__button,
-      .mond-cookie-settings,
-      .mond-footer-privacy {
-        appearance: none;
-        padding: 0;
-        border: 0;
-        border-radius: 0;
-        background: transparent;
-        color: inherit;
-        font: inherit;
-        font-size: 11px;
-        font-weight: 600;
-        line-height: 1.5;
-        letter-spacing: .08em;
-        text-transform: uppercase;
-        cursor: pointer;
+      .mond-page-transition--landing .mond-page-transition__panel {
+        background: #000;
       }
-      .mond-consent__button.is-selected {
-        border-bottom: 1px solid currentColor;
+      .mond-page-transition.is-active .mond-page-transition__panel {
+        transform: translate3d(0, 0, 0);
       }
-      .mond-consent__button:focus-visible,
-      .mond-cookie-settings:focus-visible,
-      .mond-footer-privacy:focus-visible {
-        outline: 2px solid currentColor;
-        outline-offset: 4px;
+      .mond-page-transition.is-arriving {
+        visibility: visible;
       }
-      .mond-footer-legal {
-        display: flex;
-        justify-content: flex-end;
-        gap: 16px;
-        margin-top: 12px;
+      .mond-page-transition.is-arriving .mond-page-transition__panel {
+        transform: translate3d(0, 0, 0);
       }
-      .mond-cookie-settings,
-      .mond-footer-privacy {
-        opacity: .75;
-        font-family: inherit;
-        font-size: inherit;
-        font-weight: inherit;
-        line-height: inherit;
-        letter-spacing: inherit;
-        text-transform: none;
-        text-decoration: none;
+      .mond-page-transition.is-arriving.is-exiting .mond-page-transition__panel {
+        transform: translate3d(0, -100%, 0);
       }
-      .mond-footer-copyright {
-        display: block;
-        margin-top: 12px;
+      html.mond-landing-entry .hero,
+      html.mond-landing-entry .about-section,
+      html.mond-landing-entry .work-section,
+      html.mond-landing-entry .site-footer {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 1040ms ease, transform 1120ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      html.mond-landing-entry.is-landing-entry-ready .hero,
+      html.mond-landing-entry.is-landing-entry-ready .about-section,
+      html.mond-landing-entry.is-landing-entry-ready .work-section,
+      html.mond-landing-entry.is-landing-entry-ready .site-footer {
+        opacity: 1;
+        transform: translateY(0);
       }
       @media (max-width: 600px) {
-        .mond-consent {
-          right: 12px;
-          bottom: 12px;
-          width: calc(100vw - 24px);
-          padding: 14px;
+        .mond-mobile-footer-enabled .site-footer.footer-section,
+        .mond-mobile-footer-enabled .site-footer {
+          position: relative !important;
+          width: calc(100vw - 20px) !important;
+          max-width: calc(100vw - 20px) !important;
+          min-height: auto !important;
+          margin: 10px !important;
+          padding: 60px 0 0 !important;
+          box-sizing: border-box !important;
+          overflow: hidden !important;
+          border: 0 !important;
+          border-radius: 0 !important;
+          background: transparent !important;
+          box-shadow: none !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
         }
-        .mond-footer-legal {
-          width: 100%;
-          justify-content: flex-start;
-          align-items: center;
-          text-align: left;
+        .mond-mobile-footer-enabled .site-footer,
+        .mond-mobile-footer-enabled .site-footer * {
+          font-family: "Mona Sans", "Helvetica Neue", Arial, sans-serif !important;
+        }
+        .mond-mobile-footer-enabled .site-footer .footer-content {
+          position: relative !important;
+          display: flex !important;
+          flex-direction: column !important;
+          width: 100% !important;
+          min-height: auto !important;
+        }
+        .mond-mobile-footer-enabled .site-footer .footer-social-minimal,
+        .mond-mobile-footer-enabled .site-footer .footer-contact-block,
+        .mond-mobile-footer-enabled .site-footer .footer-brand-minimal {
+          position: static !important;
+          inset: auto !important;
+          width: 100% !important;
+          max-width: none !important;
+          transform: none !important;
+          text-align: left !important;
+        }
+        .mond-mobile-footer-enabled .site-footer .footer-social-minimal {
+          order: 1;
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          gap: 30px !important;
+        }
+        .mond-mobile-footer-enabled .site-footer .footer-social-minimal a {
+          margin: 0 !important;
+          color: inherit !important;
+          font-size: 30px !important;
+          font-weight: 550 !important;
+          line-height: 1 !important;
+          letter-spacing: 0 !important;
+        }
+        .mond-mobile-footer-enabled .site-footer .footer-contact-block {
+          order: 2;
+          margin-top: 8svh !important;
+          color: inherit !important;
+          white-space: nowrap !important;
+          font-size: 23px !important;
+          font-weight: 400 !important;
+          line-height: 37px !important;
+          letter-spacing: -0.02em !important;
+        }
+        .mond-mobile-footer-enabled .site-footer .footer-email {
+          color: inherit !important;
+        }
+        .mond-mobile-footer-enabled .site-footer .footer-brand-minimal {
+          order: 3;
+          margin-top: 5svh !important;
+          margin-bottom: 0 !important;
+          color: inherit !important;
+        }
+        .mond-mobile-footer-enabled .site-footer .footer-brand-minimal__logo {
+          width: 100% !important;
+          height: auto !important;
+          aspect-ratio: 377 / 100;
+          background-color: currentColor !important;
+          -webkit-mask-image: url("/mobile%20footer%20logo.svg") !important;
+          mask-image: url("/mobile%20footer%20logo.svg") !important;
+          -webkit-mask-repeat: no-repeat !important;
+          mask-repeat: no-repeat !important;
+          -webkit-mask-size: 100% 100% !important;
+          mask-size: 100% 100% !important;
+          -webkit-mask-position: left bottom !important;
+          mask-position: left bottom !important;
+        }
+        .mond-mobile-footer-enabled .site-footer .footer-copy-minimal {
+          display: none !important;
         }
       }
     `;
     document.head.appendChild(style);
-
-    const banner = document.createElement("section");
-    banner.id = "mond-consent";
-    banner.className = "mond-consent";
-    banner.setAttribute("aria-label", "Analytics consent");
-    const savedConsent = readConsent();
-    banner.innerHTML = `
-      <p class="mond-consent__text">We use analytics to understand how the website is used.</p>
-      <div class="mond-consent__actions">
-        <button class="mond-consent__button${savedConsent === "accepted" ? " is-selected" : ""}" type="button" data-consent="accepted" aria-pressed="${savedConsent === "accepted"}">Accept</button>
-        <button class="mond-consent__button${savedConsent === "declined" ? " is-selected" : ""}" type="button" data-consent="declined" aria-pressed="${savedConsent === "declined"}">Decline</button>
-      </div>
-    `;
-    banner.hidden = Boolean(savedConsent);
-    document.body.appendChild(banner);
-
-    const settingsButton = document.createElement("button");
-    settingsButton.type = "button";
-    settingsButton.className = "mond-cookie-settings";
-    settingsButton.textContent = "Cookie settings";
-    settingsButton.setAttribute("aria-controls", banner.id);
-    settingsButton.setAttribute("aria-expanded", "false");
-    if (!document.body.hasAttribute("data-hide-footer-legal")) {
-      const footerTarget = document.querySelector(".site-footer .footer-copy-minimal") || document.querySelector("footer") || document.body;
-      const copyrightText = Array.from(footerTarget.childNodes)
-        .filter((node) => node.nodeType === Node.TEXT_NODE)
-        .map((node) => node.textContent.trim())
-        .filter(Boolean)
-        .join(" ") || "©2026 MOND : STUDIO. All Rights Reserved.";
-      Array.from(footerTarget.childNodes)
-        .filter((node) => node.nodeType === Node.TEXT_NODE)
-        .forEach((node) => node.remove());
-      const footerLegal = document.createElement("div");
-      footerLegal.className = "mond-footer-legal";
-      const privacyLink = document.createElement("a");
-      privacyLink.className = "mond-footer-privacy";
-      privacyLink.href = "/privacy/";
-      privacyLink.textContent = "Privacy";
-      footerLegal.append(privacyLink, settingsButton);
-      const copyright = document.createElement("span");
-      copyright.className = "mond-footer-copyright";
-      copyright.textContent = copyrightText;
-      footerTarget.append(footerLegal, copyright);
-    }
-
-    let reopened = false;
-    const closeBanner = () => {
-      banner.hidden = true;
-      reopened = false;
-      settingsButton.setAttribute("aria-expanded", "false");
-    };
-
-    banner.addEventListener("click", (event) => {
-      const button = event.target.closest("button[data-consent]");
-      if (!button) return;
-      const value = button.dataset.consent;
-      window.gtag?.("consent", "update", {
-        analytics_storage: value === "accepted" ? "granted" : "denied",
-      });
-      writeConsent(value);
-      banner.querySelectorAll("button[data-consent]").forEach((consentButton) => {
-        const isSelected = consentButton.dataset.consent === value;
-        consentButton.classList.toggle("is-selected", isSelected);
-        consentButton.setAttribute("aria-pressed", String(isSelected));
-      });
-      if (value === "declined") removeAnalyticsCookies();
-      closeBanner();
-      settingsButton.focus();
-    });
-
-    settingsButton.addEventListener("click", () => {
-      reopened = true;
-      banner.hidden = false;
-      settingsButton.setAttribute("aria-expanded", "true");
-      banner.querySelector("button").focus();
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape" || !reopened || banner.hidden) return;
-      closeBanner();
-      settingsButton.focus();
-    });
   };
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupConsentControls, { once: true });
+    document.addEventListener("DOMContentLoaded", setupSiteStyles, { once: true });
   } else {
-    setupConsentControls();
+    setupSiteStyles();
+  }
+
+  const setupPageTransitions = () => {
+    const projectPaths = new Set([
+      "/multitool/", "/intermezzo/", "/lesser-of-two-evils/", "/friss-kakas/",
+      "/re-mind/", "/walk-with-me/", "/marty-restaurants/", "/macn/",
+      "/dream-ville-software/", "/maier-jewelry/", "/olivo-bistro/"
+    ]);
+    const transitionKey = "mond:work-to-intermezzo";
+    const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+    const createOverlay = (arriving = false, landing = false) => {
+      const overlay = document.createElement("div");
+      const panel = document.createElement("div");
+      overlay.className = `mond-page-transition${arriving ? " is-arriving" : ""}${landing ? " mond-page-transition--landing" : ""}`;
+      panel.className = "mond-page-transition__panel";
+      overlay.setAttribute("aria-hidden", "true");
+      overlay.appendChild(panel);
+      document.body.appendChild(overlay);
+      return overlay;
+    };
+
+    if (window.location.pathname === "/" && !prefersReducedMotion) {
+      try {
+        if (sessionStorage.getItem(transitionKey)) {
+          document.documentElement.classList.add("mond-landing-entry");
+          const overlay = createOverlay(true, true);
+          requestAnimationFrame(() => {
+            overlay.classList.add("is-exiting");
+            document.documentElement.classList.add("is-landing-entry-ready");
+          });
+          window.setTimeout(() => {
+            overlay.remove();
+            document.documentElement.classList.remove("mond-landing-entry", "is-landing-entry-ready");
+            sessionStorage.removeItem(transitionKey);
+          }, 900);
+        }
+      } catch (error) {
+        // Navigation still works when session storage is unavailable.
+      }
+    }
+
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest("a[href]");
+      if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+      const destination = new URL(link.href, window.location.href);
+      if (destination.origin !== window.location.origin) return;
+
+      const isProject = projectPaths.has(destination.pathname);
+      const isLanding = destination.pathname === "/";
+      if ((!isProject && !isLanding) || destination.pathname === window.location.pathname || prefersReducedMotion) return;
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      try {
+        sessionStorage.setItem(transitionKey, JSON.stringify({ timestamp: Date.now() }));
+      } catch (error) {
+        // The outgoing transition does not depend on persisted state.
+      }
+
+      const overlay = createOverlay(false, isLanding);
+      overlay.getBoundingClientRect();
+      requestAnimationFrame(() => overlay.classList.add("is-active"));
+      window.setTimeout(() => {
+        window.location.href = destination.href;
+      }, 560);
+    }, true);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupPageTransitions, { once: true });
+  } else {
+    setupPageTransitions();
   }
 
   const applyTheme = (theme) => {
