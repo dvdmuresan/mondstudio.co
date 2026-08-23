@@ -194,6 +194,32 @@
       pointer-events: none;
     }
 
+    @media (max-width: 720px) {
+      body {
+        --mobile-grid-line-image: linear-gradient(
+          to right,
+          transparent 0,
+          transparent calc(33.333% - 0.5px),
+          var(--grid-line-color) calc(33.333% - 0.5px),
+          var(--grid-line-color) calc(33.333% + 0.5px),
+          transparent calc(33.333% + 0.5px),
+          transparent calc(66.667% - 0.5px),
+          var(--grid-line-color) calc(66.667% - 0.5px),
+          var(--grid-line-color) calc(66.667% + 0.5px),
+          transparent calc(66.667% + 0.5px),
+          transparent 100%
+        );
+        background-image: none;
+      }
+
+      body::before,
+      body[data-theme="light"]::before {
+        background-image: var(--mobile-grid-line-image);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+
     body::after {
       display: none;
     }
@@ -663,9 +689,10 @@
       top: clamp(96px, 11vh, 140px);
       right: clamp(240px, 17vw, 330px);
       width: clamp(260px, 23.5vw, 380px);
-      aspect-ratio: 0.78;
+      aspect-ratio: 1;
       margin-top: 0;
       overflow: hidden;
+      border-radius: 10px;
       z-index: 8;
       transform: scale(var(--about-image-scale, 1));
       transition: transform 120ms linear;
@@ -682,7 +709,6 @@
       height: 100%;
       display: block;
       object-fit: cover;
-      filter: grayscale(1) contrast(1.08);
     }
 
     .about-figure.is-janky-active {
@@ -694,7 +720,7 @@
       flex: 0 0 auto;
       width: 35px;
       height: 35px;
-      display: inline-flex;
+      display: none;
       align-items: center;
       justify-content: center;
       border: 1px solid rgba(255, 255, 255, 0.34);
@@ -1068,6 +1094,58 @@
       display: none;
     }
 
+    .about-team-strip {
+      position: relative;
+      z-index: 18;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      width: calc(100% - 40px);
+      margin: 0 20px 140px;
+    }
+
+    .about-team-strip__person {
+      margin: 0;
+      min-width: 0;
+    }
+
+    .about-team-strip__image {
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .about-team-strip__image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) contrast(1.08);
+    }
+
+    .about-team-strip__caption {
+      margin-top: 10px;
+      color: #f7f7f7;
+      font-size: 14px;
+      line-height: 1.3;
+    }
+
+    .about-team-strip__caption p {
+      margin: 0;
+    }
+
+    .about-team-strip__role {
+      color: rgba(247, 247, 247, 0.55);
+    }
+
+    body[data-theme="light"] .about-team-strip__caption {
+      color: #131313;
+    }
+
+    body[data-theme="light"] .about-team-strip__role {
+      color: rgba(19, 19, 19, 0.55);
+    }
+
     .about-mobile-info {
       display: none;
     }
@@ -1313,6 +1391,10 @@
     }
 
     @media (max-width: 900px) and (min-width: 601px) {
+      .about-team-strip {
+        display: none;
+      }
+
       .about-figure {
         right: clamp(96px, 10vw, 150px);
         width: clamp(230px, 28vw, 300px);
@@ -1486,6 +1568,10 @@
     }
 
     @media (max-width: 600px) {
+      .about-team-strip {
+        display: none;
+      }
+
       .hero__nav {
         display: none;
       }
@@ -1779,6 +1865,7 @@
         position: relative;
         aspect-ratio: 0.78;
         overflow: hidden;
+        border-radius: 10px;
       }
 
       .about-mobile-person__image img {
@@ -1796,7 +1883,7 @@
         z-index: 2;
         width: 32px;
         height: 32px;
-        display: inline-flex;
+        display: none;
         align-items: center;
         justify-content: center;
         border: 1px solid rgba(255, 255, 255, 0.34);
@@ -2990,8 +3077,8 @@
             </div>
           </div>
         </div>
-        <figure class="about-figure" aria-label="MOND : STUDIO team visual">
-          <img src="optimized/david-2.jpg" alt="David Muresan" width="675" height="900" fetchpriority="high" decoding="async" />
+        <figure class="about-figure" aria-label="Selected MOND : STUDIO project visual">
+          <img src="projects/multi-tool/multitool-orange-front-view.webp" alt="Selected MOND : STUDIO project" width="2000" height="2500" fetchpriority="high" decoding="async" />
         </figure>
         <div class="about-person-meta" id="about-person-meta" hidden>
           <div>
@@ -3018,6 +3105,45 @@
           <p class="about-copy__line">Our approach is rooted in research, structure, and collaboration. By understanding context before aesthetics, we create identities and experiences that feel coherent, purposeful, and culturally relevant.</p>
           <p class="about-copy__line">We work across both cultural and commercial sectors, partnering with brands, institutions, and individuals who value thoughtful design and long-term vision.</p>
         </div>
+      </section>
+
+      <section class="about-team-strip" aria-label="MOND : STUDIO team">
+        <figure class="about-team-strip__person">
+          <div class="about-team-strip__image">
+            <img src="optimized/david-2.jpg" alt="David Muresan" width="675" height="900" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="about-team-strip__caption">
+            <p>David Muresan</p>
+            <p class="about-team-strip__role">Art direction / motion design</p>
+          </figcaption>
+        </figure>
+        <figure class="about-team-strip__person">
+          <div class="about-team-strip__image">
+            <img src="optimized/bencz.jpg" alt="Bencz" width="600" height="900" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="about-team-strip__caption">
+            <p>Bencz</p>
+            <p class="about-team-strip__role">Design / visual systems</p>
+          </figcaption>
+        </figure>
+        <figure class="about-team-strip__person">
+          <div class="about-team-strip__image">
+            <img src="Mate.jpg" alt="Horesnyi Mate" width="675" height="900" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="about-team-strip__caption">
+            <p>Horesnyi Mate</p>
+            <p class="about-team-strip__role">3D / motion design</p>
+          </figcaption>
+        </figure>
+        <figure class="about-team-strip__person">
+          <div class="about-team-strip__image">
+            <img src="optimized/janky-milan.jpg" alt="Janky Milan" width="675" height="900" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="about-team-strip__caption">
+            <p>Janky Milan</p>
+            <p class="about-team-strip__role">Type Designer</p>
+          </figcaption>
+        </figure>
       </section>
 
       <section class="about-mobile-people" aria-label="MOND : STUDIO team">
@@ -3173,7 +3299,12 @@
       if (!wordmark || !lines.length) return;
 
       const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
-      const staffImageSources = ['optimized/david-2.jpg', 'optimized/bencz.jpg', 'Mate.jpg', 'optimized/janky-milan.jpg'];
+      const staffImageSources = [
+        'projects/multi-tool/multitool-orange-front-view.webp',
+        'projects/friss-kakas/optimized/digitalis_plakat_02.jpg',
+        'projects/walk-with-me/optimized/open-sleeve.jpg',
+        'projects/maier-jewelry/FIGMA/maier-jewelry-wordmark-identity.jpg'
+      ];
       const staffProfiles = {
         'optimized/david-2.jpg': {
           name: 'David Muresan',
@@ -3221,6 +3352,7 @@
       });
       let ticking = false;
       let activeImageSource = staffImageSources[0];
+      let activeStaffIndex = 0;
 
       const setPanelVisible = (isVisible) => {
         if (!personPanel) return;
@@ -3352,21 +3484,31 @@
         const firstLineRect = lines[0].getBoundingClientRect();
         const firstLineReachedTopThird = firstLineRect.top <= window.innerHeight / 3;
         const firstLineReachedTop = firstLineRect.top <= 0;
-        const nextImageSource = firstLineReachedTop ? staffImageSources[staffIndex] : staffImageSources[0];
-        const isNextImageDavid = nextImageSource === staffImageSources[0];
-        const isNextImageJanky = nextImageSource === 'optimized/janky-milan.jpg';
+        const candidateStaffIndex = firstLineReachedTop ? staffIndex : 0;
+        const activeLineRect = activeLine.getBoundingClientRect();
+        const activeLineCenter = activeLineRect.top + activeLineRect.height / 2;
+        const imageSwitchOffset = window.innerHeight * 0.08;
+        const movingForward = candidateStaffIndex > activeStaffIndex;
+        const movingBackward = candidateStaffIndex < activeStaffIndex;
+        const passedForwardThreshold = activeLineCenter <= activePoint - imageSwitchOffset;
+        const passedBackwardThreshold = activeLineCenter >= activePoint + imageSwitchOffset;
+
+        if ((movingForward && passedForwardThreshold) || (movingBackward && passedBackwardThreshold)) {
+          activeStaffIndex = candidateStaffIndex;
+          activeImageSource = staffImageSources[activeStaffIndex];
+          figureImage.src = activeImageSource;
+        }
+
+        const nextImageSource = activeImageSource;
+        const isNextImageDavid = activeImageSource === staffImageSources[0];
         const aboutCopyBottom = aboutCopy ? aboutCopy.getBoundingClientRect().bottom : Infinity;
         const figureBottom = figure.getBoundingClientRect().bottom;
-        const isBeforeAboutTextBottom = !isNextImageJanky || aboutCopyBottom > figureBottom;
+        const isBeforeAboutTextBottom = aboutCopyBottom > figureBottom;
         const imageVisible = Boolean(nextImageSource)
           && (!isNextImageDavid || firstLineReachedTopThird)
           && isBeforeAboutTextBottom
           && footerTop > window.innerHeight * 0.08;
 
-        if (nextImageSource && nextImageSource !== activeImageSource) {
-          activeImageSource = nextImageSource;
-          figureImage.src = nextImageSource;
-        }
         figure.style.opacity = imageVisible ? '1' : '0';
         const isDavidImage = activeImageSource === staffImageSources[0];
         figure.classList.toggle('is-janky-active', activeImageSource === 'optimized/janky-milan.jpg');

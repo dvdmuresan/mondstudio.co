@@ -193,6 +193,33 @@ html {
       background-size: 100% 100%;
     }
 
+    @media (max-width: 720px) {
+      body {
+        --mobile-grid-line-image: linear-gradient(
+          to right,
+          transparent 0,
+          transparent calc(33.333% - 0.5px),
+          var(--grid-line-color) calc(33.333% - 0.5px),
+          var(--grid-line-color) calc(33.333% + 0.5px),
+          transparent calc(33.333% + 0.5px),
+          transparent calc(66.667% - 0.5px),
+          var(--grid-line-color) calc(66.667% - 0.5px),
+          var(--grid-line-color) calc(66.667% + 0.5px),
+          transparent calc(66.667% + 0.5px),
+          transparent 100%
+        );
+        background-image: none;
+      }
+
+      body::before,
+      body[data-theme="light"]::before,
+      .studio-section {
+        background-image: var(--mobile-grid-line-image) !important;
+        background-repeat: no-repeat !important;
+        background-size: 100% 100% !important;
+      }
+    }
+
     body, h1, h2, h3, h4, p, figure {
       margin: 0;
     }
@@ -773,7 +800,7 @@ html {
       display: flex;
       align-items: flex-start;
       gap: 20px;
-      margin: 50px 20px 0 20px;
+      margin: 140px 20px 0 20px;
       flex-wrap: wrap;
     }
 
@@ -818,7 +845,7 @@ html {
     }
 
     .pl-4-block {
-      margin: 65px auto 0;
+      margin: 140px auto 0;
       width: min(1024px, calc(100vw - 40px));
       display: flex;
       flex-direction: column;
@@ -1194,7 +1221,7 @@ html {
         align-items: flex-start;
         flex-wrap: nowrap;
         gap: 20px;
-        margin-top: 50px;
+        margin-top: 70px;
       }
 
       .pl-3-stack {
@@ -1227,6 +1254,7 @@ html {
 
       .pl-4-block {
         width: min(1024px, calc(100vw - 40px));
+        margin-top: 70px;
       }
 
       .pl-4 {
@@ -3196,8 +3224,13 @@ body[data-theme="light"] .studio-textbox-note {
       .hero-description {
         margin-top: -20px;
         height: auto;
-        font-size: clamp(24px, 7.8vw, 30px);
-        line-height: 1.16;
+        font-size: clamp(23px, 6.9vw, 28px);
+        line-height: 1.12;
+        letter-spacing: -0.025em;
+      }
+
+      .hero-description__line--mobile-statement-start {
+        margin-top: 0;
       }
 
       .pl-1-subtitle,
@@ -4244,9 +4277,9 @@ body[data-theme="light"] .studio-textbox-note {
       </div>
 
       <div class="video-overlay-box" id="video-overlay-box">
-        <span class="clickable-text hero-service-tag hero-text-drop" id="branding-text" data-cursor-image="optimized/image2.jpg">[BRANDING]</span>
-        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text" data-cursor-image="optimized/3d.jpg">[3D DESIGN]</span>
-        <span class="clickable-text hero-service-tag hero-text-drop" id="art-direction-text">[ART DIRECTION]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="branding-text" data-cursor-image="optimized/image2.jpg">[Branding]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text" data-cursor-image="optimized/3d.jpg">[3D Design]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="art-direction-text">[Art Direction]</span>
         <span class="clickable-text hero-service-tag hero-text-drop" id="uiux-text">[UI/UX]</span>
       </div>
     </div>
@@ -4254,7 +4287,7 @@ body[data-theme="light"] .studio-textbox-note {
 
   <h1 class="sr-only">MOND Studio — Branding &amp; Design Studio</h1>
   <div class="hero-description">
-    Every detail begins with intention. We design to reveal meaning — shaping experiences that move people, define culture, and reflect the world we want to build.
+    We work with people who share our intention — to create meaningful identities and experiences that move people and shape culture.
   </div>
 
   <script>
@@ -4262,12 +4295,16 @@ body[data-theme="light"] .studio-textbox-note {
       const description = document.querySelector('.hero-description');
       if (!description) return;
 
-      const copy = description.textContent.trim().replace(/\s+/g, ' ');
       const preferredDesktopLines = [
-        'Every detail begins with intention.',
-        'We design to reveal meaning — shaping',
-        'experiences that move people, define culture,',
-        'and reflect the world we want to build.'
+        'We work with people who share our intention —',
+        'to create meaningful identities and experiences',
+        'that move people and shape culture.'
+      ];
+      const preferredMobileLines = [
+        { text: 'We work with people who share', className: 'hero-description__line--mobile-statement-start' },
+        { text: 'our intention — to create meaningful' },
+        { text: 'identities and experiences that' },
+        { text: 'move people and shape culture.' }
       ];
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       let resizeFrame = 0;
@@ -4277,45 +4314,16 @@ body[data-theme="light"] .studio-textbox-note {
         description.classList.remove('is-line-reveal-visible');
         description.textContent = '';
 
-        if (window.innerWidth >= 1200) {
-          preferredDesktopLines.forEach((text, index) => {
-            const line = document.createElement('span');
-            line.className = 'hero-description__line';
-            line.style.setProperty('--hero-description-line', index);
-            line.textContent = text;
-            description.appendChild(line);
-          });
+        const renderedLines = window.innerWidth <= 720
+          ? preferredMobileLines
+          : preferredDesktopLines.map((text) => ({ text }));
 
-          if (hasRevealed || prefersReducedMotion) {
-            description.classList.add('is-line-reveal-visible');
-          }
-          return;
-        }
-
-        const words = copy.split(' ');
-        words.forEach((word, index) => {
-          const span = document.createElement('span');
-          span.textContent = `${word}${index < words.length - 1 ? ' ' : ''}`;
-          description.appendChild(span);
-        });
-
-        const rows = [];
-        Array.from(description.children).forEach((word) => {
-          const top = word.offsetTop;
-          let row = rows.find((item) => Math.abs(item.top - top) < 2);
-          if (!row) {
-            row = { top, words: [] };
-            rows.push(row);
-          }
-          row.words.push(word.textContent);
-        });
-
-        description.replaceChildren();
-        rows.forEach((row, index) => {
+        renderedLines.forEach((item, index) => {
           const line = document.createElement('span');
           line.className = 'hero-description__line';
+          if (item.className) line.classList.add(item.className);
           line.style.setProperty('--hero-description-line', index);
-          line.textContent = row.words.join('').trim();
+          line.textContent = item.text;
           description.appendChild(line);
         });
 

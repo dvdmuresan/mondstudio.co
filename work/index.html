@@ -176,6 +176,32 @@
       background-size: 100% 100%;
     }
 
+    @media (max-width: 720px) {
+      body {
+        --mobile-grid-line-image: linear-gradient(
+          to right,
+          transparent 0,
+          transparent calc(33.333% - 0.5px),
+          var(--grid-line-color) calc(33.333% - 0.5px),
+          var(--grid-line-color) calc(33.333% + 0.5px),
+          transparent calc(33.333% + 0.5px),
+          transparent calc(66.667% - 0.5px),
+          var(--grid-line-color) calc(66.667% - 0.5px),
+          var(--grid-line-color) calc(66.667% + 0.5px),
+          transparent calc(66.667% + 0.5px),
+          transparent 100%
+        );
+        background-image: none;
+      }
+
+      body::before,
+      body[data-theme="light"]::before {
+        background-image: var(--mobile-grid-line-image);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+
     a {
       color: inherit;
       text-decoration: none;
@@ -971,6 +997,25 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       justify-content: center;
     }
 
+    .projects-gallery__coming-soon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 3;
+      padding: 9px 16px;
+      border-radius: 7px;
+      background: rgba(17, 17, 17, 0.7);
+      color: #fff;
+      font-family: "Mona Sans", sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1;
+      transform: translate(-50%, -50%);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      pointer-events: none;
+    }
+
     body[data-theme="light"] .projects-gallery__badge {
       background: rgba(0, 0, 0, 0.08);
       color: #ffffff;
@@ -1474,7 +1519,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         font-weight: 450;
         line-height: 1.25;
         letter-spacing: 0.03em;
-        text-transform: uppercase;
+        text-transform: none;
       }
 
       .projects-gallery__caption-tags span {
@@ -2746,6 +2791,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         '/re-mind/',
         '/walk-with-me/',
         '/marty-restaurants/',
+        '/macn/',
         '/dream-ville-software/',
         '/maier-jewelry/',
         '/olivo-bistro/'
@@ -2981,6 +3027,11 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <td><span class="projects-type">Project</span></td>
                 <td>—</td>
               </tr>
+              <tr class="project-row">
+                <td><a href="/macn/">MACN</a></td>
+                <td><span class="projects-type">Project</span></td>
+                <td>—</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -3018,7 +3069,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               <a class="projects-gallery__link" href="/lesser-of-two-evils/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Motion Design</span></div>
-                  <img src="projects/lesser-of-two-evils/optimized/hazai_final_still_014.jpg" alt="Lesser of Two Evils illustrated animation still" width="2400" height="1297" loading="lazy" decoding="async" />
+                  <video src="projects/lesser-of-two-evils/lesser-of-two-evils-widescreen-animation.mp4" poster="projects/lesser-of-two-evils/optimized/hazai_final_still_014.jpg" muted loop playsinline preload="metadata" aria-label="Lesser of Two Evils animated project preview"></video>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Lesser of Two Evils</span>
@@ -3034,7 +3085,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Friss Kakas</span>
-                  <span class="projects-gallery__caption-tags"><span>Project details coming soon</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Project Details Coming Soon</span></span>
                 </figcaption>
               </a>
             </figure>
@@ -3046,7 +3097,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">RE:MIND</span>
-                  <span class="projects-gallery__caption-tags"><span>Project details coming soon</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Project Details Coming Soon</span></span>
                 </figcaption>
               </a>
             </figure>
@@ -3082,7 +3133,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Olivo Bistro</span>
-                  <span class="projects-gallery__caption-tags"><span>Project details coming soon</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Project Details Coming Soon</span></span>
                 </figcaption>
               </a>
             </figure>
@@ -3090,7 +3141,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               <a class="projects-gallery__link" href="/walk-with-me/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Record Design</span></div>
-                  <video src="projects/walk-with-me/Comp 1.mp4" poster="projects/walk-with-me/optimized/open-sleeve.jpg" muted loop playsinline preload="metadata" aria-label="WALK WITH ME animated project preview"></video>
+                  <video src="projects/walk-with-me/DSCF8350.mp4" muted loop playsinline preload="metadata" aria-label="Walk With Me Rainy Days sleeve video preview"></video>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Walk with me</span>
@@ -3102,11 +3153,23 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               <a class="projects-gallery__link" href="/marty-restaurants/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Project</span></div>
-                  <img src="projects/marty-restaurants/images/Marty-Resturant-menu-01.jpg" alt="Marty Restaurants menu cover photographed on grass and small white flowers" width="4000" height="2250" loading="lazy" decoding="async" />
+                  <img src="projects/marty-restaurants/images/Marty-Resturant-menu-02.jpg" alt="Open Marty Restaurants menu displaying plated dishes on a wooden bench" width="4000" height="2250" loading="lazy" decoding="async" />
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Marty Restaurants</span>
-                  <span class="projects-gallery__caption-tags"><span>Project details coming soon</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Project Details Coming Soon</span></span>
+                </figcaption>
+              </a>
+            </figure>
+            <figure data-tags="">
+              <a class="projects-gallery__link" href="/macn/">
+                <div class="projects-gallery__item">
+                  <img src="projects/macn/MACN%20-%20PRESENTATION%20MEETING-20.jpg" alt="MACN project preview" width="4000" height="2250" loading="lazy" decoding="async" />
+                  <span class="projects-gallery__coming-soon">Coming Soon</span>
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">MACN</span>
+                  <span class="projects-gallery__caption-tags"><span>Coming Soon</span></span>
                 </figcaption>
               </a>
             </figure>

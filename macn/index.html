@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base href="/">
+  <title>MOND:STUDIO — MACN</title>
+  <meta name="description" content="MACN — a forthcoming project by MOND:STUDIO." />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#f7f7f7" />
+  <link rel="canonical" href="https://www.mondstudio.co/macn/" />
+  <link rel="preconnect" href="https://use.typekit.net" />
+  <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/did4gvj.css" />
+  <link rel="icon" type="image/png" href="1x/Asset 8-8.png" />
+  <link rel="stylesheet" href="project-page.css?v=20260802-2" />
+  <style>
+    .hero__brand-project {
+      text-transform: uppercase;
+    }
+
+    .macn-preview {
+      position: relative;
+      aspect-ratio: 16 / 9;
+    }
+
+    .macn-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .macn-preview__label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+      padding: 10px 18px;
+      border-radius: 7px;
+      background: rgba(17, 17, 17, 0.7);
+      color: #fff;
+      font-family: "Mona Sans", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      transform: translate(-50%, -50%);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <header class="hero">
+    <div class="hero__overlay is-visible" id="hero-overlay" aria-hidden="false">
+      <div class="hero__top">
+        <a class="hero__brand hero-text-drop is-visible" href="/" aria-label="MOND : STUDIO home">
+          <img class="hero__brand-image" src="SVG/LOGO-BLACK.svg" alt="MOND : STUDIO" width="590" height="63" decoding="async" />
+          <span class="hero__brand-project" aria-hidden="true">MACN</span>
+        </a>
+        <button class="hero__menu-toggle" id="hero-menu-toggle" type="button" aria-controls="hero-primary-nav" aria-expanded="false" aria-label="Open menu">
+          <span class="hero__menu-icon" aria-hidden="true">:</span>
+        </button>
+        <nav class="hero__nav" id="hero-primary-nav" aria-label="Primary navigation">
+          <a href="/work/"><span class="hero__nav-word">WORK</span></a>
+          <a href="/about/"><span class="hero__nav-word">ABOUT</span></a>
+          <a href="https://cal.eu/mondstudio"><span class="hero__nav-word">CONTACT</span></a>
+          <a class="hero__nav-talk" href="https://cal.eu/mondstudio"><span class="hero__nav-word">LET'S</span> <span class="hero__nav-word">TALK</span></a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="case-main" id="about" data-theme-target>
+    <section class="case-section">
+      <div class="case-heading">
+        <h1 class="case-intro__copy case-reveal is-visible">MACN</h1>
+        <dl class="case-mobile-info case-reveal is-visible">
+          <div class="case-mobile-info__item"><dt>Project:</dt><dd>MACN</dd></div>
+          <div class="case-mobile-info__item"><dt>Status:</dt><dd>Coming Soon</dd></div>
+        </dl>
+      </div>
+      <div class="case-gallery case-gallery--rows">
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal is-visible macn-preview">
+            <img src="projects/macn/MACN%20-%20PRESENTATION%20MEETING-20.jpg" alt="MACN project preview" width="4000" height="2250" decoding="async" />
+            <span class="macn-preview__label">Coming Soon</span>
+          </figure>
+        </div>
+      </div>
+      <nav class="case-project-nav case-project-nav--portal case-reveal is-visible" aria-label="Project navigation">
+        <div class="case-project-nav__item">
+          <a class="case-project-nav__button" href="/marty-restaurants/" data-cursor-image="projects/marty-restaurants/images/Marty-Resturant-menu-02.jpg">MARTY RESTAURANTS</a>
+        </div>
+        <div class="case-project-nav__item case-project-nav__item--next">
+          <a class="case-project-nav__button" href="/dream-ville-software/" data-cursor-image="optimized/image2.jpg">DREAM VILLE SOFTWARE</a>
+        </div>
+      </nav>
+      <div class="case-project-cursor" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-section visible" id="footer-section" aria-hidden="false">
+    <div class="footer-content">
+      <div class="footer-brand-minimal" aria-label="MOND : STUDIO"><span class="footer-brand-minimal__logo" aria-hidden="true"></span></div>
+      <nav class="footer-social-minimal" aria-label="Footer social links">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
+        <a href="https://www.instagram.com/studio_mond/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+      </nav>
+      <div class="footer-contact-block">Cluj-Napoca, Romania <span id="ro-clock"></span><br>Budapest, Hungary <span id="hu-clock"></span><br><a class="footer-email" href="mailto:hello@mondstudio.co">hello@mondstudio.co</a></div>
+      <div class="footer-copy-minimal">©2026 MOND : STUDIO. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const header = document.querySelector('.hero__top');
+      const toggle = document.getElementById('hero-menu-toggle');
+      const nav = document.getElementById('hero-primary-nav');
+      if (!header || !toggle || !nav) return;
+
+      const setOpen = (open) => {
+        header.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      };
+
+      toggle.addEventListener('click', () => setOpen(!header.classList.contains('is-open')));
+      nav.addEventListener('click', (event) => {
+        if (event.target.closest('a')) setOpen(false);
+      });
+    })();
+  </script>
+  <script defer src="./project-page.js"></script>
+  <script defer src="./site-common.js"></script>
+</body>
+</html>

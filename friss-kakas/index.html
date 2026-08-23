@@ -75,6 +75,40 @@
     }
   </script>
   <link rel="stylesheet" href="project-page.css?v=20260802-2" />
+  <style>
+    .friss-kakas-mobile-break {
+      display: none;
+    }
+
+    @media (max-width: 720px) {
+      .friss-kakas-mobile-break {
+        display: initial;
+      }
+
+      .case-main {
+        padding-top: clamp(190px, 52vw, 220px);
+      }
+
+      .case-gallery {
+        gap: 10px !important;
+        column-gap: 10px !important;
+        row-gap: 10px !important;
+      }
+
+      .case-gallery > figure {
+        height: auto !important;
+        aspect-ratio: auto !important;
+        margin: 0;
+        background: transparent;
+      }
+
+      .case-gallery > figure img,
+      .case-gallery > figure video {
+        width: 100%;
+        height: auto !important;
+      }
+    }
+  </style>
 </head>
 <body data-theme="light">
   <div class="case-page-transition" id="case-page-transition" aria-hidden="true">
@@ -156,7 +190,7 @@
       <div class="hero__top">
         <a class="hero__brand hero-text-drop" href="/" aria-label="MOND : STUDIO home">
           <img class="hero__brand-image" src="SVG/LOGO-BLACK.svg" alt="MOND : STUDIO" width="590" height="63" decoding="async" />
-          <span class="hero__brand-project" aria-hidden="true">Friss Kakas Animation Film Days Spot</span>
+          <span class="hero__brand-project" aria-hidden="true">Friss Kakas<br class="friss-kakas-mobile-break"> Animation Film<br class="friss-kakas-mobile-break"> Days Spot</span>
         </a>
         <button class="hero__menu-toggle" id="hero-menu-toggle" type="button" aria-controls="hero-primary-nav" aria-expanded="false" aria-label="Open menu">
           <span class="hero__menu-icon" aria-hidden="true">:</span>

@@ -72,6 +72,72 @@
   </script>
   <link rel="stylesheet" href="project-page.css?v=20260802-2" />
   <style>
+    .multitool-gallery,
+    .multitool-gallery > .case-gallery__row {
+      gap: 20px;
+    }
+
+    .multitool-gallery__logo {
+      align-self: start;
+    }
+
+    .multitool-gallery__logo img {
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .multitool-gallery .multitool-gallery__feature-main {
+      aspect-ratio: 1.08 / 1;
+    }
+
+    .multitool-gallery .multitool-gallery__feature-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .multitool-gallery.case-gallery--rows .multitool-gallery__portrait-pair > figure {
+      min-width: 0;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+    }
+
+    .multitool-gallery .multitool-gallery__portrait-pair img,
+    .multitool-gallery .multitool-gallery__portrait-pair video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (min-width: 721px) {
+      .multitool-gallery__feature-pair {
+        grid-template-columns: minmax(0, 3.2fr) minmax(0, 1fr);
+        align-items: start;
+      }
+
+      .multitool-gallery__portrait-pair {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .multitool-gallery__feature-main {
+        display: none !important;
+      }
+
+      .multitool-gallery > .multitool-gallery__portrait-pair {
+        gap: 10px !important;
+      }
+
+      .multitool-gallery.case-gallery--rows .multitool-gallery__portrait-pair img,
+      .multitool-gallery.case-gallery--rows .multitool-gallery__portrait-pair video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+    }
+
     .case-project-nav--portal {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px;
@@ -352,48 +418,50 @@
           </div>
         </dl>
       </div>
-      <div class="case-gallery">
-        <figure class="case-gallery__wide case-media-reveal" style="--reveal-delay: 220ms; aspect-ratio: 16 / 9;">
-          <video
-            class="case-gallery__video"
-            src="projects/multi-tool/multitool-product-concept-landscape.mp4"
-            poster="projects/multi-tool/multitool-orange-front-view.webp"
-            preload="metadata"
-            controls
-            playsinline
-            data-manual-playback
-            aria-label="Multitool product concept animation in landscape format"
-          ></video>
-          <button class="case-video-play" type="button" aria-label="Play Multitool product concept animation">
-            <span aria-hidden="true"></span>
-          </button>
-        </figure>
-        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 360ms;">
-          <img src="projects/multi-tool/multitool-orange-front-view.webp" alt="Orange Multitool concept shown from the front" width="2400" height="1350" loading="eager" fetchpriority="high" decoding="async" />
-        </figure>
-        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 500ms;">
-          <img src="projects/multi-tool/multitool-orange-black-configurations.webp" alt="Multitool concept shown in orange and black configurations" width="2400" height="1350" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 620ms;">
-          <img src="projects/multi-tool/multitool-modular-exploded-view.webp" alt="Exploded view of the black Multitool concept with separated fasteners and frame" width="2400" height="1350" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 740ms;">
-          <img src="projects/multi-tool/multitool-black-three-quarter-view.webp" alt="Black Multitool concept shown at an angled three-quarter view" width="2400" height="1350" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__item case-media-reveal" style="--reveal-delay: 860ms; aspect-ratio: 9 / 16;">
-          <video
-            class="case-gallery__video"
-            src="projects/multi-tool/multitool-product-concept-portrait.mp4"
-            preload="metadata"
-            controls
-            playsinline
-            data-manual-playback
-            aria-label="Multitool product concept animation in portrait format"
-          ></video>
-          <button class="case-video-play" type="button" aria-label="Play portrait Multitool product concept animation">
-            <span aria-hidden="true"></span>
-          </button>
-        </figure>
+      <div class="case-gallery case-gallery--rows multitool-gallery">
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-media-reveal" style="--reveal-delay: 220ms; aspect-ratio: 16 / 9;">
+            <video
+              class="case-gallery__video multitool-video--top"
+              src="projects/multi-tool/multitool-product-concept-landscape.mp4"
+              poster="projects/multi-tool/multitool-orange-front-view.webp"
+              preload="none"
+              muted
+              loop
+              playsinline
+              aria-label="Multitool product concept animation in landscape format"
+            ></video>
+          </figure>
+        </div>
+        <div class="case-gallery__row multitool-gallery__feature-pair">
+          <figure class="case-gallery__image case-media-reveal multitool-gallery__feature-main" style="--reveal-delay: 360ms;">
+            <img src="projects/multi-tool/multitool-modular-exploded-view.webp" alt="Exploded view of the black Multitool concept with separated fasteners and frame" width="2400" height="1350" loading="eager" fetchpriority="high" decoding="async" />
+          </figure>
+          <figure class="case-gallery__image case-media-reveal multitool-gallery__logo" style="--reveal-delay: 500ms;">
+            <img src="projects/multi-tool/multi-tool logo.jpg" alt="Multitool symbol in white on black" width="705" height="705" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 620ms;">
+            <img src="projects/multi-tool/multitool-orange-black-configurations.webp" alt="Multitool concept shown in orange and black configurations" width="2400" height="1350" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row multitool-gallery__portrait-pair">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 740ms;">
+            <img src="projects/multi-tool/Mask group.jpg" alt="Orange Multitool concept shown from the front" width="1019" height="1167" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-media-reveal" style="--reveal-delay: 860ms;">
+            <video
+              class="case-gallery__video multitool-video--bottom"
+              src="projects/multi-tool/multitool-product-concept-portrait.mp4"
+              preload="none"
+              muted
+              loop
+              playsinline
+              aria-label="Multitool product concept animation in portrait format"
+            ></video>
+          </figure>
+        </div>
       </div>
       <div class="case-description-row">
         <div class="case-description case-reveal">
@@ -409,10 +477,10 @@
       </div>
       <nav class="case-project-nav case-project-nav--portal case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
         <div class="case-project-nav__item">
-          <a class="case-project-nav__button" href="/work/" data-cursor-image="projects/multi-tool/multitool-black-three-quarter-view.webp">ALL PROJECTS</a>
+          <a class="case-project-nav__button" href="/olivo-bistro/" data-cursor-image="projects/olivo-bistro/placeholder-landscape.svg">OLIVO BISTRO</a>
         </div>
         <div class="case-project-nav__item case-project-nav__item--next">
-          <a class="case-project-nav__button" href="/work/" data-cursor-image="projects/multi-tool/multitool-orange-front-view.webp">ALL PROJECTS</a>
+          <a class="case-project-nav__button" href="/intermezzo/" data-cursor-image="optimized/intermezzo-festival-visual-identity.jpg">INTERMEZZO FESTIVAL</a>
         </div>
       </nav>
       <div class="case-project-cursor" aria-hidden="true"></div>
@@ -447,6 +515,48 @@
     </div>
   </footer>
 
+  <script>
+    (() => {
+      const topVideo = document.querySelector('.multitool-video--top');
+      const bottomVideo = document.querySelector('.multitool-video--bottom');
+      if (!topVideo || !bottomVideo) return;
+
+      const mobileQuery = window.matchMedia('(max-width: 720px)');
+      const landscapeSource = 'projects/multi-tool/multitool-product-concept-landscape.mp4';
+      const portraitSource = 'projects/multi-tool/multitool-product-concept-portrait.mp4';
+
+      const placeVideos = ({ matches: isMobile }) => {
+        const topSource = isMobile ? portraitSource : landscapeSource;
+        const bottomSource = isMobile ? landscapeSource : portraitSource;
+        let changed = false;
+
+        if (topVideo.getAttribute('src') !== topSource) {
+          topVideo.setAttribute('src', topSource);
+          changed = true;
+        }
+        if (bottomVideo.getAttribute('src') !== bottomSource) {
+          bottomVideo.setAttribute('src', bottomSource);
+          changed = true;
+        }
+
+        if (isMobile) {
+          topVideo.removeAttribute('poster');
+          bottomVideo.setAttribute('poster', 'projects/multi-tool/multitool-orange-front-view.webp');
+        } else {
+          topVideo.setAttribute('poster', 'projects/multi-tool/multitool-orange-front-view.webp');
+          bottomVideo.removeAttribute('poster');
+        }
+
+        if (changed) {
+          topVideo.load();
+          bottomVideo.load();
+        }
+      };
+
+      placeVideos(mobileQuery);
+      mobileQuery.addEventListener('change', placeVideos);
+    })();
+  </script>
   <script defer src="./project-page.js"></script>
   <script defer src="./site-common.js"></script>
 </body>

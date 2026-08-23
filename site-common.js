@@ -487,3 +487,43 @@
 
   window.mondProtectShortWords = protectShortWords;
 })();
+
+(() => {
+  const setupMobileHomeNavigation = () => {
+    const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
+    if (normalizedPath === "/" || normalizedPath === "/index.html") return;
+
+    const nav = document.querySelector(".hero__nav");
+    if (!nav || nav.querySelector(".hero__nav-home")) return;
+
+    const style = document.createElement("style");
+    style.textContent = `
+      .hero__nav .hero__nav-home {
+        display: none !important;
+      }
+
+      @media (max-width: 720px) {
+        .hero__nav .hero__nav-home {
+          display: block !important;
+        }
+
+        .hero__top.is-open .hero__nav a:nth-child(5) .hero__nav-word {
+          transition-delay: 1040ms;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    const homeLink = document.createElement("a");
+    homeLink.className = "hero__nav-home";
+    homeLink.href = "/";
+    homeLink.innerHTML = '<span class="hero__nav-word">HOME</span>';
+    nav.prepend(homeLink);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupMobileHomeNavigation, { once: true });
+  } else {
+    setupMobileHomeNavigation();
+  }
+})();
