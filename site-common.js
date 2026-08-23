@@ -122,9 +122,9 @@
           margin-top: 8svh !important;
           color: inherit !important;
           white-space: nowrap !important;
-          font-size: 23px !important;
+          font-size: 14.375px !important;
           font-weight: 400 !important;
-          line-height: 37px !important;
+          line-height: 23.125px !important;
           letter-spacing: -0.02em !important;
         }
         .mond-mobile-footer-enabled .site-footer .footer-email {

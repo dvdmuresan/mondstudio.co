@@ -406,7 +406,8 @@
       padding-left: 16px;
     }
 
-    .projects-table td:first-child a {
+    .projects-table td:first-child a,
+    .projects-table__disabled-link {
       display: flex;
       align-items: center;
       width: 100%;
@@ -415,6 +416,10 @@
       padding-left: 16px;
       font-weight: 350;
       text-transform: none;
+    }
+
+    .projects-table__disabled-link {
+      cursor: default;
     }
 
     .projects-type {
@@ -897,7 +902,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       border-radius: 8px;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      aspect-ratio: 32 / 33;
+      aspect-ratio: auto;
       display: block;
       background: rgba(255, 255, 255, 0.04);
       opacity: 0;
@@ -939,8 +944,8 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     .projects-gallery__item img,
     .projects-gallery__item video {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      object-fit: contain;
       display: block;
       transition: transform 260ms ease;
     }
@@ -1431,8 +1436,8 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       }
 
       .projects-gallery__item {
-        aspect-ratio: 1 / 1.05;
-        max-height: calc(100vh * 2.3 / 3);
+        aspect-ratio: auto;
+        max-height: none;
         border: 0;
         border-radius: 8px;
         opacity: 1;
@@ -1540,15 +1545,15 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       }
 
       .projects-gallery figure.is-layout-portrait .projects-gallery__item {
-        aspect-ratio: 1 / 1.26;
+        aspect-ratio: auto;
       }
 
       .projects-gallery figure.is-layout-landscape .projects-gallery__item {
-        aspect-ratio: 16 / 9.8;
+        aspect-ratio: auto;
       }
 
       .projects-gallery figure.is-layout-wide .projects-gallery__item {
-        aspect-ratio: 16 / 8.7;
+        aspect-ratio: auto;
       }
     }
 
@@ -2747,6 +2752,25 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       body[data-theme="light"] .hero__nav a.hero__nav-talk {
         color: rgba(19, 19, 19, 0.58);
       }
+
+      .projects-gallery__badge,
+      .projects-gallery__caption-tags {
+        display: none !important;
+      }
+
+      .projects-gallery__item,
+      .projects-gallery figure.is-layout-portrait .projects-gallery__item,
+      .projects-gallery figure.is-layout-landscape .projects-gallery__item,
+      .projects-gallery figure.is-layout-wide .projects-gallery__item {
+        aspect-ratio: 4 / 5;
+      }
+
+      .projects-gallery__item img,
+      .projects-gallery__item video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   </style>
 </head>
@@ -2989,7 +3013,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <td>—</td>
               </tr>
               <tr class="project-row">
-                <td><a href="/olivo-bistro/">Olivo Bistro</a></td>
+                <td><span class="projects-table__disabled-link" aria-disabled="true">Olivo Bistro</span></td>
                 <td><span class="projects-type">Project</span></td>
                 <td>—</td>
               </tr>
@@ -3004,7 +3028,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <td>—</td>
               </tr>
               <tr class="project-row">
-                <td><a href="/macn/">MACN</a></td>
+                <td><span class="projects-table__disabled-link" aria-disabled="true">MACN</span></td>
                 <td><span class="projects-type">Project</span></td>
                 <td>—</td>
               </tr>
@@ -3102,16 +3126,16 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               </a>
             </figure>
             <figure data-tags="">
-              <a class="projects-gallery__link" href="/olivo-bistro/">
+              <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Project</span></div>
-                  <img src="projects/olivo-bistro/placeholder-landscape.svg" alt="Olivo Bistro project placeholder" width="1600" height="900" loading="lazy" decoding="async" />
+                  <img src="projects/olivo-bistro/Olivo%20bistro%20-%20portfolio%20copy.png" alt="Olivo Bistro project preview" width="2250" height="2250" loading="lazy" decoding="async" />
+                  <span class="projects-gallery__coming-soon">Coming Soon</span>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Olivo Bistro</span>
-                  <span class="projects-gallery__caption-tags"><span>Project Details Coming Soon</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Coming Soon</span></span>
                 </figcaption>
-              </a>
+              </div>
             </figure>
             <figure data-tags="record-design graphic-design visual-identity art fashion">
               <a class="projects-gallery__link" href="/walk-with-me/">
@@ -3138,7 +3162,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               </a>
             </figure>
             <figure data-tags="">
-              <a class="projects-gallery__link" href="/macn/">
+              <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
                   <img src="projects/macn/MACN%20-%20PRESENTATION%20MEETING-20.jpg" alt="MACN project preview" width="4000" height="2250" loading="lazy" decoding="async" />
                   <span class="projects-gallery__coming-soon">Coming Soon</span>
@@ -3147,7 +3171,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                   <span class="projects-gallery__caption-title">MACN</span>
                   <span class="projects-gallery__caption-tags"><span>Coming Soon</span></span>
                 </figcaption>
-              </a>
+              </div>
             </figure>
           </div>
         </div>

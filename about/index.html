@@ -1081,6 +1081,9 @@
     }
 
     .about-team-strip__person {
+      position: relative;
+      display: flex;
+      flex-direction: column;
       margin: 0;
       min-width: 0;
     }
@@ -1100,26 +1103,38 @@
     }
 
     .about-team-strip__caption {
-      margin-top: 10px;
-      color: #f7f7f7;
-      font-size: 14px;
-      line-height: 1.3;
+      position: static;
+      order: -1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 10px;
+      color: #fff;
+      font-size: 14.4px;
+      line-height: 1.2;
     }
 
     .about-team-strip__caption p {
       margin: 0;
     }
 
+    .about-team-strip__caption > p:first-child::before {
+      content: "• ";
+    }
+
     .about-team-strip__role {
-      color: rgba(247, 247, 247, 0.55);
+      max-width: 58%;
+      color: rgba(255, 255, 255, 0.58);
+      text-align: right;
     }
 
     body[data-theme="light"] .about-team-strip__caption {
-      color: #131313;
+      color: #fff;
     }
 
     body[data-theme="light"] .about-team-strip__role {
-      color: rgba(19, 19, 19, 0.55);
+      color: rgba(255, 255, 255, 0.58);
     }
 
     .about-mobile-info {
@@ -1834,6 +1849,8 @@
 
       .about-mobile-person {
         position: relative;
+        display: flex;
+        flex-direction: column;
         width: 100%;
       }
 
@@ -1893,7 +1910,13 @@
       }
 
       .about-mobile-person__caption {
-        margin-top: 12px;
+        position: static;
+        order: -1;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 0 0 10px;
       }
 
       .about-mobile-person__name,
@@ -1906,24 +1929,30 @@
       }
 
       .about-mobile-person__name {
-        color: #f7f7f7;
-        font-size: 15px;
+        color: #fff;
+        font-size: 14.4px;
         font-weight: 500;
       }
 
+      .about-mobile-person__name::before {
+        content: "• ";
+      }
+
       .about-mobile-person__role {
-        margin-top: 5px;
-        color: rgba(247, 247, 247, 0.64);
-        font-size: 12px;
+        max-width: 58%;
+        margin-top: 0;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 13.2px;
         font-weight: 400;
+        text-align: right;
       }
 
       body[data-theme="light"] .about-mobile-person__name {
-        color: #131313;
+        color: #fff;
       }
 
       body[data-theme="light"] .about-mobile-person__role {
-        color: rgba(19, 19, 19, 0.64);
+        color: rgba(255, 255, 255, 0.58);
       }
 
     }
