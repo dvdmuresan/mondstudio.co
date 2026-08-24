@@ -1174,6 +1174,10 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         gap: 8px;
       }
 
+      [data-taxonomy] {
+        display: contents;
+      }
+
       .projects-filter__group + .projects-filter__group {
         margin-top: var(--projects-sidebar-section-gap);
       }
@@ -1601,20 +1605,26 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    @media (min-width: 721px) {
-      body.view-image .projects-gallery {
-        margin-top: 0;
-        padding: 0;
-        max-height: none;
-        animation: none;
-      }
+      @media (min-width: 721px) {
+        body.view-image .projects-gallery {
+          margin-top: 0;
+          padding: 0;
+          max-height: none;
+          animation: none;
+        }
 
-      body.view-image .projects-gallery__grid {
-        display: block;
-        column-count: 2;
-        column-gap: 10px;
+        body.view-image .projects-gallery__grid {
+          display: block;
+          column-count: 2;
+          column-gap: 10px;
+        }
+
+        body.view-image .projects-gallery__grid.is-filter-active {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
       }
-    }
 
     @media (min-width: 721px) and (max-height: 860px) {
       :root {
@@ -1664,6 +1674,32 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       .projects-gallery__grid,
       body.view-image .projects-gallery__grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .projects-filter__title {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        white-space: normal;
+        word-break: normal;
+        overflow-wrap: anywhere;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+      }
+
+      .projects-filter__button {
+        max-width: 100%;
+      }
+
+      .projects-filter__button > span:first-child,
+      .projects-gallery__caption-tags span {
+        min-width: 0;
+        max-width: 100%;
+        white-space: normal;
+        word-break: normal;
+        overflow-wrap: break-word;
+        -webkit-hyphens: auto;
+        hyphens: auto;
       }
     }
 
@@ -2879,29 +2915,15 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         <a class="projects-sidebar__brand" href="/" aria-label="MOND : STUDIO home">
           <img src="asset4.png" alt="MOND : STUDIO" width="590" height="63" loading="lazy" decoding="async" />
         </a>
-        <div class="projects-filter" role="list" aria-label="Filter projects by service">
+        <div class="projects-filter" role="list" aria-label="Filter projects by service or industry">
           <p class="projects-filter__title projects-sidebar-reveal" id="projects-filter-title" style="--sidebar-reveal-delay: 80ms;">ALL WORKS</p>
           <div class="projects-filter__group projects-sidebar-reveal" style="--sidebar-reveal-delay: 220ms;">
             <p class="projects-filter__eyebrow">Services</p>
-            <button class="projects-filter__button" type="button" data-filter="visual-identity" aria-pressed="false"><span>Visual Identity</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="branding" aria-pressed="false"><span>Branding</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="record-design" aria-pressed="false"><span>Record Design</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="book-design" aria-pressed="false"><span>Book Design</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="product-design" aria-pressed="false"><span>Product Design</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="creative-direction" aria-pressed="false"><span>Creative Direction</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="strategy" aria-pressed="false"><span>Strategy</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="motion-design" aria-pressed="false"><span>Motion Design</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
+            <div data-taxonomy="services"></div>
           </div>
           <div class="projects-filter__group projects-sidebar-reveal" style="--sidebar-reveal-delay: 360ms;">
             <p class="projects-filter__eyebrow">Industries</p>
-            <button class="projects-filter__button" type="button" data-filter="art" aria-pressed="false"><span>Art</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="architecture" aria-pressed="false"><span>Architecture</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="technology" aria-pressed="false"><span>Technology</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="health" aria-pressed="false"><span>Health</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="sport" aria-pressed="false"><span>Sport</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="fashion" aria-pressed="false"><span>Fashion</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="beauty" aria-pressed="false"><span>Beauty</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
-            <button class="projects-filter__button" type="button" data-filter="sustainability" aria-pressed="false"><span>Sustainability</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
+            <div data-taxonomy="industries"></div>
           </div>
         </div>
         <a class="projects-sidebar__cta" href="https://cal.eu/mondstudio">
@@ -2931,47 +2953,47 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               </tr>
               <tr class="project-row">
                 <td><a href="/lesser-of-two-evils/">Lesser of Two Evils - motion design</a></td>
-                <td><span class="projects-type">Motion Design</span></td>
+                <td><span class="projects-type">Animation</span></td>
                 <td>—</td>
               </tr>
               <tr class="project-row">
                 <td><a href="/friss-kakas/">Friss Kakas</a></td>
-                <td><span class="projects-type">Project</span></td>
+                <td><span class="projects-type">Animation</span></td>
                 <td>—</td>
               </tr>
               <tr class="project-row">
                 <td><a href="/re-mind/">RE:MIND</a></td>
-                <td><span class="projects-type">Project</span></td>
+                <td><span class="projects-type">Visual Identity</span></td>
                 <td>—</td>
               </tr>
               <tr class="project-row">
                 <td><a href="/dream-ville-software/">Dream Ville Software - branding</a></td>
-                <td><span class="projects-type">Branding</span></td>
+                <td><span class="projects-type">Visual Identity</span></td>
                 <td>2023</td>
               </tr>
               <tr class="project-row">
                 <td><a href="/maier-jewelry/">Maier Jewelry - branding</a></td>
-                <td><span class="projects-type">Branding</span></td>
+                <td><span class="projects-type">Visual Identity</span></td>
                 <td>—</td>
               </tr>
               <tr class="project-row">
                 <td><span class="projects-table__disabled-link" aria-disabled="true">Olivo Bistro</span></td>
-                <td><span class="projects-type">Project</span></td>
+                <td><span class="projects-type">Visual Identity</span></td>
                 <td>—</td>
               </tr>
               <tr class="project-row">
                 <td><a href="/walk-with-me/">Walk with me - record label</a></td>
-                <td><span class="projects-type">Record Design</span></td>
+                <td><span class="projects-type">Visual Identity</span></td>
                 <td>2023</td>
               </tr>
               <tr class="project-row">
                 <td><a href="/marty-restaurants/">Marty Restaurants</a></td>
-                <td><span class="projects-type">Project</span></td>
+                <td><span class="projects-type">Book Design</span></td>
                 <td>—</td>
               </tr>
               <tr class="project-row">
                 <td><span class="projects-table__disabled-link" aria-disabled="true">MACN</span></td>
-                <td><span class="projects-type">Project</span></td>
+                <td><span class="projects-type">Visual Identity</span></td>
                 <td>—</td>
               </tr>
             </tbody>
@@ -2983,7 +3005,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         <div class="projects-thumb" id="projects-thumb" aria-hidden="true"></div>
         <div class="projects-gallery" aria-label="Project image gallery">
           <div class="projects-gallery__grid">
-            <figure data-tags="product-design technology">
+            <figure data-services="Product Design, Motion Design" data-industries="Culture">
               <a class="projects-gallery__link" href="/multitool/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Product Design</span></div>
@@ -2991,11 +3013,11 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Multitool</span>
-                  <span class="projects-gallery__caption-tags"><span>Product Design</span><span>Industrial Design</span><span>3D Design</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Product Design</span><span>Motion Design</span><span>Culture</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-tags="visual-identity creative-direction strategy motion-design art architecture">
+            <figure data-services="Visual Identity, Motion Design" data-industries="Culture">
               <a class="projects-gallery__link" href="/intermezzo/" data-project-transition="intermezzo" data-transition-image="optimized/intermezzo-festival-visual-identity.jpg">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
@@ -3003,71 +3025,71 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Intermezzo Fesztival</span>
-                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Creative Direction</span><span>Art</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Motion Design</span><span>Culture</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-tags="motion-design creative-direction art">
+            <figure data-services="Animation" data-industries="Culture">
               <a class="projects-gallery__link" href="/lesser-of-two-evils/">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Motion Design</span></div>
+                  <div class="projects-gallery__badge"><span>Animation</span></div>
                   <video src="projects/lesser-of-two-evils/lesser-of-two-evils-widescreen-animation.mp4" poster="projects/lesser-of-two-evils/optimized/hazai_final_still_014.jpg" muted loop playsinline preload="metadata" aria-label="Lesser of Two Evils animated project preview"></video>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Lesser of Two Evils</span>
-                  <span class="projects-gallery__caption-tags"><span>Motion Design</span><span>Creative Direction</span><span>Art</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Animation</span><span>Culture</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-tags="">
+            <figure data-services="Animation" data-industries="Culture">
               <a class="projects-gallery__link" href="/friss-kakas/">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Project</span></div>
+                  <div class="projects-gallery__badge"><span>Animation</span></div>
                   <img src="projects/friss-kakas/optimized/digitalis_plakat_02.jpg" alt="Friss Kakas illustrated project artwork" width="2400" height="1539" loading="lazy" decoding="async" />
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Friss Kakas</span>
-                  <span class="projects-gallery__caption-tags"><span>Project Details Coming Soon</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Animation</span><span>Culture</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-tags="">
+            <figure data-services="Visual Identity, Packaging, Strategy, Motion Design" data-industries="Health">
               <a class="projects-gallery__link" href="/re-mind/">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Project</span></div>
+                  <div class="projects-gallery__badge"><span>Visual Identity</span></div>
                   <video src="projects/re-mind/re-mind-packaging-layers-animation.mp4" poster="projects/re-mind/optimized/re-mind-reflection-toolkit-overview.jpg" muted loop playsinline preload="metadata" aria-label="RE:MIND animated project preview"></video>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">RE:MIND</span>
-                  <span class="projects-gallery__caption-tags"><span>Project Details Coming Soon</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Packaging</span><span>Strategy</span><span>Motion Design</span><span>Health</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-tags="branding strategy visual-identity technology">
+            <figure data-services="Visual Identity, Strategy" data-industries="Tech">
               <a class="projects-gallery__link" href="/dream-ville-software/">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Branding</span></div>
+                  <div class="projects-gallery__badge"><span>Visual Identity</span></div>
                   <img src="optimized/image2.jpg" alt="Dream Ville Software branded notebook" width="1200" height="800" loading="lazy" decoding="async" />
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Dream Ville Software</span>
-                  <span class="projects-gallery__caption-tags"><span>Branding</span><span>Strategy</span><span>Technology</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Strategy</span><span>Tech</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-tags="branding visual-identity fashion">
+            <figure data-services="Visual Identity, Strategy" data-industries="Beauty">
               <a class="projects-gallery__link" href="/maier-jewelry/">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Branding</span></div>
+                  <div class="projects-gallery__badge"><span>Visual Identity</span></div>
                   <video src="projects/maier-jewelry/FIGMA/maier-jewelry-visual-identity-animation.mp4" poster="projects/maier-jewelry/FIGMA/maier-jewelry-wordmark-identity.jpg" muted loop playsinline preload="metadata" aria-label="Maier Jewelry visual identity animation"></video>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Maier Jewelry</span>
-                  <span class="projects-gallery__caption-tags"><span>Branding</span><span>Visual Identity</span><span>Fashion</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Strategy</span><span>Beauty</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-tags="">
+            <figure data-services="Visual Identity" data-industries="Hospitality">
               <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
                   <img src="projects/olivo-bistro/Olivo%20bistro%20-%20portfolio%20copy.png" alt="Olivo Bistro project preview" width="2250" height="2250" loading="lazy" decoding="async" />
@@ -3075,35 +3097,35 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Olivo Bistro</span>
-                  <span class="projects-gallery__caption-tags"><span>Coming Soon</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Hospitality</span></span>
                 </figcaption>
               </div>
             </figure>
-            <figure data-tags="record-design graphic-design visual-identity art fashion">
+            <figure data-services="Visual Identity, Packaging" data-industries="Culture">
               <a class="projects-gallery__link" href="/walk-with-me/">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Record Design</span></div>
+                  <div class="projects-gallery__badge"><span>Packaging</span></div>
                   <video src="projects/walk-with-me/DSCF8350.mp4" muted loop playsinline preload="metadata" aria-label="Walk With Me Rainy Days sleeve video preview"></video>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Walk with me</span>
-                  <span class="projects-gallery__caption-tags"><span>Record Design</span><span>Visual Identity</span><span>Art</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Packaging</span><span>Culture</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-tags="">
+            <figure data-services="Book Design, Visual Identity" data-industries="Hospitality">
               <a class="projects-gallery__link" href="/marty-restaurants/">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Project</span></div>
+                  <div class="projects-gallery__badge"><span>Book Design</span></div>
                   <img src="projects/marty-restaurants/images/Marty-Resturant-menu-02.jpg" alt="Open Marty Restaurants menu displaying plated dishes on a wooden bench" width="4000" height="2250" loading="lazy" decoding="async" />
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Marty Restaurants</span>
-                  <span class="projects-gallery__caption-tags"><span>Project Details Coming Soon</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Book Design</span><span>Visual Identity</span><span>Hospitality</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-tags="">
+            <figure data-services="Visual Identity, Strategy" data-industries="Culture">
               <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
                   <img src="projects/macn/MACN%20-%20PRESENTATION%20MEETING-20.jpg" alt="MACN project preview" width="4000" height="2250" loading="lazy" decoding="async" />
@@ -3111,7 +3133,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">MACN</span>
-                  <span class="projects-gallery__caption-tags"><span>Coming Soon</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Strategy</span><span>Culture</span></span>
                 </figcaption>
               </div>
             </figure>
@@ -3180,10 +3202,53 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
       setView('image');
 
+      const projectTaxonomy = Object.freeze({
+        services: Object.freeze([
+          'Visual Identity',
+          'Book Design',
+          'Product Design',
+          'Packaging',
+          'Strategy',
+          'Animation',
+          'Motion Design'
+        ]),
+        industries: Object.freeze([
+          'Hospitality',
+          'Beauty',
+          'Health',
+          'Culture',
+          'Tech'
+        ])
+      });
+
+      Object.entries(projectTaxonomy).forEach(([taxonomy, labels]) => {
+        const container = document.querySelector(`[data-taxonomy="${taxonomy}"]`);
+        if (!container) return;
+
+        labels.forEach((label) => {
+          const button = document.createElement('button');
+          button.className = 'projects-filter__button';
+          button.type = 'button';
+          button.dataset.filter = label;
+          button.setAttribute('aria-pressed', 'false');
+
+          const text = document.createElement('span');
+          text.textContent = label;
+          const remove = document.createElement('span');
+          remove.className = 'projects-filter__remove';
+          remove.setAttribute('aria-hidden', 'true');
+          remove.textContent = 'x';
+
+          button.append(text, remove);
+          container.appendChild(button);
+        });
+      });
+
       const filterButtons = Array.from(document.querySelectorAll('.projects-filter__button[data-filter]'));
       const galleryGrid = document.querySelector('.projects-gallery__grid');
-      const galleryFigures = Array.from(document.querySelectorAll('.projects-gallery figure[data-tags]'));
+      const galleryFigures = Array.from(document.querySelectorAll('.projects-gallery figure[data-services][data-industries]'));
       const filterTitle = document.getElementById('projects-filter-title');
+      let canonicalProjectOrder = null;
 
       const animateProjectRefresh = (figures) => {
         if (!galleryGrid) return;
@@ -3211,15 +3276,15 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         const landscapeFigures = [];
 
         visibleFigures.forEach((figure) => {
-          const tags = figure.dataset.tags || '';
-          if (/book-design|product-design|fashion|beauty|health/.test(tags)) {
+          const tags = `${figure.dataset.services || ''}, ${figure.dataset.industries || ''}`;
+          if (/Book Design|Product Design|Beauty|Health/.test(tags)) {
             portraitFigures.push(figure);
           } else {
             landscapeFigures.push(figure);
           }
         });
 
-        const reorderedFigures = [];
+        let reorderedFigures = [];
         let lastWasLandscape = false;
 
         while (landscapeFigures.length || portraitFigures.length) {
@@ -3230,7 +3295,14 @@ body[data-theme="light"] .footer-social-minimal a:focus {
           if (!nextFigure) break;
 
           reorderedFigures.push(nextFigure);
-          lastWasLandscape = !/book-design|product-design|fashion|beauty|health/.test(nextFigure.dataset.tags || '');
+          const nextTags = `${nextFigure.dataset.services || ''}, ${nextFigure.dataset.industries || ''}`;
+          lastWasLandscape = !/Book Design|Product Design|Beauty|Health/.test(nextTags);
+        }
+
+        if (canonicalProjectOrder) {
+          reorderedFigures = canonicalProjectOrder.filter((figure) => visibleFigures.includes(figure));
+        } else if (visibleFigures.length === galleryFigures.length) {
+          canonicalProjectOrder = [...reorderedFigures];
         }
 
         reorderedFigures.forEach((figure, index) => {
@@ -3259,6 +3331,8 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         const activeLabel = activeButton ? activeButton.querySelector('span')?.textContent?.trim() : 'All Works';
         const visibleFigures = [];
 
+        galleryGrid?.classList.toggle('is-filter-active', filter !== 'all');
+
         filterButtons.forEach((button) => {
           const isActive = button.dataset.filter === filter;
           button.classList.toggle('is-active', isActive);
@@ -3266,11 +3340,22 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         });
 
         if (filterTitle) {
-          filterTitle.textContent = filter === 'all' ? 'ALL WORKS' : (activeLabel || 'ALL WORKS').toUpperCase();
+          const title = filter === 'all' ? 'ALL WORKS' : (activeLabel || 'ALL WORKS').toUpperCase();
+          filterTitle.textContent = '';
+
+          if (title === 'HOSPITALITY') {
+            filterTitle.append('HOSPI-', document.createElement('br'), 'TALITY');
+          } else if (title === 'PACKAGING') {
+            filterTitle.append('PACKA-', document.createElement('br'), 'GING');
+          } else {
+            filterTitle.textContent = title;
+          }
         }
 
         galleryFigures.forEach((figure) => {
-          const tags = (figure.dataset.tags || '').split(/\s+/);
+          const tags = [figure.dataset.services, figure.dataset.industries]
+            .flatMap((values) => (values || '').split(',').map((value) => value.trim()))
+            .filter(Boolean);
           const isVisible = filter === 'all' || tags.includes(filter);
           figure.classList.toggle('is-filtered-out', !isVisible);
           if (isVisible) visibleFigures.push(figure);
