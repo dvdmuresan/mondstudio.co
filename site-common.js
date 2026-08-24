@@ -182,10 +182,27 @@
     document.head.appendChild(style);
   };
 
+  const setupVideoCompatibility = () => {
+    document.querySelectorAll("video").forEach((video) => {
+      if (video.hasAttribute("muted")) {
+        video.defaultMuted = true;
+        video.muted = true;
+      }
+      if (video.hasAttribute("playsinline")) {
+        video.playsInline = true;
+        video.setAttribute("webkit-playsinline", "");
+      }
+    });
+  };
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupSiteStyles, { once: true });
+    document.addEventListener("DOMContentLoaded", () => {
+      setupSiteStyles();
+      setupVideoCompatibility();
+    }, { once: true });
   } else {
     setupSiteStyles();
+    setupVideoCompatibility();
   }
 
   const setupPageTransitions = () => {
