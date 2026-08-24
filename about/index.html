@@ -428,9 +428,9 @@
       width: min(66vw, 1260px);
       color: #f7f7f7;
       font-family: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
-      font-size: 59.29px;
+      font-size: 77.077px;
       font-style: normal;
-      font-weight: 600;
+      font-weight: 500;
       line-height: 1.02;
       letter-spacing: 0;
     }
@@ -1283,7 +1283,7 @@
 
       .about-hero__tagline {
         width: min(48vw, 720px);
-        font-size: clamp(48.36px, 3.813vw, 55.8px);
+        font-size: clamp(62.868px, 4.957vw, 72.54px);
       }
 
       .about-hero__subtitle {
@@ -1331,7 +1331,7 @@
       }
 
       .about-hero__tagline {
-        font-size: clamp(39.99px, 4.185vw, 52.08px);
+        font-size: clamp(51.987px, 5.441vw, 67.704px);
       }
 
       .about-talk {
@@ -1347,7 +1347,7 @@
 
       .about-hero__tagline {
         width: min(46vw, 660px);
-        font-size: clamp(44.64px, 3.72vw, 52.08px);
+        font-size: clamp(58.032px, 4.836vw, 67.704px);
       }
 
       .about-hero__subtitle {
@@ -1400,7 +1400,7 @@
       }
 
       .about-hero__tagline {
-        font-size: clamp(31.62px, 4.371vw, 39.06px);
+        font-size: clamp(41.106px, 5.682vw, 50.778px);
       }
 
       .about-talk {
@@ -1415,7 +1415,7 @@
 
       .about-hero__tagline {
         width: min(46vw, 700px);
-        font-size: clamp(42px, 3.55vw, 56px);
+        font-size: clamp(54.6px, 4.615vw, 72.8px);
       }
 
       .about-hero__subtitle {
@@ -1463,7 +1463,7 @@
 
       .about-hero__tagline {
         width: min(44vw, 600px);
-        font-size: clamp(38px, 3.32vw, 48px);
+        font-size: clamp(49.4px, 4.316vw, 62.4px);
       }
 
       .about-hero__subtitle {
@@ -1505,7 +1505,7 @@
 
       .about-hero__tagline {
         width: min(43vw, 640px);
-        font-size: clamp(38px, 3.15vw, 50px);
+        font-size: clamp(49.4px, 4.095vw, 65px);
         line-height: 1.04;
       }
 
@@ -1682,8 +1682,8 @@
       .about-mobile-info__title {
         margin: 20px 0 0;
         color: inherit;
-        font-size: 33.15px;
-        font-weight: 600;
+        font-size: 43.095px;
+        font-weight: 500;
         line-height: 1.02;
         letter-spacing: 0;
       }
@@ -1839,7 +1839,8 @@
         max-width: calc(100vw - 40px);
         margin: -50px auto 0;
         padding: 0 0 160px;
-        transform: translateX(-40px);
+        box-sizing: border-box;
+        transform: none;
       }
 
       .about-footer-image {
@@ -1852,20 +1853,21 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+        margin: 0;
       }
 
       .about-mobile-person__image {
         position: relative;
-        aspect-ratio: 0.78;
+        aspect-ratio: auto;
         overflow: hidden;
         border-radius: 10px;
       }
 
       .about-mobile-person__image img {
         width: 100%;
-        height: 100%;
+        height: auto;
         display: block;
-        object-fit: cover;
+        object-fit: contain;
         filter: grayscale(1) contrast(1.08);
       }
 
@@ -2889,7 +2891,7 @@
   <main id="about">
     <div class="about-page">
       <section class="about-mobile-info" aria-label="Services, contact, and office">
-        <p class="about-mobile-info__title">Intention<br>is our aesthetics.</p>
+        <p class="about-mobile-info__title">Intention is<br>our aesthetics.</p>
         <div>
           <p class="about-hero-info__title">Services</p>
           <div class="about-mobile-info__services about-hero-info__body">
@@ -2986,7 +2988,7 @@
         </div>
       </section>
       <section class="about-hero" aria-labelledby="about-title">
-        <div class="about-hero__tagline" id="about-title">Intention<br>is our aesthetics.</div>
+        <div class="about-hero__tagline" id="about-title">Intention is<br>our aesthetics.</div>
         <p class="about-hero__subtitle"></p>
         <div class="about-hero-info" aria-label="Contact and services">
           <div class="about-hero-info__column">
