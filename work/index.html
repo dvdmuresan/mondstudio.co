@@ -284,7 +284,7 @@
       text-align: right;
       align-items: flex-end;
       color: var(--color-fg);
-      font-weight: 450;
+      font-weight: 500;
       font-family: "Mona Sans", sans-serif;
       opacity: 0;
       transform: translateY(-16px);
@@ -1187,7 +1187,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         color: var(--color-fg);
         width: min-content;
         font-size: 35.5px;
-        font-weight: 450;
+        font-weight: 460;
         line-height: 1.1;
         min-height: calc(35.5px * 1.1 * 2);
       }
@@ -2301,6 +2301,13 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       .projects-gallery__caption-tags {
         display: none;
       }
+
+      .projects-gallery__caption-title,
+      body[data-theme="light"] .projects-gallery__caption-title,
+      .projects-gallery figure.is-media-bright .projects-gallery__caption-title {
+        color: #ffffff !important;
+        opacity: 1;
+      }
     }
 
     @media (max-width: 640px) {
@@ -2724,7 +2731,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         background: transparent;
         text-align: left;
         font-size: 33px;
-        font-weight: 450;
+        font-weight: 460;
         line-height: 1.52;
         letter-spacing: 0.04em;
         opacity: 1;
@@ -3005,7 +3012,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         <div class="projects-thumb" id="projects-thumb" aria-hidden="true"></div>
         <div class="projects-gallery" aria-label="Project image gallery">
           <div class="projects-gallery__grid">
-            <figure data-services="Product Design, Motion Design" data-industries="Culture">
+            <figure data-project-path="/multitool/" data-services="Product Design, Motion Design" data-industries="Culture">
               <a class="projects-gallery__link" href="/multitool/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Product Design</span></div>
@@ -3017,7 +3024,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-services="Visual Identity, Motion Design" data-industries="Culture">
+            <figure data-project-path="/intermezzo/" data-services="Visual Identity, Motion Design" data-industries="Culture">
               <a class="projects-gallery__link" href="/intermezzo/" data-project-transition="intermezzo" data-transition-image="optimized/intermezzo-festival-visual-identity.jpg">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
@@ -3029,7 +3036,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-services="Animation" data-industries="Culture">
+            <figure data-project-path="/lesser-of-two-evils/" data-services="Animation" data-industries="Culture">
               <a class="projects-gallery__link" href="/lesser-of-two-evils/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Animation</span></div>
@@ -3041,7 +3048,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-services="Animation" data-industries="Culture">
+            <figure data-project-path="/friss-kakas/" data-services="Animation" data-industries="Culture">
               <a class="projects-gallery__link" href="/friss-kakas/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Animation</span></div>
@@ -3053,7 +3060,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-services="Visual Identity, Packaging, Strategy, Motion Design" data-industries="Health">
+            <figure data-project-path="/re-mind/" data-services="Visual Identity, Packaging, Strategy, Motion Design" data-industries="Health">
               <a class="projects-gallery__link" href="/re-mind/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
@@ -3065,7 +3072,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-services="Visual Identity, Strategy" data-industries="Tech">
+            <figure data-project-path="/dream-ville-software/" data-services="Visual Identity, Strategy" data-industries="Tech">
               <a class="projects-gallery__link" href="/dream-ville-software/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
@@ -3077,7 +3084,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-services="Visual Identity, Strategy" data-industries="Beauty">
+            <figure data-project-path="/maier-jewelry/" data-services="Visual Identity, Strategy" data-industries="Beauty">
               <a class="projects-gallery__link" href="/maier-jewelry/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
@@ -3089,7 +3096,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-services="Visual Identity" data-industries="Hospitality">
+            <figure data-project-path="/olivo-bistro/" data-services="Visual Identity" data-industries="Hospitality">
               <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
                   <img src="projects/olivo-bistro/Olivo%20bistro%20-%20portfolio%20copy.png" alt="Olivo Bistro project preview" width="2250" height="2250" loading="lazy" decoding="async" />
@@ -3101,7 +3108,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </div>
             </figure>
-            <figure data-services="Visual Identity, Packaging" data-industries="Culture">
+            <figure data-project-path="/walk-with-me/" data-services="Visual Identity, Packaging" data-industries="Culture">
               <a class="projects-gallery__link" href="/walk-with-me/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Packaging</span></div>
@@ -3113,7 +3120,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-services="Book Design, Visual Identity" data-industries="Hospitality">
+            <figure data-project-path="/marty-restaurants/" data-services="Book Design, Visual Identity" data-industries="Hospitality">
               <a class="projects-gallery__link" href="/marty-restaurants/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Book Design</span></div>
@@ -3125,7 +3132,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-services="Visual Identity, Strategy" data-industries="Culture">
+            <figure data-project-path="/macn/" data-services="Visual Identity, Strategy" data-industries="Culture">
               <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
                   <img src="projects/macn/MACN%20-%20PRESENTATION%20MEETING-20.jpg" alt="MACN project preview" width="4000" height="2250" loading="lazy" decoding="async" />
@@ -3595,5 +3602,6 @@ body[data-theme="light"] .footer-social-minimal a:focus {
   </script>
   <script type="module" src="./work-3d-loader.js"></script>
   <script defer src="./site-common.js"></script>
+  <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
 </body>
 </html>

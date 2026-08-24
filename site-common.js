@@ -9,10 +9,34 @@
 
     const style = document.createElement("style");
     style.textContent = `
+      .hero__nav,
+      .hero__nav a,
+      .hero__nav-word {
+        font-family: "Mona Sans", sans-serif !important;
+        font-weight: 450 !important;
+        -webkit-font-smoothing: auto !important;
+      }
+      @media (max-width: 720px) {
+        .hero__nav,
+        .hero__nav a,
+        .hero__nav-word {
+          font-weight: 450 !important;
+        }
+      }
       @media (max-width: 600px) {
         .mond-project-page .site-footer {
           display: none !important;
         }
+      }
+      html.lenis,
+      html.lenis body {
+        height: auto;
+      }
+      html.lenis.lenis-smooth {
+        scroll-behavior: auto !important;
+      }
+      html.lenis.lenis-stopped {
+        overflow: hidden;
       }
       .mond-page-transition {
         position: fixed;
@@ -170,6 +194,7 @@
       "/re-mind/", "/walk-with-me/", "/marty-restaurants/", "/macn/",
       "/dream-ville-software/", "/maier-jewelry/", "/olivo-bistro/"
     ]);
+    const blackTransitionPaths = new Set(["/", "/work/", "/about/"]);
     const transitionKey = "mond:work-to-intermezzo";
     const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
@@ -217,8 +242,8 @@
       if (destination.origin !== window.location.origin) return;
 
       const isProject = projectPaths.has(destination.pathname);
-      const isLanding = destination.pathname === "/";
-      if ((!isProject && !isLanding) || destination.pathname === window.location.pathname || prefersReducedMotion) return;
+      const usesBlackTransition = blackTransitionPaths.has(destination.pathname);
+      if ((!isProject && !usesBlackTransition) || destination.pathname === window.location.pathname || prefersReducedMotion) return;
 
       event.preventDefault();
       event.stopImmediatePropagation();
@@ -229,7 +254,7 @@
         // The outgoing transition does not depend on persisted state.
       }
 
-      const overlay = createOverlay(false, isLanding);
+      const overlay = createOverlay(false, usesBlackTransition);
       overlay.getBoundingClientRect();
       requestAnimationFrame(() => overlay.classList.add("is-active"));
       window.setTimeout(() => {

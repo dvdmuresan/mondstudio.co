@@ -266,7 +266,7 @@
       text-align: right;
       align-items: flex-end;
       color: inherit;
-      font-weight: 600;
+      font-weight: 500;
       line-height: 18px;
       pointer-events: auto;
     }
@@ -2697,7 +2697,7 @@
         padding: 0;
         text-align: left;
         font-size: 33px;
-        font-weight: 560;
+        font-weight: 460;
         line-height: 1.52;
         letter-spacing: 0.04em;
         opacity: 1;
@@ -2791,6 +2791,121 @@
     body[data-theme="light"] .case-description h2 {
       color: rgb(155, 156, 150);
     }
+
+/* Fixed project HUD and full-viewport project cover. */
+@media (min-width: 721px) {
+.project-hud {
+  display: contents;
+  color: #ffffff;
+  font-family: "Mona Sans", sans-serif;
+  font-size: 12.6px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17.1px;
+  text-transform: uppercase;
+}
+
+.project-hud__number,
+.project-hud__name {
+  position: fixed;
+  top: 50%;
+  z-index: 5;
+  white-space: nowrap;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+.project-hud__number {
+  left: 20px;
+  transform: translateY(-50%);
+}
+
+.project-hud__name {
+  right: 20px;
+  text-align: right;
+  transform: translateY(-50%);
+}
+
+.hero.project-cover-host {
+  min-height: 100svh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.project-cover {
+  position: absolute !important;
+  inset: 0;
+  z-index: 0;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  overflow: hidden;
+  background: #000000;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.project-cover__media {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  transform: translate3d(0, var(--project-cover-parallax, 0px), 0) scale(1.08) !important;
+  transform-origin: center;
+  will-change: transform;
+}
+
+body.has-project-cover .case-main {
+  margin-top: 0;
+}
+
+body.has-project-cover .case-heading {
+  display: block;
+  padding-top: 75px;
+}
+
+body.has-project-cover .case-heading .case-intro__copy {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+body.has-project-cover .case-heading .case-mobile-info {
+  position: static;
+  top: auto;
+  width: calc(50vw - 20px);
+  margin: 0;
+  justify-self: auto;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-cover__media {
+    transform: scale(1.08) !important;
+    will-change: auto;
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+html.lenis.lenis-stopped {
+  overflow: hidden;
+}
 
     .case-intro__copy {
       font-weight: 500;
@@ -2959,3 +3074,73 @@
         display: none;
       }
     }
+
+/* Desktop project header blends with the fullscreen cover. */
+@media (min-width: 721px) {
+  .hero__overlay {
+    color: #ffffff;
+    mix-blend-mode: difference;
+  }
+
+  .hero__brand {
+    color: #ffffff;
+    mix-blend-mode: normal;
+  }
+
+  .hero__brand-image {
+    filter: invert(1) !important;
+    mix-blend-mode: normal;
+  }
+
+  .hero__nav {
+    color: #ffffff;
+    font-weight: 500;
+    mix-blend-mode: normal;
+  }
+
+  .hero__nav a,
+  .hero__nav-word {
+    font-weight: 500;
+  }
+}
+
+/* Mobile keeps the original black header and navigation treatment. */
+@media (max-width: 720px) {
+  .project-hud,
+  .hero > .project-cover {
+    display: none !important;
+  }
+
+  .hero__brand-image {
+    filter: none !important;
+    mix-blend-mode: normal;
+  }
+
+  .hero__brand-project {
+    color: #131313 !important;
+    mix-blend-mode: normal;
+  }
+
+  .hero__nav,
+  .hero__menu-toggle {
+    color: #131313;
+    mix-blend-mode: normal;
+  }
+
+  .hero__nav a,
+  .hero__nav-word {
+    font-weight: 560;
+  }
+
+  .hero__top.is-open .hero__brand-image,
+  .hero__top.is-preopening .hero__brand-image {
+    filter: none !important;
+    mix-blend-mode: normal;
+  }
+
+  .hero__top.is-open .hero__nav,
+  .hero__top.is-preopening .hero__nav {
+    color: #131313;
+    mix-blend-mode: normal;
+  }
+}

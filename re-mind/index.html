@@ -44,7 +44,7 @@
       // Ignore storage failures; the page still loads normally.
     }
   </script>
-  <link rel="stylesheet" href="project-page.css?v=20260802-2" />
+  <link rel="stylesheet" href="project-page.css?v=20260824-7" />
   <style>
     .remind-gallery,
     .remind-gallery > .case-gallery__row {
@@ -152,7 +152,7 @@
         <button class="hero__menu-toggle" id="hero-menu-toggle" type="button" aria-controls="hero-primary-nav" aria-expanded="false" aria-label="Open menu">
           <span class="hero__menu-icon" aria-hidden="true">:</span>
         </button>
-        <nav class="hero__nav" id="hero-primary-nav" aria-label="Primary navigation">
+        <nav class="hero__nav" id="hero-primary-nav" aria-label="Primary navigation" data-lenis-prevent>
           <a href="/work/"><span class="hero__nav-word">WORK</span></a>
           <a href="/about/"><span class="hero__nav-word">ABOUT</span></a>
           <a href="https://cal.eu/mondstudio"><span class="hero__nav-word">CONTACT</span></a>
@@ -310,14 +310,14 @@
           <a class="case-project-nav__button" href="/friss-kakas/" data-cursor-image="projects/friss-kakas/optimized/digitalis_plakat_02.jpg">FRISS KAKAS</a>
         </div>
         <div class="case-project-nav__item case-project-nav__item--next">
-          <a class="case-project-nav__button" href="/walk-with-me/" data-cursor-image="projects/walk-with-me/optimized/open-sleeve.jpg">WALK WITH ME</a>
+          <a class="case-project-nav__button" href="/dream-ville-software/" data-cursor-image="optimized/image2.jpg">DREAM VILLE SOFTWARE</a>
         </div>
       </nav>
       <div class="case-project-cursor" aria-hidden="true"></div>
     </section>
   </main>
 
-  <div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="RE:MIND image slideshow" aria-hidden="true">
+  <div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="RE:MIND image slideshow" aria-hidden="true" data-lenis-prevent>
     <button class="image-lightbox__button image-lightbox__close" type="button" aria-label="Close image slideshow">x</button>
     <button class="image-lightbox__button image-lightbox__prev" type="button" aria-label="Previous image">&lsaquo;</button>
     <div class="image-lightbox__stage">
@@ -345,7 +345,8 @@
     </div>
   </footer>
 
-  <script defer src="./project-page.js"></script>
+  <script defer src="./project-page.js?v=20260824-4"></script>
   <script defer src="./site-common.js"></script>
+  <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
 </body>
 </html>

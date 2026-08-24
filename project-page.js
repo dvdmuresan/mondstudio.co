@@ -1,3 +1,105 @@
+/* Shared fixed project HUD and full-viewport cover. */
+    (() => {
+      const desktopProjectLayout = window.matchMedia('(min-width: 721px)');
+      desktopProjectLayout.addEventListener('change', () => window.location.reload());
+      if (!desktopProjectLayout.matches) return;
+
+      const hero = document.querySelector('.hero');
+      const main = document.querySelector('.case-main');
+      const heading = main?.querySelector('.case-heading');
+      const title = heading?.querySelector('.case-intro__copy');
+      const gallery = main?.querySelector('.case-gallery');
+      if (!hero || !main || !heading || !title || !gallery) return;
+
+      let cover = hero.querySelector('.project-cover');
+
+      if (!cover) {
+        cover = gallery.querySelector('figure');
+        if (!cover) return;
+
+        const formerParent = cover.parentElement;
+        hero.prepend(cover);
+
+        if (formerParent?.classList.contains('case-gallery__row') && !formerParent.children.length) {
+          formerParent.remove();
+        }
+
+        if (!gallery.children.length) gallery.remove();
+      }
+
+      const coverMedia = cover.querySelector('img, video');
+      if (!coverMedia) return;
+
+      cover.classList.remove('case-media-reveal', 'is-visible');
+      cover.classList.add('project-cover');
+      cover.removeAttribute('style');
+      coverMedia.classList.add('project-cover__media');
+      hero.classList.add('project-cover-host');
+      document.body.classList.add('has-project-cover');
+
+      const hud = document.createElement('div');
+      hud.className = 'project-hud';
+      hud.setAttribute('aria-label', 'Project position and title');
+
+      const number = document.createElement('span');
+      number.className = 'project-hud__number';
+      number.setAttribute('aria-label', 'Project number');
+      number.textContent = '--';
+
+      const name = document.createElement('span');
+      name.className = 'project-hud__name';
+      name.textContent = title.textContent.trim();
+
+      hud.append(number, name);
+      hero.before(hud);
+
+      const normalizePath = (value, base = window.location.href) => {
+        const path = new URL(value, base).pathname.replace(/\/+$/, '');
+        return `${path || ''}/`;
+      };
+
+      const currentPath = normalizePath(window.location.href);
+      const workURL = new URL('/work/', window.location.href).href;
+
+      fetch(workURL)
+        .then((response) => {
+          if (!response.ok) throw new Error(`Unable to load Work page: ${response.status}`);
+          return response.text();
+        })
+        .then((markup) => {
+          const workDocument = new DOMParser().parseFromString(markup, 'text/html');
+          const projects = Array.from(workDocument.querySelectorAll('.projects-gallery figure[data-project-path]'));
+          const projectIndex = projects.findIndex((project) => normalizePath(project.dataset.projectPath, workURL) === currentPath);
+          if (projectIndex < 0) throw new Error('Current project is missing from the Work page order.');
+
+          const workTitle = projects[projectIndex].querySelector('.projects-gallery__caption-title')?.textContent.trim();
+          number.textContent = String(projectIndex + 1).padStart(2, '0');
+          if (workTitle) name.textContent = workTitle;
+        })
+        .catch(() => {
+          number.textContent = '--';
+        });
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (reduceMotion.matches) return;
+
+      let frame = 0;
+      const updateParallax = () => {
+        frame = 0;
+        const offset = Math.min(window.scrollY, window.innerHeight) * 0.18;
+        coverMedia.style.setProperty('--project-cover-parallax', `${offset}px`);
+      };
+
+      const requestParallaxUpdate = () => {
+        if (frame) return;
+        frame = window.requestAnimationFrame(updateParallax);
+      };
+
+      updateParallax();
+      window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
+      window.addEventListener('resize', requestParallaxUpdate, { passive: true });
+    })();
+
 /* Case reveal animations */
     (function () {
       const root = document.documentElement;

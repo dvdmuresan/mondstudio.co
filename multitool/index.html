@@ -46,7 +46,7 @@
       // Ignore storage failures; the page still loads normally.
     }
   </script>
-  <link rel="stylesheet" href="project-page.css?v=20260802-2" />
+  <link rel="stylesheet" href="project-page.css?v=20260824-7" />
   <style>
     .multitool-gallery,
     .multitool-gallery > .case-gallery__row {
@@ -203,6 +203,7 @@
         display: none;
       }
     }
+
   </style>
 </head>
 <body data-theme="light">
@@ -280,7 +281,7 @@
       });
     });
   </script>
-  <header class="hero">
+  <header class="hero multitool-hero">
     <div class="hero__overlay is-visible" id="hero-overlay" aria-hidden="false">
       <div class="hero__top">
         <a class="hero__brand hero-text-drop" href="/" aria-label="MOND : STUDIO home">
@@ -453,7 +454,7 @@
       </div>
       <nav class="case-project-nav case-project-nav--portal case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
         <div class="case-project-nav__item">
-          <a class="case-project-nav__button" href="/olivo-bistro/" data-cursor-image="projects/olivo-bistro/placeholder-landscape.svg">OLIVO BISTRO</a>
+          <a class="case-project-nav__button" href="/marty-restaurants/" data-cursor-image="projects/marty-restaurants/images/Marty-Resturant-menu-02.jpg">MARTY RESTAURANTS</a>
         </div>
         <div class="case-project-nav__item case-project-nav__item--next">
           <a class="case-project-nav__button" href="/intermezzo/" data-cursor-image="optimized/intermezzo-festival-visual-identity.jpg">INTERMEZZO FESTIVAL</a>
@@ -533,7 +534,8 @@
       mobileQuery.addEventListener('change', placeVideos);
     })();
   </script>
-  <script defer src="./project-page.js"></script>
+  <script defer src="./project-page.js?v=20260824-4"></script>
   <script defer src="./site-common.js"></script>
+  <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
 </body>
 </html>
