@@ -1021,6 +1021,18 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       transition: color 180ms ease, font-weight 180ms ease;
     }
 
+    .projects-gallery__caption-subtitle {
+      display: block;
+      margin-top: 2px;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
     .projects-gallery__caption:hover,
     .projects-gallery__caption:focus-visible {
       font-weight: 550;
@@ -2813,11 +2825,48 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         display: none !important;
       }
 
+      .projects-gallery__grid,
+      body.view-image .projects-gallery__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        column-count: auto;
+        gap: 30px;
+      }
+
+      .projects-gallery figure {
+        display: block;
+        margin: 0;
+      }
+
+      .projects-gallery__caption {
+        margin-top: 12px;
+      }
+
+      .projects-gallery__caption-title,
+      body[data-theme="light"] .projects-gallery__caption-title,
+      .projects-gallery figure.is-media-bright .projects-gallery__caption-title {
+        display: block;
+        color: rgb(255, 255, 255) !important;
+        font-style: normal;
+        font-size: 15px;
+        font-weight: 350;
+        line-height: 19px;
+      }
+
+      .projects-gallery__caption-subtitle {
+        display: block;
+        color: rgb(152, 152, 152);
+        font-style: normal;
+        font-size: 15px;
+        font-weight: 350;
+        line-height: 19px;
+      }
+
       .projects-gallery__item,
       .projects-gallery figure.is-layout-portrait .projects-gallery__item,
       .projects-gallery figure.is-layout-landscape .projects-gallery__item,
       .projects-gallery figure.is-layout-wide .projects-gallery__item {
-        aspect-ratio: 4 / 5;
+        aspect-ratio: 5 / 4;
       }
 
       .projects-gallery__item img,
@@ -3020,6 +3069,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Multitool</span>
+                  <span class="projects-gallery__caption-subtitle"></span>
                   <span class="projects-gallery__caption-tags"><span>Product Design</span><span>Motion Design</span><span>Culture</span></span>
                 </figcaption>
               </a>
@@ -3032,6 +3082,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Intermezzo Fesztival</span>
+                  <span class="projects-gallery__caption-subtitle"></span>
                   <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Motion Design</span><span>Culture</span></span>
                 </figcaption>
               </a>
@@ -3044,6 +3095,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Lesser of Two Evils</span>
+                  <span class="projects-gallery__caption-subtitle"></span>
                   <span class="projects-gallery__caption-tags"><span>Animation</span><span>Culture</span></span>
                 </figcaption>
               </a>
@@ -3056,6 +3108,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Friss Kakas</span>
+                  <span class="projects-gallery__caption-subtitle"></span>
                   <span class="projects-gallery__caption-tags"><span>Animation</span><span>Culture</span></span>
                 </figcaption>
               </a>
@@ -3068,6 +3121,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">RE:MIND</span>
+                  <span class="projects-gallery__caption-subtitle"></span>
                   <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Packaging</span><span>Strategy</span><span>Motion Design</span><span>Health</span></span>
                 </figcaption>
               </a>
@@ -3080,6 +3134,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Dream Ville Software</span>
+                  <span class="projects-gallery__caption-subtitle"></span>
                   <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Strategy</span><span>Tech</span></span>
                 </figcaption>
               </a>
@@ -3092,6 +3147,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Maier Jewelry</span>
+                  <span class="projects-gallery__caption-subtitle"></span>
                   <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Strategy</span><span>Beauty</span></span>
                 </figcaption>
               </a>
@@ -3104,6 +3160,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Olivo Bistro</span>
+                  <span class="projects-gallery__caption-subtitle"></span>
                   <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Hospitality</span></span>
                 </figcaption>
               </div>
@@ -3116,6 +3173,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Walk with me</span>
+                  <span class="projects-gallery__caption-subtitle"></span>
                   <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Packaging</span><span>Culture</span></span>
                 </figcaption>
               </a>
@@ -3128,6 +3186,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Marty Restaurants</span>
+                  <span class="projects-gallery__caption-subtitle"></span>
                   <span class="projects-gallery__caption-tags"><span>Book Design</span><span>Visual Identity</span><span>Hospitality</span></span>
                 </figcaption>
               </a>
@@ -3140,6 +3199,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">MACN</span>
+                  <span class="projects-gallery__caption-subtitle"></span>
                   <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Strategy</span><span>Culture</span></span>
                 </figcaption>
               </div>
@@ -3179,6 +3239,30 @@ body[data-theme="light"] .footer-social-minimal a:focus {
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const body = document.body;
+      const projectCopy = Object.freeze({
+        '/walk-with-me/': Object.freeze({ title: 'Walk with me', subtitle: 'Rainy Days Sample Pack' }),
+        '/macn/': Object.freeze({ title: 'MACN', subtitle: 'Culture in Constant Motion' }),
+        '/friss-kakas/': Object.freeze({ title: 'Friss Kakas', subtitle: 'Fresh Moves' }),
+        '/marty-restaurants/': Object.freeze({ title: 'Marty', subtitle: 'For the Love of Food' }),
+        '/maier-jewelry/': Object.freeze({ title: 'Maier', subtitle: 'Stones with Soul' }),
+        '/lesser-of-two-evils/': Object.freeze({ title: 'Lesser', subtitle: 'Less Still, More Motion' }),
+        '/dream-ville-software/': Object.freeze({ title: 'Dream Ville', subtitle: 'Dreams Have No Titles' }),
+        '/olivo-bistro/': Object.freeze({ title: 'Olivo bistro', subtitle: 'In good company' }),
+        '/multitool/': Object.freeze({ title: 'Multitool', subtitle: 'One Tool, Many Moves' }),
+        '/intermezzo/': Object.freeze({ title: 'Intermezzo', subtitle: 'Where Music Meets Form' }),
+        '/re-mind/': Object.freeze({ title: 'RE:MIND', subtitle: 'A Ritual for the Mind' })
+      });
+
+      document.querySelectorAll('.projects-gallery figure[data-project-path]').forEach((figure) => {
+        const copy = projectCopy[figure.dataset.projectPath];
+        if (!copy) return;
+
+        const title = figure.querySelector('.projects-gallery__caption-title');
+        const subtitle = figure.querySelector('.projects-gallery__caption-subtitle');
+        if (title) title.textContent = copy.title;
+        if (subtitle) subtitle.textContent = copy.subtitle;
+      });
+
       const viewToggle = document.getElementById('view-toggle');
       const toggleOptions = viewToggle ? viewToggle.querySelectorAll('[data-view]') : [];
       const thumb = document.getElementById('projects-thumb');
@@ -3601,7 +3685,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     }
   </script>
   <script type="module" src="./work-3d-loader.js"></script>
-  <script defer src="./site-common.js"></script>
+  <script defer src="./site-common.js?v=20260825-3"></script>
   <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
 </body>
 </html>
