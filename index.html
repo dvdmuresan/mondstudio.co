@@ -830,13 +830,13 @@ html {
     }
 
     .pl-4-caption-wrapper {
-      width: min(1248px, calc(100vw - 40px));
+      width: min(1024px, calc(100vw - 40px));
       margin: clamp(80px, 11vw, 160px) auto 0;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       gap: clamp(36px, 8vw, 96px);
-      padding: 0 20px;
+      padding: 0;
     }
 
     .pl-4-caption {
@@ -1354,6 +1354,51 @@ html {
         width: min(1125px, calc(100vw - 40px));
         height: clamp(470px, 39.6vw, 570px);
         margin: clamp(80px, 7vw, 100px) auto clamp(140px, 13vw, 200px);
+      }
+    }
+
+    @media (min-width: 1441px) {
+      .latest-works-row {
+        flex-wrap: nowrap;
+      }
+
+      .latest-works-media {
+        max-width: min(1280px, calc(100vw - 405px));
+      }
+
+      .pl-1 {
+        width: 100%;
+      }
+
+      .latest-works-duo {
+        flex-wrap: nowrap;
+      }
+
+      .pl-2 {
+        width: min(808px, calc((100vw - 60px) * 0.54));
+      }
+
+      .pl-3-stack {
+        width: min(666px, calc((100vw - 60px) * 0.445));
+      }
+
+      .pl-3 {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 546 / 619;
+      }
+
+      .pl-4-block {
+        width: min(1280px, calc(100vw - 40px));
+      }
+
+      .pl-4-caption-wrapper {
+        width: min(1280px, calc(100vw - 40px));
+      }
+
+      .pl-4 {
+        height: auto;
+        aspect-ratio: 1024 / 566;
       }
     }
 
@@ -4255,10 +4300,10 @@ body[data-theme="light"] .studio-textbox-note {
       </div>
 
       <div class="video-overlay-box" id="video-overlay-box">
-        <span class="clickable-text hero-service-tag hero-text-drop" id="branding-text" data-cursor-image="optimized/image2.jpg">[Branding]</span>
-        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text" data-cursor-image="optimized/3d.jpg">[3D Design]</span>
-        <span class="clickable-text hero-service-tag hero-text-drop" id="art-direction-text">[Art Direction]</span>
-        <span class="clickable-text hero-service-tag hero-text-drop" id="uiux-text">[UI/UX]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="branding-text" data-cursor-image="projects/shinrin/shinrin-logo.jpg">[Branding]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="product-dev-text" data-cursor-image="projects/multi-tool/multitool-orange-front-view.webp">[3D Design]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="art-direction-text" data-cursor-image="projects/maier-jewelry/FIGMA/maier-jewelry-wordmark-identity.jpg">[Art Direction]</span>
+        <span class="clickable-text hero-service-tag hero-text-drop" id="uiux-text" data-cursor-image="projects/re-mind/optimized/re-mind-reflection-toolkit-overview.jpg">[Strategy]</span>
       </div>
     </div>
   </header>
@@ -5269,8 +5314,9 @@ body[data-theme="light"] .studio-textbox-note {
 
       imageHoverTargets.forEach((tag) => {
         tag.addEventListener('mouseenter', () => {
+          const customImage = tag.dataset.cursorImage;
           cursor.classList.add('is-image');
-          cursor.style.backgroundImage = tag.dataset.cursorImage || "url('optimized/intermezzo-festival-visual-identity.jpg')";
+          cursor.style.backgroundImage = customImage ? `url('${customImage}')` : "url('optimized/intermezzo-festival-visual-identity.jpg')";
           showCursor();
         });
 
