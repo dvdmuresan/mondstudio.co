@@ -191,6 +191,11 @@
         video.preload = "none";
       });
 
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        videos.forEach((video) => video.pause());
+        return;
+      }
+
       if (!("IntersectionObserver" in window)) {
         videos.forEach(play);
         return;
@@ -305,7 +310,7 @@
 
       const updateImage = () => {
         const image = galleryImages[activeIndex];
-        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.src = image.dataset.lightboxSrc || image.currentSrc || image.src;
         lightboxImage.alt = image.alt;
         counter.textContent = `${activeIndex + 1} / ${galleryImages.length}`;
       };

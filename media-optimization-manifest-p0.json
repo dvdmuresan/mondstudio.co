@@ -1,0 +1,133 @@
+{
+  "batch": "p0-media-performance-2026-08-25",
+  "policy": "Source assets are preserved. New web delivery derivatives are created and referenced.",
+  "assets": [
+    {
+      "original_path": "intermezzo-festival-motion-identity.mp4",
+      "original_filename": "intermezzo-festival-motion-identity.mp4",
+      "original_size_bytes": 60243727,
+      "original_dimensions": "1920x1080",
+      "original_format_codec": "MP4 / H.264 yuv420p ~58.182 fps / AAC stereo",
+      "pages_currently_referencing": ["/work/", "/intermezzo/"],
+      "optimized_delivery": [
+        {
+          "path": "media/intermezzo/intermezzo-festival-motion-identity-web.mp4",
+          "size_bytes": 8702887,
+          "dimensions": "1440x810",
+          "format_codec": "MP4 / H.264 yuv420p 60 fps / AAC stereo / faststart",
+          "context": "/intermezzo/"
+        },
+        {
+          "path": "media/work-previews/intermezzo-work-preview.mp4",
+          "size_bytes": 3733513,
+          "dimensions": "1152x648",
+          "format_codec": "MP4 / H.264 yuv420p 30 fps / no audio / faststart",
+          "context": "/work/"
+        }
+      ]
+    },
+    {
+      "original_path": "projects/re-mind/re-mind-packaging-layers-animation.mp4",
+      "original_filename": "re-mind-packaging-layers-animation.mp4",
+      "original_size_bytes": 13152219,
+      "original_dimensions": "1920x1080",
+      "original_format_codec": "MP4 / H.264 yuv420p 60 fps / silent AAC stereo",
+      "pages_currently_referencing": ["/work/", "/re-mind/"],
+      "optimized_delivery": [
+        {
+          "path": "media/work-previews/re-mind-work-preview.mp4",
+          "size_bytes": 813447,
+          "dimensions": "1152x648",
+          "format_codec": "MP4 / H.264 yuv420p 30 fps / no audio / faststart",
+          "context": "/work/"
+        }
+      ]
+    },
+    {
+      "original_path": "projects/walk-with-me/DSCF8350.mp4",
+      "original_filename": "DSCF8350.mp4",
+      "original_size_bytes": 10672484,
+      "original_dimensions": "1920x1080",
+      "original_format_codec": "MP4 / H.264 yuv420p 30 fps / silent AAC stereo",
+      "pages_currently_referencing": ["/work/", "/walk-with-me/"],
+      "optimized_delivery": [
+        {
+          "path": "media/work-previews/walk-with-me-work-preview.mp4",
+          "size_bytes": 468294,
+          "dimensions": "1152x648",
+          "format_codec": "MP4 / H.264 yuv420p 30 fps / no audio / faststart",
+          "context": "/work/"
+        }
+      ]
+    },
+    {
+      "original_path": "projects/lesser-of-two-evils/optimized/hazai_final_still_014.jpg",
+      "original_filename": "hazai_final_still_014.jpg",
+      "original_size_bytes": 873345,
+      "original_dimensions": "2400x1297",
+      "original_format_codec": "JPEG",
+      "pages_currently_referencing": ["/work/", "/lesser-of-two-evils/"],
+      "optimized_delivery": [
+        {
+          "path": "media/work-posters/lesser-of-two-evils-work-poster.webp",
+          "size_bytes": 71774,
+          "dimensions": "1152x623",
+          "format_codec": "WebP",
+          "context": "/work/"
+        }
+      ]
+    },
+    {
+      "original_path": "projects/re-mind/optimized/re-mind-reflection-toolkit-overview.jpg",
+      "original_filename": "re-mind-reflection-toolkit-overview.jpg",
+      "original_size_bytes": 2297580,
+      "original_dimensions": "2400x2400",
+      "original_format_codec": "JPEG",
+      "pages_currently_referencing": ["/", "/work/", "/re-mind/"],
+      "optimized_delivery": [
+        {
+          "path": "media/work-posters/re-mind-work-poster.webp",
+          "size_bytes": 120370,
+          "dimensions": "1000x1000",
+          "format_codec": "WebP",
+          "context": "/work/"
+        }
+      ]
+    },
+    {
+      "original_path": "projects/walk-with-me/optimized/open-sleeve.jpg",
+      "original_filename": "open-sleeve.jpg",
+      "original_size_bytes": 549825,
+      "original_dimensions": "2400x1350",
+      "original_format_codec": "JPEG",
+      "pages_currently_referencing": ["/", "/walk-with-me/"],
+      "optimized_delivery": [
+        {
+          "path": "media/work-posters/walk-with-me-work-poster.webp",
+          "size_bytes": 19736,
+          "dimensions": "1152x648",
+          "format_codec": "WebP",
+          "context": "/work/"
+        }
+      ]
+    },
+    {
+      "original_path": "image5.jpg",
+      "original_filename": "image5.jpg",
+      "original_size_bytes": 21737367,
+      "original_dimensions": "4160x5547",
+      "original_format_codec": "JPEG",
+      "pages_currently_referencing": [],
+      "active_pre_optimization_delivery": "optimized/image5.jpg (472897 bytes, 1200x1600 JPEG) on /",
+      "optimized_delivery": [
+        {
+          "path": "media/home/re-mind-strategy-toolkit-preview.webp",
+          "size_bytes": 29876,
+          "dimensions": "480x640",
+          "format_codec": "WebP",
+          "context": "Homepage Strategy hover preview"
+        }
+      ]
+    }
+  ]
+}

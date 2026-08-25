@@ -1,0 +1,694 @@
+{
+  "batch": "p1-image-optimization-2026-08-25",
+  "status": "complete",
+  "policy": "Original and master files are preserved; only new web-delivery derivatives are referenced.",
+  "scope": [
+    "/marty-restaurants/",
+    "/re-mind/",
+    "/walk-with-me/"
+  ],
+  "audit": {
+    "desktop_viewport": "1440x900 at DPR 2",
+    "mobile_viewport": "390x844 at DPR 2",
+    "full_width_rendered": "1400px desktop / 370px mobile",
+    "marty_layout": "Seven 16:9 full-width images; first is desktop hero/LCP; all support high-resolution lightbox inspection.",
+    "re_mind_layout": "Full-width 1400px, overview columns 955px and 425px, half-width 690px, mobile 370px; gallery, poster and social roles audited.",
+    "walk_with_me_layout": "Full-width 1400px, columns 962px, 695px and 334px, mobile 370px; gallery, poster and social roles audited.",
+    "lightbox_source_before": "Shared lightbox used img.currentSrc.",
+    "lightbox_source_after": "Gallery images declare data-lightbox-src for the desktop/high-density derivative."
+  },
+  "assets": [
+    {
+      "project": "Marty",
+      "original_path": "projects/marty-restaurants/images/Marty-Resturant-menu-01.jpg",
+      "original_filename": "Marty-Resturant-menu-01.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "4000x2250",
+      "original_filesize_bytes": 8025386,
+      "page_context": "/marty-restaurants/",
+      "rendered_role": "full-width hero/LCP, OG, JSON-LD, lightbox and Walk With Me navigation preview",
+      "optimized": [
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-menu-cover-on-grass.webp",
+          "format": "WebP",
+          "dimensions": "2800x1575",
+          "filesize_bytes": 1141598,
+          "percentage_reduction": 85.78,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-menu-cover-on-grass-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x563",
+          "filesize_bytes": 212864,
+          "percentage_reduction": 97.35,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "Marty",
+      "original_path": "projects/marty-restaurants/images/Marty-Resturant-menu-02.jpg",
+      "original_filename": "Marty-Resturant-menu-02.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "4000x2250",
+      "original_filesize_bytes": 8093978,
+      "page_context": "/marty-restaurants/",
+      "rendered_role": "full-width gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-seafood-menu-spread.webp",
+          "format": "WebP",
+          "dimensions": "2800x1575",
+          "filesize_bytes": 1122894,
+          "percentage_reduction": 86.13,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-seafood-menu-spread-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x563",
+          "filesize_bytes": 103694,
+          "percentage_reduction": 98.72,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "Marty",
+      "original_path": "projects/marty-restaurants/images/Marty-Resturant-menu-03.jpg",
+      "original_filename": "Marty-Resturant-menu-03.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "4000x2250",
+      "original_filesize_bytes": 7028456,
+      "page_context": "/marty-restaurants/",
+      "rendered_role": "full-width gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-drinks-menu-spread.webp",
+          "format": "WebP",
+          "dimensions": "2800x1575",
+          "filesize_bytes": 942614,
+          "percentage_reduction": 86.59,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-drinks-menu-spread-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x563",
+          "filesize_bytes": 78032,
+          "percentage_reduction": 98.89,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "Marty",
+      "original_path": "projects/marty-restaurants/images/Marty-Resturant-menu-04.jpg",
+      "original_filename": "Marty-Resturant-menu-04.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "4000x2250",
+      "original_filesize_bytes": 5400124,
+      "page_context": "/marty-restaurants/",
+      "rendered_role": "full-width gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-purple-food-menu-spread.webp",
+          "format": "WebP",
+          "dimensions": "2800x1575",
+          "filesize_bytes": 770184,
+          "percentage_reduction": 85.74,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-purple-food-menu-spread-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x563",
+          "filesize_bytes": 104194,
+          "percentage_reduction": 98.07,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "Marty",
+      "original_path": "projects/marty-restaurants/images/Marty-Resturant-menu-05.jpg",
+      "original_filename": "Marty-Resturant-menu-05.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "4000x2250",
+      "original_filesize_bytes": 8990172,
+      "page_context": "/marty-restaurants/",
+      "rendered_role": "full-width gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-pasta-menu-spread.webp",
+          "format": "WebP",
+          "dimensions": "2800x1575",
+          "filesize_bytes": 1602172,
+          "percentage_reduction": 82.18,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-pasta-menu-spread-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x563",
+          "filesize_bytes": 207996,
+          "percentage_reduction": 97.69,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "Marty",
+      "original_path": "projects/marty-restaurants/images/Marty-Resturant-menu-06.jpg",
+      "original_filename": "Marty-Resturant-menu-06.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "4000x2250",
+      "original_filesize_bytes": 7447616,
+      "page_context": "/marty-restaurants/",
+      "rendered_role": "full-width gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-plant-based-menu-spread.webp",
+          "format": "WebP",
+          "dimensions": "2800x1575",
+          "filesize_bytes": 1099060,
+          "percentage_reduction": 85.24,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-plant-based-menu-spread-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x563",
+          "filesize_bytes": 117724,
+          "percentage_reduction": 98.42,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "Marty",
+      "original_path": "projects/marty-restaurants/images/Marty-Resturant-menu-07.jpg",
+      "original_filename": "Marty-Resturant-menu-07.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "4000x2250",
+      "original_filesize_bytes": 5861744,
+      "page_context": "/marty-restaurants/",
+      "rendered_role": "full-width gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-keto-menu-spread.webp",
+          "format": "WebP",
+          "dimensions": "2800x1575",
+          "filesize_bytes": 800886,
+          "percentage_reduction": 86.34,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/marty-restaurants/marty-restaurants-keto-menu-spread-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x563",
+          "filesize_bytes": 99966,
+          "percentage_reduction": 98.29,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "RE:MIND",
+      "original_path": "projects/re-mind/Muresan David -2.jpg",
+      "original_filename": "Muresan David -2.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "3800x2542",
+      "original_filesize_bytes": 5225509,
+      "page_context": "/re-mind/",
+      "rendered_role": "full-width hero/LCP and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/re-mind/re-mind-cardboard-calendar-front.webp",
+          "format": "WebP",
+          "dimensions": "2800x1873",
+          "filesize_bytes": 472162,
+          "percentage_reduction": 90.96,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/re-mind/re-mind-cardboard-calendar-front-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x669",
+          "filesize_bytes": 46200,
+          "percentage_reduction": 99.12,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "RE:MIND",
+      "original_path": "projects/re-mind/Muresan-David--1.jpg",
+      "original_filename": "Muresan-David--1.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "3899x3899",
+      "original_filesize_bytes": 2203993,
+      "page_context": "/re-mind/",
+      "rendered_role": "wide overview, OG, JSON-LD and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/re-mind/re-mind-reflection-toolkit-overview.webp",
+          "format": "WebP",
+          "dimensions": "2000x2000",
+          "filesize_bytes": 898588,
+          "percentage_reduction": 59.23,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/re-mind/re-mind-reflection-toolkit-overview-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x1000",
+          "filesize_bytes": 222254,
+          "percentage_reduction": 89.92,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "RE:MIND",
+      "original_path": "projects/re-mind/Muresan David - 4.jpg",
+      "original_filename": "Muresan David - 4.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "5698x3800",
+      "original_filesize_bytes": 10230662,
+      "page_context": "/re-mind/",
+      "rendered_role": "narrow overview column and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/re-mind/re-mind-modular-card-boxes-and-lids.webp",
+          "format": "WebP",
+          "dimensions": "2400x1601",
+          "filesize_bytes": 261646,
+          "percentage_reduction": 97.44,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/re-mind/re-mind-modular-card-boxes-and-lids-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x667",
+          "filesize_bytes": 48032,
+          "percentage_reduction": 99.53,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "RE:MIND",
+      "original_path": "projects/re-mind/Muresan David - 3.jpg",
+      "original_filename": "Muresan David - 3.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "3800x2533",
+      "original_filesize_bytes": 7330211,
+      "page_context": "/re-mind/",
+      "rendered_role": "full-width gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/re-mind/re-mind-visual-journalling-cards.webp",
+          "format": "WebP",
+          "dimensions": "2800x1867",
+          "filesize_bytes": 1015862,
+          "percentage_reduction": 86.14,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/re-mind/re-mind-visual-journalling-cards-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x667",
+          "filesize_bytes": 158838,
+          "percentage_reduction": 97.83,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "RE:MIND",
+      "original_path": "projects/re-mind/Muresan David - 5.jpg",
+      "original_filename": "Muresan David - 5.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "2533x3800",
+      "original_filesize_bytes": 4294474,
+      "page_context": "/re-mind/",
+      "rendered_role": "portrait half-width gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/re-mind/re-mind-card-box-interaction.webp",
+          "format": "WebP",
+          "dimensions": "1600x2400",
+          "filesize_bytes": 207280,
+          "percentage_reduction": 95.17,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/re-mind/re-mind-card-box-interaction-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x1500",
+          "filesize_bytes": 68148,
+          "percentage_reduction": 98.41,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "RE:MIND",
+      "original_path": "projects/re-mind/optimized/re-mind-reflection-toolkit-overview.jpg",
+      "original_filename": "re-mind-reflection-toolkit-overview.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "2400x2400",
+      "original_filesize_bytes": 2297580,
+      "page_context": "/re-mind/",
+      "rendered_role": "full-width video poster",
+      "optimized": [
+        {
+          "path": "media/images/re-mind/re-mind-packaging-layers-poster.webp",
+          "format": "WebP",
+          "dimensions": "1600x1600",
+          "filesize_bytes": 484160,
+          "percentage_reduction": 78.93,
+          "delivery": "context-sized"
+        }
+      ]
+    },
+    {
+      "project": "RE:MIND",
+      "original_path": "projects/re-mind/optimized/re-mind-card-system-detail.jpg",
+      "original_filename": "re-mind-card-system-detail.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "2400x1599",
+      "original_filesize_bytes": 1356778,
+      "page_context": "/re-mind/",
+      "rendered_role": "half-width video poster",
+      "optimized": [
+        {
+          "path": "media/images/re-mind/re-mind-digital-interaction-poster.webp",
+          "format": "WebP",
+          "dimensions": "1200x800",
+          "filesize_bytes": 198934,
+          "percentage_reduction": 85.34,
+          "delivery": "context-sized"
+        }
+      ]
+    },
+    {
+      "project": "RE:MIND",
+      "original_path": "projects/re-mind/optimized/re-mind-packaging-assembly.jpg",
+      "original_filename": "re-mind-packaging-assembly.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "2400x2382",
+      "original_filesize_bytes": 1100036,
+      "page_context": "/re-mind/",
+      "rendered_role": "half-width video poster",
+      "optimized": [
+        {
+          "path": "media/images/re-mind/re-mind-packaging-assembly-poster.webp",
+          "format": "WebP",
+          "dimensions": "1200x1191",
+          "filesize_bytes": 160896,
+          "percentage_reduction": 85.37,
+          "delivery": "context-sized"
+        }
+      ]
+    },
+    {
+      "project": "RE:MIND",
+      "original_path": "projects/re-mind/optimized/re-mind-cardboard-calendar-front.jpg",
+      "original_filename": "re-mind-cardboard-calendar-front.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "2400x1605",
+      "original_filesize_bytes": 831571,
+      "page_context": "/re-mind/",
+      "rendered_role": "half-width video poster",
+      "optimized": [
+        {
+          "path": "media/images/re-mind/re-mind-calendar-interaction-poster.webp",
+          "format": "WebP",
+          "dimensions": "1200x803",
+          "filesize_bytes": 61978,
+          "percentage_reduction": 92.55,
+          "delivery": "context-sized"
+        }
+      ]
+    },
+    {
+      "project": "Walk With Me",
+      "original_path": "projects/walk-with-me/optimized/open-sleeve.jpg",
+      "original_filename": "open-sleeve.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "2400x1350",
+      "original_filesize_bytes": 549825,
+      "page_context": "/walk-with-me/",
+      "rendered_role": "full-width hero/LCP, OG, lightbox and Marty navigation preview",
+      "optimized": [
+        {
+          "path": "media/images/walk-with-me/walk-with-me-open-record-sleeve.webp",
+          "format": "WebP",
+          "dimensions": "2400x1350",
+          "filesize_bytes": 166698,
+          "percentage_reduction": 69.68,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/walk-with-me/walk-with-me-open-record-sleeve-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x563",
+          "filesize_bytes": 29778,
+          "percentage_reduction": 94.58,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "Walk With Me",
+      "original_path": "projects/walk-with-me/optimized/rainy-days-poster.jpg",
+      "original_filename": "rainy-days-poster.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "1080x1350",
+      "original_filesize_bytes": 616076,
+      "page_context": "/walk-with-me/",
+      "rendered_role": "wide portrait gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/walk-with-me/walk-with-me-rainy-days-poster.webp",
+          "format": "WebP",
+          "dimensions": "1080x1350",
+          "filesize_bytes": 324594,
+          "percentage_reduction": 47.31,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/walk-with-me/walk-with-me-rainy-days-poster-mobile.webp",
+          "format": "WebP",
+          "dimensions": "800x1000",
+          "filesize_bytes": 131174,
+          "percentage_reduction": 78.71,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "Walk With Me",
+      "original_path": "projects/walk-with-me/optimized/turntable-portrait.jpg",
+      "original_filename": "turntable-portrait.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "1600x2000",
+      "original_filesize_bytes": 863751,
+      "page_context": "/walk-with-me/",
+      "rendered_role": "half-width portrait gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/walk-with-me/walk-with-me-turntable-portrait.webp",
+          "format": "WebP",
+          "dimensions": "1600x2000",
+          "filesize_bytes": 374486,
+          "percentage_reduction": 56.64,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/walk-with-me/walk-with-me-turntable-portrait-mobile.webp",
+          "format": "WebP",
+          "dimensions": "900x1125",
+          "filesize_bytes": 95820,
+          "percentage_reduction": 88.91,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "Walk With Me",
+      "original_path": "projects/walk-with-me/optimized/sample-pieces.jpg",
+      "original_filename": "sample-pieces.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "1600x2000",
+      "original_filesize_bytes": 780409,
+      "page_context": "/walk-with-me/",
+      "rendered_role": "half-width portrait gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/walk-with-me/walk-with-me-translucent-sample-pieces.webp",
+          "format": "WebP",
+          "dimensions": "1600x2000",
+          "filesize_bytes": 314228,
+          "percentage_reduction": 59.74,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/walk-with-me/walk-with-me-translucent-sample-pieces-mobile.webp",
+          "format": "WebP",
+          "dimensions": "900x1125",
+          "filesize_bytes": 83982,
+          "percentage_reduction": 89.24,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "Walk With Me",
+      "original_path": "projects/walk-with-me/optimized/keychain-detail.jpg",
+      "original_filename": "keychain-detail.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "1600x2000",
+      "original_filesize_bytes": 959665,
+      "page_context": "/walk-with-me/",
+      "rendered_role": "narrow portrait gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/walk-with-me/walk-with-me-chair-keychain-detail.webp",
+          "format": "WebP",
+          "dimensions": "1000x1250",
+          "filesize_bytes": 189750,
+          "percentage_reduction": 80.23,
+          "delivery": "context-sized"
+        }
+      ]
+    },
+    {
+      "project": "Walk With Me",
+      "original_path": "projects/walk-with-me/optimized/packaging-turntable.jpg",
+      "original_filename": "packaging-turntable.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "1600x2000",
+      "original_filesize_bytes": 546479,
+      "page_context": "/walk-with-me/",
+      "rendered_role": "half-width portrait gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/walk-with-me/walk-with-me-packaging-on-turntable.webp",
+          "format": "WebP",
+          "dimensions": "1600x2000",
+          "filesize_bytes": 161552,
+          "percentage_reduction": 70.44,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/walk-with-me/walk-with-me-packaging-on-turntable-mobile.webp",
+          "format": "WebP",
+          "dimensions": "900x1125",
+          "filesize_bytes": 63386,
+          "percentage_reduction": 88.4,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "Walk With Me",
+      "original_path": "projects/walk-with-me/optimized/record-closeup.jpg",
+      "original_filename": "record-closeup.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "2400x1600",
+      "original_filesize_bytes": 1225041,
+      "page_context": "/walk-with-me/",
+      "rendered_role": "half-width landscape gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/walk-with-me/walk-with-me-record-closeup.webp",
+          "format": "WebP",
+          "dimensions": "1600x1067",
+          "filesize_bytes": 308058,
+          "percentage_reduction": 74.85,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/walk-with-me/walk-with-me-record-closeup-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x667",
+          "filesize_bytes": 123080,
+          "percentage_reduction": 89.95,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "Walk With Me",
+      "original_path": "projects/walk-with-me/optimized/translucent-case.jpg",
+      "original_filename": "translucent-case.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "2400x1350",
+      "original_filesize_bytes": 736189,
+      "page_context": "/walk-with-me/",
+      "rendered_role": "full-width gallery and lightbox",
+      "optimized": [
+        {
+          "path": "media/images/walk-with-me/walk-with-me-translucent-record-case.webp",
+          "format": "WebP",
+          "dimensions": "2400x1350",
+          "filesize_bytes": 299322,
+          "percentage_reduction": 59.34,
+          "delivery": "desktop/high-density"
+        },
+        {
+          "path": "media/images/walk-with-me/walk-with-me-translucent-record-case-mobile.webp",
+          "format": "WebP",
+          "dimensions": "1000x563",
+          "filesize_bytes": 51128,
+          "percentage_reduction": 93.06,
+          "delivery": "mobile"
+        }
+      ]
+    },
+    {
+      "project": "Walk With Me",
+      "original_path": "projects/walk-with-me/optimized/record-closeup.jpg",
+      "original_filename": "record-closeup.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "2400x1600",
+      "original_filesize_bytes": 1225041,
+      "page_context": "/walk-with-me/",
+      "rendered_role": "half-width animated-record video poster",
+      "optimized": [
+        {
+          "path": "media/images/walk-with-me/walk-with-me-record-animation-poster.webp",
+          "format": "WebP",
+          "dimensions": "1200x800",
+          "filesize_bytes": 180254,
+          "percentage_reduction": 85.29,
+          "delivery": "context-sized"
+        }
+      ]
+    },
+    {
+      "project": "Walk With Me",
+      "original_path": "projects/walk-with-me/optimized/open-sleeve.jpg",
+      "original_filename": "open-sleeve.jpg",
+      "original_format": "JPEG",
+      "original_dimensions": "2400x1350",
+      "original_filesize_bytes": 549825,
+      "page_context": "/walk-with-me/",
+      "rendered_role": "narrow packaging video poster",
+      "optimized": [
+        {
+          "path": "media/images/walk-with-me/walk-with-me-packaging-video-poster.webp",
+          "format": "WebP",
+          "dimensions": "1600x900",
+          "filesize_bytes": 59616,
+          "percentage_reduction": 89.16,
+          "delivery": "context-sized"
+        }
+      ]
+    }
+  ]
+}

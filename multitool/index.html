@@ -402,6 +402,8 @@
               class="case-gallery__video multitool-video--top"
               src="projects/multi-tool/multitool-product-concept-landscape.mp4"
               poster="projects/multi-tool/multitool-orange-front-view.webp"
+              width="1440"
+              height="810"
               preload="none"
               muted
               loop
@@ -430,7 +432,9 @@
           <figure class="case-media-reveal" style="--reveal-delay: 860ms;">
             <video
               class="case-gallery__video multitool-video--bottom"
-              src="projects/multi-tool/multitool-product-concept-portrait.mp4"
+              src="media/videos/multitool/multitool-product-concept-portrait.mp4"
+              width="1080"
+              height="1350"
               preload="none"
               muted
               loop
@@ -500,7 +504,12 @@
 
       const mobileQuery = window.matchMedia('(max-width: 720px)');
       const landscapeSource = 'projects/multi-tool/multitool-product-concept-landscape.mp4';
-      const portraitSource = 'projects/multi-tool/multitool-product-concept-portrait.mp4';
+      const portraitSource = 'media/videos/multitool/multitool-product-concept-portrait.mp4';
+
+      const setIntrinsicSize = (video, isPortrait) => {
+        video.width = isPortrait ? 1080 : 1440;
+        video.height = isPortrait ? 1350 : 810;
+      };
 
       const placeVideos = ({ matches: isMobile }) => {
         const topSource = isMobile ? portraitSource : landscapeSource;
@@ -517,9 +526,13 @@
         }
 
         if (isMobile) {
+          setIntrinsicSize(topVideo, true);
+          setIntrinsicSize(bottomVideo, false);
           topVideo.removeAttribute('poster');
           bottomVideo.setAttribute('poster', 'projects/multi-tool/multitool-orange-front-view.webp');
         } else {
+          setIntrinsicSize(topVideo, false);
+          setIntrinsicSize(bottomVideo, true);
           topVideo.setAttribute('poster', 'projects/multi-tool/multitool-orange-front-view.webp');
           bottomVideo.removeAttribute('poster');
         }
@@ -534,7 +547,7 @@
       mobileQuery.addEventListener('change', placeVideos);
     })();
   </script>
-  <script defer src="./project-page.js?v=20260824-4"></script>
+  <script defer src="./project-page.js?v=20260825-7"></script>
   <script defer src="./site-common.js?v=20260825-3"></script>
   <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
 </body>
