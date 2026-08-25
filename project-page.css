@@ -2976,6 +2976,11 @@ html.lenis.lenis-stopped {
       .case-mobile-info dd {
         max-width: 240px;
       }
+
+      body.has-project-cover .case-heading .case-mobile-info {
+        position: relative;
+        left: 150px;
+      }
     }
 
     /* Shared text-only project portal navigation. */

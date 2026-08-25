@@ -50,10 +50,98 @@
       // Ignore storage failures; the page still loads normally.
     }
   </script>
-  <link rel="stylesheet" href="project-page.css?v=20260824-7" />
+  <link rel="stylesheet" href="project-page.css?v=20260825-8" />
   <style>
     .friss-kakas-mobile-break {
       display: none;
+    }
+
+    .friss-kakas-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: clamp(60px, 8vw, 120px);
+    }
+
+    .friss-kakas-gallery__row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .friss-kakas-gallery__row--festival {
+      grid-template-columns: minmax(0, 2.22fr) minmax(0, 1fr);
+    }
+
+    .friss-kakas-gallery__row--posters {
+      grid-template-columns: minmax(0, 1.95fr) minmax(0, 1fr);
+    }
+
+    .friss-kakas-gallery figure {
+      min-width: 0;
+      margin: 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .friss-kakas-gallery__row--festival figure {
+      aspect-ratio: 16 / 9;
+    }
+
+    .friss-kakas-gallery__row--posters figure {
+      aspect-ratio: 2400 / 1539;
+    }
+
+    .friss-kakas-gallery img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .friss-kakas-sound-button {
+      position: absolute;
+      top: auto;
+      right: auto;
+      bottom: 20px;
+      left: 50%;
+      z-index: 5;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 41px;
+      max-width: calc(100% - 20px);
+      padding: 0 18px;
+      border: 0;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.20);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      color: #000;
+      font-family: "Mona Sans", sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.6px;
+      white-space: nowrap;
+      transform: translateX(-50%);
+      cursor: pointer !important;
+      pointer-events: auto;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: background-color 180ms ease, opacity 180ms ease;
+    }
+
+    .friss-kakas-sound-button:hover,
+    .friss-kakas-sound-button:focus-visible {
+      background: rgba(255, 255, 255, 0.30);
+      outline: none;
+    }
+
+    .friss-kakas-gallery__row--festival img,
+    .friss-kakas-gallery__row--posters img {
+      height: 100%;
+      object-fit: cover;
     }
 
     @media (max-width: 720px) {
@@ -82,6 +170,37 @@
       .case-gallery > figure video {
         width: 100%;
         height: auto !important;
+      }
+
+      .friss-kakas-gallery {
+        order: 3;
+        gap: 5px;
+        margin-top: 60px;
+      }
+
+      .friss-kakas-gallery__row {
+        gap: 5px;
+      }
+
+      .friss-kakas-video {
+        order: 2;
+      }
+
+      .friss-kakas-sound-button {
+        top: 10px;
+        right: 10px;
+        bottom: auto;
+        left: auto;
+        min-height: 34px;
+        padding: 0 15px;
+        font-size: 11px;
+        transform: none;
+      }
+
+      .case-mobile-info {
+        order: 1;
+        top: 0;
+        margin-top: 0;
       }
     }
   </style>
@@ -244,38 +363,8 @@
     <section class="case-section">
       <div class="case-heading">
         <h1 class="case-intro__copy case-reveal" style="--reveal-delay: 40ms;">Friss KAKAS<br>Animation Film Days Spot</h1>
-        <dl class="case-mobile-info case-reveal" style="--reveal-delay: 100ms;">
-          <div class="case-mobile-info__item">
-            <dt>Production:</dt>
-            <dd>Moholy-Nagy University of Art and Design Budapest</dd>
-          </div>
-          <div class="case-mobile-info__item">
-            <dt>Project:</dt>
-            <dd>Friss Kakas Animation Film Days Spot</dd>
-          </div>
-          <div class="case-mobile-info__item">
-            <dt>Year:</dt>
-            <dd>2025</dd>
-          </div>
-          <div class="case-mobile-info__item">
-            <dt>Location:</dt>
-            <dd>Budapest, Hungary</dd>
-          </div>
-          <div class="case-mobile-info__item">
-            <dt>Project Type:</dt>
-            <dd>Promotional Animation Film</dd>
-          </div>
-          <div class="case-mobile-info__item">
-            <dt>Services:</dt>
-            <dd>Art Direction, Illustration, 2D Animation, Motion Design</dd>
-          </div>
-          <div class="case-mobile-info__item">
-            <dt>Industry:</dt>
-            <dd>Culture, Film, Animation</dd>
-          </div>
-        </dl>
       </div>
-      <div class="case-gallery">
+      <div class="case-gallery friss-kakas-video">
         <figure class="case-gallery__wide case-media-reveal" style="--reveal-delay: 220ms; aspect-ratio: 16 / 9;">
           <video
             class="case-gallery__video"
@@ -284,38 +373,86 @@
             preload="metadata"
             autoplay
             muted
-            controls
+            loop
+            data-manual-playback
             playsinline
             aria-label="Friss Kakas Animation Film Days promotional film"
           ></video>
+          <button class="friss-kakas-sound-button" type="button" data-gallery-interactive data-project-cover-control aria-label="Turn on video sound" aria-pressed="false">Sound OFF</button>
         </figure>
-        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
-          <img src="projects/friss-kakas/optimized/digitalis_plakat_02.jpg" alt="Friss Kakas illustrated poster composition featuring surreal characters" width="2400" height="1539" loading="eager" fetchpriority="high" decoding="async" />
-        </figure>
-        <figure class="case-gallery__item case-gallery__image case-media-reveal" style="--reveal-delay: 360ms;">
-          <img src="projects/friss-kakas/optimized/Untitled-5.jpg" alt="Friss Kakas vertical illustrated character artwork" width="1080" height="1350" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__landscape case-gallery__image case-media-reveal" style="--reveal-delay: 500ms;">
-          <img src="projects/friss-kakas/optimized/faceboom_final.jpg" alt="Two-panel Friss Kakas illustration with abstract faces and vivid patterns" width="2400" height="1320" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__item case-gallery__image case-media-reveal" style="--reveal-delay: 620ms;">
-          <img src="projects/friss-kakas/optimized/full_hd.00_00_46_26.Still005.jpg" alt="Vertical animation still from Friss Kakas" width="687" height="858" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__landscape case-gallery__image case-media-reveal" style="--reveal-delay: 740ms;">
-          <img src="projects/friss-kakas/optimized/full_hd.00_00_48_23.Still007.jpg" alt="Friss Kakas animated film still" width="1920" height="1080" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 860ms;">
-          <img src="projects/friss-kakas/optimized/full_hd.00_01_04_06.Still002.jpg" alt="Friss Kakas animated film scene" width="1920" height="1080" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__landscape case-gallery__image case-media-reveal" style="--reveal-delay: 980ms;">
-          <img src="projects/friss-kakas/optimized/kakas_lap_02.jpg" alt="Friss Kakas character and visual development sheet two" width="2400" height="1297" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__landscape case-gallery__image case-media-reveal" style="--reveal-delay: 1100ms;">
-          <img src="projects/friss-kakas/optimized/kakas_lap_03.jpg" alt="Friss Kakas character and visual development sheet three" width="2400" height="1297" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="case-gallery__wide case-gallery__image case-media-reveal" style="--reveal-delay: 1220ms;">
-          <img src="projects/friss-kakas/optimized/kakas_lap_04.jpg" alt="Friss Kakas character and visual development sheet four" width="2400" height="1297" loading="lazy" decoding="async" />
-        </figure>
+      </div>
+      <dl class="case-mobile-info case-reveal" style="--reveal-delay: 100ms;">
+        <div class="case-mobile-info__item">
+          <dt>Production:</dt>
+          <dd>Moholy-Nagy University of Art and Design Budapest</dd>
+        </div>
+        <div class="case-mobile-info__item">
+          <dt>Project:</dt>
+          <dd>Friss Kakas Animation Film Days Spot</dd>
+        </div>
+        <div class="case-mobile-info__item">
+          <dt>Year:</dt>
+          <dd>2025</dd>
+        </div>
+        <div class="case-mobile-info__item">
+          <dt>Location:</dt>
+          <dd>Budapest, Hungary</dd>
+        </div>
+        <div class="case-mobile-info__item">
+          <dt>Project Type:</dt>
+          <dd>Promotional Animation Film</dd>
+        </div>
+        <div class="case-mobile-info__item">
+          <dt>Services:</dt>
+          <dd>Art Direction, Illustration, 2D Animation, Motion Design</dd>
+        </div>
+        <div class="case-mobile-info__item">
+          <dt>Industry:</dt>
+          <dd>Culture, Film, Animation</dd>
+        </div>
+      </dl>
+      <div class="friss-kakas-gallery" aria-label="Friss Kakas project gallery">
+        <div class="friss-kakas-gallery__row friss-kakas-gallery__row--festival">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 220ms;">
+            <img src="projects/friss-kakas/optimized/full_hd.00_01_04_06.Still002.jpg" alt="Friss Kakas Annecy Festival competition artwork" width="1920" height="1080" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 300ms;">
+            <img src="projects/friss-kakas/optimized/Untitled-5.jpg" alt="Friss Kakas Ottawa International Animation Festival competition artwork" width="1080" height="1350" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="friss-kakas-gallery__row">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 380ms;">
+            <img src="projects/friss-kakas/optimized/full_hd.00_00_48_23.Still007.jpg" alt="Friss Kakas main characters" width="1920" height="1080" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="friss-kakas-gallery__row">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 460ms;">
+            <img src="projects/friss-kakas/optimized/kakas_lap_03.jpg" alt="Friss Kakas character transformation study" width="2400" height="1297" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="friss-kakas-gallery__row friss-kakas-gallery__row--posters">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 540ms;">
+            <img src="projects/friss-kakas/optimized/digitalis_plakat_02.jpg" alt="Friss Kakas illustrated poster composition" width="2400" height="1539" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 620ms;">
+            <img src="projects/friss-kakas/optimized/full_hd.00_00_46_26.Still005.jpg" alt="Friss Kakas egg-headed character portrait" width="687" height="858" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="friss-kakas-gallery__row">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 700ms;">
+            <img src="projects/friss-kakas/optimized/kakas_lap_02.jpg" alt="Friss Kakas character development lineup" width="2400" height="1297" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="friss-kakas-gallery__row">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 780ms;">
+            <img src="projects/friss-kakas/optimized/faceboom_final.jpg" alt="Two-panel Friss Kakas illustration with abstract faces and vivid patterns" width="2400" height="1320" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="friss-kakas-gallery__row">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 860ms;">
+            <img src="projects/friss-kakas/optimized/kakas_lap_04.jpg" alt="Friss Kakas rooster transformation study" width="2400" height="1297" loading="lazy" decoding="async" />
+          </figure>
+        </div>
       </div>
       <div class="case-description-row">
         <div class="case-description case-reveal">
@@ -345,6 +482,50 @@
     </section>
   </main>
 
+  <script>
+    (() => {
+      const video = document.querySelector('.friss-kakas-video video');
+      const soundButton = document.querySelector('.friss-kakas-sound-button');
+      if (!video || !soundButton) return;
+
+      const updateSoundButton = () => {
+        const soundIsOn = !video.muted && video.volume > 0;
+        soundButton.textContent = soundIsOn ? 'Sound ON' : 'Sound OFF';
+        soundButton.setAttribute('aria-label', soundIsOn ? 'Turn off video sound' : 'Turn on video sound');
+        soundButton.setAttribute('aria-pressed', soundIsOn ? 'true' : 'false');
+      };
+
+      const toggleSound = async () => {
+        const soundIsOn = !video.muted && video.volume > 0;
+        if (soundIsOn) {
+          video.muted = true;
+        } else {
+          video.muted = false;
+          video.volume = 1;
+          try {
+            await video.play();
+          } catch (error) {
+            // The sound state still updates if playback is controlled natively.
+          }
+        }
+        updateSoundButton();
+      };
+
+      soundButton.addEventListener('pointerup', (event) => {
+        event.preventDefault();
+        toggleSound();
+      });
+
+      soundButton.addEventListener('click', (event) => {
+        if (event.detail !== 0) return;
+        toggleSound();
+      });
+
+      video.addEventListener('volumechange', updateSoundButton);
+      updateSoundButton();
+    })();
+  </script>
+
   <div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="Friss Kakas image slideshow" aria-hidden="true">
     <button class="image-lightbox__button image-lightbox__close" type="button" aria-label="Close image slideshow">x</button>
     <button class="image-lightbox__button image-lightbox__prev" type="button" aria-label="Previous image">&lsaquo;</button>
@@ -373,7 +554,7 @@
     </div>
   </footer>
 
-  <script defer src="./project-page.js?v=20260824-4"></script>
+  <script defer src="./project-page.js?v=20260825-6"></script>
   <script defer src="./site-common.js?v=20260825-3"></script>
   <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
 </body>

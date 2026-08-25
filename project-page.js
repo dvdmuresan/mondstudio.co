@@ -37,6 +37,10 @@
       hero.classList.add('project-cover-host');
       document.body.classList.add('has-project-cover');
 
+      cover.querySelectorAll('[data-project-cover-control]').forEach((control) => {
+        hero.append(control);
+      });
+
       const hud = document.createElement('div');
       hud.className = 'project-hud';
       hud.setAttribute('aria-label', 'Project position and title');
@@ -251,7 +255,7 @@
         };
 
         gallery.addEventListener("pointerdown", (e) => {
-          if (e.target.closest("video[data-manual-playback], .case-video-play")) return;
+          if (e.target.closest("video[data-manual-playback], .case-video-play, [data-gallery-interactive]")) return;
           isDragging = true;
           hasDragged = false;
           startX = e.clientX;
