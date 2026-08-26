@@ -1,0 +1,1699 @@
+{
+  "freeze_date": "2026-08-26",
+  "phase": "pre-seo",
+  "rule": "Do not rename or move frozen public media without explicit URL migration.",
+  "asset_count": 138,
+  "assets": [
+    {
+      "path": "1x/Asset 8-8.png",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/about/",
+        "/dream-ville-software/",
+        "/friss-kakas/",
+        "/intermezzo/",
+        "/lesser-of-two-evils/",
+        "/macn/",
+        "/maier-jewelry/",
+        "/marty-restaurants/",
+        "/multitool/",
+        "/olivo-bistro/",
+        "/privacy/",
+        "/re-mind/",
+        "/walk-with-me/",
+        "/work/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "about image.jpg",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/about/"
+      ],
+      "roles": [
+        "image",
+        "poster"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "asset4.png",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/about/",
+        "/privacy/",
+        "/work/",
+        "shared-runtime"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "Mate.jpg",
+      "type": "image",
+      "used_by": [
+        "/about/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/home/re-mind-strategy-toolkit-preview.webp",
+      "type": "image",
+      "used_by": [
+        "/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-drinks-menu-spread-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-drinks-menu-spread.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-keto-menu-spread-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-keto-menu-spread.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-menu-cover-on-grass-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/",
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "navigation-or-hover-preview",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-menu-cover-on-grass.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/"
+      ],
+      "roles": [
+        "image",
+        "social-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-pasta-menu-spread-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-pasta-menu-spread.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-plant-based-menu-spread-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-plant-based-menu-spread.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-purple-food-menu-spread-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-purple-food-menu-spread.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-seafood-menu-spread-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/marty-restaurants/marty-restaurants-seafood-menu-spread.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-calendar-interaction-poster.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "poster"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-card-box-interaction-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-card-box-interaction.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-cardboard-calendar-front-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-cardboard-calendar-front.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-digital-interaction-poster.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "poster"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-modular-card-boxes-and-lids-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-modular-card-boxes-and-lids.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-packaging-assembly-poster.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "poster"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-packaging-layers-poster.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "poster"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-reflection-toolkit-overview-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-reflection-toolkit-overview.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "social-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-visual-journalling-cards-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/re-mind/re-mind-visual-journalling-cards.webp",
+      "type": "image",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-chair-keychain-detail.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "lightbox"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-open-record-sleeve-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/marty-restaurants/",
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "navigation-or-hover-preview",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-open-record-sleeve.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "social-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-packaging-on-turntable-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-packaging-on-turntable.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-packaging-video-poster.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "poster"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-rainy-days-poster-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-rainy-days-poster.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-record-animation-poster.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "poster"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-record-closeup-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-record-closeup.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-translucent-record-case-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-translucent-record-case.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-translucent-sample-pieces-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-translucent-sample-pieces.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-turntable-portrait-mobile.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/images/walk-with-me/walk-with-me-turntable-portrait.webp",
+      "type": "image",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "image",
+        "responsive-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/intermezzo/intermezzo-festival-motion-identity-web.mp4",
+      "type": "video",
+      "used_by": [
+        "/intermezzo/"
+      ],
+      "roles": [
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/videos/friss-kakas/friss-kakas-animation-film-days-spot.mp4",
+      "type": "video",
+      "used_by": [
+        "/friss-kakas/"
+      ],
+      "roles": [
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/videos/home/dream-ville-client-testimonial-animation.mp4",
+      "type": "video",
+      "used_by": [
+        "/"
+      ],
+      "roles": [
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/videos/home/mond-studio-project-collage-animation.mp4",
+      "type": "video",
+      "used_by": [
+        "/"
+      ],
+      "roles": [
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/videos/home/mond-studio-showreel-poster.webp",
+      "type": "image",
+      "used_by": [
+        "/"
+      ],
+      "roles": [
+        "image",
+        "poster"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/videos/multitool/multitool-product-concept-portrait.mp4",
+      "type": "video",
+      "used_by": [
+        "/multitool/"
+      ],
+      "roles": [
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/videos/re-mind/re-mind-calendar-interaction.mp4",
+      "type": "video",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/videos/re-mind/re-mind-digital-interaction.mp4",
+      "type": "video",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/videos/re-mind/re-mind-packaging-construction.mp4",
+      "type": "video",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/videos/re-mind/re-mind-packaging-layers-animation.mp4",
+      "type": "video",
+      "used_by": [
+        "/re-mind/"
+      ],
+      "roles": [
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/videos/walk-with-me/walk-with-me-packaging-demonstration.mp4",
+      "type": "video",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/videos/walk-with-me/walk-with-me-record-animation.mp4",
+      "type": "video",
+      "used_by": [
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/work-posters/lesser-of-two-evils-work-poster.webp",
+      "type": "image",
+      "used_by": [
+        "/work/"
+      ],
+      "roles": [
+        "image",
+        "poster"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/work-posters/re-mind-work-poster.webp",
+      "type": "image",
+      "used_by": [
+        "/work/"
+      ],
+      "roles": [
+        "image",
+        "poster"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/work-posters/walk-with-me-work-poster.webp",
+      "type": "image",
+      "used_by": [
+        "/work/"
+      ],
+      "roles": [
+        "image",
+        "poster"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/work-previews/intermezzo-work-preview.mp4",
+      "type": "video",
+      "used_by": [
+        "/work/"
+      ],
+      "roles": [
+        "deferred-video-source",
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/work-previews/re-mind-work-preview.mp4",
+      "type": "video",
+      "used_by": [
+        "/work/"
+      ],
+      "roles": [
+        "deferred-video-source",
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "media/work-previews/walk-with-me-work-preview.mp4",
+      "type": "video",
+      "used_by": [
+        "/work/"
+      ],
+      "roles": [
+        "deferred-video-source",
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "mobile footer logo.svg",
+      "type": "svg",
+      "used_by": [
+        "shared-runtime"
+      ],
+      "roles": [
+        "svg"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "mond-studio-branding-design-showreel-cluj-budapest.mp4",
+      "type": "video",
+      "used_by": [
+        "/"
+      ],
+      "roles": [
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "optimized/3d.jpg",
+      "type": "image",
+      "used_by": [
+        "/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "optimized/bencz.jpg",
+      "type": "image",
+      "used_by": [
+        "/about/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "optimized/david-2.jpg",
+      "type": "image",
+      "used_by": [
+        "/about/"
+      ],
+      "roles": [
+        "image",
+        "social-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "optimized/image2.jpg",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/dream-ville-software/",
+        "/maier-jewelry/",
+        "/re-mind/",
+        "/work/"
+      ],
+      "roles": [
+        "image",
+        "navigation-or-hover-preview",
+        "social-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "optimized/image4.jpg",
+      "type": "image",
+      "used_by": [
+        "/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "optimized/image6.jpg",
+      "type": "image",
+      "used_by": [
+        "/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "optimized/intermezzo-festival-poster-design.jpg",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/intermezzo/"
+      ],
+      "roles": [
+        "image",
+        "social-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "optimized/intermezzo-festival-visual-identity.jpg",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/intermezzo/",
+        "/lesser-of-two-evils/",
+        "/multitool/",
+        "/work/"
+      ],
+      "roles": [
+        "image",
+        "lcp-or-initial",
+        "navigation-or-hover-preview",
+        "social-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "optimized/janky-milan.jpg",
+      "type": "image",
+      "used_by": [
+        "/about/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/dream-ville-software/IMAGES/dream-ville-branded-notebook.jpg",
+      "type": "image",
+      "used_by": [
+        "/dream-ville-software/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/dream-ville-software/IMAGES/dream-ville-business-cards-on-metal-grid.jpg",
+      "type": "image",
+      "used_by": [
+        "/dream-ville-software/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/dream-ville-software/IMAGES/dream-ville-campaign-billboard.jpg",
+      "type": "image",
+      "used_by": [
+        "/dream-ville-software/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/dream-ville-software/IMAGES/dream-ville-cloud-infrastructure-campaign.jpg",
+      "type": "image",
+      "used_by": [
+        "/dream-ville-software/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/dream-ville-software/IMAGES/dream-ville-employee-id-badge.jpg",
+      "type": "image",
+      "used_by": [
+        "/dream-ville-software/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/dream-ville-software/IMAGES/dream-ville-identity-system.jpg",
+      "type": "image",
+      "used_by": [
+        "/dream-ville-software/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/dream-ville-software/IMAGES/dream-ville-pixel-cloud-symbol.jpg",
+      "type": "image",
+      "used_by": [
+        "/dream-ville-software/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/dream-ville-software/IMAGES/dream-ville-purple-business-cards.jpg",
+      "type": "image",
+      "used_by": [
+        "/dream-ville-software/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/dream-ville-software/IMAGES/dream-ville-technology-keywords.jpg",
+      "type": "image",
+      "used_by": [
+        "/dream-ville-software/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/dream-ville-software/IMAGES/dream-ville-typographic-posters.jpg",
+      "type": "image",
+      "used_by": [
+        "/dream-ville-software/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/dream-ville-software/IMAGES/dream-ville-website-projects-interface.jpg",
+      "type": "image",
+      "used_by": [
+        "/dream-ville-software/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/dream-ville-software/IMAGES/dream-ville-wordmark-on-black.jpg",
+      "type": "image",
+      "used_by": [
+        "/dream-ville-software/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/friss-kakas/optimized/digitalis_plakat_02.jpg",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/about/",
+        "/friss-kakas/",
+        "/lesser-of-two-evils/",
+        "/re-mind/",
+        "/work/"
+      ],
+      "roles": [
+        "image",
+        "navigation-or-hover-preview",
+        "social-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/friss-kakas/optimized/friss-kakas-abstract-faces-illustration.jpg",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/friss-kakas/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/friss-kakas/optimized/friss-kakas-annecy-competition-artwork.jpg",
+      "type": "image",
+      "used_by": [
+        "/friss-kakas/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/friss-kakas/optimized/friss-kakas-character-development-lineup.jpg",
+      "type": "image",
+      "used_by": [
+        "/friss-kakas/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/friss-kakas/optimized/friss-kakas-character-transformation-study.jpg",
+      "type": "image",
+      "used_by": [
+        "/friss-kakas/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/friss-kakas/optimized/friss-kakas-egg-headed-character-portrait.jpg",
+      "type": "image",
+      "used_by": [
+        "/friss-kakas/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/friss-kakas/optimized/friss-kakas-main-characters-lineup.jpg",
+      "type": "image",
+      "used_by": [
+        "/friss-kakas/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/friss-kakas/optimized/friss-kakas-ottawa-competition-artwork.jpg",
+      "type": "image",
+      "used_by": [
+        "/friss-kakas/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/friss-kakas/optimized/friss-kakas-rooster-transformation-study.jpg",
+      "type": "image",
+      "used_by": [
+        "/friss-kakas/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/lesser-of-two-evils/lesser-of-two-evils-falling-character-animation.mp4",
+      "type": "video",
+      "used_by": [
+        "/lesser-of-two-evils/"
+      ],
+      "roles": [
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/lesser-of-two-evils/lesser-of-two-evils-lead-animation.mp4",
+      "type": "video",
+      "used_by": [
+        "/lesser-of-two-evils/"
+      ],
+      "roles": [
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/lesser-of-two-evils/lesser-of-two-evils-night-scene-animation.mp4",
+      "type": "video",
+      "used_by": [
+        "/lesser-of-two-evils/"
+      ],
+      "roles": [
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/lesser-of-two-evils/lesser-of-two-evils-widescreen-animation.mp4",
+      "type": "video",
+      "used_by": [
+        "/lesser-of-two-evils/",
+        "/work/"
+      ],
+      "roles": [
+        "deferred-video-source",
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/lesser-of-two-evils/optimized/lesser-of-two-evils-character-layout-study.jpg",
+      "type": "image",
+      "used_by": [
+        "/lesser-of-two-evils/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/lesser-of-two-evils/optimized/lesser-of-two-evils-character-transformation.jpg",
+      "type": "image",
+      "used_by": [
+        "/lesser-of-two-evils/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/lesser-of-two-evils/optimized/lesser-of-two-evils-desk-scene.jpg",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/lesser-of-two-evils/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/lesser-of-two-evils/optimized/lesser-of-two-evils-fish-character-cockpit.jpg",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/friss-kakas/",
+        "/intermezzo/",
+        "/lesser-of-two-evils/"
+      ],
+      "roles": [
+        "image",
+        "navigation-or-hover-preview",
+        "social-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/lesser-of-two-evils/optimized/lesser-of-two-evils-vehicle-dashboard.jpg",
+      "type": "image",
+      "used_by": [
+        "/lesser-of-two-evils/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/macn/macn-logo-mark.jpg",
+      "type": "image",
+      "used_by": [
+        "/macn/",
+        "/work/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/maier-jewelry/FIGMA/maier-jewelry-branded-tote-bag.jpg",
+      "type": "image",
+      "used_by": [
+        "/maier-jewelry/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/maier-jewelry/FIGMA/maier-jewelry-gemstone-ring.jpg",
+      "type": "image",
+      "used_by": [
+        "/maier-jewelry/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/maier-jewelry/FIGMA/maier-jewelry-identity-applications.jpg",
+      "type": "image",
+      "used_by": [
+        "/maier-jewelry/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/maier-jewelry/FIGMA/maier-jewelry-mobile-shop-presentation.jpg",
+      "type": "image",
+      "used_by": [
+        "/maier-jewelry/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/maier-jewelry/FIGMA/maier-jewelry-rings-hands.jpg",
+      "type": "image",
+      "used_by": [
+        "/maier-jewelry/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/maier-jewelry/FIGMA/maier-jewelry-silver-m-necklace.jpg",
+      "type": "image",
+      "used_by": [
+        "/maier-jewelry/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/maier-jewelry/FIGMA/maier-jewelry-stones-with-soul-graphic.jpg",
+      "type": "image",
+      "used_by": [
+        "/maier-jewelry/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/maier-jewelry/FIGMA/maier-jewelry-visual-identity-animation.mp4",
+      "type": "video",
+      "used_by": [
+        "/maier-jewelry/",
+        "/work/"
+      ],
+      "roles": [
+        "deferred-video-source",
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/maier-jewelry/FIGMA/maier-jewelry-wordmark-identity.jpg",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/about/",
+        "/dream-ville-software/",
+        "/maier-jewelry/",
+        "/olivo-bistro/",
+        "/walk-with-me/",
+        "/work/"
+      ],
+      "roles": [
+        "image",
+        "navigation-or-hover-preview",
+        "poster",
+        "social-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/maier-jewelry/optimized/maier-jewelry-packaging-design.jpg",
+      "type": "image",
+      "used_by": [
+        "/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/marty-restaurants/images/marty-restaurants-seafood-menu-spread.jpg",
+      "type": "image",
+      "used_by": [
+        "/macn/",
+        "/multitool/",
+        "/work/"
+      ],
+      "roles": [
+        "image",
+        "navigation-or-hover-preview"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/multi-tool/multitool-logo-mark.jpg",
+      "type": "image",
+      "used_by": [
+        "/multitool/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/multi-tool/multitool-modular-exploded-view.webp",
+      "type": "image",
+      "used_by": [
+        "/multitool/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/multi-tool/multitool-orange-black-configurations.webp",
+      "type": "image",
+      "used_by": [
+        "/multitool/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/multi-tool/multitool-orange-front-view-portrait.jpg",
+      "type": "image",
+      "used_by": [
+        "/multitool/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/multi-tool/multitool-orange-front-view.webp",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/about/",
+        "/intermezzo/",
+        "/macn/",
+        "/marty-restaurants/",
+        "/multitool/",
+        "/work/"
+      ],
+      "roles": [
+        "image",
+        "lcp-or-initial",
+        "navigation-or-hover-preview",
+        "poster",
+        "social-image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/multi-tool/multitool-product-concept-landscape.mp4",
+      "type": "video",
+      "used_by": [
+        "/multitool/",
+        "/work/"
+      ],
+      "roles": [
+        "deferred-video-source",
+        "poster",
+        "video"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/olivo-bistro/olivo-bistro-brand-identity-presentation.png",
+      "type": "image",
+      "used_by": [
+        "/work/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/olivo-bistro/placeholder-landscape.svg",
+      "type": "svg",
+      "used_by": [
+        "/olivo-bistro/"
+      ],
+      "roles": [
+        "social-image",
+        "svg"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/olivo-bistro/placeholder-portrait.svg",
+      "type": "svg",
+      "used_by": [
+        "/olivo-bistro/"
+      ],
+      "roles": [
+        "svg"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/re-mind/optimized/re-mind-cardboard-calendar-front.jpg",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/dream-ville-software/",
+        "/friss-kakas/"
+      ],
+      "roles": [
+        "image",
+        "navigation-or-hover-preview"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/re-mind/optimized/re-mind-reflection-toolkit-overview.jpg",
+      "type": "image",
+      "used_by": [
+        "/"
+      ],
+      "roles": [
+        "image",
+        "navigation-or-hover-preview"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/shinrin/shinrin-logo-thumbnail.jpg",
+      "type": "image",
+      "used_by": [
+        "/work/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/shinrin/shinrin-logo.jpg",
+      "type": "image",
+      "used_by": [
+        "/"
+      ],
+      "roles": [
+        "image",
+        "navigation-or-hover-preview"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/walk-with-me/optimized/open-sleeve.jpg",
+      "type": "image",
+      "used_by": [
+        "/",
+        "/about/",
+        "/maier-jewelry/",
+        "/olivo-bistro/"
+      ],
+      "roles": [
+        "image",
+        "navigation-or-hover-preview"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "projects/walk-with-me/optimized/translucent-case.jpg",
+      "type": "image",
+      "used_by": [
+        "/"
+      ],
+      "roles": [
+        "image"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "SVG/ABOUT LOGO.svg",
+      "type": "svg",
+      "used_by": [
+        "/about/"
+      ],
+      "roles": [
+        "svg"
+      ],
+      "status": "FROZEN"
+    },
+    {
+      "path": "SVG/LOGO-BLACK.svg",
+      "type": "svg",
+      "used_by": [
+        "/dream-ville-software/",
+        "/friss-kakas/",
+        "/intermezzo/",
+        "/lesser-of-two-evils/",
+        "/macn/",
+        "/maier-jewelry/",
+        "/marty-restaurants/",
+        "/multitool/",
+        "/olivo-bistro/",
+        "/re-mind/",
+        "/walk-with-me/"
+      ],
+      "roles": [
+        "svg"
+      ],
+      "status": "FROZEN"
+    }
+  ]
+}
