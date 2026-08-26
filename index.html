@@ -4334,7 +4334,7 @@ body[data-theme="light"] .studio-textbox-note {
 
   <h1 class="sr-only">MOND:STUDIO — Branding &amp; Design Studio</h1>
   <div class="hero-description">
-    We work with people who share our intention — to create meaningful identities and experiences that move people and shape culture.
+    We work with people who share our intention — to create meaningful identities and experiences that move people, define culture.
   </div>
 
   <script>
@@ -4345,15 +4345,15 @@ body[data-theme="light"] .studio-textbox-note {
       const preferredDesktopLines = [
         'We work with people who share our intention —',
         'to create meaningful identities and experiences',
-        'that move people and shape culture.'
+        'that move people, define culture.'
       ];
       const preferredMobileLines = [
         { text: 'We work with people', className: 'hero-description__line--mobile-statement-start' },
         { text: 'who share our intention —' },
         { text: 'to create meaningful' },
         { text: 'identities and experiences' },
-        { text: 'that move people and' },
-        { text: 'shape culture.' }
+        { text: 'that move people,' },
+        { text: 'define culture.' }
       ];
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       let resizeFrame = 0;
@@ -4373,6 +4373,7 @@ body[data-theme="light"] .studio-textbox-note {
           if (item.className) line.classList.add(item.className);
           line.style.setProperty('--hero-description-line', index);
           line.textContent = item.text;
+          if (index > 0) description.appendChild(document.createTextNode(' '));
           description.appendChild(line);
         });
 
