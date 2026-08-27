@@ -3356,7 +3356,6 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       const filterButtons = Array.from(document.querySelectorAll('.projects-filter__button[data-filter]'));
       const galleryGrid = document.querySelector('.projects-gallery__grid');
       const galleryFigures = Array.from(document.querySelectorAll('.projects-gallery figure[data-services][data-industries]'));
-      const filterTitle = document.getElementById('projects-filter-title');
       let canonicalProjectOrder = null;
 
       const animateProjectRefresh = (figures) => {
@@ -3436,8 +3435,6 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       };
 
       const setProjectFilter = (filter) => {
-        const activeButton = filterButtons.find((button) => button.dataset.filter === filter);
-        const activeLabel = activeButton ? activeButton.querySelector('span')?.textContent?.trim() : 'All Works';
         const visibleFigures = [];
 
         galleryGrid?.classList.toggle('is-filter-active', filter !== 'all');
@@ -3447,19 +3444,6 @@ body[data-theme="light"] .footer-social-minimal a:focus {
           button.classList.toggle('is-active', isActive);
           button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
         });
-
-        if (filterTitle) {
-          const title = filter === 'all' ? 'ALL WORKS' : (activeLabel || 'ALL WORKS').toUpperCase();
-          filterTitle.textContent = '';
-
-          if (title === 'HOSPITALITY') {
-            filterTitle.append('HOSPI-', document.createElement('br'), 'TALITY');
-          } else if (title === 'PACKAGING') {
-            filterTitle.append('PACKA-', document.createElement('br'), 'GING');
-          } else {
-            filterTitle.textContent = title;
-          }
-        }
 
         galleryFigures.forEach((figure) => {
           const tags = [figure.dataset.services, figure.dataset.industries]

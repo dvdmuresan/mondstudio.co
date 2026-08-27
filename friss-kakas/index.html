@@ -373,13 +373,14 @@
             width="1920"
             height="1080"
             preload="metadata"
-            autoplay
             muted
             loop
             data-manual-playback
+            data-play-button="friss-kakas-play"
             playsinline
             aria-label="Friss Kakas Animation Film Days promotional film"
           ></video>
+          <button class="case-video-play" id="friss-kakas-play" type="button" data-project-cover-control aria-label="Play Friss Kakas Animation Film Days promotional film"><span>Play</span></button>
           <button class="friss-kakas-sound-button" type="button" data-gallery-interactive data-project-cover-control aria-label="Turn on video sound" aria-pressed="false">Sound OFF</button>
         </figure>
       </div>
@@ -490,6 +491,16 @@
       const soundButton = document.querySelector('.friss-kakas-sound-button');
       if (!video || !soundButton) return;
 
+      const prefersReducedMotion = window.matchMedia
+        && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReducedMotion) {
+        const autoplayAttempt = video.play();
+        if (autoplayAttempt && typeof autoplayAttempt.catch === 'function') {
+          autoplayAttempt.catch(() => {});
+        }
+      }
+
       const updateSoundButton = () => {
         const soundIsOn = !video.muted && video.volume > 0;
         soundButton.textContent = soundIsOn ? 'Sound ON' : 'Sound OFF';
@@ -556,7 +567,7 @@
     </div>
   </footer>
 
-  <script defer src="./project-page.js?v=20260825-7"></script>
+  <script defer src="./project-page.js?v=20260827-1"></script>
   <script defer src="./site-common.js?v=20260825-3"></script>
   <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
 </body>

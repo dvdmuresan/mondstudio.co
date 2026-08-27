@@ -220,7 +220,8 @@
       const manualVideos = document.querySelectorAll("video[data-manual-playback]");
 
       manualVideos.forEach((video) => {
-        const playButton = video.parentElement?.querySelector(".case-video-play");
+        const playButton = video.parentElement?.querySelector(".case-video-play")
+          || document.getElementById(video.dataset.playButton || "");
         if (!playButton) return;
 
         const updateButton = () => {
