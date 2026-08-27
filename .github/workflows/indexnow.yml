@@ -1,0 +1,63 @@
+name: Notify IndexNow after Pages deployment
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: read
+
+jobs:
+  notify-indexnow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out deployed commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine changed files
+        if: github.event_name == 'push'
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: |
+          if [[ "$BEFORE_SHA" == "0000000000000000000000000000000000000000" ]] || ! git cat-file -e "$BEFORE_SHA^{commit}" 2>/dev/null; then
+            echo "Previous commit is unavailable; using all current sitemap URLs conservatively."
+            echo "INDEXNOW_ALL=true" >> "$GITHUB_ENV"
+            : > "$RUNNER_TEMP/indexnow-changed-files.txt"
+          else
+            git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" > "$RUNNER_TEMP/indexnow-changed-files.txt"
+            echo "INDEXNOW_ALL=false" >> "$GITHUB_ENV"
+          fi
+
+      - name: Wait for matching GitHub Pages deployment
+        if: github.event_name == 'push'
+        id: pages
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/indexnow.py --wait-for-pages "${{ github.sha }}"
+
+      - name: Submit changed canonical URLs
+        if: github.event_name == 'push' && steps.pages.outcome == 'success'
+        continue-on-error: true
+        run: |
+          if [[ "$INDEXNOW_ALL" == "true" ]]; then
+            python3 scripts/indexnow.py --all
+          else
+            python3 scripts/indexnow.py --changed-files-file "$RUNNER_TEMP/indexnow-changed-files.txt"
+          fi
+
+      - name: Explain skipped post-deploy submission
+        if: github.event_name == 'push' && steps.pages.outcome != 'success'
+        run: echo "Matching Pages deployment was not confirmed — IndexNow submission skipped safely."
+
+      - name: Manually submit all current indexable sitemap URLs
+        if: github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        run: python3 scripts/indexnow.py --all
