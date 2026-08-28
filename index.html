@@ -782,20 +782,6 @@ html {
       transform: translateY(0);
     }
 
-    .geo-entity-statement {
-      width: min(1024px, calc(100vw - 40px));
-      margin: clamp(80px, 11vw, 160px) auto 0;
-      color: var(--color-fg);
-      font-family: "Mona Sans", sans-serif;
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 1.4;
-    }
-
-    .geo-entity-statement + .pl-4-caption-wrapper {
-      margin-top: 28px;
-    }
-
     .hero-spacer {
       height: 2000px;
       width: 100%;
@@ -4197,35 +4183,41 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       .hero {
-        height: 100svh;
-        min-height: 100svh;
-        max-height: 100svh;
+        height: calc(101px + ((100vw - 20px) * 9 / 16));
+        min-height: 0;
+        max-height: none;
       }
 
       .hero__video,
       .hero__video.is-stage-1,
       .hero__video.is-stage-2 {
         --mobile-video-area-top: 101px;
-        --mobile-video-area-bottom: 20px;
         display: block;
-        width: min(
-          calc(100vw - 20px),
-          calc((100svh - var(--mobile-video-area-top) - var(--mobile-video-area-bottom)) * 4 / 5)
-        );
-        height: min(
-          calc((100vw - 20px) * 5 / 4),
-          calc(100svh - var(--mobile-video-area-top) - var(--mobile-video-area-bottom))
-        );
+        width: calc(100vw - 20px);
+        height: auto;
         min-height: 0;
-        max-height: calc(100svh - var(--mobile-video-area-top) - var(--mobile-video-area-bottom));
-        aspect-ratio: 4 / 5;
+        max-height: none;
+        aspect-ratio: 16 / 9;
         left: 50%;
-        top: calc(var(--mobile-video-area-top) + ((100svh - var(--mobile-video-area-top) - var(--mobile-video-area-bottom)) / 2) - 40px);
-        transform: translate(-50%, -50%);
+        top: var(--mobile-video-area-top);
+        transform: translate(-50%, 0);
         object-fit: cover;
         object-position: center;
         border-radius: 8px;
         overflow-anchor: none;
+      }
+
+      .hero-description {
+        margin-top: 50px;
+      }
+
+      .pl-1-title,
+      .pl-3-title,
+      .pl-4-title {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        white-space: nowrap;
       }
 
       .hero__top > .hero__nav,
@@ -4437,7 +4429,7 @@ body[data-theme="light"] .studio-textbox-note {
 
   <div class="latest-works-row">
     <div class="latest-works-label fade-in-bottom fade-in-bottom--delay-1">
-      Latest works
+      Selected works
     </div>
     <div class="latest-works-media">
     <a class="pl-1 reveal" href="/intermezzo/" data-project-transition="intermezzo">
@@ -4479,7 +4471,6 @@ body[data-theme="light"] .studio-textbox-note {
     </div>
   </div>
 
-  <p class="geo-entity-statement">MOND:STUDIO is a branding and graphic design studio and creative collective based in Cluj-Napoca, working with collaborators across Cluj-Napoca and Budapest.</p>
 <div class="pl-4-caption-wrapper reveal">
     <h2 class="sr-only">Branding, Visual Identity &amp; Creative Direction</h2>
     <div class="pl-4-caption"><span>Design</span><span>with intention.</span></div>
