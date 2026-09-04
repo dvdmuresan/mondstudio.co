@@ -9,6 +9,11 @@
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#f7f7f7" />
   <link rel="canonical" href="https://www.mondstudio.co/lesser-of-two-evils/" />
+  <script>
+    if (window.location.pathname.endsWith('/index.html')) {
+      window.location.replace(window.location.pathname.slice(0, -10) + window.location.search + window.location.hash);
+    }
+  </script>
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Lesser of Two Evils — MOND:STUDIO" />
   <meta property="og:description" content="A mixed-media animated short by Máté Horesnyi combining paper animation, digital 2D and 16mm stop motion in an adaptation of Attila Hazai." />

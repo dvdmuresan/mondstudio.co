@@ -8,6 +8,11 @@
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#000000" />
   <link rel="canonical" href="https://www.mondstudio.co/" />
+  <script>
+    if (window.location.pathname.endsWith('/index.html')) {
+      window.location.replace(window.location.pathname.slice(0, -10) + window.location.search + window.location.hash);
+    }
+  </script>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="MOND:STUDIO" />
   <meta property="og:description" content="MOND:STUDIO is a branding and graphic design studio and creative collective based in Cluj-Napoca, working across visual identity, art direction, motion and digital design." />

@@ -9,6 +9,11 @@
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#f7f7f7" />
   <link rel="canonical" href="https://www.mondstudio.co/marty-restaurants/" />
+  <script>
+    if (window.location.pathname.endsWith('/index.html')) {
+      window.location.replace(window.location.pathname.slice(0, -10) + window.location.search + window.location.hash);
+    }
+  </script>
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Marty Restaurants Menu Campaign — MOND:STUDIO" />
   <meta property="og:description" content="A simplified menu and campaign system for Marty Restaurants, using colour-coded food photography to make each dish the visual focus." />
