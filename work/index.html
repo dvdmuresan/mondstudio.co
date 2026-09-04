@@ -595,6 +595,10 @@
       will-change: transform, opacity;
     }
 
+    .projects-gallery figure.is-filtered-out {
+      display: none;
+    }
+
     @keyframes gallery-reveal {
       0% {
         opacity: 0;
@@ -1059,6 +1063,92 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       display: none;
     }
 
+    .projects-mobile-filter {
+      display: none;
+    }
+
+    .projects-fallback-title {
+      margin: 0 0 32px;
+      color: var(--color-fg);
+      font-family: "Mona Sans", sans-serif;
+      font-size: clamp(31px, 7vw, 40px);
+      font-weight: 460;
+      line-height: 1.1;
+    }
+
+    html.taxonomy-ready .projects-fallback-title {
+      display: none;
+    }
+
+    .projects-filter__clear {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--color-muted);
+      font-family: "Mona Sans", sans-serif;
+      font-size: 15px;
+      font-weight: 350;
+      line-height: 15px;
+      text-align: left;
+      transition: color 180ms ease, opacity 180ms ease, transform 180ms ease;
+    }
+
+    .projects-filter__clear:hover,
+    .projects-filter__clear:focus-visible,
+    .projects-filter__clear.is-active {
+      color: var(--color-fg);
+      opacity: 1;
+      outline: none;
+    }
+
+    .projects-filter__count {
+      color: inherit;
+      font-size: 10px;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+      opacity: 0.52;
+    }
+
+    .projects-filter__status {
+      margin: 20px 0 0;
+      color: var(--color-muted);
+      font-family: "Mona Sans", sans-serif;
+      font-size: 11px;
+      line-height: 1.2;
+    }
+
+    .projects-filter-empty {
+      margin: 0 0 20px;
+      padding: 18px 20px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--color-fg);
+      font-family: "Mona Sans", sans-serif;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .projects-filter-empty[hidden] {
+      display: none;
+    }
+
+    .projects-filter-empty__reset {
+      margin-left: 8px;
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid currentColor;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+    }
+
+    body[data-theme="light"] .projects-filter-empty {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
     @media (min-width: 721px) {
       :root {
         --projects-sidebar-width: clamp(230px, 16.8vw, 290px);
@@ -1111,11 +1201,14 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       }
 
       .projects {
+        width: calc(100vw - 40px);
+        margin: 0 20px;
+      }
+
+      html.taxonomy-ready .projects {
         display: grid;
         grid-template-columns: var(--projects-sidebar-width) minmax(0, 1fr);
         gap: 10px;
-        width: calc(100vw - 40px);
-        margin: 0 20px;
         align-items: start;
       }
 
@@ -1125,7 +1218,6 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         bottom: 10px;
         left: 10px;
         z-index: 90;
-        display: flex;
         flex-direction: column;
         width: var(--projects-sidebar-width);
         min-height: 0;
@@ -1136,6 +1228,10 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         font-family: "Mona Sans", sans-serif;
         overflow: hidden auto;
         scrollbar-width: none;
+      }
+
+      html.taxonomy-ready .projects-sidebar {
+        display: flex;
       }
 
       .projects-sidebar::-webkit-scrollbar {
@@ -1191,7 +1287,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         gap: 8px;
       }
 
-      [data-taxonomy] {
+      [data-project-filters] {
         display: contents;
       }
 
@@ -1294,6 +1390,11 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         outline: none;
       }
 
+      .projects-filter__clear:hover,
+      .projects-filter__clear:focus-visible {
+        transform: translateX(4px);
+      }
+
       @keyframes filter-remove-pop {
         0% {
           opacity: 0;
@@ -1372,6 +1473,9 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         width: 100%;
         min-width: 0;
         margin: 0;
+      }
+
+      html.taxonomy-ready .projects-left {
         grid-column: 2;
       }
 
@@ -1717,6 +1821,18 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         overflow-wrap: break-word;
         -webkit-hyphens: auto;
         hyphens: auto;
+      }
+    }
+
+    @media (min-width: 721px) and (max-width: 960px) {
+      .projects-gallery__caption-tags {
+        display: none;
+      }
+
+      .projects-gallery__caption {
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
       }
     }
 
@@ -2292,12 +2408,137 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         right: 10px;
       }
 
+      html.taxonomy-ready .projects-mobile-filter {
+        display: block;
+        width: calc(100vw - 20px);
+        margin: 0 10px 20px;
+        border-radius: 7px;
+        background: #0c0c0c;
+        color: var(--color-white);
+        font-family: "Mona Sans", sans-serif;
+      }
+
+      body[data-theme="light"] .projects-mobile-filter {
+        border: 1px solid #e5e5e5;
+        background: #ffffff;
+        color: #131313;
+      }
+
+      .projects-mobile-filter__toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        width: 100%;
+        min-height: 52px;
+        padding: 14px 16px;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        font-size: 14px;
+        text-align: left;
+      }
+
+      .projects-mobile-filter__toggle:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: -4px;
+      }
+
+      .projects-mobile-filter__summary {
+        max-width: 58%;
+        color: var(--color-muted);
+        font-size: 11px;
+        line-height: 1.2;
+        overflow: hidden;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .projects-mobile-filter__panel {
+        padding: 4px 16px 18px;
+      }
+
+      .projects-mobile-filter__panel[hidden] {
+        display: none;
+      }
+
+      .projects-mobile-filter .projects-filter__group {
+        display: block;
+        margin-top: 24px;
+      }
+
+      .projects-mobile-filter .projects-filter__eyebrow {
+        margin: 0 0 10px;
+        color: var(--color-muted);
+        font-size: 10px;
+        font-weight: 550;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .projects-mobile-filter [data-project-filters] {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .projects-mobile-filter .projects-filter__button,
+      .projects-mobile-filter .projects-filter__clear {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        min-height: 34px;
+        padding: 8px 11px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--color-muted);
+        font-family: "Mona Sans", sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      body[data-theme="light"] .projects-mobile-filter .projects-filter__button,
+      body[data-theme="light"] .projects-mobile-filter .projects-filter__clear {
+        border-color: rgba(0, 0, 0, 0.16);
+      }
+
+      .projects-mobile-filter .projects-filter__button.is-active,
+      .projects-mobile-filter .projects-filter__clear.is-active {
+        border-color: var(--color-white);
+        background: var(--color-white);
+        color: #111111;
+      }
+
+      body[data-theme="light"] .projects-mobile-filter .projects-filter__button.is-active,
+      body[data-theme="light"] .projects-mobile-filter .projects-filter__clear.is-active {
+        border-color: #111111;
+        background: #111111;
+        color: #ffffff;
+      }
+
+      .projects-mobile-filter .projects-filter__remove {
+        display: none;
+      }
+
+      .projects-mobile-filter .projects-filter__status {
+        margin-top: 18px;
+      }
+
       .projects-left,
       .projects-gallery {
         width: calc(100vw - 20px);
         max-width: calc(100vw - 20px);
         margin-left: 10px;
         margin-right: 10px;
+      }
+
+      .projects-left {
+        margin-top: 0;
       }
 
       .projects-gallery__grid,
@@ -2976,22 +3217,45 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         <a class="projects-sidebar__brand" href="/" aria-label="MOND : STUDIO home">
           <img src="asset4.png" alt="MOND : STUDIO" width="590" height="63" loading="lazy" decoding="async" />
         </a>
-        <div class="projects-filter" role="list" aria-label="Filter projects by service or industry">
+        <div class="projects-filter" role="list" aria-label="Filter projects by discipline">
           <h1 class="projects-filter__title projects-sidebar-reveal" id="projects-filter-title" style="--sidebar-reveal-delay: 80ms;">Selected Work</h1>
+          <button class="projects-filter__clear projects-sidebar-reveal is-active" type="button" data-filter-clear aria-pressed="true" style="--sidebar-reveal-delay: 150ms;">
+            <span>All projects</span>
+            <span class="projects-filter__count">12</span>
+          </button>
           <div class="projects-filter__group projects-sidebar-reveal" style="--sidebar-reveal-delay: 220ms;">
-            <p class="projects-filter__eyebrow">Services</p>
-            <div data-taxonomy="services"></div>
+            <p class="projects-filter__eyebrow">Disciplines</p>
+            <div data-project-filters></div>
           </div>
-          <div class="projects-filter__group projects-sidebar-reveal" style="--sidebar-reveal-delay: 360ms;">
-            <p class="projects-filter__eyebrow">Industries</p>
-            <div data-taxonomy="industries"></div>
-          </div>
+          <p class="projects-filter__status" data-filter-status aria-live="polite">12 projects</p>
         </div>
         <a class="projects-sidebar__cta" href="https://cal.eu/mondstudio">
           <span class="projects-sidebar__cta-label">LET'S TALK</span>
         </a>
       </aside>
+      <section class="projects-mobile-filter" aria-label="Project filters">
+        <button class="projects-mobile-filter__toggle" id="projects-mobile-filter-toggle" type="button" aria-expanded="false" aria-controls="projects-mobile-filter-panel">
+          <span>Filter projects</span>
+          <span class="projects-mobile-filter__summary" data-filter-summary>All projects</span>
+        </button>
+        <div class="projects-mobile-filter__panel" id="projects-mobile-filter-panel" hidden>
+          <button class="projects-filter__clear is-active" type="button" data-filter-clear aria-pressed="true">
+            <span>All projects</span>
+            <span class="projects-filter__count">12</span>
+          </button>
+          <div class="projects-filter__group">
+            <p class="projects-filter__eyebrow">Disciplines</p>
+            <div data-project-filters></div>
+          </div>
+          <p class="projects-filter__status" data-filter-status aria-live="polite">12 projects</p>
+        </div>
+      </section>
       <div class="projects-left">
+        <h1 class="projects-fallback-title">Selected Work</h1>
+        <p class="projects-filter-empty" data-filter-empty hidden>
+          No projects match these filters.
+          <button class="projects-filter-empty__reset" type="button" data-filter-clear>Show all projects</button>
+        </p>
         <div class="projects-table-container">
           <table class="projects-table">
             <thead>
@@ -3004,46 +3268,46 @@ body[data-theme="light"] .footer-social-minimal a:focus {
             <tbody>
               <tr class="project-row">
                 <td><a href="/multitool/">Multitool</a></td>
-                <td><span class="projects-type">Product Design</span></td>
+                <td><span class="projects-type">Product &amp; 3D Design</span></td>
                 <td>2025</td>
               </tr>
               <tr class="project-row">
-                <td><a href="/maier-jewelry/">Maier Jewelry - branding</a></td>
+                <td><a href="/maier-jewelry/">Maier Jewelry</a></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>2024</td>
               </tr>
               <tr class="project-row">
-                <td><span class="projects-table__disabled-link" aria-disabled="true">Walk with me - record label</span></td>
+                <td><span class="projects-table__disabled-link" aria-disabled="true">Walk with me — record label</span></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>2023</td>
               </tr>
               <tr class="project-row">
                 <td><a href="/marty-restaurants/">Marty Restaurants</a></td>
-                <td><span class="projects-type">Book Design</span></td>
+                <td><span class="projects-type">Graphic &amp; Editorial Design</span></td>
                 <td>2024</td>
               </tr>
               <tr class="project-row">
-                <td><a href="/intermezzo/">Intermezzo Festival - visual identity</a></td>
+                <td><a href="/intermezzo/">Intermezzo Festival</a></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>2025</td>
               </tr>
               <tr class="project-row">
-                <td><a href="/lesser-of-two-evils/">Lesser of Two Evils - motion design</a></td>
-                <td><span class="projects-type">Animation</span></td>
+                <td><a href="/lesser-of-two-evils/">Lesser of Two Evils</a></td>
+                <td><span class="projects-type">Motion &amp; Animation</span></td>
                 <td>2021</td>
               </tr>
               <tr class="project-row">
                 <td><a href="/friss-kakas/">Friss Kakas</a></td>
-                <td><span class="projects-type">Animation</span></td>
+                <td><span class="projects-type">Motion &amp; Animation</span></td>
                 <td>2025</td>
               </tr>
               <tr class="project-row">
                 <td><a href="/re-mind/">RE:MIND</a></td>
-                <td><span class="projects-type">Visual Identity</span></td>
+                <td><span class="projects-type">Product &amp; 3D Design</span></td>
                 <td>2026</td>
               </tr>
               <tr class="project-row">
-                <td><a href="/dream-ville-software/">Dream Ville Software - branding</a></td>
+                <td><a href="/dream-ville-software/">Dream Ville Software</a></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>2023</td>
               </tr>
@@ -3054,7 +3318,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               </tr>
               <tr class="project-row">
                 <td><span class="projects-table__disabled-link" aria-disabled="true">Shinrin</span></td>
-                <td><span class="projects-type">Visual Identity, Packaging Design</span></td>
+                <td><span class="projects-type">Visual Identity</span></td>
                 <td>—</td>
               </tr>
               <tr class="project-row">
@@ -3071,20 +3335,20 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         <div class="projects-thumb" id="projects-thumb" aria-hidden="true"></div>
         <div class="projects-gallery" aria-label="Project image gallery">
           <div class="projects-gallery__grid">
-            <figure data-project-path="/multitool/" data-services="Product Design, Motion Design" data-industries="Culture">
+            <figure data-project-path="/multitool/">
               <a class="projects-gallery__link" href="/multitool/">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Product Design</span></div>
+                  <div class="projects-gallery__badge"><span>Product &amp; 3D Design</span></div>
                   <video data-src="projects/multi-tool/multitool-product-concept-landscape.mp4" poster="projects/multi-tool/multitool-orange-front-view.webp" width="1440" height="810" muted loop playsinline preload="none" aria-label="Multitool product concept animation"></video>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Multitool</span>
                   <span class="projects-gallery__caption-subtitle"></span>
-                  <span class="projects-gallery__caption-tags"><span>Product Design</span><span>Motion Design</span><span>Culture</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Product &amp; 3D Design</span><span>Culture &amp; Entertainment</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/maier-jewelry/" data-services="Visual Identity, Strategy" data-industries="Beauty">
+            <figure data-project-path="/maier-jewelry/">
               <a class="projects-gallery__link" href="/maier-jewelry/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
@@ -3093,37 +3357,37 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Maier Jewelry</span>
                   <span class="projects-gallery__caption-subtitle"></span>
-                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Strategy</span><span>Beauty</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Brand Strategy</span><span>Creative Direction</span><span>Visual Identity</span><span>Packaging Design</span><span>Beauty &amp; Fashion</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/walk-with-me/" data-services="Visual Identity, Packaging" data-industries="Culture">
+            <figure data-project-path="/walk-with-me/">
               <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Packaging</span></div>
+                  <div class="projects-gallery__badge"><span>Packaging Design</span></div>
                   <video data-src="media/work-previews/walk-with-me-work-preview.mp4" poster="media/work-posters/walk-with-me-work-poster.webp" width="1152" height="648" muted loop playsinline preload="none" aria-label="Walk With Me Rainy Days sleeve video preview"></video>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Walk with me</span>
                   <span class="projects-gallery__caption-subtitle"></span>
-                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Packaging</span><span>Culture</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Packaging Design</span><span>Culture &amp; Entertainment</span></span>
                 </figcaption>
               </div>
             </figure>
-            <figure data-project-path="/marty-restaurants/" data-services="Book Design, Visual Identity" data-industries="Hospitality">
+            <figure data-project-path="/marty-restaurants/">
               <a class="projects-gallery__link" href="/marty-restaurants/">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Book Design</span></div>
+                  <div class="projects-gallery__badge"><span>Graphic &amp; Editorial Design</span></div>
                   <img src="projects/marty-restaurants/images/marty-restaurants-seafood-menu-spread.jpg" alt="Open Marty Restaurants menu displaying plated dishes on a wooden bench" width="4000" height="2250" loading="lazy" decoding="async" />
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Marty Restaurants</span>
                   <span class="projects-gallery__caption-subtitle"></span>
-                  <span class="projects-gallery__caption-tags"><span>Book Design</span><span>Visual Identity</span><span>Hospitality</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Creative Direction</span><span>Graphic &amp; Editorial Design</span><span>Motion &amp; Animation</span><span>Hospitality &amp; Food</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/intermezzo/" data-services="Visual Identity, Motion Design" data-industries="Culture">
+            <figure data-project-path="/intermezzo/">
               <a class="projects-gallery__link" href="/intermezzo/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
@@ -3132,50 +3396,50 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Intermezzo Festival</span>
                   <span class="projects-gallery__caption-subtitle"></span>
-                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Motion Design</span><span>Culture</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Creative Direction</span><span>Visual Identity</span><span>Motion &amp; Animation</span><span>Culture &amp; Entertainment</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/lesser-of-two-evils/" data-services="Animation" data-industries="Culture">
+            <figure data-project-path="/lesser-of-two-evils/">
               <a class="projects-gallery__link" href="/lesser-of-two-evils/">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Animation</span></div>
+                  <div class="projects-gallery__badge"><span>Motion &amp; Animation</span></div>
                   <video data-src="projects/lesser-of-two-evils/lesser-of-two-evils-widescreen-animation.mp4" poster="media/work-posters/lesser-of-two-evils-work-poster.webp" width="1440" height="810" muted loop playsinline preload="none" aria-label="Lesser of Two Evils animated project preview"></video>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Lesser of Two Evils</span>
                   <span class="projects-gallery__caption-subtitle"></span>
-                  <span class="projects-gallery__caption-tags"><span>Animation</span><span>Culture</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Creative Direction</span><span>Graphic &amp; Editorial Design</span><span>Motion &amp; Animation</span><span>Culture &amp; Entertainment</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/friss-kakas/" data-services="Animation" data-industries="Culture">
+            <figure data-project-path="/friss-kakas/">
               <a class="projects-gallery__link" href="/friss-kakas/">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Animation</span></div>
+                  <div class="projects-gallery__badge"><span>Motion &amp; Animation</span></div>
                   <img src="projects/friss-kakas/optimized/digitalis_plakat_02.jpg" alt="Friss Kakas illustrated project artwork" width="2400" height="1539" loading="lazy" decoding="async" />
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Friss Kakas</span>
                   <span class="projects-gallery__caption-subtitle"></span>
-                  <span class="projects-gallery__caption-tags"><span>Animation</span><span>Culture</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Creative Direction</span><span>Graphic &amp; Editorial Design</span><span>Motion &amp; Animation</span><span>Culture &amp; Entertainment</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/re-mind/" data-services="Visual Identity, Packaging, Strategy, Motion Design" data-industries="Health">
+            <figure data-project-path="/re-mind/">
               <a class="projects-gallery__link" href="/re-mind/">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Visual Identity</span></div>
+                  <div class="projects-gallery__badge"><span>Product &amp; 3D Design</span></div>
                   <video data-src="media/work-previews/re-mind-work-preview.mp4" poster="media/work-posters/re-mind-work-poster.webp" width="1152" height="648" muted loop playsinline preload="none" aria-label="RE:MIND animated project preview"></video>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">RE:MIND</span>
                   <span class="projects-gallery__caption-subtitle"></span>
-                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Packaging</span><span>Strategy</span><span>Motion Design</span><span>Health</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Brand Strategy</span><span>Visual Identity</span><span>Motion &amp; Animation</span><span>Product &amp; 3D Design</span><span>Packaging Design</span><span>Health &amp; Wellbeing</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/dream-ville-software/" data-services="Visual Identity, Strategy" data-industries="Tech">
+            <figure data-project-path="/dream-ville-software/">
               <a class="projects-gallery__link" href="/dream-ville-software/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
@@ -3184,11 +3448,11 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Dream Ville Software</span>
                   <span class="projects-gallery__caption-subtitle"></span>
-                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Strategy</span><span>Tech</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Brand Strategy</span><span>Creative Direction</span><span>Visual Identity</span><span>Technology</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/olivo-bistro/" data-services="Visual Identity" data-industries="Hospitality">
+            <figure data-project-path="/olivo-bistro/">
               <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
                   <img src="projects/olivo-bistro/olivo-bistro-brand-identity-presentation.png" alt="Olivo Bistro project preview" width="2250" height="2250" loading="lazy" decoding="async" />
@@ -3196,11 +3460,11 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Olivo Bistro</span>
                   <span class="projects-gallery__caption-subtitle"></span>
-                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Hospitality</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Brand Strategy</span><span>Creative Direction</span><span>Visual Identity</span><span>Graphic &amp; Editorial Design</span><span>Hospitality &amp; Food</span></span>
                 </figcaption>
               </div>
             </figure>
-            <figure data-project-path="/shinrin/" data-services="Visual Identity, Packaging" data-industries="Beauty">
+            <figure data-project-path="/shinrin/">
               <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
                   <img src="projects/shinrin/shinrin-logo-thumbnail.jpg" alt="Shinrin project preview" width="1600" height="1280" loading="lazy" decoding="async" />
@@ -3208,11 +3472,11 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Shinrin</span>
                   <span class="projects-gallery__caption-subtitle"></span>
-                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Packaging Design</span><span>Beauty</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Packaging Design</span><span>Beauty &amp; Fashion</span></span>
                 </figcaption>
               </div>
             </figure>
-            <figure data-project-path="/macn/" data-services="Visual Identity, Strategy" data-industries="Culture">
+            <figure data-project-path="/macn/">
               <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
                   <img src="projects/macn/macn-logo-mark.jpg" alt="MACN project preview" width="4000" height="2250" loading="lazy" decoding="async" />
@@ -3220,7 +3484,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">MACN</span>
                   <span class="projects-gallery__caption-subtitle"></span>
-                  <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Strategy</span><span>Culture</span></span>
+                  <span class="projects-gallery__caption-tags"><span>Brand Strategy</span><span>Visual Identity</span><span>Culture &amp; Entertainment</span></span>
                 </figcaption>
               </div>
             </figure>
@@ -3256,31 +3520,96 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     })();
   </script>
 
+  <script src="work-taxonomy.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const body = document.body;
-      const projectCopy = Object.freeze({
-        '/walk-with-me/': Object.freeze({ title: 'Walk with me', subtitle: 'Rainy Days Sample Pack' }),
-        '/macn/': Object.freeze({ title: 'MACN', subtitle: 'Culture in Constant Motion' }),
-        '/friss-kakas/': Object.freeze({ title: 'Friss Kakas', subtitle: 'Fresh Moves' }),
-        '/marty-restaurants/': Object.freeze({ title: 'Marty', subtitle: 'For the Love of Food' }),
-        '/maier-jewelry/': Object.freeze({ title: 'Maier', subtitle: 'Stones with Soul' }),
-        '/lesser-of-two-evils/': Object.freeze({ title: 'Lesser', subtitle: 'Less Still, More Motion' }),
-        '/dream-ville-software/': Object.freeze({ title: 'Dream Ville', subtitle: 'Dreams Have No Titles' }),
-        '/olivo-bistro/': Object.freeze({ title: 'Olivo bistro', subtitle: 'In good company' }),
-        '/multitool/': Object.freeze({ title: 'Multitool', subtitle: 'One Tool, Many Moves' }),
-        '/intermezzo/': Object.freeze({ title: 'Intermezzo', subtitle: 'Where Music Meets Form' }),
-        '/re-mind/': Object.freeze({ title: 'RE:MIND', subtitle: 'A Ritual for the Mind' })
-      });
+      const workModel = window.MOND_WORK_TAXONOMY;
+      if (
+        !workModel ||
+        !Array.isArray(workModel.visibleFilters) ||
+        !workModel.taxonomies ||
+        !Array.isArray(workModel.taxonomies.services) ||
+        !Array.isArray(workModel.taxonomies.industries) ||
+        !Array.isArray(workModel.projects)
+      ) return;
 
-      document.querySelectorAll('.projects-gallery figure[data-project-path]').forEach((figure) => {
-        const copy = projectCopy[figure.dataset.projectPath];
-        if (!copy) return;
+      const filterDefinitions = new Map(
+        Object.values(workModel.taxonomies).flat().map((filter) => [filter.id, filter])
+      );
+      const projectsByPath = new Map(workModel.projects.map((project) => [project.path, project]));
+      const filterLabel = (id) => filterDefinitions.get(id)?.label || id;
+      const isProjectLinked = (project) => project.status === 'published';
+      const tableBody = document.querySelector('.projects-table tbody');
+      const galleryGrid = document.querySelector('.projects-gallery__grid');
+      const galleryFigures = Array.from(document.querySelectorAll('.projects-gallery figure[data-project-path]'));
+      const hasCompleteModel = Boolean(
+        galleryGrid &&
+        workModel.projects.length === galleryFigures.length &&
+        projectsByPath.size === workModel.projects.length &&
+        workModel.projects.every((project) => (
+          Array.isArray(project.services) &&
+          project.services.every((service) => filterDefinitions.has(service)) &&
+          filterDefinitions.has(project.industry) &&
+          galleryFigures.some((figure) => figure.dataset.projectPath === project.path)
+        )) &&
+        workModel.visibleFilters.every((filterId) => (
+          workModel.taxonomies.services.some((service) => service.id === filterId)
+        ))
+      );
+
+      if (!hasCompleteModel) return;
+
+      if (tableBody) {
+        const rows = workModel.projects.map((project) => {
+          const row = document.createElement('tr');
+          row.className = 'project-row';
+          row.dataset.projectPath = project.path;
+
+          const projectCell = document.createElement('td');
+          const projectLabel = document.createElement(isProjectLinked(project) ? 'a' : 'span');
+          projectLabel.textContent = project.tableTitle;
+          if (isProjectLinked(project)) {
+            projectLabel.href = project.path;
+          } else {
+            projectLabel.className = 'projects-table__disabled-link';
+            projectLabel.setAttribute('aria-disabled', 'true');
+          }
+          projectCell.appendChild(projectLabel);
+
+          const typeCell = document.createElement('td');
+          const type = document.createElement('span');
+          type.className = 'projects-type';
+          type.textContent = project.primaryDiscipline;
+          typeCell.appendChild(type);
+
+          const yearCell = document.createElement('td');
+          yearCell.textContent = project.year;
+          row.append(projectCell, typeCell, yearCell);
+          return row;
+        });
+        tableBody.replaceChildren(...rows);
+      }
+
+      galleryFigures.forEach((figure) => {
+        const project = projectsByPath.get(figure.dataset.projectPath);
+        if (!project) return;
 
         const title = figure.querySelector('.projects-gallery__caption-title');
         const subtitle = figure.querySelector('.projects-gallery__caption-subtitle');
-        if (title) title.textContent = copy.title;
-        if (subtitle) subtitle.textContent = copy.subtitle;
+        const badge = figure.querySelector('.projects-gallery__badge span');
+        const tags = figure.querySelector('.projects-gallery__caption-tags');
+        if (title) title.textContent = project.title;
+        if (subtitle) subtitle.textContent = project.subtitle;
+        if (badge && project.badge) badge.textContent = filterLabel(project.badge);
+        if (tags) {
+          const tagLabels = [...project.services.map(filterLabel), filterLabel(project.industry)];
+          tags.replaceChildren(...tagLabels.map((label) => {
+            const tag = document.createElement('span');
+            tag.textContent = label;
+            return tag;
+          }));
+        }
       });
 
       const viewToggle = document.getElementById('view-toggle');
@@ -3313,52 +3642,58 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
       setView('image');
 
-      const projectTaxonomy = Object.freeze({
-        services: Object.freeze([
-          'Visual Identity',
-          'Book Design',
-          'Product Design',
-          'Packaging',
-          'Strategy',
-          'Animation',
-          'Motion Design'
-        ]),
-        industries: Object.freeze([
-          'Hospitality',
-          'Beauty',
-          'Health',
-          'Culture',
-          'Tech'
-        ])
-      });
-
-      Object.entries(projectTaxonomy).forEach(([taxonomy, labels]) => {
-        const container = document.querySelector(`[data-taxonomy="${taxonomy}"]`);
-        if (!container) return;
-
-        labels.forEach((label) => {
+      document.querySelectorAll('[data-project-filters]').forEach((filterContainer) => {
+        const buttons = workModel.visibleFilters.map((filterId) => {
+          const definition = filterDefinitions.get(filterId);
           const button = document.createElement('button');
           button.className = 'projects-filter__button';
           button.type = 'button';
-          button.dataset.filter = label;
+          button.dataset.filter = definition.id;
           button.setAttribute('aria-pressed', 'false');
 
           const text = document.createElement('span');
-          text.textContent = label;
+          text.textContent = definition.label;
+          const count = document.createElement('span');
+          count.className = 'projects-filter__count';
+          count.textContent = workModel.projects.filter((project) => (
+            project.services.includes(definition.id)
+          )).length;
           const remove = document.createElement('span');
           remove.className = 'projects-filter__remove';
           remove.setAttribute('aria-hidden', 'true');
           remove.textContent = 'x';
 
-          button.append(text, remove);
-          container.appendChild(button);
+          button.append(text, count, remove);
+          return button;
         });
+        filterContainer.replaceChildren(...buttons);
       });
 
       const filterButtons = Array.from(document.querySelectorAll('.projects-filter__button[data-filter]'));
-      const galleryGrid = document.querySelector('.projects-gallery__grid');
-      const galleryFigures = Array.from(document.querySelectorAll('.projects-gallery figure[data-services][data-industries]'));
+      const clearFilterButtons = Array.from(document.querySelectorAll('[data-filter-clear]'));
+      const filterSummaries = Array.from(document.querySelectorAll('[data-filter-summary]'));
+      const filterStatuses = Array.from(document.querySelectorAll('[data-filter-status]'));
+      const emptyFilterStates = Array.from(document.querySelectorAll('[data-filter-empty]'));
+      const tableRows = Array.from(document.querySelectorAll('.projects-table tbody tr[data-project-path]'));
+      const mobileFilterToggle = document.getElementById('projects-mobile-filter-toggle');
+      const mobileFilterPanel = document.getElementById('projects-mobile-filter-panel');
+      let activeFilter = null;
       let canonicalProjectOrder = null;
+
+      if (mobileFilterToggle && mobileFilterPanel) {
+        mobileFilterToggle.addEventListener('click', () => {
+          const isOpen = mobileFilterToggle.getAttribute('aria-expanded') === 'true';
+          mobileFilterToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+          mobileFilterPanel.hidden = isOpen;
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key !== 'Escape' || mobileFilterPanel.hidden) return;
+          mobileFilterToggle.setAttribute('aria-expanded', 'false');
+          mobileFilterPanel.hidden = true;
+          mobileFilterToggle.focus();
+        });
+      }
 
       const animateProjectRefresh = (figures) => {
         if (!galleryGrid) return;
@@ -3386,8 +3721,8 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         const landscapeFigures = [];
 
         visibleFigures.forEach((figure) => {
-          const tags = `${figure.dataset.services || ''}, ${figure.dataset.industries || ''}`;
-          if (/Book Design|Product Design|Beauty|Health/.test(tags)) {
+          const project = projectsByPath.get(figure.dataset.projectPath);
+          if (project?.layout === 'portrait') {
             portraitFigures.push(figure);
           } else {
             landscapeFigures.push(figure);
@@ -3405,8 +3740,8 @@ body[data-theme="light"] .footer-social-minimal a:focus {
           if (!nextFigure) break;
 
           reorderedFigures.push(nextFigure);
-          const nextTags = `${nextFigure.dataset.services || ''}, ${nextFigure.dataset.industries || ''}`;
-          lastWasLandscape = !/Book Design|Product Design|Beauty|Health/.test(nextTags);
+          const nextProject = projectsByPath.get(nextFigure.dataset.projectPath);
+          lastWasLandscape = nextProject?.layout !== 'portrait';
         }
 
         if (canonicalProjectOrder) {
@@ -3436,39 +3771,71 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         animateProjectRefresh(reorderedFigures);
       };
 
-      const setProjectFilter = (filter) => {
-        const visibleFigures = [];
-
-        galleryGrid?.classList.toggle('is-filter-active', filter !== 'all');
+      const updateFilterInterface = (visibleCount) => {
+        const hasActiveFilter = Boolean(activeFilter);
 
         filterButtons.forEach((button) => {
-          const isActive = button.dataset.filter === filter;
+          const isActive = activeFilter === button.dataset.filter;
           button.classList.toggle('is-active', isActive);
           button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
         });
 
+        clearFilterButtons.forEach((button) => {
+          button.classList.toggle('is-active', !hasActiveFilter);
+          button.setAttribute('aria-pressed', hasActiveFilter ? 'false' : 'true');
+        });
+
+        const summary = activeFilter ? filterLabel(activeFilter) : 'All projects';
+        filterSummaries.forEach((element) => {
+          element.textContent = summary;
+        });
+        filterStatuses.forEach((element) => {
+          element.textContent = `${visibleCount} ${visibleCount === 1 ? 'project' : 'projects'}`;
+        });
+        emptyFilterStates.forEach((element) => {
+          element.hidden = visibleCount !== 0;
+        });
+      };
+
+      const applyProjectFilters = () => {
+        const visibleFigures = [];
+        const hasActiveFilter = Boolean(activeFilter);
+
+        galleryGrid.classList.toggle('is-filter-active', hasActiveFilter);
+
         galleryFigures.forEach((figure) => {
-          const tags = [figure.dataset.services, figure.dataset.industries]
-            .flatMap((values) => (values || '').split(',').map((value) => value.trim()))
-            .filter(Boolean);
-          const isVisible = filter === 'all' || tags.includes(filter);
+          const project = projectsByPath.get(figure.dataset.projectPath);
+          const isVisible = Boolean(project && (!activeFilter || project.services.includes(activeFilter)));
           figure.classList.toggle('is-filtered-out', !isVisible);
+          figure.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
           if (isVisible) visibleFigures.push(figure);
         });
 
+        tableRows.forEach((row) => {
+          const project = projectsByPath.get(row.dataset.projectPath);
+          row.hidden = !(project && (!activeFilter || project.services.includes(activeFilter)));
+        });
+
         refreshProjectLayout(visibleFigures);
+        updateFilterInterface(visibleFigures.length);
       };
 
       filterButtons.forEach((button) => {
         button.addEventListener('click', () => {
-          const nextFilter = button.classList.contains('is-active') && button.dataset.filter !== 'all'
-            ? 'all'
-            : button.dataset.filter || 'all';
-          setProjectFilter(nextFilter);
+          activeFilter = activeFilter === button.dataset.filter ? null : button.dataset.filter;
+          applyProjectFilters();
         });
       });
 
-      setProjectFilter('all');
+      clearFilterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          activeFilter = null;
+          applyProjectFilters();
+        });
+      });
+
+      applyProjectFilters();
+      document.documentElement.classList.add('taxonomy-ready');
 
       const thumbWidth = 222 * 1.55;
       const thumbHeight = 125 * 1.55;
