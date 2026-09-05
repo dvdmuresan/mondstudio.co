@@ -1,0 +1,260 @@
+(function () {
+  const deepFreeze = (value) => {
+    if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;
+    Object.values(value).forEach(deepFreeze);
+    return Object.freeze(value);
+  };
+
+  const model = {
+    filterOptions: [
+      { id: 'visual-identity', label: 'Visual Identity' },
+      { id: 'creative-direction', label: 'Creative Direction' },
+      { id: 'motion-animation', label: 'Motion & Animation' },
+      { id: 'product-3d-design', label: 'Product & 3D Design' },
+      { id: 'packaging-design', label: 'Packaging Design' }
+    ],
+    taxonomies: {
+      disciplines: [
+        { id: 'creative-direction', label: 'Creative Direction' },
+        { id: 'visual-identity', label: 'Visual Identity' },
+        { id: 'graphic-editorial', label: 'Graphic & Editorial Design' },
+        { id: 'motion-animation', label: 'Motion & Animation' },
+        { id: 'product-3d', label: 'Product & 3D Design' },
+        { id: 'packaging-design', label: 'Packaging Design' }
+      ],
+      services: [
+        { id: 'brand-strategy', label: 'Brand Strategy' },
+        { id: 'creative-direction', label: 'Creative Direction' },
+        { id: 'visual-identity', label: 'Visual Identity' },
+        { id: 'graphic-editorial', label: 'Graphic & Editorial Design' },
+        { id: 'motion-animation', label: 'Motion & Animation' },
+        { id: 'product-3d', label: 'Product & 3D Design' },
+        { id: 'packaging-design', label: 'Packaging Design' }
+      ],
+      industries: [
+        { id: 'culture-entertainment', label: 'Culture & Entertainment' },
+        { id: 'hospitality-food', label: 'Hospitality & Food' },
+        { id: 'beauty-fashion', label: 'Beauty & Fashion' },
+        { id: 'health-wellbeing', label: 'Health & Wellbeing' },
+        { id: 'technology', label: 'Technology' }
+      ],
+      projectTypes: [
+        { id: 'concept-product-design', label: 'Concept Product Design' },
+        { id: 'brand-repositioning', label: 'Brand Repositioning' },
+        { id: 'annual-menu-campaign', label: 'Annual Menu Campaign' },
+        { id: 'animated-short-film', label: 'Animated Short Film' },
+        { id: 'promotional-animation-film', label: 'Promotional Animation Film' },
+        { id: 'diploma-project', label: 'Diploma Project' },
+        { id: 'brand-identity', label: 'Brand Identity' }
+      ]
+    },
+    projects: [
+      {
+        path: '/multitool/',
+        cardTitle: 'Multitool',
+        cardSubtitle: 'One Tool, Many Moves',
+        listTitle: 'Multitool',
+        year: '2025',
+        workFilterIds: ['product-3d-design'],
+        primaryDiscipline: 'product-3d',
+        services: ['product-3d'],
+        industry: 'culture-entertainment',
+        subindustries: [],
+        projectType: 'concept-product-design',
+        projectOrigin: null,
+        cardBadge: 'product-3d',
+        layout: 'portrait',
+        status: 'published'
+      },
+      {
+        path: '/maier-jewelry/',
+        cardTitle: 'Maier',
+        cardSubtitle: 'Stones with Soul',
+        listTitle: 'Maier Jewelry',
+        year: '2024',
+        workFilterIds: ['visual-identity', 'creative-direction', 'packaging-design'],
+        primaryDiscipline: 'visual-identity',
+        services: ['brand-strategy', 'creative-direction', 'visual-identity', 'packaging-design'],
+        industry: 'beauty-fashion',
+        subindustries: [],
+        projectType: 'brand-repositioning',
+        projectOrigin: null,
+        cardBadge: 'visual-identity',
+        layout: 'portrait',
+        status: 'published'
+      },
+      {
+        path: '/walk-with-me/',
+        cardTitle: 'Walk with me',
+        cardSubtitle: 'Rainy Days Sample Pack',
+        listTitle: 'Walk with me — record label',
+        year: '2023',
+        workFilterIds: [],
+        primaryDiscipline: 'visual-identity',
+        services: ['visual-identity', 'packaging-design'],
+        industry: 'culture-entertainment',
+        subindustries: [],
+        projectType: null,
+        projectOrigin: null,
+        cardBadge: 'packaging-design',
+        layout: 'landscape',
+        status: 'incomplete'
+      },
+      {
+        path: '/marty-restaurants/',
+        cardTitle: 'Marty',
+        cardSubtitle: 'For the Love of Food',
+        listTitle: 'Marty Restaurants',
+        year: '2024',
+        workFilterIds: ['creative-direction', 'motion-animation'],
+        primaryDiscipline: 'graphic-editorial',
+        services: ['creative-direction', 'graphic-editorial', 'motion-animation'],
+        industry: 'hospitality-food',
+        subindustries: [],
+        projectType: 'annual-menu-campaign',
+        projectOrigin: null,
+        cardBadge: 'graphic-editorial',
+        layout: 'portrait',
+        status: 'published'
+      },
+      {
+        path: '/intermezzo/',
+        cardTitle: 'Intermezzo',
+        cardSubtitle: 'Where Music Meets Form',
+        listTitle: 'Intermezzo Festival',
+        year: '2025',
+        workFilterIds: ['visual-identity', 'creative-direction', 'motion-animation'],
+        primaryDiscipline: 'visual-identity',
+        services: ['creative-direction', 'visual-identity', 'motion-animation'],
+        industry: 'culture-entertainment',
+        subindustries: [],
+        projectType: null,
+        projectOrigin: null,
+        cardBadge: 'visual-identity',
+        layout: 'landscape',
+        status: 'published'
+      },
+      {
+        path: '/lesser-of-two-evils/',
+        cardTitle: 'Lesser',
+        cardSubtitle: 'Less Still, More Motion',
+        listTitle: 'Lesser of Two Evils',
+        year: '2021',
+        workFilterIds: ['motion-animation'],
+        primaryDiscipline: 'motion-animation',
+        services: ['creative-direction', 'graphic-editorial', 'motion-animation'],
+        industry: 'culture-entertainment',
+        subindustries: [],
+        projectType: 'animated-short-film',
+        projectOrigin: null,
+        cardBadge: 'motion-animation',
+        layout: 'landscape',
+        status: 'published'
+      },
+      {
+        path: '/friss-kakas/',
+        cardTitle: 'Friss Kakas',
+        cardSubtitle: 'Fresh Moves',
+        listTitle: 'Friss Kakas',
+        year: '2025',
+        workFilterIds: ['motion-animation'],
+        primaryDiscipline: 'motion-animation',
+        services: ['creative-direction', 'graphic-editorial', 'motion-animation'],
+        industry: 'culture-entertainment',
+        subindustries: [],
+        projectType: 'promotional-animation-film',
+        projectOrigin: null,
+        cardBadge: 'motion-animation',
+        layout: 'landscape',
+        status: 'published'
+      },
+      {
+        path: '/re-mind/',
+        cardTitle: 'RE:MIND',
+        cardSubtitle: 'A Ritual for the Mind',
+        listTitle: 'RE:MIND',
+        year: '2026',
+        workFilterIds: ['visual-identity', 'product-3d-design', 'packaging-design'],
+        primaryDiscipline: 'product-3d',
+        services: ['brand-strategy', 'visual-identity', 'motion-animation', 'product-3d', 'packaging-design'],
+        industry: 'health-wellbeing',
+        subindustries: [],
+        projectType: 'diploma-project',
+        projectOrigin: null,
+        cardBadge: 'product-3d',
+        layout: 'portrait',
+        status: 'published'
+      },
+      {
+        path: '/dream-ville-software/',
+        cardTitle: 'Dream Ville',
+        cardSubtitle: 'Dreams Have No Titles',
+        listTitle: 'Dream Ville Software',
+        year: '2023',
+        workFilterIds: ['visual-identity', 'creative-direction'],
+        primaryDiscipline: 'visual-identity',
+        services: ['brand-strategy', 'creative-direction', 'visual-identity'],
+        industry: 'technology',
+        subindustries: [],
+        projectType: 'brand-identity',
+        projectOrigin: null,
+        cardBadge: 'visual-identity',
+        layout: 'landscape',
+        status: 'published'
+      },
+      {
+        path: '/olivo-bistro/',
+        cardTitle: 'Olivo bistro',
+        cardSubtitle: 'In good company',
+        listTitle: 'Olivo Bistro',
+        year: '2024',
+        workFilterIds: ['visual-identity', 'creative-direction'],
+        primaryDiscipline: 'visual-identity',
+        services: ['brand-strategy', 'creative-direction', 'visual-identity', 'graphic-editorial'],
+        industry: 'hospitality-food',
+        subindustries: [],
+        projectType: 'brand-repositioning',
+        projectOrigin: null,
+        cardBadge: null,
+        layout: 'landscape',
+        status: 'incomplete'
+      },
+      {
+        path: '/shinrin/',
+        cardTitle: 'Shinrin',
+        cardSubtitle: '',
+        listTitle: 'Shinrin',
+        year: '—',
+        workFilterIds: ['packaging-design'],
+        primaryDiscipline: 'visual-identity',
+        services: ['visual-identity', 'packaging-design'],
+        industry: 'beauty-fashion',
+        subindustries: [],
+        projectType: null,
+        projectOrigin: null,
+        cardBadge: null,
+        layout: 'portrait',
+        status: 'preview'
+      },
+      {
+        path: '/macn/',
+        cardTitle: 'MACN',
+        cardSubtitle: 'Culture in Constant Motion',
+        listTitle: 'MACN',
+        year: '—',
+        workFilterIds: [],
+        primaryDiscipline: 'visual-identity',
+        services: ['brand-strategy', 'visual-identity'],
+        industry: 'culture-entertainment',
+        subindustries: [],
+        projectType: null,
+        projectOrigin: null,
+        cardBadge: null,
+        layout: 'landscape',
+        status: 'incomplete'
+      }
+    ]
+  };
+
+  window.MOND_WORK_TAXONOMY = deepFreeze(model);
+})();
