@@ -3100,7 +3100,7 @@
             <p class="about-person-meta__name" id="about-person-meta-name"></p>
             <p class="about-person-meta__role" id="about-person-meta-role"></p>
           </div>
-          <button class="about-person-trigger" id="about-person-trigger" type="button" aria-label="Learn more about this person">
+          <button class="about-person-trigger" id="about-person-trigger" type="button" aria-label="Learn more about this person" aria-haspopup="dialog" aria-controls="about-person-panel">
             <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
               <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
@@ -3121,100 +3121,109 @@
         </div>
       </section>
 
-      <section class="about-team-strip" aria-label="MOND : STUDIO team">
-        <figure class="about-team-strip__person">
-          <div class="about-team-strip__image">
-            <img src="optimized/david-2.jpg" alt="David Muresan" width="675" height="900" loading="lazy" decoding="async">
-          </div>
-          <figcaption class="about-team-strip__caption">
-            <p>David Muresan</p>
-            <p class="about-team-strip__role">Art Director / Graphic Designer</p>
-          </figcaption>
-        </figure>
-        <figure class="about-team-strip__person">
-          <div class="about-team-strip__image">
-            <img src="optimized/bencz.jpg" alt="Bence Sáránszky" width="600" height="900" loading="lazy" decoding="async">
-          </div>
-          <figcaption class="about-team-strip__caption">
-            <p>Bence Sáránszky</p>
-            <p class="about-team-strip__role">3D Designer / Graphic Designer</p>
-          </figcaption>
-        </figure>
-        <figure class="about-team-strip__person">
-          <div class="about-team-strip__image">
-            <img src="Mate.jpg" alt="Máté Horesnyi" width="675" height="900" loading="lazy" decoding="async">
-          </div>
-          <figcaption class="about-team-strip__caption">
-            <p>Máté Horesnyi</p>
-            <p class="about-team-strip__role">Director / Animator</p>
-          </figcaption>
-        </figure>
-        <figure class="about-team-strip__person">
-          <div class="about-team-strip__image">
-            <img src="optimized/janky-milan.jpg" alt="Janky Milán" width="675" height="900" loading="lazy" decoding="async">
-          </div>
-          <figcaption class="about-team-strip__caption">
-            <p>Janky Milán</p>
-            <p class="about-team-strip__role">Graphic Designer / Type Designer</p>
-          </figcaption>
-        </figure>
-      </section>
+      <style>
+        .about-team-strip.about-mobile-people .about-mobile-person__button {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          display: block;
+          width: 100%;
+          height: 100%;
+          padding: 0;
+          border: 0;
+          border-radius: 10px;
+          background: transparent;
+          color: transparent;
+          cursor: pointer;
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          transition: none;
+        }
 
-      <section class="about-mobile-people" aria-label="MOND : STUDIO team">
-        <figure class="about-mobile-person">
-          <div class="about-mobile-person__image">
-            <img src="optimized/david-2.jpg" alt="David Muresan" width="675" height="900" loading="lazy" decoding="async">
-            <button class="about-mobile-person__button" type="button" data-profile="optimized/david-2.jpg" aria-label="Learn more about David Muresan">
+        .about-team-strip.about-mobile-people .about-mobile-person__button svg {
+          display: none;
+        }
+
+        .about-team-strip.about-mobile-people .about-mobile-person__button:focus-visible {
+          outline: 2px solid #ffffff;
+          outline-offset: -4px;
+          background: transparent;
+          transform: none;
+        }
+
+        @media (max-width: 600px) {
+          .about-team-strip.about-mobile-people {
+            grid-template-columns: minmax(0, 1fr);
+          }
+        }
+
+        @media (min-width: 601px) and (max-width: 900px) {
+          .about-team-strip.about-mobile-people {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            width: calc(100% - 40px);
+            max-width: none;
+            margin: 0 20px 140px;
+            padding: 0;
+          }
+        }
+      </style>
+
+      <section class="about-team-strip about-mobile-people" aria-label="MOND : STUDIO team">
+        <figure class="about-team-strip__person about-mobile-person">
+          <div class="about-team-strip__image about-mobile-person__image">
+            <img src="optimized/david-2.jpg" alt="David Muresan" width="675" height="900" loading="lazy" decoding="async" aria-hidden="true">
+            <button class="about-mobile-person__button" type="button" data-profile="optimized/david-2.jpg" aria-label="David Muresan, Art Director / Graphic Designer — learn more" aria-haspopup="dialog" aria-controls="about-person-panel">
               <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                 <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
           </div>
-          <figcaption class="about-mobile-person__caption">
+          <figcaption class="about-team-strip__caption about-mobile-person__caption" aria-hidden="true">
             <p class="about-mobile-person__name">David Muresan</p>
-            <p class="about-mobile-person__role">Art Director / Graphic Designer</p>
+            <p class="about-team-strip__role about-mobile-person__role">Art Director / Graphic Designer</p>
           </figcaption>
         </figure>
-        <figure class="about-mobile-person">
-          <div class="about-mobile-person__image">
-            <img src="optimized/bencz.jpg" alt="Bence Sáránszky" width="600" height="900" loading="lazy" decoding="async">
-            <button class="about-mobile-person__button" type="button" data-profile="optimized/bencz.jpg" aria-label="Learn more about Bence Sáránszky">
+        <figure class="about-team-strip__person about-mobile-person">
+          <div class="about-team-strip__image about-mobile-person__image">
+            <img src="optimized/bencz.jpg" alt="Bence Sáránszky" width="600" height="900" loading="lazy" decoding="async" aria-hidden="true">
+            <button class="about-mobile-person__button" type="button" data-profile="optimized/bencz.jpg" aria-label="Bence Sáránszky, 3D Designer / Graphic Designer — learn more" aria-haspopup="dialog" aria-controls="about-person-panel">
               <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                 <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
           </div>
-          <figcaption class="about-mobile-person__caption">
+          <figcaption class="about-team-strip__caption about-mobile-person__caption" aria-hidden="true">
             <p class="about-mobile-person__name">Bence Sáránszky</p>
-            <p class="about-mobile-person__role">3D Designer / Graphic Designer</p>
+            <p class="about-team-strip__role about-mobile-person__role">3D Designer / Graphic Designer</p>
           </figcaption>
         </figure>
-        <figure class="about-mobile-person">
-          <div class="about-mobile-person__image">
-            <img src="Mate.jpg" alt="Máté Horesnyi" width="568" height="568" loading="lazy" decoding="async">
-            <button class="about-mobile-person__button" type="button" data-profile="Mate.jpg" aria-label="Learn more about Máté Horesnyi">
+        <figure class="about-team-strip__person about-mobile-person">
+          <div class="about-team-strip__image about-mobile-person__image">
+            <img src="Mate.jpg" alt="Máté Horesnyi" width="568" height="568" loading="lazy" decoding="async" aria-hidden="true">
+            <button class="about-mobile-person__button" type="button" data-profile="Mate.jpg" aria-label="Máté Horesnyi, Director / Animator — learn more" aria-haspopup="dialog" aria-controls="about-person-panel">
               <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                 <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
           </div>
-          <figcaption class="about-mobile-person__caption">
+          <figcaption class="about-team-strip__caption about-mobile-person__caption" aria-hidden="true">
             <p class="about-mobile-person__name">Máté Horesnyi</p>
-            <p class="about-mobile-person__role">Director / Animator</p>
+            <p class="about-team-strip__role about-mobile-person__role">Director / Animator</p>
           </figcaption>
         </figure>
-        <figure class="about-mobile-person">
-          <div class="about-mobile-person__image">
-            <img src="optimized/janky-milan.jpg" alt="Janky Milán" width="720" height="900" loading="lazy" decoding="async">
-            <button class="about-mobile-person__button" type="button" data-profile="optimized/janky-milan.jpg" aria-label="Learn more about Janky Milán">
+        <figure class="about-team-strip__person about-mobile-person">
+          <div class="about-team-strip__image about-mobile-person__image">
+            <img src="optimized/janky-milan.jpg" alt="Janky Milán" width="720" height="900" loading="lazy" decoding="async" aria-hidden="true">
+            <button class="about-mobile-person__button" type="button" data-profile="optimized/janky-milan.jpg" aria-label="Janky Milán, Graphic Designer / Type Designer — learn more" aria-haspopup="dialog" aria-controls="about-person-panel">
               <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                 <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
           </div>
-          <figcaption class="about-mobile-person__caption">
+          <figcaption class="about-team-strip__caption about-mobile-person__caption" aria-hidden="true">
             <p class="about-mobile-person__name">Janky Milán</p>
-            <p class="about-mobile-person__role">Graphic Designer / Type Designer</p>
+            <p class="about-team-strip__role about-mobile-person__role">Graphic Designer / Type Designer</p>
           </figcaption>
         </figure>
       </section>
@@ -3246,8 +3255,8 @@
     </div>
   </footer>
 
-  <aside class="about-person-panel" id="about-person-panel" aria-live="polite" aria-hidden="true" data-lenis-prevent>
-    <div class="about-person-panel__card" role="dialog" aria-modal="true" aria-labelledby="about-person-name">
+  <aside class="about-person-panel" id="about-person-panel" aria-live="polite" aria-hidden="true" inert data-lenis-prevent>
+    <div class="about-person-panel__card" role="dialog" aria-modal="true" aria-labelledby="about-person-name" tabindex="-1">
       <div class="about-person-panel__image-wrap">
         <img class="about-person-panel__image" id="about-person-image" src="" alt="" loading="lazy" decoding="async">
       </div>
@@ -3292,6 +3301,7 @@
       const personMetaName = document.getElementById('about-person-meta-name');
       const personMetaRole = document.getElementById('about-person-meta-role');
       const personPanel = document.getElementById('about-person-panel');
+      const personCard = personPanel?.querySelector('.about-person-panel__card');
       const personClose = document.getElementById('about-person-close');
       const personImage = document.getElementById('about-person-image');
       const personName = document.getElementById('about-person-name');
@@ -3301,7 +3311,7 @@
       const personAwards = document.getElementById('about-person-awards');
       const personContent = document.querySelector('.about-person-panel__content');
       const personScrollBody = document.getElementById('about-person-scroll-body');
-      const mobilePersonButtons = Array.from(document.querySelectorAll('.about-mobile-person__button'));
+      const personButtons = Array.from(document.querySelectorAll('.about-mobile-person__button'));
       const lines = Array.from(document.querySelectorAll('.about-copy__line'));
       const aboutCopy = document.querySelector('.about-copy');
       const footer = document.getElementById('footer-section');
@@ -3348,13 +3358,81 @@
       let ticking = false;
       let activeImageSource = staffImageSources[0];
       let activeStaffIndex = 0;
+      let lastPersonTrigger = null;
+      let panelFocusRequest = 0;
+      const modalBackgroundState = new Map();
+      const focusableSelector = [
+        'a[href]',
+        'button:not([disabled])',
+        'input:not([disabled])',
+        'select:not([disabled])',
+        'textarea:not([disabled])',
+        '[tabindex]:not([tabindex="-1"])'
+      ].join(',');
 
-      const setPanelVisible = (isVisible) => {
+      const setModalBackgroundInert = (isInert) => {
+        if (isInert) {
+          modalBackgroundState.clear();
+          Array.from(document.body.children).forEach((element) => {
+            if (element === personPanel || element.matches('script, style')) return;
+            modalBackgroundState.set(element, element.inert);
+            element.inert = true;
+          });
+          return;
+        }
+
+        modalBackgroundState.forEach((wasInert, element) => {
+          if (!element.isConnected) return;
+          element.inert = wasInert;
+        });
+        modalBackgroundState.clear();
+      };
+
+      const getPanelFocusableElements = () => {
+        if (!personCard) return [];
+        return Array.from(personCard.querySelectorAll(focusableSelector)).filter((element) => {
+          const style = window.getComputedStyle(element);
+          return !element.hidden && style.display !== 'none' && style.visibility !== 'hidden';
+        });
+      };
+
+      const setPanelVisible = (isVisible, trigger = null) => {
         if (!personPanel) return;
-        personPanel.classList.toggle('is-visible', isVisible);
-        personPanel.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
-        document.body.classList.toggle('person-modal-open', isVisible);
-        if (isVisible) requestAnimationFrame(updateContentScrollCue);
+        const wasVisible = personPanel.classList.contains('is-visible');
+
+        if (isVisible) {
+          if (trigger instanceof HTMLElement) lastPersonTrigger = trigger;
+          if (!wasVisible) setModalBackgroundInert(true);
+          const focusRequest = ++panelFocusRequest;
+          personPanel.inert = false;
+          personPanel.setAttribute('aria-hidden', 'false');
+          personPanel.classList.add('is-visible');
+          document.body.classList.add('person-modal-open');
+          requestAnimationFrame(() => {
+            updateContentScrollCue();
+            requestAnimationFrame(() => {
+              if (focusRequest !== panelFocusRequest || !personPanel.classList.contains('is-visible')) return;
+              (personClose || personCard)?.focus({ preventScroll: true });
+            });
+          });
+          return;
+        }
+
+        if (!wasVisible) return;
+        panelFocusRequest += 1;
+        personPanel.classList.remove('is-visible');
+        document.body.classList.remove('person-modal-open');
+        setModalBackgroundInert(false);
+
+        const focusTarget = lastPersonTrigger;
+        lastPersonTrigger = null;
+        if (focusTarget?.isConnected) focusTarget.focus({ preventScroll: true });
+        if (personPanel.contains(document.activeElement) && document.activeElement instanceof HTMLElement) {
+          document.activeElement.blur();
+        }
+
+        personPanel.inert = true;
+        personPanel.setAttribute('aria-hidden', 'true');
       };
 
       const updateContentScrollCue = () => {
@@ -3377,7 +3455,7 @@
         }
 
         if (!profile) {
-          setPanelVisible(false);
+          if (lastPersonTrigger === personTrigger) setPanelVisible(false);
           return;
         }
 
@@ -3510,7 +3588,7 @@
         const isDavidImageFullSize = imageScale >= 1.415;
         const isTriggerVisible = imageVisible && (!isDavidImage || isDavidImageFullSize);
         updatePersonProfile(isTriggerVisible);
-        if (!isTriggerVisible) setPanelVisible(false);
+        if (!isTriggerVisible && lastPersonTrigger === personTrigger) setPanelVisible(false);
 
         lines.forEach((line) => line.classList.toggle('is-active', isWordmarkShrunkForty && line === activeLine));
       };
@@ -3525,17 +3603,17 @@
       if (personTrigger) {
         personTrigger.addEventListener('click', () => {
           updatePersonProfile();
-          setPanelVisible(true);
+          setPanelVisible(true, personTrigger);
         });
       }
-      mobilePersonButtons.forEach((button) => {
+      personButtons.forEach((button) => {
         button.addEventListener('click', () => {
           const profileSource = button.dataset.profile;
           if (!profileSource || !staffProfiles[profileSource]) return;
           activeImageSource = profileSource;
           if (figureImage) figureImage.src = profileSource;
           updatePersonProfile(true);
-          setPanelVisible(true);
+          setPanelVisible(true, button);
         });
       });
       if (personClose) {
@@ -3550,7 +3628,26 @@
         personScrollBody.addEventListener('scroll', updateContentScrollCue, { passive: true });
       }
       document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') setPanelVisible(false);
+        if (!personPanel?.classList.contains('is-visible')) return;
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          setPanelVisible(false);
+          return;
+        }
+        if (event.key !== 'Tab') return;
+
+        const focusableElements = getPanelFocusableElements();
+        const firstFocusable = focusableElements[0] || personCard;
+        const lastFocusable = focusableElements[focusableElements.length - 1] || personCard;
+        if (!firstFocusable || !lastFocusable) return;
+
+        if (event.shiftKey && (document.activeElement === firstFocusable || !personCard?.contains(document.activeElement))) {
+          event.preventDefault();
+          lastFocusable.focus();
+        } else if (!event.shiftKey && (document.activeElement === lastFocusable || !personCard?.contains(document.activeElement))) {
+          event.preventDefault();
+          firstFocusable.focus();
+        }
       });
       window.addEventListener('scroll', requestUpdate, { passive: true });
       if (!isCoarsePointer) {
