@@ -4294,7 +4294,7 @@ body[data-theme="light"] .studio-textbox-note {
   <header class="hero">
     <video
       class="hero__video is-stage-1"
-      src="mond-studio-branding-design-showreel-cluj-budapest.mp4"
+      data-src="media/videos/home/mond-studio-branding-design-showreel-hero.mp4"
       poster="media/videos/home/mond-studio-showreel-poster.webp"
       width="1440"
       height="810"
@@ -4302,11 +4302,39 @@ body[data-theme="light"] .studio-textbox-note {
       muted
       playsinline
       webkit-playsinline
-      preload="auto"
+      preload="metadata"
       disablepictureinpicture
     >
       Your browser does not support the video tag.
     </video>
+    <style>
+      .hero__video::-webkit-media-controls {
+        display: none !important;
+      }
+    </style>
+    <script>
+      (() => {
+        const video = document.querySelector('.hero__video');
+        if (!video) return;
+
+        const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true;
+        const saveData = navigator.connection?.saveData === true;
+        const motionDisabled = prefersReducedMotion || saveData;
+        video.dataset.motionDisabled = motionDisabled ? 'true' : 'false';
+
+        if (motionDisabled) {
+          video.autoplay = false;
+          video.removeAttribute('autoplay');
+          video.preload = 'none';
+          video.pause();
+          return;
+        }
+
+        if (video.dataset.src) {
+          video.src = video.dataset.src;
+        }
+      })();
+    </script>
     <a class="hero__cta hero-text-drop" href="https://cal.eu/mondstudio">
       <span class="hero__cta-label">LET'S TALK</span>
     </a>
@@ -4749,7 +4777,7 @@ body[data-theme="light"] .studio-textbox-note {
 
   <script>
     (function enforceAutoplay() {
-      const videos = Array.from(document.querySelectorAll('.hero__video[autoplay]'));
+      const videos = Array.from(document.querySelectorAll('.hero__video[autoplay]:not([data-motion-disabled="true"])'));
       if (!videos.length) return;
 
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
@@ -4761,7 +4789,7 @@ body[data-theme="light"] .studio-textbox-note {
         video.setAttribute('playsinline', '');
         video.setAttribute('webkit-playsinline', '');
         video.setAttribute('muted', '');
-        video.setAttribute('preload', 'auto');
+        video.setAttribute('preload', 'metadata');
         video.defaultMuted = true;
         video.muted = true;
         video.volume = 0;
@@ -4770,7 +4798,17 @@ body[data-theme="light"] .studio-textbox-note {
         video.controls = false;
       };
 
+      const canPlay = (video) => {
+        const overlay = document.getElementById('hero-overlay');
+        const introComplete = !video.loop && overlay?.classList.contains('is-visible');
+        return document.visibilityState === 'visible' && video.dataset.heroInView !== 'false' && !introComplete;
+      };
+
       const attemptPlay = (video, depth = 0) => {
+        if (!canPlay(video)) {
+          video.pause();
+          return;
+        }
         primeVideo(video);
 
         const safePlay = () => {
@@ -4808,8 +4846,32 @@ body[data-theme="light"] .studio-textbox-note {
       window.addEventListener('load', unlockAutoplay, { once: true });
       window.addEventListener('pageshow', unlockAutoplay, { once: true });
       document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) unlockAutoplay();
+        if (document.visibilityState === 'hidden') {
+          videos.forEach((video) => video.pause());
+        } else {
+          unlockAutoplay();
+        }
       });
+
+      if ('IntersectionObserver' in window) {
+        const heroObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target.querySelector('.hero__video');
+            if (!video) return;
+            video.dataset.heroInView = entry.isIntersecting ? 'true' : 'false';
+            if (entry.isIntersecting) {
+              attemptPlay(video);
+            } else {
+              video.pause();
+            }
+          });
+        }, { threshold: 0 });
+
+        videos.forEach((video) => {
+          const hero = video.closest('.hero');
+          if (hero) heroObserver.observe(hero);
+        });
+      }
 
       const resumeOnce = () => {
         unlockAutoplay();
@@ -4994,6 +5056,8 @@ body[data-theme="light"] .studio-textbox-note {
       const prefersReducedMotion = window.matchMedia
         ? window.matchMedia('(prefers-reduced-motion: reduce)')
         : { matches: false };
+      const saveData = navigator.connection?.saveData === true;
+      const motionDisabled = prefersReducedMotion.matches || saveData || video?.dataset.motionDisabled === 'true';
       const themeToggle = document.getElementById('theme-toggle');
       const stageOneClass = 'is-stage-1';
       const isMobileView = window.matchMedia
@@ -5020,7 +5084,7 @@ body[data-theme="light"] .studio-textbox-note {
         video.setAttribute('playsinline', '');
         video.setAttribute('webkit-playsinline', '');
 
-        if (prefersReducedMotion.matches) {
+        if (motionDisabled) {
           video.autoplay = false;
           video.removeAttribute('autoplay');
           video.pause();
@@ -5043,7 +5107,7 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       const ensureAutoplay = () => {
-        if (!video || prefersReducedMotion.matches) {
+        if (!video || motionDisabled) {
           video?.pause();
           return;
         }
@@ -5084,7 +5148,7 @@ body[data-theme="light"] .studio-textbox-note {
         });
       }
 
-      if (prefersReducedMotion.matches) {
+      if (motionDisabled) {
         if (video) {
           video.style.transition = 'none';
         }
@@ -5138,7 +5202,7 @@ body[data-theme="light"] .studio-textbox-note {
           video.loop = true;
 
           const playMobileVideo = () => {
-            if (prefersReducedMotion.matches) {
+            if (motionDisabled) {
               video.pause();
               return;
             }
@@ -5208,6 +5272,11 @@ body[data-theme="light"] .studio-textbox-note {
             /* The intro still works when session storage is unavailable. */
           }
         }
+      }
+
+      if (motionDisabled) {
+        revealOverlay(false);
+        return;
       }
 
       if (hasPlayedBefore) {
