@@ -3217,17 +3217,17 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         <a class="projects-sidebar__brand" href="/" aria-label="MOND : STUDIO home">
           <img src="asset4.png" alt="MOND : STUDIO" width="590" height="63" loading="lazy" decoding="async" />
         </a>
-        <div class="projects-filter" role="list" aria-label="Filter projects by discipline">
-          <h1 class="projects-filter__title projects-sidebar-reveal" id="projects-filter-title" style="--sidebar-reveal-delay: 80ms;">Selected Work</h1>
-          <button class="projects-filter__clear projects-sidebar-reveal is-active" type="button" data-filter-clear aria-pressed="true" style="--sidebar-reveal-delay: 150ms;">
-            <span>All projects</span>
-            <span class="projects-filter__count">12</span>
-          </button>
-          <div class="projects-filter__group projects-sidebar-reveal" style="--sidebar-reveal-delay: 220ms;">
-            <p class="projects-filter__eyebrow">Disciplines</p>
-            <div data-project-filters></div>
+        <div class="projects-filter" data-desktop-filter-host aria-label="Project filters">
+          <h1 class="projects-filter__title projects-sidebar-reveal" id="projects-filter-title" style="--sidebar-reveal-delay: 80ms;">WORKS</h1>
+          <div class="projects-filter__group projects-sidebar-reveal" data-filter-control role="group" aria-labelledby="projects-services-title" style="--sidebar-reveal-delay: 220ms;">
+            <p class="projects-filter__eyebrow" id="projects-services-title">Services</p>
+            <div data-project-filters data-service-filters></div>
           </div>
-          <p class="projects-filter__status" data-filter-status aria-live="polite">12 projects</p>
+          <div class="projects-filter__group projects-sidebar-reveal" data-filter-control role="group" aria-labelledby="projects-industries-title" style="--sidebar-reveal-delay: 290ms;">
+            <p class="projects-filter__eyebrow" id="projects-industries-title">Industries</p>
+            <div data-project-filters data-industry-filters></div>
+          </div>
+          <p class="projects-filter__status" data-filter-control data-filter-status aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;">12 projects shown.</p>
         </div>
         <a class="projects-sidebar__cta" href="https://cal.eu/mondstudio">
           <span class="projects-sidebar__cta-label">LET'S TALK</span>
@@ -3236,25 +3236,15 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       <section class="projects-mobile-filter" aria-label="Project filters">
         <button class="projects-mobile-filter__toggle" id="projects-mobile-filter-toggle" type="button" aria-expanded="false" aria-controls="projects-mobile-filter-panel">
           <span>Filter projects</span>
-          <span class="projects-mobile-filter__summary" data-filter-summary>All projects</span>
+          <span class="projects-mobile-filter__summary" data-filter-summary>No filters</span>
         </button>
-        <div class="projects-mobile-filter__panel" id="projects-mobile-filter-panel" hidden>
-          <button class="projects-filter__clear is-active" type="button" data-filter-clear aria-pressed="true">
-            <span>All projects</span>
-            <span class="projects-filter__count">12</span>
-          </button>
-          <div class="projects-filter__group">
-            <p class="projects-filter__eyebrow">Disciplines</p>
-            <div data-project-filters></div>
-          </div>
-          <p class="projects-filter__status" data-filter-status aria-live="polite">12 projects</p>
-        </div>
+        <div class="projects-mobile-filter__panel" id="projects-mobile-filter-panel" data-mobile-filter-host hidden></div>
       </section>
       <div class="projects-left">
-        <h1 class="projects-fallback-title">Selected Work</h1>
+        <h1 class="projects-fallback-title" data-projects-fallback-heading>WORKS</h1>
         <p class="projects-filter-empty" data-filter-empty hidden>
           No projects match these filters.
-          <button class="projects-filter-empty__reset" type="button" data-filter-clear>Show all projects</button>
+          <button class="projects-filter-empty__reset" type="button" data-filter-clear>Clear filters</button>
         </p>
         <div class="projects-table-container">
           <table class="projects-table">
@@ -3266,63 +3256,63 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               </tr>
             </thead>
             <tbody>
-              <tr class="project-row" data-project-path="/multitool/">
+              <tr class="project-row" data-project-id="multitool">
                 <td><a href="/multitool/">Multitool</a></td>
                 <td><span class="projects-type">Product &amp; 3D Design</span></td>
                 <td>2025</td>
               </tr>
-              <tr class="project-row" data-project-path="/maier-jewelry/">
+              <tr class="project-row" data-project-id="maier-jewelry">
                 <td><a href="/maier-jewelry/">Maier Jewelry</a></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>2024</td>
               </tr>
-              <tr class="project-row" data-project-path="/walk-with-me/">
-                <td><span class="projects-table__disabled-link" aria-disabled="true">Walk with me — record label</span></td>
+              <tr class="project-row" data-project-id="walk-with-me">
+                <td><a href="/walk-with-me/">Walk with me — record label</a></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>2023</td>
               </tr>
-              <tr class="project-row" data-project-path="/marty-restaurants/">
+              <tr class="project-row" data-project-id="marty-restaurants">
                 <td><a href="/marty-restaurants/">Marty Restaurants</a></td>
                 <td><span class="projects-type">Graphic &amp; Editorial Design</span></td>
                 <td>2024</td>
               </tr>
-              <tr class="project-row" data-project-path="/intermezzo/">
+              <tr class="project-row" data-project-id="intermezzo">
                 <td><a href="/intermezzo/">Intermezzo Festival</a></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>2025</td>
               </tr>
-              <tr class="project-row" data-project-path="/lesser-of-two-evils/">
+              <tr class="project-row" data-project-id="lesser-of-two-evils">
                 <td><a href="/lesser-of-two-evils/">Lesser of Two Evils</a></td>
                 <td><span class="projects-type">Motion &amp; Animation</span></td>
                 <td>2021</td>
               </tr>
-              <tr class="project-row" data-project-path="/friss-kakas/">
+              <tr class="project-row" data-project-id="friss-kakas">
                 <td><a href="/friss-kakas/">Friss Kakas</a></td>
                 <td><span class="projects-type">Motion &amp; Animation</span></td>
                 <td>2025</td>
               </tr>
-              <tr class="project-row" data-project-path="/re-mind/">
+              <tr class="project-row" data-project-id="re-mind">
                 <td><a href="/re-mind/">RE:MIND</a></td>
                 <td><span class="projects-type">Product &amp; 3D Design</span></td>
                 <td>2026</td>
               </tr>
-              <tr class="project-row" data-project-path="/dream-ville-software/">
+              <tr class="project-row" data-project-id="dream-ville-software">
                 <td><a href="/dream-ville-software/">Dream Ville Software</a></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>2023</td>
               </tr>
-              <tr class="project-row" data-project-path="/olivo-bistro/">
-                <td><span class="projects-table__disabled-link" aria-disabled="true">Olivo Bistro</span></td>
+              <tr class="project-row" data-project-id="olivo-bistro">
+                <td><span class="projects-table__disabled-link" aria-disabled="true"><span>Olivo Bistro</span>&nbsp;<span class="projects-type">Coming Soon</span></span></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>2024</td>
               </tr>
-              <tr class="project-row" data-project-path="/shinrin/">
-                <td><span class="projects-table__disabled-link" aria-disabled="true">Shinrin</span></td>
+              <tr class="project-row" data-project-id="shinrin">
+                <td><span class="projects-table__disabled-link" aria-disabled="true"><span>Shinrin</span>&nbsp;<span class="projects-type">Coming Soon</span></span></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>—</td>
               </tr>
-              <tr class="project-row" data-project-path="/macn/">
-                <td><span class="projects-table__disabled-link" aria-disabled="true">MACN</span></td>
+              <tr class="project-row" data-project-id="macn">
+                <td><span class="projects-table__disabled-link" aria-disabled="true"><span>MACN</span>&nbsp;<span class="projects-type">Coming Soon</span></span></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>—</td>
               </tr>
@@ -3335,7 +3325,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         <div class="projects-thumb" id="projects-thumb" aria-hidden="true"></div>
         <div class="projects-gallery" aria-label="Project image gallery">
           <div class="projects-gallery__grid">
-            <figure data-project-path="/multitool/">
+            <figure data-project-id="multitool">
               <a class="projects-gallery__link" href="/multitool/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Product &amp; 3D Design</span></div>
@@ -3348,7 +3338,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/maier-jewelry/">
+            <figure data-project-id="maier-jewelry">
               <a class="projects-gallery__link" href="/maier-jewelry/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
@@ -3361,8 +3351,8 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/walk-with-me/">
-              <div class="projects-gallery__link" aria-disabled="true">
+            <figure data-project-id="walk-with-me">
+              <a class="projects-gallery__link" href="/walk-with-me/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Packaging Design</span></div>
                   <video data-src="media/work-previews/walk-with-me-work-preview.mp4" poster="media/work-posters/walk-with-me-work-poster.webp" width="1152" height="648" muted loop playsinline preload="none" aria-label="Walk With Me Rainy Days sleeve video preview"></video>
@@ -3372,9 +3362,9 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                   <span class="projects-gallery__caption-subtitle">Rainy Days Sample Pack</span>
                   <span class="projects-gallery__caption-tags"><span>Visual Identity</span><span>Packaging Design</span><span>Culture &amp; Entertainment</span></span>
                 </figcaption>
-              </div>
+              </a>
             </figure>
-            <figure data-project-path="/marty-restaurants/">
+            <figure data-project-id="marty-restaurants">
               <a class="projects-gallery__link" href="/marty-restaurants/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Graphic &amp; Editorial Design</span></div>
@@ -3387,7 +3377,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/intermezzo/">
+            <figure data-project-id="intermezzo">
               <a class="projects-gallery__link" href="/intermezzo/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
@@ -3400,7 +3390,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/lesser-of-two-evils/">
+            <figure data-project-id="lesser-of-two-evils">
               <a class="projects-gallery__link" href="/lesser-of-two-evils/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Motion &amp; Animation</span></div>
@@ -3413,7 +3403,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/friss-kakas/">
+            <figure data-project-id="friss-kakas">
               <a class="projects-gallery__link" href="/friss-kakas/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Motion &amp; Animation</span></div>
@@ -3426,7 +3416,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/re-mind/">
+            <figure data-project-id="re-mind">
               <a class="projects-gallery__link" href="/re-mind/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Product &amp; 3D Design</span></div>
@@ -3439,7 +3429,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/dream-ville-software/">
+            <figure data-project-id="dream-ville-software">
               <a class="projects-gallery__link" href="/dream-ville-software/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
@@ -3452,9 +3442,10 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-path="/olivo-bistro/">
+            <figure data-project-id="olivo-bistro">
               <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
+                  <span class="projects-gallery__coming-soon">Coming Soon</span>
                   <img src="projects/olivo-bistro/olivo-bistro-brand-identity-presentation.png" alt="Olivo Bistro project preview" width="2250" height="2250" loading="lazy" decoding="async" />
                 </div>
                 <figcaption class="projects-gallery__caption">
@@ -3464,9 +3455,10 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </div>
             </figure>
-            <figure data-project-path="/shinrin/">
+            <figure data-project-id="shinrin">
               <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
+                  <span class="projects-gallery__coming-soon">Coming Soon</span>
                   <img src="projects/shinrin/shinrin-logo-thumbnail.jpg" alt="Shinrin project preview" width="1600" height="1280" loading="lazy" decoding="async" />
                 </div>
                 <figcaption class="projects-gallery__caption">
@@ -3476,9 +3468,10 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </div>
             </figure>
-            <figure data-project-path="/macn/">
+            <figure data-project-id="macn">
               <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
+                  <span class="projects-gallery__coming-soon">Coming Soon</span>
                   <img src="projects/macn/macn-logo-mark.jpg" alt="MACN project preview" width="4000" height="2250" loading="lazy" decoding="async" />
                 </div>
                 <figcaption class="projects-gallery__caption">
@@ -3527,7 +3520,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       const workModel = window.MOND_WORK_TAXONOMY;
       if (
         !workModel ||
-        !Array.isArray(workModel.filterOptions) ||
+        !Array.isArray(workModel.serviceFilterOptions) ||
         !workModel.taxonomies ||
         !Array.isArray(workModel.taxonomies.disciplines) ||
         !Array.isArray(workModel.taxonomies.services) ||
@@ -3536,7 +3529,9 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         !Array.isArray(workModel.projects)
       ) return;
 
-      const filterDefinitions = new Map(workModel.filterOptions.map((filter) => [filter.id, filter]));
+      const serviceFilterDefinitions = new Map(
+        workModel.serviceFilterOptions.map((filter) => [filter.id, filter])
+      );
       const disciplineDefinitions = new Map(
         workModel.taxonomies.disciplines.map((discipline) => [discipline.id, discipline])
       );
@@ -3549,27 +3544,28 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       const projectTypeDefinitions = new Map(
         workModel.taxonomies.projectTypes.map((projectType) => [projectType.id, projectType])
       );
-      const projectsByPath = new Map(workModel.projects.map((project) => [project.path, project]));
-      const filterLabel = (id) => filterDefinitions.get(id)?.label || id;
+      const projectsById = new Map(workModel.projects.map((project) => [project.id, project]));
       const galleryGrid = document.querySelector('.projects-gallery__grid');
-      const galleryFigures = Array.from(document.querySelectorAll('.projects-gallery figure[data-project-path]'));
-      const tableRows = Array.from(document.querySelectorAll('.projects-table tbody tr[data-project-path]'));
+      const galleryFigures = Array.from(document.querySelectorAll('.projects-gallery figure[data-project-id]'));
+      const tableRows = Array.from(document.querySelectorAll('.projects-table tbody tr[data-project-id]'));
       const hasCompleteModel = Boolean(
         galleryGrid &&
         workModel.projects.length === galleryFigures.length &&
         workModel.projects.length === tableRows.length &&
-        projectsByPath.size === workModel.projects.length &&
+        projectsById.size === workModel.projects.length &&
         workModel.projects.every((project) => (
+          typeof project.id === 'string' &&
           Array.isArray(project.workFilterIds) &&
-          project.workFilterIds.every((filterId) => filterDefinitions.has(filterId)) &&
+          project.workFilterIds.every((filterId) => serviceFilterDefinitions.has(filterId)) &&
           disciplineDefinitions.has(project.primaryDiscipline) &&
           Array.isArray(project.services) &&
           project.services.every((serviceId) => serviceDefinitions.has(serviceId)) &&
-          industryDefinitions.has(project.industry) &&
+          (project.industry === null || industryDefinitions.has(project.industry)) &&
           Array.isArray(project.subindustries) &&
           (project.projectType === null || projectTypeDefinitions.has(project.projectType)) &&
-          galleryFigures.some((figure) => figure.dataset.projectPath === project.path) &&
-          tableRows.some((row) => row.dataset.projectPath === project.path)
+          typeof project.workLinkEnabled === 'boolean' &&
+          galleryFigures.some((figure) => figure.dataset.projectId === project.id) &&
+          tableRows.some((row) => row.dataset.projectId === project.id)
         ))
       );
 
@@ -3605,55 +3601,111 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
       setView('image');
 
-      document.querySelectorAll('[data-project-filters]').forEach((filterContainer) => {
-        const buttons = workModel.filterOptions.map((definition) => {
+      const createFilterButtons = (definitions, filterType) => definitions.map((definition) => {
           const button = document.createElement('button');
           button.className = 'projects-filter__button';
           button.type = 'button';
-          button.dataset.filter = definition.id;
+          button.dataset.filterType = filterType;
+          button.dataset.filterId = definition.id;
           button.setAttribute('aria-pressed', 'false');
 
           const text = document.createElement('span');
           text.textContent = definition.label;
-          const count = document.createElement('span');
-          count.className = 'projects-filter__count';
-          count.textContent = workModel.projects.filter((project) => (
-            project.workFilterIds.includes(definition.id)
-          )).length;
           const remove = document.createElement('span');
           remove.className = 'projects-filter__remove';
           remove.setAttribute('aria-hidden', 'true');
           remove.textContent = 'x';
 
-          button.append(text, count, remove);
+          button.append(text, remove);
           return button;
-        });
-        filterContainer.replaceChildren(...buttons);
       });
 
-      const filterButtons = Array.from(document.querySelectorAll('.projects-filter__button[data-filter]'));
+      const serviceFilterContainer = document.querySelector('[data-service-filters]');
+      const industryFilterContainer = document.querySelector('[data-industry-filters]');
+      const filterControlElements = Array.from(document.querySelectorAll('[data-filter-control]'));
+      const desktopFilterHost = document.querySelector('[data-desktop-filter-host]');
+      const mobileFilterHost = document.querySelector('[data-mobile-filter-host]');
+      const projectsHeading = document.getElementById('projects-filter-title');
+      const fallbackHeading = document.querySelector('[data-projects-fallback-heading]');
+      const mobileFilterSection = document.querySelector('.projects-mobile-filter');
+      const projectsLeft = document.querySelector('.projects-left');
+
+      if (
+        !serviceFilterContainer ||
+        !industryFilterContainer ||
+        !filterControlElements.length ||
+        !desktopFilterHost ||
+        !mobileFilterHost ||
+        !projectsHeading ||
+        !fallbackHeading ||
+        !mobileFilterSection ||
+        !projectsLeft
+      ) return;
+
+      serviceFilterContainer.replaceChildren(
+        ...createFilterButtons(workModel.serviceFilterOptions, 'service')
+      );
+      industryFilterContainer.replaceChildren(
+        ...createFilterButtons(workModel.taxonomies.industries, 'industry')
+      );
+
+      const filterButtons = Array.from(document.querySelectorAll('.projects-filter__button[data-filter-id]'));
       const clearFilterButtons = Array.from(document.querySelectorAll('[data-filter-clear]'));
       const filterSummaries = Array.from(document.querySelectorAll('[data-filter-summary]'));
       const filterStatuses = Array.from(document.querySelectorAll('[data-filter-status]'));
       const emptyFilterStates = Array.from(document.querySelectorAll('[data-filter-empty]'));
       const mobileFilterToggle = document.getElementById('projects-mobile-filter-toggle');
       const mobileFilterPanel = document.getElementById('projects-mobile-filter-panel');
-      const filterFromFragment = () => {
-        const filterId = window.location.hash.slice(1);
-        return filterDefinitions.has(filterId) ? filterId : null;
+      const mobileFilterMedia = window.matchMedia('(max-width: 720px)');
+      const filterStateFromFragment = () => {
+        const rawFragment = window.location.hash.slice(1);
+        if (!rawFragment) return { service: null, industry: null };
+
+        if (!rawFragment.includes('=')) {
+          let legacyService = null;
+          try {
+            legacyService = decodeURIComponent(rawFragment);
+          } catch (error) {
+            return { service: null, industry: null };
+          }
+          return {
+            service: serviceFilterDefinitions.has(legacyService) ? legacyService : null,
+            industry: null
+          };
+        }
+
+        const parameters = new URLSearchParams(rawFragment);
+        const service = parameters.get('service');
+        const industry = parameters.get('industry');
+        return {
+          service: serviceFilterDefinitions.has(service) ? service : null,
+          industry: industryDefinitions.has(industry) ? industry : null
+        };
       };
       const updateFilterFragment = () => {
-        const fragment = activeFilter ? `#${activeFilter}` : '';
+        const parameters = new URLSearchParams();
+        if (activeService) parameters.set('service', activeService);
+        if (activeIndustry) parameters.set('industry', activeIndustry);
+        const serializedState = parameters.toString();
+        const fragment = serializedState ? `#${serializedState}` : '';
         window.history.replaceState(
           window.history.state,
           '',
           `${window.location.pathname}${window.location.search}${fragment}`
         );
       };
-      let activeFilter = filterFromFragment();
+      const initialFilterState = filterStateFromFragment();
+      let activeService = initialFilterState.service;
+      let activeIndustry = initialFilterState.industry;
       let canonicalProjectOrder = null;
 
       if (mobileFilterToggle && mobileFilterPanel) {
+        const closeMobileFilters = (restoreFocus = false) => {
+          mobileFilterToggle.setAttribute('aria-expanded', 'false');
+          mobileFilterPanel.hidden = true;
+          if (restoreFocus) mobileFilterToggle.focus();
+        };
+
         mobileFilterToggle.addEventListener('click', () => {
           const isOpen = mobileFilterToggle.getAttribute('aria-expanded') === 'true';
           mobileFilterToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
@@ -3662,10 +3714,33 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
         document.addEventListener('keydown', (event) => {
           if (event.key !== 'Escape' || mobileFilterPanel.hidden) return;
-          mobileFilterToggle.setAttribute('aria-expanded', 'false');
-          mobileFilterPanel.hidden = true;
-          mobileFilterToggle.focus();
+          closeMobileFilters(true);
         });
+
+        const placeFilterControls = () => {
+          const isMobile = mobileFilterMedia.matches;
+          const destination = isMobile ? mobileFilterHost : desktopFilterHost;
+          if (filterControlElements[0].parentElement !== destination) {
+            filterControlElements.forEach((element) => destination.appendChild(element));
+          }
+          if (isMobile) {
+            mobileFilterSection.before(fallbackHeading);
+            fallbackHeading.style.display = 'block';
+            fallbackHeading.style.margin = '0 10px 24px';
+          } else {
+            projectsLeft.prepend(fallbackHeading);
+            fallbackHeading.style.removeProperty('display');
+            fallbackHeading.style.removeProperty('margin');
+            closeMobileFilters();
+          }
+        };
+
+        placeFilterControls();
+        if (typeof mobileFilterMedia.addEventListener === 'function') {
+          mobileFilterMedia.addEventListener('change', placeFilterControls);
+        } else if (typeof mobileFilterMedia.addListener === 'function') {
+          mobileFilterMedia.addListener(placeFilterControls);
+        }
       }
 
       const animateProjectRefresh = (figures) => {
@@ -3694,7 +3769,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         const landscapeFigures = [];
 
         visibleFigures.forEach((figure) => {
-          const project = projectsByPath.get(figure.dataset.projectPath);
+          const project = projectsById.get(figure.dataset.projectId);
           if (project?.layout === 'portrait') {
             portraitFigures.push(figure);
           } else {
@@ -3713,7 +3788,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
           if (!nextFigure) break;
 
           reorderedFigures.push(nextFigure);
-          const nextProject = projectsByPath.get(nextFigure.dataset.projectPath);
+          const nextProject = projectsById.get(nextFigure.dataset.projectId);
           lastWasLandscape = nextProject?.layout !== 'portrait';
         }
 
@@ -3745,25 +3820,32 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       };
 
       const updateFilterInterface = (visibleCount) => {
-        const hasActiveFilter = Boolean(activeFilter);
-
         filterButtons.forEach((button) => {
-          const isActive = activeFilter === button.dataset.filter;
+          const isActive = button.dataset.filterType === 'service'
+            ? activeService === button.dataset.filterId
+            : activeIndustry === button.dataset.filterId;
           button.classList.toggle('is-active', isActive);
           button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
         });
 
-        clearFilterButtons.forEach((button) => {
-          button.classList.toggle('is-active', !hasActiveFilter);
-          button.setAttribute('aria-pressed', hasActiveFilter ? 'false' : 'true');
-        });
-
-        const summary = activeFilter ? filterLabel(activeFilter) : 'All projects';
+        const serviceLabel = activeService
+          ? serviceFilterDefinitions.get(activeService).label
+          : null;
+        const industryLabel = activeIndustry
+          ? industryDefinitions.get(activeIndustry).label
+          : null;
+        const activeLabels = [serviceLabel, industryLabel].filter(Boolean);
+        const heading = serviceLabel || 'WORKS';
+        projectsHeading.textContent = heading;
+        fallbackHeading.textContent = heading;
+        const summary = activeLabels.length ? activeLabels.join(' + ') : 'No filters';
         filterSummaries.forEach((element) => {
           element.textContent = summary;
         });
         filterStatuses.forEach((element) => {
-          element.textContent = `${visibleCount} ${visibleCount === 1 ? 'project' : 'projects'}`;
+          element.textContent = visibleCount === 0
+            ? `No projects match ${activeLabels.join(' and ')}.`
+            : `${visibleCount} ${visibleCount === 1 ? 'project' : 'projects'} shown.`;
         });
         emptyFilterStates.forEach((element) => {
           element.hidden = visibleCount !== 0;
@@ -3772,21 +3854,33 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
       const applyProjectFilters = () => {
         const visibleFigures = [];
-        const hasActiveFilter = Boolean(activeFilter);
+        const hasActiveFilter = Boolean(activeService || activeIndustry);
 
         galleryGrid.classList.toggle('is-filter-active', hasActiveFilter);
 
         galleryFigures.forEach((figure) => {
-          const project = projectsByPath.get(figure.dataset.projectPath);
-          const isVisible = Boolean(project && (!activeFilter || project.workFilterIds.includes(activeFilter)));
+          const project = projectsById.get(figure.dataset.projectId);
+          const matchesService = Boolean(
+            project && (!activeService || project.workFilterIds.includes(activeService))
+          );
+          const matchesIndustry = Boolean(
+            project && (!activeIndustry || project.industry === activeIndustry)
+          );
+          const isVisible = matchesService && matchesIndustry;
           figure.classList.toggle('is-filtered-out', !isVisible);
           figure.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
           if (isVisible) visibleFigures.push(figure);
         });
 
         tableRows.forEach((row) => {
-          const project = projectsByPath.get(row.dataset.projectPath);
-          row.hidden = !(project && (!activeFilter || project.workFilterIds.includes(activeFilter)));
+          const project = projectsById.get(row.dataset.projectId);
+          const matchesService = Boolean(
+            project && (!activeService || project.workFilterIds.includes(activeService))
+          );
+          const matchesIndustry = Boolean(
+            project && (!activeIndustry || project.industry === activeIndustry)
+          );
+          row.hidden = !(matchesService && matchesIndustry);
         });
 
         refreshProjectLayout(visibleFigures);
@@ -3795,7 +3889,11 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
       filterButtons.forEach((button) => {
         button.addEventListener('click', () => {
-          activeFilter = activeFilter === button.dataset.filter ? null : button.dataset.filter;
+          if (button.dataset.filterType === 'service') {
+            activeService = activeService === button.dataset.filterId ? null : button.dataset.filterId;
+          } else {
+            activeIndustry = activeIndustry === button.dataset.filterId ? null : button.dataset.filterId;
+          }
           updateFilterFragment();
           applyProjectFilters();
         });
@@ -3803,19 +3901,27 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
       clearFilterButtons.forEach((button) => {
         button.addEventListener('click', () => {
-          activeFilter = null;
+          activeService = null;
+          activeIndustry = null;
           updateFilterFragment();
           applyProjectFilters();
         });
       });
 
       window.addEventListener('hashchange', () => {
-        const fragmentFilter = filterFromFragment();
-        if (fragmentFilter === activeFilter) return;
-        activeFilter = fragmentFilter;
+        const fragmentState = filterStateFromFragment();
+        const stateIsUnchanged = (
+          fragmentState.service === activeService &&
+          fragmentState.industry === activeIndustry
+        );
+        activeService = fragmentState.service;
+        activeIndustry = fragmentState.industry;
+        updateFilterFragment();
+        if (stateIsUnchanged) return;
         applyProjectFilters();
       });
 
+      updateFilterFragment();
       applyProjectFilters();
       document.documentElement.classList.add('taxonomy-ready');
 
