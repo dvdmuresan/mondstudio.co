@@ -6,7 +6,7 @@
   };
 
   const model = {
-    filterOptions: [
+    serviceFilterOptions: [
       { id: 'visual-identity', label: 'Visual Identity' },
       { id: 'creative-direction', label: 'Creative Direction' },
       { id: 'motion-animation', label: 'Motion & Animation' },
@@ -50,6 +50,7 @@
     },
     projects: [
       {
+        id: 'multitool',
         path: '/multitool/',
         cardTitle: 'Multitool',
         cardSubtitle: 'One Tool, Many Moves',
@@ -64,9 +65,11 @@
         projectOrigin: null,
         cardBadge: 'product-3d',
         layout: 'portrait',
-        status: 'published'
+        status: 'published',
+        workLinkEnabled: true
       },
       {
+        id: 'maier-jewelry',
         path: '/maier-jewelry/',
         cardTitle: 'Maier',
         cardSubtitle: 'Stones with Soul',
@@ -81,9 +84,11 @@
         projectOrigin: null,
         cardBadge: 'visual-identity',
         layout: 'portrait',
-        status: 'published'
+        status: 'published',
+        workLinkEnabled: true
       },
       {
+        id: 'walk-with-me',
         path: '/walk-with-me/',
         cardTitle: 'Walk with me',
         cardSubtitle: 'Rainy Days Sample Pack',
@@ -98,9 +103,11 @@
         projectOrigin: null,
         cardBadge: 'packaging-design',
         layout: 'landscape',
-        status: 'incomplete'
+        status: 'incomplete',
+        workLinkEnabled: true
       },
       {
+        id: 'marty-restaurants',
         path: '/marty-restaurants/',
         cardTitle: 'Marty',
         cardSubtitle: 'For the Love of Food',
@@ -115,9 +122,11 @@
         projectOrigin: null,
         cardBadge: 'graphic-editorial',
         layout: 'portrait',
-        status: 'published'
+        status: 'published',
+        workLinkEnabled: true
       },
       {
+        id: 'intermezzo',
         path: '/intermezzo/',
         cardTitle: 'Intermezzo',
         cardSubtitle: 'Where Music Meets Form',
@@ -132,9 +141,11 @@
         projectOrigin: null,
         cardBadge: 'visual-identity',
         layout: 'landscape',
-        status: 'published'
+        status: 'published',
+        workLinkEnabled: true
       },
       {
+        id: 'lesser-of-two-evils',
         path: '/lesser-of-two-evils/',
         cardTitle: 'Lesser',
         cardSubtitle: 'Less Still, More Motion',
@@ -149,9 +160,11 @@
         projectOrigin: null,
         cardBadge: 'motion-animation',
         layout: 'landscape',
-        status: 'published'
+        status: 'published',
+        workLinkEnabled: true
       },
       {
+        id: 'friss-kakas',
         path: '/friss-kakas/',
         cardTitle: 'Friss Kakas',
         cardSubtitle: 'Fresh Moves',
@@ -166,9 +179,11 @@
         projectOrigin: null,
         cardBadge: 'motion-animation',
         layout: 'landscape',
-        status: 'published'
+        status: 'published',
+        workLinkEnabled: true
       },
       {
+        id: 're-mind',
         path: '/re-mind/',
         cardTitle: 'RE:MIND',
         cardSubtitle: 'A Ritual for the Mind',
@@ -183,9 +198,11 @@
         projectOrigin: null,
         cardBadge: 'product-3d',
         layout: 'portrait',
-        status: 'published'
+        status: 'published',
+        workLinkEnabled: true
       },
       {
+        id: 'dream-ville-software',
         path: '/dream-ville-software/',
         cardTitle: 'Dream Ville',
         cardSubtitle: 'Dreams Have No Titles',
@@ -200,9 +217,11 @@
         projectOrigin: null,
         cardBadge: 'visual-identity',
         layout: 'landscape',
-        status: 'published'
+        status: 'published',
+        workLinkEnabled: true
       },
       {
+        id: 'olivo-bistro',
         path: '/olivo-bistro/',
         cardTitle: 'Olivo bistro',
         cardSubtitle: 'In good company',
@@ -217,9 +236,11 @@
         projectOrigin: null,
         cardBadge: null,
         layout: 'landscape',
-        status: 'incomplete'
+        status: 'incomplete',
+        workLinkEnabled: false
       },
       {
+        id: 'shinrin',
         path: '/shinrin/',
         cardTitle: 'Shinrin',
         cardSubtitle: '',
@@ -234,9 +255,11 @@
         projectOrigin: null,
         cardBadge: null,
         layout: 'portrait',
-        status: 'preview'
+        status: 'preview',
+        workLinkEnabled: false
       },
       {
+        id: 'macn',
         path: '/macn/',
         cardTitle: 'MACN',
         cardSubtitle: 'Culture in Constant Motion',
@@ -251,7 +274,8 @@
         projectOrigin: null,
         cardBadge: null,
         layout: 'landscape',
-        status: 'incomplete'
+        status: 'incomplete',
+        workLinkEnabled: false
       }
     ]
   };
