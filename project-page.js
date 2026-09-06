@@ -266,7 +266,6 @@
           hasDragged = false;
           startX = e.clientX;
           startScroll = gallery.scrollLeft;
-          gallery.setPointerCapture(e.pointerId);
           gallery.classList.add("is-dragging");
           e.preventDefault();
         });
@@ -276,6 +275,9 @@
           const deltaX = e.clientX - startX;
           if (Math.abs(deltaX) > 6) {
             hasDragged = true;
+            if (!gallery.hasPointerCapture(e.pointerId)) {
+              gallery.setPointerCapture(e.pointerId);
+            }
           }
           gallery.scrollLeft = startScroll - deltaX;
         });
@@ -301,13 +303,79 @@
       const prevButton = lightbox?.querySelector(".image-lightbox__prev");
       const nextButton = lightbox?.querySelector(".image-lightbox__next");
       const counter = lightbox?.querySelector(".image-lightbox__counter");
-      const galleryImages = Array.from(document.querySelectorAll(".case-gallery figure img"));
+      const galleryImages = Array.from(document.querySelectorAll(".case-gallery figure img, figure.case-gallery__image img"));
 
       if (!lightbox || !lightboxImage || !closeButton || !prevButton || !nextButton || !counter || !galleryImages.length) {
         return;
       }
 
       let activeIndex = 0;
+      let isOpen = false;
+      let lastTrigger = null;
+      let fallbackFocusTarget = null;
+      let closeTimer = 0;
+      let backgroundState = [];
+      let scrollPosition = { x: 0, y: 0 };
+
+      if (lightboxImage.getAttribute("src") === "") {
+        lightboxImage.removeAttribute("src");
+      }
+      lightbox.hidden = true;
+      lightbox.inert = true;
+
+      const setBackgroundInert = (shouldBeInert) => {
+        if (shouldBeInert) {
+          backgroundState = Array.from(document.body.children)
+            .filter((element) => element !== lightbox && !element.contains(lightbox))
+            .filter((element) => !["SCRIPT", "STYLE", "LINK"].includes(element.tagName))
+            .map((element) => ({ element, wasInert: element.inert }));
+
+          backgroundState.forEach(({ element }) => {
+            element.inert = true;
+          });
+          return;
+        }
+
+        backgroundState.forEach(({ element, wasInert }) => {
+          if (element.isConnected) {
+            element.inert = wasInert;
+          }
+        });
+        backgroundState = [];
+      };
+
+      const focusWithoutScroll = (element) => {
+        if (!(element instanceof HTMLElement) || !element.isConnected || element.inert || element.closest("[inert]")) {
+          return false;
+        }
+
+        element.focus({ preventScroll: true });
+        return document.activeElement === element;
+      };
+
+      const restoreFocus = () => {
+        if (focusWithoutScroll(lastTrigger)) return;
+
+        const target = fallbackFocusTarget?.isConnected
+          ? fallbackFocusTarget
+          : document.querySelector("main h1, h1, main");
+        if (!(target instanceof HTMLElement)) return;
+
+        const previousTabindex = target.getAttribute("tabindex");
+        target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+        target.addEventListener("blur", () => {
+          if (previousTabindex === null) {
+            target.removeAttribute("tabindex");
+          } else {
+            target.setAttribute("tabindex", previousTabindex);
+          }
+        }, { once: true });
+      };
+
+      const getFocusableElements = () => Array.from(lightbox.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )).filter((element) => !element.hidden && element.getAttribute("aria-hidden") !== "true");
 
       const updateImage = () => {
         const image = galleryImages[activeIndex];
@@ -316,20 +384,50 @@
         counter.textContent = `${activeIndex + 1} / ${galleryImages.length}`;
       };
 
-      const openLightbox = (index) => {
+      const openLightbox = (index, trigger) => {
+        window.clearTimeout(closeTimer);
+        closeTimer = 0;
+        isOpen = true;
+        lastTrigger = trigger instanceof HTMLElement ? trigger : document.activeElement;
+        fallbackFocusTarget = lastTrigger?.closest(".case-gallery, .friss-kakas-gallery") || document.querySelector("main h1, h1, main");
+        scrollPosition = { x: window.scrollX, y: window.scrollY };
         activeIndex = index;
         updateImage();
-        lightbox.classList.add("is-open");
+        lightbox.hidden = false;
+        lightbox.inert = false;
         lightbox.setAttribute("aria-hidden", "false");
+        lightbox.classList.add("is-open");
+        document.documentElement.classList.add("lightbox-open");
         document.body.classList.add("lightbox-open");
         closeButton.focus({ preventScroll: true });
+        setBackgroundInert(true);
       };
 
       const closeLightbox = () => {
-        lightbox.classList.remove("is-open");
+        if (!isOpen) return;
+
+        isOpen = false;
+        setBackgroundInert(false);
+        restoreFocus();
+        lightbox.inert = true;
         lightbox.setAttribute("aria-hidden", "true");
+        lightbox.classList.remove("is-open");
+        document.documentElement.classList.remove("lightbox-open");
         document.body.classList.remove("lightbox-open");
-        lightboxImage.removeAttribute("src");
+        window.scrollTo(scrollPosition.x, scrollPosition.y);
+
+        const finishClose = () => {
+          if (isOpen) return;
+          lightbox.hidden = true;
+          lightboxImage.removeAttribute("src");
+          lightboxImage.alt = "";
+        };
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          finishClose();
+        } else {
+          closeTimer = window.setTimeout(finishClose, 180);
+        }
       };
 
       const showOffset = (offset) => {
@@ -343,11 +441,11 @@
         figure?.setAttribute("role", "button");
         figure?.setAttribute("aria-label", `Open image ${index + 1} of ${galleryImages.length}`);
 
-        figure?.addEventListener("click", () => openLightbox(index));
+        figure?.addEventListener("click", () => openLightbox(index, figure));
         figure?.addEventListener("keydown", (e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            openLightbox(index);
+            openLightbox(index, figure);
           }
         });
       });
@@ -363,14 +461,39 @@
       });
 
       document.addEventListener("keydown", (e) => {
-        if (!lightbox.classList.contains("is-open")) return;
+        if (!isOpen) return;
 
         if (e.key === "Escape") {
+          e.preventDefault();
+          e.stopPropagation();
           closeLightbox();
+        } else if (e.key === "Tab") {
+          const focusableElements = getFocusableElements();
+          const firstElement = focusableElements[0];
+          const lastElement = focusableElements[focusableElements.length - 1];
+
+          if (!firstElement || !lastElement) {
+            e.preventDefault();
+            closeButton.focus({ preventScroll: true });
+          } else if (e.shiftKey && (document.activeElement === firstElement || !lightbox.contains(document.activeElement))) {
+            e.preventDefault();
+            lastElement.focus({ preventScroll: true });
+          } else if (!e.shiftKey && (document.activeElement === lastElement || !lightbox.contains(document.activeElement))) {
+            e.preventDefault();
+            firstElement.focus({ preventScroll: true });
+          }
         } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
           showOffset(-1);
         } else if (e.key === "ArrowRight") {
+          e.preventDefault();
           showOffset(1);
+        }
+      });
+
+      document.addEventListener("focusin", (e) => {
+        if (isOpen && !lightbox.contains(e.target)) {
+          closeButton.focus({ preventScroll: true });
         }
       });
     })();

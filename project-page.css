@@ -923,8 +923,10 @@
       }
     }
 
+    html.lightbox-open,
     body.lightbox-open {
       overflow: hidden;
+      overscroll-behavior: none;
     }
 
     .image-lightbox {
@@ -946,6 +948,10 @@
     .image-lightbox.is-open {
       opacity: 1;
       pointer-events: auto;
+    }
+
+    .image-lightbox[hidden] {
+      display: none;
     }
 
     .image-lightbox__stage {
@@ -1021,6 +1027,13 @@
       font-size: 13px;
       font-weight: 500;
       letter-spacing: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .image-lightbox,
+      .image-lightbox__button {
+        transition: none;
+      }
     }
 
     .footer-section {
