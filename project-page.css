@@ -3001,8 +3001,14 @@ html.lenis.lenis-stopped {
     }
 
     body[data-theme="light"] .case-project-nav--portal .case-project-nav__button {
+      display: inline-grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-content: center;
+      align-items: start;
+      column-gap: 0.25em;
       width: auto;
       max-width: 100%;
+      min-height: 44px;
       height: auto;
       padding: 0;
       border: 0;
@@ -3012,11 +3018,60 @@ html.lenis.lenis-stopped {
       font-size: clamp(24px, 3vw, 48px);
       line-height: 0.95;
       letter-spacing: -0.03em;
-      overflow-wrap: anywhere;
+      text-align: left;
+      white-space: normal;
+      overflow-wrap: normal;
+      word-break: normal;
+      text-wrap: balance;
       box-shadow: none;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
       transform: none;
+    }
+
+    body[data-theme="light"] .case-project-nav--portal .case-project-nav__item--next .case-project-nav__button {
+      grid-template-columns: minmax(0, 1fr) auto;
+      text-align: right;
+    }
+
+    .case-project-nav--portal .case-project-nav__title {
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: normal;
+      word-break: normal;
+      text-wrap: balance;
+    }
+
+    .case-project-nav--portal .case-project-nav__arrow {
+      align-self: start;
+      transition: transform 180ms ease;
+    }
+
+    .case-project-nav--portal .case-project-nav__item--next .case-project-nav__arrow {
+      align-self: end;
+    }
+
+    .case-project-nav--portal .case-project-nav__button:hover .case-project-nav__arrow,
+    .case-project-nav--portal .case-project-nav__button:focus-visible .case-project-nav__arrow {
+      transform: translateX(-0.2em);
+    }
+
+    .case-project-nav--portal .case-project-nav__item--next .case-project-nav__button:hover .case-project-nav__arrow,
+    .case-project-nav--portal .case-project-nav__item--next .case-project-nav__button:focus-visible .case-project-nav__arrow {
+      transform: translateX(0.2em);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .case-project-nav--portal .case-project-nav__arrow {
+        transition: none;
+      }
+
+      .case-project-nav--portal .case-project-nav__button:hover .case-project-nav__arrow,
+      .case-project-nav--portal .case-project-nav__button:focus-visible .case-project-nav__arrow,
+      .case-project-nav--portal .case-project-nav__item--next .case-project-nav__button:hover .case-project-nav__arrow,
+      .case-project-nav--portal .case-project-nav__item--next .case-project-nav__button:focus-visible .case-project-nav__arrow {
+        transform: none;
+      }
     }
 
     body[data-theme="light"] .case-project-nav--portal .case-project-nav__button:hover {
