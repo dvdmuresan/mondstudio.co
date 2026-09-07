@@ -173,6 +173,12 @@
       object-fit: cover;
     }
 
+    @media (min-width: 901px) {
+      .case-section > .case-mobile-info {
+        left: clamp(0px, calc(100vw - 980px), 150px);
+      }
+    }
+
     @media (max-width: 720px) {
       .friss-kakas-mobile-break {
         display: initial;
