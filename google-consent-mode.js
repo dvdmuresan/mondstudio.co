@@ -9,7 +9,9 @@ const foundation = window[key] || (() => {
 
   const mapConsent = (state) => {
     const analytics = state?.choiceMade === true && state.analytics === true;
-    const advertising = state?.choiceMade === true && state.advertising === true;
+    // P5 is analytics-only. Keep Google advertising denied until P6.
+    // The saved MOND advertising preference remains unchanged.
+    const advertising = false;
     return {
       analytics_storage: analytics ? "granted" : "denied",
       ad_storage: advertising ? "granted" : "denied",

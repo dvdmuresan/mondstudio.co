@@ -3,10 +3,10 @@
     .catch(() => null)
     .then(async (consentMode) => {
       await import("/consent-state.js");
-      consentMode?.connectConsent();
-      // Future Google loader belongs here, only after connectConsent() succeeds.
-      // Do not load Google tags independently in HTML or before this point.
-      return import("/consent-ui.js");
+      const connected = consentMode?.connectConsent();
+      // P4 default and persisted update precede the opt-in-only GA4 loader.
+      await import("/consent-ui.js");
+      if (connected) return import("/google-analytics.js");
     })
     .catch(() => {});
 
