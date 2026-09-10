@@ -27,7 +27,7 @@ const mountConsentUI = async () => {
   prompt.hidden = true;
   prompt.innerHTML = `
     <h2 id="mond-consent-title">Privacy preferences</h2>
-    <p>We use essential browser storage for site functionality and your preferences. Optional analytics and advertising require your permission. Neither is currently active.</p>
+    <p>We use essential browser storage for site functionality and your preferences. Google Analytics is optional and loads only with your permission. Advertising technologies are not active.</p>
     <div class="mond-consent-actions">
       <button type="button" data-choice="accept">Accept all</button>
       <button type="button" data-choice="reject">Reject optional</button>
@@ -43,7 +43,7 @@ const mountConsentUI = async () => {
   dialog.setAttribute("data-lenis-prevent", "");
   dialog.innerHTML = `
     <h2 id="mond-consent-settings-title" tabindex="-1">Privacy preferences</h2>
-    <p id="mond-consent-settings-description">Choose what you allow. Optional analytics and advertising are not currently active.</p>
+    <p id="mond-consent-settings-description">Choose what you allow. Google Analytics loads only with Analytics permission. Advertising technologies are not active.</p>
     <form>
       <label class="mond-consent-category"><span><strong id="mond-consent-necessary-label">Necessary</strong><span id="mond-consent-necessary-description">Always on. Required for basic site functionality and saving your preferences.</span></span><input type="checkbox" checked disabled aria-labelledby="mond-consent-necessary-label" aria-describedby="mond-consent-necessary-description"></label>
       <label class="mond-consent-category"><span><strong id="mond-consent-analytics-label">Analytics</strong><span id="mond-consent-analytics-description">Optional measurement of site usage.</span></span><input type="checkbox" name="analytics" aria-labelledby="mond-consent-analytics-label" aria-describedby="mond-consent-analytics-description"></label>
