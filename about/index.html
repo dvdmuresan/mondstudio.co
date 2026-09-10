@@ -815,6 +815,10 @@
       transition: opacity 180ms ease;
     }
 
+    html:has(body.person-modal-open) {
+      overflow-y: hidden;
+    }
+
     body.person-modal-open {
       overflow: hidden;
     }
