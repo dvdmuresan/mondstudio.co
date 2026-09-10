@@ -1,5 +1,7 @@
 (() => {
-  import("/consent-state.js").catch(() => {});
+  import("/consent-state.js")
+    .then(() => import("/consent-ui.js"))
+    .catch(() => {});
 
   const setupSiteStyles = () => {
 
