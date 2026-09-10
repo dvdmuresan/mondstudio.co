@@ -1,6 +1,13 @@
 (() => {
-  import("/consent-state.js")
-    .then(() => import("/consent-ui.js"))
+  import("/google-consent-mode.js")
+    .catch(() => null)
+    .then(async (consentMode) => {
+      await import("/consent-state.js");
+      consentMode?.connectConsent();
+      // Future Google loader belongs here, only after connectConsent() succeeds.
+      // Do not load Google tags independently in HTML or before this point.
+      return import("/consent-ui.js");
+    })
     .catch(() => {});
 
   const setupSiteStyles = () => {
