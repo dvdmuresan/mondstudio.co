@@ -1,4 +1,6 @@
 (() => {
+  import("/consent-state.js").catch(() => {});
+
   const setupSiteStyles = () => {
 
     const isProjectPage = Boolean(document.querySelector('link[href*="project-page.css"]'));
