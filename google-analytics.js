@@ -72,6 +72,7 @@ const initializeAnalytics = () => {
     work_filter_industry: ["filter_name"],
     project_navigation: ["direction", "project_name", "current_project"],
     email_click: ["location"],
+    cal_booking_start: ["location"],
   };
   const track = (name, parameters) => {
     if (!permitted() || !Object.hasOwn(allowedParameters, name)) return;
@@ -85,6 +86,25 @@ const initializeAnalytics = () => {
     else if (pending.length < 20) pending.push([name, clean]);
   };
   const editorialText = (value) => value?.replace(/\s+/g, " ").trim().slice(0, 100) || "";
+
+  // Booking intent only: leaving MOND for Cal is not a completed booking.
+  // Keep this analytics-only; the saved advertising preference is independent.
+  const calDestination = "https://cal.eu/mondstudio";
+  document.querySelectorAll("a[href]").forEach((link) => {
+    if (link.href !== calDestination) return;
+    const path = window.location.pathname;
+    const location = link.closest(".hero__nav, .privacy-nav") ? "header"
+      : link.matches(".hero__cta") && path === "/" ? "home"
+      : link.matches(".hero__cta") && path === "/about/" ? "about"
+      : link.matches(".projects-sidebar__cta") && path === "/work/" ? "work_sidebar" : null;
+    if (!location) return;
+    // A native click covers mouse, touch and Enter once. Observe at the anchor
+    // before the mobile menu closes; never intercept or delay navigation.
+    link.addEventListener("click", (event) => {
+      if (!event.isTrusted || event.defaultPrevented || link.href !== calDestination) return;
+      track("cal_booking_start", { location });
+    });
+  });
 
   if (window.location.pathname === "/work/") {
     document.querySelectorAll("[data-service-filters], [data-industry-filters]").forEach((container) => {
