@@ -70,7 +70,24 @@
       const targetRotation = { x: -0.3, y: 0 };
       const currentRotation = { x: -0.3, y: 0 };
       let animationFrame = null;
-      let isVisible = true;
+      let isVisible = !('IntersectionObserver' in window);
+      let isEligible = false;
+
+      function updateEligibility() {
+        // Keep this eligibility rule aligned with work-3d-loader.js.
+        const style = window.getComputedStyle(container);
+        const rect = container.getBoundingClientRect();
+        isEligible = !document.body.classList.contains('view-image') &&
+          style.display !== 'none' &&
+          style.visibility !== 'hidden' &&
+          style.visibility !== 'collapse' &&
+          rect.width > 0 && rect.height > 0;
+        syncAnimation();
+      }
+
+      function canRender() {
+        return isEligible && isVisible && !document.hidden;
+      }
 
       function updateRendererSize() {
         const rect = container.getBoundingClientRect();
@@ -79,11 +96,12 @@
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
         renderer.setSize(width, height, false);
+        updateEligibility();
       }
 
       function animate() {
         animationFrame = null;
-        if (!isVisible || document.hidden) return;
+        if (!canRender()) return;
 
         if (model) {
           currentRotation.x += (targetRotation.x - currentRotation.x) * 0.08;
@@ -95,8 +113,11 @@
         animationFrame = requestAnimationFrame(animate);
       }
 
-      function startAnimation() {
-        if (animationFrame === null && isVisible && !document.hidden) {
+      function syncAnimation() {
+        if (!canRender()) {
+          if (animationFrame !== null) cancelAnimationFrame(animationFrame);
+          animationFrame = null;
+        } else if (animationFrame === null) {
           animationFrame = requestAnimationFrame(animate);
         }
       }
@@ -148,18 +169,20 @@
       if ('IntersectionObserver' in window) {
         const visibilityObserver = new IntersectionObserver((entries) => {
           isVisible = entries[0]?.isIntersecting ?? true;
-          if (isVisible) {
-            startAnimation();
-          } else if (animationFrame !== null) {
-            cancelAnimationFrame(animationFrame);
-            animationFrame = null;
-          }
+          syncAnimation();
         });
         visibilityObserver.observe(container);
       }
 
-      document.addEventListener('visibilitychange', startAnimation);
+      const eligibilityObserver = new MutationObserver(updateEligibility);
+      for (const element of [document.body, container]) {
+        eligibilityObserver.observe(element, {
+          attributes: true,
+          attributeFilter: ['class', 'style'],
+        });
+      }
+      window.addEventListener('resize', updateEligibility, { passive: true });
+      document.addEventListener('visibilitychange', syncAnimation);
 
       updateRendererSize();
-      startAnimation();
     }

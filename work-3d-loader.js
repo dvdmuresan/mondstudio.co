@@ -3,18 +3,25 @@ const rockModel = document.getElementById("rock-model");
 if (rockModel) {
   let loaded = false;
   let observer;
+  let resizeObserver;
 
   const stopWatching = () => {
     observer?.disconnect();
+    resizeObserver?.disconnect();
     window.removeEventListener("resize", loadModel);
   };
 
   const isVisible = () => {
+    // Keep this eligibility rule aligned with work-3d-model.js.
+    if (document.body.classList.contains("view-image")) return false;
     const style = window.getComputedStyle(rockModel);
+    const rect = rockModel.getBoundingClientRect();
     return (
       style.display !== "none" &&
       style.visibility !== "hidden" &&
-      rockModel.getClientRects().length > 0
+      style.visibility !== "collapse" &&
+      rect.width > 0 &&
+      rect.height > 0
     );
   };
 
@@ -42,5 +49,9 @@ if (rockModel) {
     });
 
     window.addEventListener("resize", loadModel, { passive: true });
+    if ("ResizeObserver" in window) {
+      resizeObserver = new ResizeObserver(loadModel);
+      resizeObserver.observe(rockModel);
+    }
   }
 }
