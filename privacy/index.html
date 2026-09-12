@@ -101,6 +101,7 @@
       pointer-events: auto;
     }
     .privacy-brand img { display: block; width: auto; height: 17.85px; object-fit: contain; }
+    .privacy-menu-toggle { display: none; }
     .privacy-nav {
       position: absolute;
       top: 20px;
@@ -504,6 +505,102 @@
       }
       .mond-footer-legal { justify-content: flex-start; }
     }
+    @media (max-width: 720px) {
+      .privacy-header.is-menu-ready { z-index: 2147483647; width: auto; }
+      .is-menu-ready .privacy-brand {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 2147483647;
+        display: inline-flex;
+        align-items: center;
+        height: 41px;
+        transition: opacity 220ms ease;
+      }
+      .is-menu-ready .privacy-brand img { height: calc(23px / 1.3); width: auto; }
+      body.has-scrolled .is-menu-ready:not(.is-open) .privacy-brand { opacity: 0; pointer-events: none; }
+      .is-menu-ready .privacy-menu-toggle {
+        display: inline-flex;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 2147483647;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 41px;
+        padding: 0 13px;
+        border: 0;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.20);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        color: #fff;
+        pointer-events: auto;
+        cursor: pointer;
+      }
+      .privacy-menu-toggle span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        font: 800 27.9px/1 "Mona Sans", sans-serif;
+        transform: translate(0, -3px);
+        transition: transform 240ms cubic-bezier(.2, .8, .2, 1);
+      }
+      .privacy-menu-toggle[aria-expanded="true"] span { transform: translate(4px, 0) rotate(90deg); }
+      .privacy-menu-toggle:focus-visible { outline: 1px solid currentColor; outline-offset: 5px; }
+      .is-menu-ready .privacy-nav {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483646;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+        gap: 18px;
+        padding: 130px 10px max(28px, env(safe-area-inset-bottom));
+        overflow: auto;
+        background: rgba(0, 0, 0, 0.68);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 320ms ease, visibility 320ms;
+      }
+      .is-menu-ready.is-open .privacy-nav { opacity: 1; visibility: visible; pointer-events: auto; }
+      .is-menu-ready .privacy-nav > a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: fit-content;
+        min-height: 52px;
+        padding: 0;
+        color: #fff;
+        font-size: 52px;
+        font-weight: 400;
+        line-height: 49px;
+        letter-spacing: 0.04em;
+      }
+      .is-menu-ready .privacy-nav .hero__nav-word {
+        display: inline-block;
+        white-space: nowrap;
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 930ms cubic-bezier(.16, 1, .3, 1), transform 930ms cubic-bezier(.16, 1, .3, 1);
+      }
+      .is-open .privacy-nav .hero__nav-word { opacity: 1; transform: translateY(0); }
+      .is-open .privacy-nav > a:nth-child(1) .hero__nav-word { transition-delay: 520ms; }
+      .is-open .privacy-nav > a:nth-child(2) .hero__nav-word { transition-delay: 650ms; }
+      .is-open .privacy-nav > a:nth-child(3) .hero__nav-word { transition-delay: 780ms; }
+      .is-open .privacy-nav > a:nth-child(4) .hero__nav-word { transition-delay: 910ms; }
+      .is-menu-ready:not(.is-open) .privacy-nav .hero__nav-word { transition: opacity 160ms ease, transform 160ms ease; }
+      @media (prefers-reduced-motion: reduce) {
+        .privacy-menu-toggle span, .is-menu-ready .privacy-nav, .privacy-nav .hero__nav-word { transition: none; }
+      }
+    }
   </style>
 </head>
 <body data-theme="dark">
@@ -511,10 +608,13 @@
     <a class="privacy-brand" href="/" aria-label="MOND : STUDIO home">
       <img src="/asset4.png" alt="MOND : STUDIO" width="590" height="63" />
     </a>
-    <nav class="privacy-nav" aria-label="Primary navigation">
-      <a href="/work/">WORK</a>
-      <a href="/about/">ABOUT</a>
-      <a href="https://cal.eu/mondstudio">CONTACT</a>
+    <button class="privacy-menu-toggle" type="button" aria-controls="privacy-primary-nav" aria-expanded="false" aria-label="Open menu">
+      <span aria-hidden="true">:</span>
+    </button>
+    <nav class="privacy-nav" id="privacy-primary-nav" aria-label="Primary navigation">
+      <a href="/work/"><span class="privacy-nav-word">WORK</span></a>
+      <a href="/about/"><span class="privacy-nav-word">ABOUT</span></a>
+      <a href="https://cal.eu/mondstudio"><span class="privacy-nav-word">CONTACT</span></a>
     </nav>
   </header>
 
@@ -566,7 +666,7 @@
       <section class="privacy-section" aria-labelledby="choice-heading">
         <h2 id="choice-heading">Browser Storage Controls</h2>
         <p>Session storage is separate from cookies. You can clear stored website data using your browser settings.</p>
-        <p>Cookie Settings at the bottom of each page lets you save and change your optional privacy preferences. Your choice is stored in local storage in this browser until you change it or clear the stored website data. Turning Analytics off stops new MOND:STUDIO analytics events and disables Google Analytics collection on this page; it does not remove cookies already stored in your browser. Advertising technologies are not active.</p>
+        <p>Cookie Settings at the bottom of the Home, About and Privacy pages lets you save and change your optional privacy preferences. Your choice is stored in local storage in this browser until you change it or clear the stored website data. Turning Analytics off stops new MOND:STUDIO analytics events and disables Google Analytics collection on this page; it does not remove cookies already stored in your browser. Advertising technologies are not active.</p>
       </section>
 
       <section class="privacy-section" aria-labelledby="third-parties-heading">
@@ -630,6 +730,55 @@
     </div>
   </footer>
 
+  <script>
+    (() => {
+      const header = document.querySelector('.privacy-header');
+      const toggle = header.querySelector('.privacy-menu-toggle');
+      const nav = header.querySelector('.privacy-nav');
+      const mobile = window.matchMedia('(max-width: 720px)');
+      const syncLayout = () => {
+        header.classList.toggle('hero__top', mobile.matches);
+        nav.classList.toggle('hero__nav', mobile.matches);
+        nav.querySelectorAll(':scope > a > span').forEach(word => word.classList.toggle('hero__nav-word', mobile.matches));
+      };
+      const setOpen = (open) => {
+        header.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.documentElement.classList.toggle('mond-mobile-menu-open', open);
+      };
+      header.classList.add('is-menu-ready');
+      syncLayout();
+      toggle.addEventListener('click', () => setOpen(mobile.matches && !header.classList.contains('is-open')));
+      nav.addEventListener('click', (event) => {
+        if (event.target.closest('a')) setOpen(false);
+      });
+      document.addEventListener('keydown', (event) => {
+        if (!header.classList.contains('is-open')) return;
+        if (event.key === 'Escape') {
+          setOpen(false);
+          toggle.focus();
+        } else if (event.key === 'Tab') {
+          const last = Array.from(nav.querySelectorAll('a')).at(-1);
+          if (event.shiftKey && document.activeElement === toggle) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            toggle.focus();
+          }
+        }
+      });
+      mobile.addEventListener('change', () => { setOpen(false); syncLayout(); });
+      const syncScroll = () => document.body.classList.toggle('has-scrolled', window.scrollY > 0);
+      window.addEventListener('scroll', syncScroll, { passive: true });
+      syncScroll();
+      window.addEventListener('pageshow', (event) => {
+        // Reset a restored menu, not one opened while the initial page loads.
+        if (event.persisted) setOpen(false);
+      });
+    })();
+  </script>
   <script defer src="/site-common.js?v=20260825-3"></script>
 </body>
 </html>

@@ -15,6 +15,11 @@ const mountConsentUI = async () => {
 
   const utility = document.createElement("nav");
   utility.className = "mond-consent-utility";
+  const pagePath = window.location.pathname.replace(/\/index\.html$/, "/").replace(/\/+$/, "") || "/";
+  const footerAllowed = ["/", "/about", "/privacy"].includes(pagePath);
+  if (!footerAllowed) {
+    utility.classList.add("mond-consent-utility--hidden");
+  }
   utility.setAttribute("aria-label", "Privacy controls");
   utility.innerHTML = `<button type="button" aria-haspopup="dialog" aria-controls="mond-consent-settings">Cookie Settings</button><a href="/privacy/">Privacy Policy</a>`;
   const opener = utility.querySelector("button");
@@ -55,6 +60,26 @@ const mountConsentUI = async () => {
     </form>
     <a class="mond-consent-policy" href="/privacy/">Privacy Policy</a>`;
   document.body.append(utility, prompt, dialog);
+
+  const brand = document.querySelector(".site-footer .footer-brand-minimal");
+  if (footerAllowed && brand?.querySelector(".footer-brand-minimal__mobile-copy")) {
+    const mobileFooter = window.matchMedia("(max-width: 600px)");
+    const desktopFooter = window.matchMedia("(min-width: 721px)");
+    const copyright = document.querySelector(".site-footer .footer-copy-minimal");
+    const updatePlacement = () => {
+      const mobile = mobileFooter.matches;
+      const desktop = copyright && desktopFooter.matches;
+      brand.classList.toggle("has-privacy-controls", mobile);
+      copyright?.classList.toggle("has-privacy-controls", Boolean(desktop));
+      utility.classList.toggle("footer-brand-minimal__mobile-copy", mobile);
+      if (mobile) brand.appendChild(utility);
+      else if (desktop) copyright.appendChild(utility);
+      else document.body.appendChild(utility);
+    };
+    updatePlacement();
+    mobileFooter.addEventListener("change", updatePlacement);
+    desktopFooter.addEventListener("change", updatePlacement);
+  }
 
   const analytics = dialog.querySelector('[name="analytics"]');
   const advertising = dialog.querySelector('[name="advertising"]');

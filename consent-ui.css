@@ -119,6 +119,26 @@
   text-underline-offset: 3px;
   cursor: pointer;
 }
+.mond-consent-utility--hidden { display: none; }
+@media (min-width: 721px) {
+  .site-footer .footer-copy-minimal.has-privacy-controls > a[href="/privacy/"] {
+    display: none;
+  }
+  .site-footer .footer-copy-minimal > .mond-consent-utility {
+    padding: 0;
+    gap: 8px 16px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-align: inherit;
+  }
+  .site-footer .footer-copy-minimal > .mond-consent-utility button,
+  .site-footer .footer-copy-minimal > .mond-consent-utility a {
+    min-height: 0;
+    color: inherit;
+  }
+}
 @media (max-width: 600px) {
   #mond-consent-prompt {
     right: max(10px, env(safe-area-inset-right));
@@ -127,8 +147,43 @@
     max-height: calc(100dvh - 20px);
   }
   #mond-consent-settings { width: calc(100% - 20px); max-height: calc(100dvh - 20px); }
-  .mond-consent { padding: 20px; }
+  .mond-consent {
+    padding: calc(20px / 1.2);
+    border-radius: 12px;
+    font-size: calc(15px / 1.2);
+  }
+  .mond-consent h2 { font-size: 20px; margin-bottom: 10px; }
+  .mond-consent p { margin-bottom: calc(20px / 1.2); }
+  .mond-consent-actions { gap: calc(8px / 1.2); }
+  .mond-consent button {
+    min-height: calc(44px / 1.2);
+    padding: calc(10px / 1.2) calc(14px / 1.2);
+    border-radius: 7px;
+    flex-basis: calc(140px / 1.2);
+  }
+  .mond-consent [data-choice="manage"] { flex-basis: 100%; }
+  .mond-consent-category { gap: calc(20px / 1.2); padding: 15px 0; }
+  .mond-consent-category input {
+    flex-basis: 20px;
+    width: 20px;
+    height: 20px;
+    margin: calc(10px / 1.2) 0 calc(10px / 1.2) calc(10px / 1.2);
+  }
+  .mond-consent-policy { margin-top: calc(20px / 1.2); }
   .mond-consent-utility { padding-inline: 10px; justify-content: flex-start; }
+  .site-footer .has-privacy-controls > .footer-brand-minimal__mobile-copy:not(.mond-consent-utility) {
+    display: none !important;
+  }
+  .site-footer .mond-consent-utility {
+    padding: 0;
+    background: transparent;
+    flex-wrap: nowrap;
+    gap: 16px;
+  }
+  .site-footer .mond-consent-utility button,
+  .site-footer .mond-consent-utility a {
+    color: inherit;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .mond-consent, .mond-consent * { scroll-behavior: auto; animation: none; transition: none; }
