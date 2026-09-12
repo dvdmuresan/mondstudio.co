@@ -174,20 +174,71 @@
     })();
 
     (() => {
-      const videos = Array.from(document.querySelectorAll(".case-gallery__video:not([data-manual-playback])"));
+      const playbackKey = Symbol.for("MOND.projectVideoPlayback");
+      const videos = Array.from(document.querySelectorAll(".case-gallery__video:not([data-manual-playback])"))
+        .filter((video) => !video[playbackKey]);
       if (!videos.length) return;
 
+      const hideFallback = (video) => {
+        const button = video[playbackKey].button;
+        if (button) button.hidden = true;
+      };
+
+      const showFallback = (video) => {
+        const state = video[playbackKey];
+        if (!state.button) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "case-video-play";
+          button.setAttribute("data-video-play-fallback", "");
+          button.setAttribute("aria-label", `Play ${video.getAttribute("aria-label") || "project video"}`);
+          const icon = document.createElement("span");
+          icon.setAttribute("aria-hidden", "true");
+          button.append(icon);
+          // Call play directly from the native button activation, preserving
+          // the user gesture when the browser has refused autoplay.
+          button.addEventListener("click", () => play(video));
+          video.parentElement.append(button);
+          state.button = button;
+        }
+        state.button.hidden = false;
+      };
+
       const play = (video) => {
+        const state = video[playbackKey];
+        if (state.pending) return;
+        if (!video.paused && video.readyState >= 2) {
+          hideFallback(video);
+          return;
+        }
         video.muted = true;
         video.defaultMuted = true;
         video.playsInline = true;
         video.setAttribute("muted", "");
         video.setAttribute("playsinline", "");
-        const attempt = video.play();
-        if (attempt && typeof attempt.catch === "function") attempt.catch(() => {});
+        state.pending = true;
+        const finish = (error) => {
+          state.pending = false;
+          if (!video.paused) hideFallback(video);
+          // Leaving the observer's playback area can abort an in-flight play.
+          // That cancellation is not an autoplay refusal needing user action.
+          else if (error && error.name !== "AbortError") showFallback(video);
+        };
+        try {
+          const attempt = video.play();
+          if (attempt && typeof attempt.then === "function") {
+            attempt.then(() => finish(), finish);
+          } else {
+            finish();
+          }
+        } catch (error) {
+          finish(error);
+        }
       };
 
       videos.forEach((video) => {
+        video[playbackKey] = { pending: false, button: null };
+        video.addEventListener("playing", () => hideFallback(video));
         video.preload = "none";
       });
 
