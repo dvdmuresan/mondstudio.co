@@ -416,7 +416,7 @@
   };
 
   const setupMobileNavigationFooter = () => {
-    const nav = document.querySelector(".hero__nav");
+    const nav = document.querySelector(".hero__nav, .privacy-nav");
     if (!nav || nav.querySelector(".hero__nav-footer")) return;
 
     const footer = document.createElement("div");
@@ -821,12 +821,12 @@
     const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
     if (normalizedPath === "/" || normalizedPath === "/index.html") return;
 
-    const nav = document.querySelector(".hero__nav");
+    const nav = document.querySelector(".hero__nav, .privacy-nav");
     if (!nav || nav.querySelector(".hero__nav-home")) return;
 
     const style = document.createElement("style");
     style.textContent = `
-      .hero__nav .hero__nav-home {
+      .hero__nav .hero__nav-home, .privacy-nav .hero__nav-home {
         display: none !important;
       }
 

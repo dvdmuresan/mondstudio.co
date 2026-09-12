@@ -259,59 +259,6 @@ html {
       margin: 0 auto;
     }
 
-    .edge-colon-markers {
-      position: fixed;
-      inset: 22px 10px;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      pointer-events: none;
-      color: #ffffff;
-      font-family: "Mona Sans", sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 1;
-    }
-
-    body[data-theme="light"] .edge-colon-markers {
-      color: #000000;
-    }
-
-    .edge-colon-markers__side {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
-    }
-
-    .edge-colon-markers__mark {
-      display: block;
-    }
-
-    .edge-colon-markers__mark:first-child {
-      opacity: 0;
-      transition: opacity 180ms ease;
-    }
-
-    body.has-scrolled .edge-colon-markers__mark:first-child {
-      opacity: 1;
-    }
-
-    .edge-colon-markers__mark:nth-last-child(-n + 2) {
-      transition: opacity 180ms ease;
-    }
-
-    body.footer-near .edge-colon-markers__mark:nth-last-child(-n + 2) {
-      opacity: 0;
-    }
-
-    @media (max-width: 900px) {
-      .edge-colon-markers {
-        display: none;
-      }
-    }
-
     /* HERO */
     .hero {
       position: relative;
@@ -4195,7 +4142,7 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       .hero {
-        height: calc(101px + ((100vw - 20px) * 9 / 16));
+        height: calc(101px + ((100vw - 20px) * 9 / 16 * 1.3));
         min-height: 0;
         max-height: none;
       }
@@ -4209,7 +4156,7 @@ body[data-theme="light"] .studio-textbox-note {
         height: auto;
         min-height: 0;
         max-height: none;
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 16 / 11.7;
         left: 50%;
         top: var(--mobile-video-area-top);
         transform: translate(-50%, 0);
@@ -4221,6 +4168,40 @@ body[data-theme="light"] .studio-textbox-note {
 
       .hero-description {
         margin-top: 50px;
+      }
+
+      .pl-4-caption-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .pl-4-caption {
+        width: 100%;
+        font-size: min(30px, calc((100vw - 60px) / 14));
+        line-height: 1.2;
+      }
+
+      .pl-4-caption span {
+        white-space: nowrap;
+      }
+
+      .pl-4-services {
+        width: max-content;
+        justify-self: end;
+        font-size: 0;
+        line-height: 0;
+      }
+
+      .pl-4-services br {
+        display: none;
+      }
+
+      .pl-4-service {
+        display: block;
+        font-size: 15px;
+        line-height: 18px;
+        white-space: nowrap;
       }
 
       .pl-1-title,
@@ -4275,22 +4256,6 @@ body[data-theme="light"] .studio-textbox-note {
   </style>
 </head>
 <body>
-  <div class="edge-colon-markers" aria-hidden="true">
-    <div class="edge-colon-markers__side">
-      <span class="edge-colon-markers__mark">:</span>
-      <span class="edge-colon-markers__mark">:</span>
-      <span class="edge-colon-markers__mark">:</span>
-      <span class="edge-colon-markers__mark">:</span>
-      <span class="edge-colon-markers__mark">:</span>
-    </div>
-    <div class="edge-colon-markers__side">
-      <span class="edge-colon-markers__mark">:</span>
-      <span class="edge-colon-markers__mark">:</span>
-      <span class="edge-colon-markers__mark">:</span>
-      <span class="edge-colon-markers__mark">:</span>
-      <span class="edge-colon-markers__mark">:</span>
-    </div>
-  </div>
   <header class="hero">
     <video
       class="hero__video is-stage-1"

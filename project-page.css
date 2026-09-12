@@ -1417,14 +1417,15 @@
         column-gap: 18px;
         row-gap: 14px;
         width: 100%;
-        margin: 24px 0 0;
+        /* Keep the information offset in flow so the gallery gap is measurable. */
+        margin: -16px 0 0;
         color: #f7f7f7;
         font-family: "Mona Sans", sans-serif;
         font-size: 13.5px;
         line-height: 1.24;
         justify-self: stretch;
         position: relative;
-        top: -40px;
+        top: 0;
       }
 
       .case-mobile-info__item {
@@ -1665,7 +1666,8 @@
         scroll-snap-type: none;
         cursor: default;
         padding: 0;
-        margin-top: 0;
+        /* Together with the section's 32px row gap: 60px after project info. */
+        margin-top: 28px;
         column-gap: 10px;
         row-gap: 10px;
       }
@@ -2970,6 +2972,19 @@ html.lenis.lenis-stopped {
       .case-mobile-info dt {
         font-size: 14.5px;
       }
+
+      .case-description,
+      .case-description h2,
+      .case-description p,
+      .case-credits {
+        font-size: calc(17px / 1.2);
+      }
+
+      .case-description,
+      .case-description h2,
+      .case-description p {
+        line-height: calc(19px / 1.2);
+      }
     }
 
     @media (min-width: 901px) {
@@ -3137,8 +3152,8 @@ html.lenis.lenis-stopped {
         text-align: right;
       }
 
-      body[data-theme="light"] .case-project-nav--portal .case-project-nav__button {
-        font-size: clamp(12px, 3.75vw, 16px);
+      body[data-theme="light"] .case-project-nav.case-project-nav--portal .case-project-nav__button {
+        font-size: calc(clamp(12px, 3.75vw, 16px) / 1.2);
         line-height: 1;
         letter-spacing: -0.035em;
       }
