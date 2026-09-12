@@ -341,6 +341,45 @@ html {
     }
 
 
+    .hero__play-fallback {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 50%;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.65);
+      cursor: pointer;
+    }
+
+    .hero__play-fallback[hidden] {
+      display: none;
+    }
+
+    .hero__play-fallback:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 4px;
+    }
+
+    /* Let the button receive input through the transparent content overlay.
+       Navigation retains its own pointer events and higher stacking level. */
+    .hero__play-fallback:not([hidden]) ~ .hero__overlay {
+      pointer-events: none;
+    }
+
+    @media (max-width: 720px) {
+      .hero__play-fallback {
+        top: calc(101px + (100vw - 20px) * 11.7 / 16 / 2);
+      }
+    }
+
     .hero__skip-button {
       font-weight: 500;
       position: absolute;
@@ -4300,6 +4339,11 @@ body[data-theme="light"] .studio-textbox-note {
         }
       })();
     </script>
+    <button class="hero__play-fallback" type="button" aria-label="Play MOND Studio showreel" hidden>
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M8 4L20 12L8 20Z" fill="currentColor" />
+      </svg>
+    </button>
     <a class="hero__cta hero-text-drop" href="https://cal.eu/mondstudio">
       <span class="hero__cta-label">LET'S TALK</span>
     </a>
@@ -4745,77 +4789,94 @@ body[data-theme="light"] .studio-textbox-note {
       const videos = Array.from(document.querySelectorAll('.hero__video[autoplay]:not([data-motion-disabled="true"])'));
       if (!videos.length) return;
 
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      const playbackKey = Symbol.for('MOND.heroPlayback');
+      const button = document.querySelector('.hero__play-fallback');
+      const overlay = document.getElementById('hero-overlay');
 
-      const fallbackDelays = isIOS ? [0, 150, 400, 900, 1800, 3200, 5200] : [0, 250, 750, 1500, 3000];
+      const canPlay = (video) => {
+        const introComplete = !video.loop && overlay?.classList.contains('is-visible');
+        return document.visibilityState === 'visible' && video.dataset.heroInView !== 'false' && !introComplete;
+      };
 
-      const primeVideo = (video) => {
+      videos.forEach((video) => {
+        let pending = false;
+        let policyBlocked = false;
+        let resumeAfterPending = false;
+
+        const syncFallback = () => {
+          if (button) button.hidden = !(policyBlocked && video.paused && canPlay(video));
+        };
+
+        // Every Home play path uses this gate. A policy refusal waits for an
+        // explicit gesture instead of spawning timer/listener retry trees.
+        const requestPlay = (userGesture = false) => {
+          if (!canPlay(video)) {
+            video.pause();
+            syncFallback();
+            return;
+          }
+          if (pending) {
+            resumeAfterPending = true;
+            return;
+          }
+          if (!video.paused || (policyBlocked && !userGesture)) {
+            syncFallback();
+            return;
+          }
+
+          pending = true;
+          const finish = (error) => {
+            pending = false;
+            const shouldResume = resumeAfterPending;
+            resumeAfterPending = false;
+            if (error?.name === 'NotAllowedError') policyBlocked = true;
+            if (!error || !video.paused) policyBlocked = false;
+            syncFallback();
+            // An out/in visibility change can abort a pending play. Honor the
+            // queued lifecycle request after cancellation, without polling.
+            if (error?.name === 'AbortError' && shouldResume && canPlay(video)) requestPlay();
+          };
+          try {
+            const attempt = video.play();
+            if (attempt && typeof attempt.then === 'function') attempt.then(() => finish(), finish);
+            else finish();
+          } catch (error) {
+            finish(error);
+          }
+        };
+
+        video[playbackKey] = { play: requestPlay };
         video.setAttribute('playsinline', '');
         video.setAttribute('webkit-playsinline', '');
         video.setAttribute('muted', '');
-        video.setAttribute('preload', 'metadata');
+        video.preload = 'metadata';
         video.defaultMuted = true;
         video.muted = true;
         video.volume = 0;
         video.playsInline = true;
         video.webkitPlaysInline = true;
         video.controls = false;
-      };
 
-      const canPlay = (video) => {
-        const overlay = document.getElementById('hero-overlay');
-        const introComplete = !video.loop && overlay?.classList.contains('is-visible');
-        return document.visibilityState === 'visible' && video.dataset.heroInView !== 'false' && !introComplete;
-      };
-
-      const attemptPlay = (video, depth = 0) => {
-        if (!canPlay(video)) {
-          video.pause();
-          return;
-        }
-        primeVideo(video);
-
-        const safePlay = () => {
-          try {
-            const promise = video.play();
-            if (promise && typeof promise.catch === 'function') {
-              promise.catch(() => {
-                if (depth < fallbackDelays.length - 1) {
-                  setTimeout(() => attemptPlay(video, depth + 1), fallbackDelays[depth + 1]);
-                }
-              });
-            }
-          } catch (err) {
-            if (depth < fallbackDelays.length - 1) {
-              setTimeout(() => attemptPlay(video, depth + 1), fallbackDelays[depth + 1]);
-            }
-          }
-        };
-
-        if (video.readyState >= 2) {
-          safePlay();
-        } else {
-          video.addEventListener('loadeddata', safePlay, { once: true });
-          video.addEventListener('canplaythrough', safePlay, { once: true });
-        }
-      };
-
-      videos.forEach((video) => attemptPlay(video));
+        video.addEventListener('playing', () => {
+          policyBlocked = false;
+          syncFallback();
+        });
+        video.addEventListener('pause', syncFallback);
+        video.addEventListener('loadeddata', () => requestPlay(), { once: true });
+        video.addEventListener('canplaythrough', () => requestPlay(), { once: true });
+        if (overlay) new MutationObserver(syncFallback).observe(overlay, { attributes: true, attributeFilter: ['class'] });
+        button?.addEventListener('click', () => requestPlay(true));
+      });
 
       const unlockAutoplay = () => {
-        videos.forEach((video) => attemptPlay(video));
+        videos.forEach((video) => video[playbackKey].play());
       };
-
-      fallbackDelays.slice(1).forEach((delay) => setTimeout(unlockAutoplay, delay));
+      unlockAutoplay();
       window.addEventListener('load', unlockAutoplay, { once: true });
-      window.addEventListener('pageshow', unlockAutoplay, { once: true });
+      window.addEventListener('pageshow', unlockAutoplay);
       document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'hidden') {
-          videos.forEach((video) => video.pause());
-        } else {
-          unlockAutoplay();
-        }
+        if (document.visibilityState === 'hidden') videos.forEach((video) => video.pause());
+        else unlockAutoplay();
       });
 
       if ('IntersectionObserver' in window) {
@@ -4824,27 +4885,25 @@ body[data-theme="light"] .studio-textbox-note {
             const video = entry.target.querySelector('.hero__video');
             if (!video) return;
             video.dataset.heroInView = entry.isIntersecting ? 'true' : 'false';
-            if (entry.isIntersecting) {
-              attemptPlay(video);
-            } else {
-              video.pause();
-            }
+            if (entry.isIntersecting) video[playbackKey].play();
+            else video.pause();
           });
         }, { threshold: 0 });
-
         videos.forEach((video) => {
           const hero = video.closest('.hero');
           if (hero) heroObserver.observe(hero);
         });
       }
 
-      const resumeOnce = () => {
-        unlockAutoplay();
+      const resumeOnce = (event) => {
+        // The dedicated control handles its own click (including Enter/Space),
+        // so a preceding pointerdown/keydown must not launch a second attempt.
+        if (event.target.closest?.('.hero__play-fallback')) return;
+        videos.forEach((video) => video[playbackKey].play(true));
         document.removeEventListener('touchstart', resumeOnce);
         document.removeEventListener('pointerdown', resumeOnce);
         document.removeEventListener('keydown', resumeOnce);
       };
-
       document.addEventListener('touchstart', resumeOnce, { passive: true });
       document.addEventListener('pointerdown', resumeOnce, { passive: true });
       document.addEventListener('keydown', resumeOnce, { passive: true });
@@ -5076,16 +5135,7 @@ body[data-theme="light"] .studio-textbox-note {
           video?.pause();
           return;
         }
-        try {
-          const playAttempt = video.play();
-          if (playAttempt && typeof playAttempt.then === 'function') {
-            playAttempt.catch(() => {
-              /* Some mobile browsers still block autoplay even when muted */
-            });
-          }
-        } catch (err) {
-          /* Ignore autoplay errors */
-        }
+        video[Symbol.for('MOND.heroPlayback')]?.play();
       };
 
       ensureAutoplay();
@@ -5171,12 +5221,7 @@ body[data-theme="light"] .studio-textbox-note {
               video.pause();
               return;
             }
-            try {
-              const playPromise = video.play();
-              if (playPromise && typeof playPromise.catch === 'function') {
-                playPromise.catch(() => {});
-              }
-            } catch (err) {}
+            video[Symbol.for('MOND.heroPlayback')]?.play();
           };
 
           if (video.readyState >= 2) {
