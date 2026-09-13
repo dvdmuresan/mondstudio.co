@@ -3872,6 +3872,33 @@ body[data-theme="light"] .studio-textbox-note {
     }
 
     @media (max-width: 720px) {
+      /* Project previews render in their final state, independently of observers.
+         Keep the carousel track animation/swipe and non-project reveals intact. */
+      .pl-1.reveal,
+      .pl-2.reveal,
+      .pl-3-stack.reveal,
+      .pl-4-block.reveal,
+      .landing-project-carousel .landing-project-carousel__item {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+        will-change: auto;
+      }
+
+      .landing-parallax-image {
+        translate: none;
+        will-change: auto;
+      }
+
+      .pl-1 img,
+      .pl-2 img,
+      .pl-3 img,
+      .pl-4 img {
+        transform: none !important;
+        transition: none;
+      }
+
       /* Halve the visible gaps while retaining carousel padding and swipe area.
          Above: 120px + carousel padding; below: collapsed 150px margin
          + carousel padding + the next panel's responsive top padding. */

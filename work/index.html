@@ -158,6 +158,30 @@
     }
 
     @media (max-width: 720px) {
+      /* The page entrance fade also fades project images through their parent.
+         Bypass only that entrance; retain page-exit and navigation animations. */
+      html.js body:not(.is-page-exiting) {
+        opacity: 1;
+        transition: none;
+      }
+
+      /* Final project-image state, including load and filter-refresh classes. */
+      body.view-image .projects-gallery,
+      .projects-gallery figure,
+      .projects-gallery__item {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+        animation: none !important;
+        will-change: auto;
+      }
+
+      .projects-gallery__item img {
+        transform: none !important;
+        transition: none !important;
+      }
+
       /* Existing opaque grid colors at half alpha; geometry stays unchanged. */
       body[data-theme="light"] {
         --grid-line-color: rgba(233, 233, 233, 0.5);
