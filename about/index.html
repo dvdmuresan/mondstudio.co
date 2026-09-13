@@ -177,7 +177,13 @@
     }
 
     @media (max-width: 720px) {
+      /* Existing opaque grid colors at half alpha; geometry stays unchanged. */
+      body[data-theme="light"] {
+        --grid-line-color: rgba(233, 233, 233, 0.5);
+      }
+
       body {
+        --grid-line-color: rgba(26, 26, 26, 0.5);
         --mobile-grid-line-image: linear-gradient(
           to right,
           transparent 0,
@@ -1084,7 +1090,7 @@
       position: relative;
       z-index: 18;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
       width: calc(100% - 40px);
       margin: 0 20px 140px;
@@ -3218,6 +3224,8 @@
             <p class="about-team-strip__role about-mobile-person__role">Director / Animator</p>
           </figcaption>
         </figure>
+        <!-- Temporarily excluded from the public team; keep markup and profile for restoration. -->
+        <template id="archived-team-milan">
         <figure class="about-team-strip__person about-mobile-person">
           <div class="about-team-strip__image about-mobile-person__image">
             <img src="optimized/janky-milan.jpg" alt="Janky Milán" width="720" height="900" loading="lazy" decoding="async" aria-hidden="true">
@@ -3232,6 +3240,7 @@
             <p class="about-team-strip__role about-mobile-person__role">Graphic Designer / Type Designer</p>
           </figcaption>
         </figure>
+        </template>
       </section>
       <section class="about-footer-image" aria-label="MOND : STUDIO visual">
         <img src="about image.jpg" alt="Black-and-white view of the MOND : STUDIO workspace" width="3558" height="2184" loading="lazy" decoding="async">

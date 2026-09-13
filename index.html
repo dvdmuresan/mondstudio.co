@@ -204,7 +204,13 @@ html {
     }
 
     @media (max-width: 720px) {
+      /* Existing opaque grid colors at half alpha; geometry stays unchanged. */
+      body[data-theme="light"] {
+        --grid-line-color: rgba(233, 233, 233, 0.5);
+      }
+
       body {
+        --grid-line-color: rgba(26, 26, 26, 0.5);
         --mobile-grid-line-image: linear-gradient(
           to right,
           transparent 0,
@@ -3863,6 +3869,20 @@ body[data-theme="light"] .studio-textbox-note {
 
     @keyframes landingProjectCarousel {
       to { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 720px) {
+      /* Halve the visible gaps while retaining carousel padding and swipe area.
+         Above: 120px + carousel padding; below: collapsed 150px margin
+         + carousel padding + the next panel's responsive top padding. */
+      .landing-project-carousel {
+        margin-top: calc(60px - clamp(48px, 7vw, 100px));
+        margin-bottom: 0;
+      }
+
+      .post-placeholder-panel.pl-5 {
+        margin-top: calc(75px - clamp(48px, 7vw, 100px) - clamp(6px, 2vw, 10px));
+      }
     }
 
     @media (max-width: 600px) {

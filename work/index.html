@@ -158,7 +158,13 @@
     }
 
     @media (max-width: 720px) {
+      /* Existing opaque grid colors at half alpha; geometry stays unchanged. */
+      body[data-theme="light"] {
+        --grid-line-color: rgba(233, 233, 233, 0.5);
+      }
+
       body {
+        --grid-line-color: rgba(26, 26, 26, 0.5);
         --mobile-grid-line-image: linear-gradient(
           to right,
           transparent 0,
