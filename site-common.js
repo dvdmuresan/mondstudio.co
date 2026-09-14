@@ -275,6 +275,8 @@
           max-width: calc(100vw - 20px) !important;
           min-height: auto !important;
           margin: 10px !important;
+          /* Keep the design tail below 10px; reserve the OS inset only once. */
+          margin-bottom: calc(8px + env(safe-area-inset-bottom, 0px)) !important;
           padding: 60px 0 0 !important;
           box-sizing: border-box !important;
           overflow: hidden !important;
@@ -380,6 +382,12 @@
         }
         .mond-mobile-footer-enabled .site-footer .footer-copy-minimal {
           display: none !important;
+        }
+      }
+      @media (min-width: 601px) and (max-width: 720px) {
+        /* At these widths the privacy links follow the footer in normal flow. */
+        body > .mond-consent-utility {
+          padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
         }
       }
     `;

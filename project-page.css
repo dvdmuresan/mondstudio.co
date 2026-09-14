@@ -3232,3 +3232,43 @@ html.lenis.lenis-stopped {
     mix-blend-mode: normal;
   }
 }
+
+/* On small screens the footer is hidden, so project navigation ends the page. */
+@media (max-width: 600px) {
+  .case-main {
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+  }
+
+  body[data-theme="light"] .case-project-nav--portal .case-project-nav__button {
+    /* Keep the 44px touch target; place its visible text at the page end. */
+    align-content: end;
+  }
+
+  /* MACN has only one preview: use spare viewport height before navigation. */
+  .case-main:has(.macn-preview) {
+    flex-grow: 1;
+  }
+
+  .case-section:has(.macn-preview) {
+    grid-template-rows: auto auto 1fr;
+  }
+
+  .case-section:has(.macn-preview) .case-project-nav {
+    align-self: end;
+  }
+}
+
+/* The existing project footer is visible at these mobile landscape widths. */
+@media (min-width: 601px) and (max-width: 720px) {
+  .site-footer.footer-section {
+    margin-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: 0;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 720px) {
+  .site-footer .footer-contact-block,
+  .site-footer .footer-copy-minimal {
+    bottom: 0;
+  }
+}

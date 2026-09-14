@@ -182,13 +182,13 @@
         transition: none !important;
       }
 
-      /* Existing opaque grid colors at half alpha; geometry stays unchanged. */
+      /* Mobile intensity: previous 0.5 alpha × 1.25; geometry stays unchanged. */
       body[data-theme="light"] {
-        --grid-line-color: rgba(233, 233, 233, 0.5);
+        --grid-line-color: rgba(233, 233, 233, 0.625);
       }
 
       body {
-        --grid-line-color: rgba(26, 26, 26, 0.5);
+        --grid-line-color: rgba(26, 26, 26, 0.625);
         --mobile-grid-line-image: linear-gradient(
           to right,
           transparent 0,
@@ -2444,7 +2444,8 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         right: 10px;
       }
 
-      html.taxonomy-ready .projects-fallback-title {
+      /* Mobile presentation is present before taxonomy JS; retain the semantic h1. */
+      .projects-fallback-title {
         position: absolute;
         width: 1px;
         height: 1px;
@@ -2454,7 +2455,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         white-space: nowrap;
       }
 
-      html.taxonomy-ready .projects-mobile-filter {
+      .projects-mobile-filter {
         display: block;
         width: calc(100vw - 20px);
         margin: 0 10px 20px;
@@ -3180,6 +3181,20 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         object-fit: cover;
       }
     }
+    @media (max-width: 720px) {
+      /* Work ends at the gallery: do not retain three layers of footer space. */
+      main {
+        padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+      }
+
+      .projects-left {
+        margin-bottom: 0;
+      }
+
+      .projects-gallery {
+        padding-bottom: 0;
+      }
+    }
   </style>
 </head>
 <body class="view-image" data-hide-footer-legal>
@@ -3277,15 +3292,6 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         </a>
         <div class="projects-filter" data-desktop-filter-host aria-label="Project filters">
           <h1 class="projects-filter__title projects-sidebar-reveal" id="projects-filter-title" style="--sidebar-reveal-delay: 80ms;">WORKS</h1>
-          <div class="projects-filter__group projects-sidebar-reveal" data-filter-control role="group" aria-labelledby="projects-services-title" style="--sidebar-reveal-delay: 220ms;">
-            <p class="projects-filter__eyebrow" id="projects-services-title">Services</p>
-            <div data-project-filters data-service-filters></div>
-          </div>
-          <div class="projects-filter__group projects-sidebar-reveal" data-filter-control role="group" aria-labelledby="projects-industries-title" style="--sidebar-reveal-delay: 290ms;">
-            <p class="projects-filter__eyebrow" id="projects-industries-title">Industries</p>
-            <div data-project-filters data-industry-filters></div>
-          </div>
-          <p class="projects-filter__status" data-filter-control data-filter-status aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;">12 projects shown.</p>
         </div>
         <a class="projects-sidebar__cta" href="https://cal.eu/mondstudio">
           <span class="projects-sidebar__cta-label">LET'S TALK</span>
@@ -3296,7 +3302,24 @@ body[data-theme="light"] .footer-social-minimal a:focus {
           <span>Filter projects</span>
           <span class="projects-mobile-filter__summary" data-filter-summary>No filters</span>
         </button>
-        <div class="projects-mobile-filter__panel" id="projects-mobile-filter-panel" data-mobile-filter-host hidden></div>
+        <!-- Static service labels reserve the approved layout; taxonomy initialization enables controls. -->
+        <div class="projects-mobile-filter__panel" id="projects-mobile-filter-panel" data-mobile-filter-host>
+          <div class="projects-filter__group projects-sidebar-reveal" data-filter-control role="group" aria-labelledby="projects-services-title" style="--sidebar-reveal-delay: 220ms;">
+            <p class="projects-filter__eyebrow" id="projects-services-title">Services</p>
+            <div data-project-filters data-service-filters>
+              <button class="projects-filter__button" type="button" data-filter-type="service" data-filter-id="visual-identity" aria-pressed="false" disabled><span>Visual Identity</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
+              <button class="projects-filter__button" type="button" data-filter-type="service" data-filter-id="creative-direction" aria-pressed="false" disabled><span>Creative Direction</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
+              <button class="projects-filter__button" type="button" data-filter-type="service" data-filter-id="motion-animation" aria-pressed="false" disabled><span>Motion &amp; Animation</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
+              <button class="projects-filter__button" type="button" data-filter-type="service" data-filter-id="product-3d-design" aria-pressed="false" disabled><span>Product &amp; 3D Design</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
+              <button class="projects-filter__button" type="button" data-filter-type="service" data-filter-id="packaging-design" aria-pressed="false" disabled><span>Packaging Design</span><span class="projects-filter__remove" aria-hidden="true">x</span></button>
+            </div>
+          </div>
+          <div class="projects-filter__group projects-sidebar-reveal" data-filter-control role="group" aria-labelledby="projects-industries-title" style="--sidebar-reveal-delay: 290ms;">
+            <p class="projects-filter__eyebrow" id="projects-industries-title">Industries</p>
+            <div data-project-filters data-industry-filters></div>
+          </div>
+          <p class="projects-filter__status" data-filter-control data-filter-status aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;">12 projects shown.</p>
+        </div>
       </section>
       <div class="projects-left">
         <h1 class="projects-fallback-title" data-projects-fallback-heading>WORKS</h1>
@@ -3382,34 +3405,9 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         </div>
         <div class="projects-thumb" id="projects-thumb" aria-hidden="true"></div>
         <div class="projects-gallery" aria-label="Project image gallery">
+          <!-- Keep initial card order/layout aligned with the unfiltered taxonomy layout. -->
           <div class="projects-gallery__grid">
-            <figure data-project-id="multitool">
-              <a class="projects-gallery__link" href="/multitool/">
-                <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Product &amp; 3D Design</span></div>
-                  <video data-src="projects/multi-tool/multitool-product-concept-landscape.mp4" poster="projects/multi-tool/multitool-orange-front-view.webp" width="1440" height="810" style="aspect-ratio: 16 / 9;" muted loop playsinline preload="none" tabindex="-1" aria-label="Multitool product concept animation"></video>
-                </div>
-                <figcaption class="projects-gallery__caption">
-                  <span class="projects-gallery__caption-title">Multitool</span>
-                  <span class="projects-gallery__caption-subtitle">One Tool, Many Moves</span>
-                  <span class="projects-gallery__caption-tags"><span>Product &amp; 3D Design</span><span>Culture &amp; Entertainment</span></span>
-                </figcaption>
-              </a>
-            </figure>
-            <figure data-project-id="maier-jewelry">
-              <a class="projects-gallery__link" href="/maier-jewelry/">
-                <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Visual Identity</span></div>
-                  <video data-src="projects/maier-jewelry/FIGMA/maier-jewelry-visual-identity-animation.mp4" poster="projects/maier-jewelry/FIGMA/maier-jewelry-wordmark-identity.jpg" width="1080" height="1080" style="aspect-ratio: 1 / 1;" muted loop playsinline preload="none" tabindex="-1" aria-label="Maier Jewelry visual identity animation"></video>
-                </div>
-                <figcaption class="projects-gallery__caption">
-                  <span class="projects-gallery__caption-title">Maier</span>
-                  <span class="projects-gallery__caption-subtitle">Stones with Soul</span>
-                  <span class="projects-gallery__caption-tags"><span>Brand Strategy</span><span>Creative Direction</span><span>Visual Identity</span><span>Packaging Design</span><span>Beauty &amp; Fashion</span></span>
-                </figcaption>
-              </a>
-            </figure>
-            <figure data-project-id="walk-with-me">
+            <figure data-project-id="walk-with-me" class="is-layout-wide">
               <a class="projects-gallery__link" href="/walk-with-me/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Packaging Design</span></div>
@@ -3422,20 +3420,20 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-id="marty-restaurants">
-              <a class="projects-gallery__link" href="/marty-restaurants/">
+            <figure data-project-id="multitool" class="is-layout-portrait">
+              <a class="projects-gallery__link" href="/multitool/">
                 <div class="projects-gallery__item">
-                  <div class="projects-gallery__badge"><span>Graphic &amp; Editorial Design</span></div>
-                  <img src="projects/marty-restaurants/images/marty-restaurants-work-preview.webp" alt="Open Marty Restaurants menu displaying plated dishes on a wooden bench" width="1600" height="900" loading="lazy" decoding="async" />
+                  <div class="projects-gallery__badge"><span>Product &amp; 3D Design</span></div>
+                  <video data-src="projects/multi-tool/multitool-product-concept-landscape.mp4" poster="projects/multi-tool/multitool-orange-front-view.webp" width="1440" height="810" style="aspect-ratio: 16 / 9;" muted loop playsinline preload="none" tabindex="-1" aria-label="Multitool product concept animation"></video>
                 </div>
                 <figcaption class="projects-gallery__caption">
-                  <span class="projects-gallery__caption-title">Marty</span>
-                  <span class="projects-gallery__caption-subtitle">For the Love of Food</span>
-                  <span class="projects-gallery__caption-tags"><span>Creative Direction</span><span>Graphic &amp; Editorial Design</span><span>Motion &amp; Animation</span><span>Hospitality &amp; Food</span></span>
+                  <span class="projects-gallery__caption-title">Multitool</span>
+                  <span class="projects-gallery__caption-subtitle">One Tool, Many Moves</span>
+                  <span class="projects-gallery__caption-tags"><span>Product &amp; 3D Design</span><span>Culture &amp; Entertainment</span></span>
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-id="intermezzo">
+            <figure data-project-id="intermezzo" class="is-layout-landscape">
               <a class="projects-gallery__link" href="/intermezzo/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
@@ -3448,7 +3446,20 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-id="lesser-of-two-evils">
+            <figure data-project-id="maier-jewelry" class="is-layout-portrait">
+              <a class="projects-gallery__link" href="/maier-jewelry/">
+                <div class="projects-gallery__item">
+                  <div class="projects-gallery__badge"><span>Visual Identity</span></div>
+                  <video data-src="projects/maier-jewelry/FIGMA/maier-jewelry-visual-identity-animation.mp4" poster="projects/maier-jewelry/FIGMA/maier-jewelry-wordmark-identity.jpg" width="1080" height="1080" style="aspect-ratio: 1 / 1;" muted loop playsinline preload="none" tabindex="-1" aria-label="Maier Jewelry visual identity animation"></video>
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">Maier</span>
+                  <span class="projects-gallery__caption-subtitle">Stones with Soul</span>
+                  <span class="projects-gallery__caption-tags"><span>Brand Strategy</span><span>Creative Direction</span><span>Visual Identity</span><span>Packaging Design</span><span>Beauty &amp; Fashion</span></span>
+                </figcaption>
+              </a>
+            </figure>
+            <figure data-project-id="lesser-of-two-evils" class="is-layout-landscape">
               <a class="projects-gallery__link" href="/lesser-of-two-evils/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Motion &amp; Animation</span></div>
@@ -3461,7 +3472,20 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-id="friss-kakas">
+            <figure data-project-id="marty-restaurants" class="is-layout-portrait">
+              <a class="projects-gallery__link" href="/marty-restaurants/">
+                <div class="projects-gallery__item">
+                  <div class="projects-gallery__badge"><span>Graphic &amp; Editorial Design</span></div>
+                  <img src="projects/marty-restaurants/images/marty-restaurants-work-preview.webp" alt="Open Marty Restaurants menu displaying plated dishes on a wooden bench" width="1600" height="900" loading="lazy" decoding="async" />
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">Marty</span>
+                  <span class="projects-gallery__caption-subtitle">For the Love of Food</span>
+                  <span class="projects-gallery__caption-tags"><span>Creative Direction</span><span>Graphic &amp; Editorial Design</span><span>Motion &amp; Animation</span><span>Hospitality &amp; Food</span></span>
+                </figcaption>
+              </a>
+            </figure>
+            <figure data-project-id="friss-kakas" class="is-layout-landscape">
               <a class="projects-gallery__link" href="/friss-kakas/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Motion &amp; Animation</span></div>
@@ -3474,7 +3498,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-id="re-mind">
+            <figure data-project-id="re-mind" class="is-layout-portrait">
               <a class="projects-gallery__link" href="/re-mind/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Product &amp; 3D Design</span></div>
@@ -3487,7 +3511,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-id="dream-ville-software">
+            <figure data-project-id="dream-ville-software" class="is-layout-landscape">
               <a class="projects-gallery__link" href="/dream-ville-software/">
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
@@ -3500,20 +3524,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </a>
             </figure>
-            <figure data-project-id="olivo-bistro">
-              <div class="projects-gallery__link" aria-disabled="true">
-                <div class="projects-gallery__item">
-                  <span class="projects-gallery__coming-soon">Coming Soon</span>
-                  <img src="projects/olivo-bistro/olivo-bistro-work-preview.webp" alt="Olivo Bistro identity board with pasta, cocktail and branded cards" width="1600" height="1600" loading="lazy" decoding="async" />
-                </div>
-                <figcaption class="projects-gallery__caption">
-                  <span class="projects-gallery__caption-title">Olivo bistro</span>
-                  <span class="projects-gallery__caption-subtitle">In good company</span>
-                  <span class="projects-gallery__caption-tags"><span>Brand Strategy</span><span>Creative Direction</span><span>Visual Identity</span><span>Graphic &amp; Editorial Design</span><span>Hospitality &amp; Food</span></span>
-                </figcaption>
-              </div>
-            </figure>
-            <figure data-project-id="shinrin">
+            <figure data-project-id="shinrin" class="is-layout-portrait">
               <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
                   <span class="projects-gallery__coming-soon">Coming Soon</span>
@@ -3526,7 +3537,20 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 </figcaption>
               </div>
             </figure>
-            <figure data-project-id="macn">
+            <figure data-project-id="olivo-bistro" class="is-layout-landscape">
+              <div class="projects-gallery__link" aria-disabled="true">
+                <div class="projects-gallery__item">
+                  <span class="projects-gallery__coming-soon">Coming Soon</span>
+                  <img src="projects/olivo-bistro/olivo-bistro-work-preview.webp" alt="Olivo Bistro identity board with pasta, cocktail and branded cards" width="1600" height="1600" loading="lazy" decoding="async" />
+                </div>
+                <figcaption class="projects-gallery__caption">
+                  <span class="projects-gallery__caption-title">Olivo bistro</span>
+                  <span class="projects-gallery__caption-subtitle">In good company</span>
+                  <span class="projects-gallery__caption-tags"><span>Brand Strategy</span><span>Creative Direction</span><span>Visual Identity</span><span>Graphic &amp; Editorial Design</span><span>Hospitality &amp; Food</span></span>
+                </figcaption>
+              </div>
+            </figure>
+            <figure data-project-id="macn" class="is-layout-portrait">
               <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
                   <span class="projects-gallery__coming-soon">Coming Soon</span>
@@ -4181,10 +4205,20 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         video.load();
       };
 
+      const pendingPreviewPlayback = new WeakSet();
       const playPreview = (video) => {
         video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute('playsinline', '');
+        if (!video.paused || pendingPreviewPlayback.has(video)) return;
         const playback = video.play();
-        if (playback && typeof playback.catch === 'function') playback.catch(() => {});
+        if (playback && typeof playback.then === 'function') {
+          pendingPreviewPlayback.add(video);
+          // Policy rejection leaves the poster visible; no automatic retry loop.
+          const settled = () => pendingPreviewPlayback.delete(video);
+          playback.then(settled, settled);
+        }
       };
 
       if (prefersReducedMotion || prefersReducedData) {
@@ -4249,6 +4283,17 @@ body[data-theme="light"] .footer-social-minimal a:focus {
           activateFromIntent(video);
         });
       });
+
+      // Mobile replaces the old first-interaction gate with viewport relevance.
+      // Observing every preview does not attach sources outside the 80px boundary.
+      if (window.matchMedia('(max-width: 720px)').matches) {
+        // The earlier DOMContentLoaded handler establishes filter state/card order.
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', engageViewportPreviews, { once: true });
+        } else {
+          engageViewportPreviews();
+        }
+      }
 
       window.addEventListener('scroll', engageViewportPreviews, { once: true, passive: true });
       window.addEventListener('touchstart', engageViewportPreviews, { once: true, passive: true });
