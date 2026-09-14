@@ -204,13 +204,13 @@ html {
     }
 
     @media (max-width: 720px) {
-      /* Existing opaque grid colors at half alpha; geometry stays unchanged. */
+      /* Mobile intensity: previous 0.5 alpha × 1.25; geometry stays unchanged. */
       body[data-theme="light"] {
-        --grid-line-color: rgba(233, 233, 233, 0.5);
+        --grid-line-color: rgba(233, 233, 233, 0.625);
       }
 
       body {
-        --grid-line-color: rgba(26, 26, 26, 0.5);
+        --grid-line-color: rgba(26, 26, 26, 0.625);
         --mobile-grid-line-image: linear-gradient(
           to right,
           transparent 0,
@@ -1099,7 +1099,7 @@ html {
       flex-shrink: 0;
       color: var(--color-fg);
       font-family: "Mona Sans", sans-serif;
-      font-size: 43px;
+      font-size: 27px;
       font-style: normal;
       font-weight: 500;
       line-height: 42px;
@@ -1307,7 +1307,7 @@ html {
       }
 
       .latest-works-label {
-        font-size: clamp(36px, 5.6vw, 43px);
+        font-size: 27px;
         line-height: 1;
       }
 
@@ -1356,7 +1356,7 @@ html {
       }
 
       .latest-works-label {
-        font-size: clamp(34px, 3vw, 43px);
+        font-size: 27px;
         line-height: 1;
       }
 
@@ -3257,6 +3257,11 @@ body[data-theme="light"] .studio-textbox-note {
     }
 
     @media (max-width: 720px) {
+      /* Let fixed navigation stack against the page, outside this wrapper's desktop layer. */
+      .hero__overlay {
+        z-index: auto;
+      }
+
       .hero {
         height: 100svh;
         min-height: 100svh;
@@ -3289,7 +3294,7 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       .latest-works-label {
-        font-size: 30px;
+        font-size: 27px;
         line-height: 1.1;
       }
 

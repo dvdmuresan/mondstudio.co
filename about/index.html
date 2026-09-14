@@ -177,13 +177,13 @@
     }
 
     @media (max-width: 720px) {
-      /* Existing opaque grid colors at half alpha; geometry stays unchanged. */
+      /* Mobile intensity: previous 0.5 alpha × 1.25; geometry stays unchanged. */
       body[data-theme="light"] {
-        --grid-line-color: rgba(233, 233, 233, 0.5);
+        --grid-line-color: rgba(233, 233, 233, 0.625);
       }
 
       body {
-        --grid-line-color: rgba(26, 26, 26, 0.5);
+        --grid-line-color: rgba(26, 26, 26, 0.625);
         --mobile-grid-line-image: linear-gradient(
           to right,
           transparent 0,
@@ -3241,6 +3241,20 @@
           </figcaption>
         </figure>
         </template>
+        <figure class="about-team-strip__person about-mobile-person">
+          <div class="about-team-strip__image about-mobile-person__image">
+            <img src="Sergiu.webp" alt="Sergiu Mara" width="640" height="640" loading="lazy" decoding="async" aria-hidden="true">
+            <button class="about-mobile-person__button" type="button" data-profile="Sergiu.webp" aria-label="Sergiu Mara, Product and Visual Designer — learn more" aria-haspopup="dialog" aria-controls="about-person-panel">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+          <figcaption class="about-team-strip__caption about-mobile-person__caption" aria-hidden="true">
+            <p class="about-mobile-person__name">Sergiu Mara</p>
+            <p class="about-team-strip__role about-mobile-person__role">Product and Visual Designer</p>
+          </figcaption>
+        </figure>
       </section>
       <section class="about-footer-image" aria-label="MOND : STUDIO visual">
         <img src="about image.jpg" alt="Black-and-white view of the MOND : STUDIO workspace" width="3558" height="2184" loading="lazy" decoding="async">
@@ -3358,6 +3372,12 @@
           firstName: 'Máté',
           role: 'Director / Animator',
           about: 'Mate works across directing and animation, bringing narrative thinking, movement, and animated detail into the studio practice.'
+        },
+        'Sergiu.webp': {
+          name: 'Sergiu Mara',
+          firstName: 'Sergiu',
+          role: 'Product and Visual Designer',
+          about: 'Sergiu works in product and visual design.'
         },
         'optimized/janky-milan.jpg': {
           name: 'Janky Milán',
