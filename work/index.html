@@ -3360,7 +3360,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <td>2024</td>
               </tr>
               <tr class="project-row" data-project-id="intermezzo">
-                <td><a href="/intermezzo/">Intermezzo Festival</a></td>
+                <td><span class="projects-table__disabled-link" aria-disabled="true"><span>Intermezzo Festival</span>&nbsp;<span class="projects-type">Coming Soon</span></span></td>
                 <td><span class="projects-type">Visual Identity</span></td>
                 <td>2025</td>
               </tr>
@@ -3436,8 +3436,9 @@ body[data-theme="light"] .footer-social-minimal a:focus {
               </a>
             </figure>
             <figure data-project-id="intermezzo" class="is-layout-landscape">
-              <a class="projects-gallery__link" href="/intermezzo/">
+              <div class="projects-gallery__link" aria-disabled="true">
                 <div class="projects-gallery__item">
+                  <span class="projects-gallery__coming-soon">Coming Soon</span>
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
                   <video data-src="media/work-previews/intermezzo-work-preview.mp4" poster="optimized/intermezzo-festival-visual-identity.jpg" width="1152" height="648" style="aspect-ratio: 16 / 9;" muted loop playsinline preload="none" tabindex="-1" aria-label="Intermezzo Festival motion identity animation"></video>
                 </div>
@@ -3446,7 +3447,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                   <span class="projects-gallery__caption-subtitle">Where Music Meets Form</span>
                   <span class="projects-gallery__caption-tags"><span>Creative Direction</span><span>Visual Identity</span><span>Motion &amp; Animation</span><span>Culture &amp; Entertainment</span></span>
                 </figcaption>
-              </a>
+              </div>
             </figure>
             <figure data-project-id="maier-jewelry" class="is-layout-portrait">
               <a class="projects-gallery__link" href="/maier-jewelry/">
@@ -3597,7 +3598,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     })();
   </script>
 
-  <script src="work-taxonomy.js"></script>
+  <script src="work-taxonomy.js?v=20260917-intermezzo-coming-soon"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const body = document.body;

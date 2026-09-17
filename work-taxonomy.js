@@ -141,8 +141,8 @@
         projectOrigin: null,
         cardBadge: 'visual-identity',
         layout: 'landscape',
-        status: 'published',
-        workLinkEnabled: true
+        status: 'incomplete',
+        workLinkEnabled: false
       },
       {
         id: 'lesser-of-two-evils',
