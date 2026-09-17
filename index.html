@@ -1196,15 +1196,6 @@ html {
       line-height: 16px;
     }
 
-    @media (min-width: 721px) {
-      .pl-1-title,
-      .pl-3-title,
-      .pl-4-title {
-        font-size: 15px;
-        line-height: 19px;
-      }
-    }
-
     @media (max-width: 900px) {
       .latest-works-row {
         flex-direction: column;
@@ -3296,12 +3287,6 @@ body[data-theme="light"] .studio-textbox-note {
         margin-top: 0;
       }
 
-      .pl-1-subtitle,
-      .pl-3-subtitle,
-      .pl-4-subtitle {
-        display: none;
-      }
-
       .latest-works-label {
         font-size: 27px;
         line-height: 1.1;
@@ -4306,15 +4291,6 @@ body[data-theme="light"] .studio-textbox-note {
         white-space: nowrap;
       }
 
-      .pl-1-title,
-      .pl-3-title,
-      .pl-4-title {
-        width: auto;
-        height: auto;
-        max-width: 100%;
-        white-space: nowrap;
-      }
-
       .hero__top > .hero__nav,
       .hero__nav {
         height: 100svh;
@@ -4354,6 +4330,48 @@ body[data-theme="light"] .studio-textbox-note {
           filter: blur(0);
         }
       }
+    }
+    /* Match Work's mobile captions, retaining Home's longer descriptions. */
+    .latest-works-media,
+    .pl-4-block {
+      gap: 12px;
+    }
+
+    .pl-1-meta,
+    .pl-3-meta,
+    .pl-4-meta {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      transform: none;
+    }
+
+    .pl-3-meta {
+      margin-top: 12px;
+    }
+
+    .pl-1-title,
+    .pl-3-title,
+    .pl-4-title,
+    .pl-1-subtitle,
+    .pl-3-subtitle,
+    .pl-4-subtitle {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin: 0;
+      font-size: 15px;
+      font-weight: 350;
+      line-height: 19px;
+      white-space: normal;
+    }
+
+    .pl-1-subtitle,
+    .pl-3-subtitle,
+    .pl-4-subtitle {
+      color: rgb(152, 152, 152);
     }
   </style>
   <link rel="stylesheet" href="/site-common.css?v=20260914-1" />
@@ -4551,7 +4569,7 @@ body[data-theme="light"] .studio-textbox-note {
       <video class="pl-video" src="media/work-previews/walk-with-me-work-preview.mp4" poster="media/work-posters/walk-with-me-work-poster.webp" width="1152" height="648" preload="none" muted loop playsinline tabindex="-1" aria-label="Walk With Me Rainy Days sleeve video preview"></video>
     </a>
       <div class="pl-1-meta">
-        <a class="pl-1-title" href="/walk-with-me/" data-project-transition="walk-with-me" data-transition-title="Walk With Me">Walk With Me</a>
+        <a class="pl-1-title" href="/walk-with-me/" data-project-transition="walk-with-me" data-transition-title="Walk With Me">Walk with me</a>
         <div class="pl-1-subtitle">
           Visual identity and packaging design for the Rainy Days Sample Pack.
         </div>
@@ -4566,8 +4584,8 @@ body[data-theme="light"] .studio-textbox-note {
       <div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Branding</span></div>
       <video class="pl-video" src="media/videos/home/dream-ville-client-testimonial-animation.mp4" poster="optimized/image2.jpg" width="1080" height="1350" preload="none" muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
     </a>
-      <div class="pl-3-meta" style="margin-top: 40px; align-self: flex-end;">
-        <a class="pl-3-title" href="/dream-ville-software/" data-project-transition="dream-ville-software" data-transition-title="Dream Ville Software">Dream Ville Software</a>
+      <div class="pl-3-meta">
+        <a class="pl-3-title" href="/dream-ville-software/" data-project-transition="dream-ville-software" data-transition-title="Dream Ville Software">Dream Ville</a>
         <div class="pl-3-subtitle">
           Software development startup. Bold visual identity made to stand the test of time.
         </div>
