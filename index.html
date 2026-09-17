@@ -3897,9 +3897,11 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       .pl-1 img,
+      .pl-1 video,
       .pl-2 img,
       .pl-3 img,
-      .pl-4 img {
+      .pl-4 img,
+      .pl-4 video {
         transform: none !important;
         transition: none;
       }
@@ -4345,6 +4347,8 @@ body[data-theme="light"] .studio-textbox-note {
       }
     }
   </style>
+  <link rel="stylesheet" href="/site-common.css?v=20260914-1" />
+  <script>document.documentElement.classList.add("mond-mobile-footer-enabled");</script>
 </head>
 <body>
   <header class="hero">
@@ -4533,28 +4537,28 @@ body[data-theme="light"] .studio-textbox-note {
       Selected works
     </div>
     <div class="latest-works-media">
-    <a class="pl-1 reveal" href="/intermezzo/" data-project-transition="intermezzo">
-        <div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Branding</span></div>
-      <img src="optimized/intermezzo-festival-visual-identity.jpg" alt="Intermezzo Festival visual identity artwork" width="1400" height="712" loading="lazy" decoding="async" />
+    <a class="pl-1 reveal" href="/walk-with-me/" data-project-transition="walk-with-me" data-transition-title="Walk With Me" aria-label="View Walk With Me project">
+        <div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Packaging Design</span></div>
+      <video class="pl-video" src="media/work-previews/walk-with-me-work-preview.mp4" poster="media/work-posters/walk-with-me-work-poster.webp" width="1152" height="648" preload="none" muted loop playsinline tabindex="-1" aria-label="Walk With Me Rainy Days sleeve video preview"></video>
     </a>
       <div class="pl-1-meta">
-        <a class="pl-1-title" href="/intermezzo/" data-project-transition="intermezzo">Intermezzo Festival</a>
+        <a class="pl-1-title" href="/walk-with-me/" data-project-transition="walk-with-me" data-transition-title="Walk With Me">Walk With Me</a>
         <div class="pl-1-subtitle">
-          Visual identity created for a one-day event at the House of Music in Budapest.
+          Visual identity and packaging design for the Rainy Days Sample Pack.
         </div>
       </div>
     </div>
   </div>
 
   <div class="latest-works-duo">
-    <div class="pl-2 reveal" aria-hidden="true"><div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Branding</span></div><img src="optimized/image2.jpg" alt="Branding project second image" width="1200" height="800" loading="lazy" decoding="async" /></div>
+    <a class="pl-2 reveal" href="/dream-ville-software/" data-project-transition="dream-ville-software" data-transition-title="Dream Ville Software" aria-label="View Dream Ville Software project"><div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Branding</span></div><img src="optimized/image2.jpg" alt="Dream Ville Software branded notebook" width="1200" height="800" loading="lazy" decoding="async" /></a>
     <div class="pl-3-stack reveal">
-      <div class="pl-3" aria-hidden="true">
+      <a class="pl-3" href="/dream-ville-software/" data-project-transition="dream-ville-software" data-transition-title="Dream Ville Software" aria-label="View Dream Ville Software project">
       <div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Branding</span></div>
       <video class="pl-video" src="media/videos/home/dream-ville-client-testimonial-animation.mp4" poster="optimized/image2.jpg" width="1080" height="1350" preload="none" muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
-    </div>
+    </a>
       <div class="pl-3-meta" style="margin-top: 40px; align-self: flex-end;">
-        <div class="pl-3-title">Dream Ville Software</div>
+        <a class="pl-3-title" href="/dream-ville-software/" data-project-transition="dream-ville-software" data-transition-title="Dream Ville Software">Dream Ville Software</a>
         <div class="pl-3-subtitle">
           Software development startup. Bold visual identity made to stand the test of time.
         </div>
@@ -4563,11 +4567,11 @@ body[data-theme="light"] .studio-textbox-note {
   </div>
 
   <div class="pl-4-block reveal">
-    <div class="pl-4" aria-hidden="true"><div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Book Design</span></div><img src="optimized/image4.jpg" alt="Branding project fourth image" width="1600" height="1467" loading="lazy" decoding="async" /></div>
+    <a class="pl-4" href="/re-mind/" data-project-transition="re-mind" data-transition-title="RE:MIND" aria-label="View RE:MIND project"><div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Product &amp; 3D Design</span></div><video class="pl-video" src="media/work-previews/re-mind-work-preview.mp4" poster="media/work-posters/re-mind-work-poster.webp" width="1152" height="648" preload="none" muted loop playsinline tabindex="-1" aria-label="RE:MIND animated project preview"></video></a>
     <div class="pl-4-meta">
-      <div class="pl-4-title">Signals in Silence</div>
+      <a class="pl-4-title" href="/re-mind/" data-project-transition="re-mind" data-transition-title="RE:MIND">RE:MIND</a>
       <div class="pl-4-subtitle">
-        Experimental book design. A visual dictionary of telepathic pseudoscience.
+        A Ritual for the Mind. Visual identity, packaging and product design.
       </div>
     </div>
   </div>
@@ -4627,7 +4631,7 @@ body[data-theme="light"] .studio-textbox-note {
       if (prefersReducedMotion) return;
 
       const images = Array.from(document.querySelectorAll(
-        '.pl-1 img, .pl-2 img, .pl-3 img, .pl-3 video, .pl-4 img'
+        '.pl-1 img, .pl-1 video, .pl-2 img, .pl-3 img, .pl-3 video, .pl-4 img, .pl-4 video'
       ));
       if (!images.length) return;
 
@@ -5592,7 +5596,7 @@ body[data-theme="light"] .studio-textbox-note {
     })();
   </script>
 
-  <script defer src="./site-common.js?v=20260825-3"></script>
+  <script defer src="./site-common.js?v=20260917-engagement-1"></script>
   <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
 </body>
 </html>

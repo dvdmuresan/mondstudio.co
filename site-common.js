@@ -5,7 +5,7 @@
       await import("/consent-state.js");
       const connected = consentMode?.connectConsent();
       // P4 default and persisted update precede the opt-in-only GA4 loader.
-      await import("/consent-ui.js");
+      await import("/consent-ui.js?v=20260917-engagement-1");
       if (connected) return import("/google-analytics.js");
     })
     .catch(() => {});
@@ -18,380 +18,6 @@
       document.querySelectorAll(".case-project-nav").forEach((nav) => nav.classList.add("is-visible"));
     }
 
-    const style = document.createElement("style");
-    style.textContent = `
-      .hero__nav,
-      .hero__nav a,
-      .hero__nav-word {
-        font-family: "Mona Sans", sans-serif !important;
-        font-weight: 450 !important;
-        -webkit-font-smoothing: auto !important;
-      }
-      .hero__nav-footer {
-        display: none;
-      }
-      .footer-brand-minimal__mobile-copy {
-        display: none;
-      }
-      @media (max-width: 720px) {
-        .hero__top {
-          top: 10px !important;
-          right: 10px !important;
-          left: 10px !important;
-        }
-        .hero__brand-image {
-          width: auto !important;
-          height: calc(23px / 1.3) !important;
-        }
-        .hero__menu-toggle {
-          position: fixed !important;
-          top: 10px !important;
-          right: 10px !important;
-          left: auto !important;
-          z-index: 2147483647 !important;
-          opacity: 1 !important;
-          visibility: visible !important;
-          transform: translate3d(0, 0, 0);
-          -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-        }
-        .hero__menu-icon {
-          opacity: 1 !important;
-          visibility: visible !important;
-          -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-        }
-        .hero__top > .hero__nav,
-        .hero__nav {
-          position: fixed !important;
-          inset: 0 !important;
-          z-index: 2147483646 !important;
-          width: auto !important;
-          height: auto !important;
-          min-height: 0 !important;
-          max-height: none !important;
-          padding-bottom: max(28px, env(safe-area-inset-bottom)) !important;
-        }
-        .hero__top.is-open > .hero__nav,
-        .hero__top.is-open .hero__nav {
-          background-color: rgba(0, 0, 0, 0.68) !important;
-          -webkit-backdrop-filter: blur(24px) !important;
-          backdrop-filter: blur(24px) !important;
-        }
-        body[data-theme="light"] .hero__top.is-open > .hero__nav,
-        body[data-theme="light"] .hero__top.is-open .hero__nav {
-          background-color: rgba(255, 255, 255, 0.78) !important;
-        }
-        .hero__nav,
-        .hero__nav a,
-        .hero__nav-word {
-          font-style: normal !important;
-          font-weight: 400 !important;
-          font-size: 52px !important;
-          line-height: 49px !important;
-        }
-        .hero__top > .hero__nav > a,
-        .hero__nav a {
-          line-height: 49px !important;
-        }
-        .hero__nav-word {
-          text-transform: lowercase !important;
-        }
-        .hero__nav > a > .hero__nav-word {
-          font-kerning: normal;
-          letter-spacing: -0.02em !important;
-        }
-        .hero__nav-word::first-letter {
-          text-transform: uppercase;
-        }
-        .hero__nav-talk .hero__nav-word:nth-child(n + 2)::first-letter {
-          text-transform: lowercase;
-        }
-        .hero__nav a.hero__nav-talk {
-          display: none !important;
-        }
-        .hero__nav-footer {
-          position: fixed;
-          right: 10px;
-          bottom: max(20px, env(safe-area-inset-bottom));
-          left: 10px;
-          display: grid;
-          gap: 12px;
-          color: #ffffff;
-          font-family: "Mona Sans", sans-serif;
-          font-style: normal;
-          font-size: 15px;
-          font-weight: 350;
-          line-height: 19px;
-          letter-spacing: 0;
-          text-transform: none;
-          opacity: 0;
-          visibility: hidden;
-          pointer-events: none;
-        }
-        .hero__top.is-open .hero__nav-footer {
-          opacity: 1;
-          visibility: visible;
-          pointer-events: auto;
-        }
-        .hero__nav-footer::before,
-        .hero__nav-footer__copyright::before {
-          content: "";
-          display: block;
-          width: 100%;
-          border-top: 1px solid rgba(255, 255, 255, 0.22);
-        }
-        .hero__nav-footer::before {
-          margin-bottom: 4px;
-        }
-        .hero__nav-footer__label {
-          margin: 0 0 2px;
-          color: rgb(152, 152, 152);
-          font-family: "degular-mono", monospace;
-          font-weight: 400;
-          text-transform: uppercase;
-        }
-        .hero__nav-footer__links {
-          display: grid;
-          gap: 2px;
-        }
-        .hero__nav .hero__nav-footer a {
-          display: block !important;
-          width: fit-content;
-          min-height: 0;
-          padding: 0;
-          color: rgb(255, 255, 255) !important;
-          font-family: "Mona Sans", sans-serif !important;
-          font-style: normal !important;
-          font-size: 15px !important;
-          font-weight: 350 !important;
-          line-height: 19px !important;
-          letter-spacing: 0;
-          text-transform: uppercase;
-        }
-        .hero__nav-footer__copyright {
-          display: grid;
-          gap: 12px;
-          margin-top: 28px;
-          color: rgb(152, 152, 152);
-          font-family: "degular-mono", monospace;
-          font-size: calc(15px / 1.15);
-          font-weight: 400;
-          line-height: calc(19px / 1.15);
-        }
-        body[data-theme="light"] .hero__nav-footer {
-          color: #131313;
-        }
-        body[data-theme="light"] .hero__nav .hero__nav-footer a {
-          color: rgb(255, 255, 255) !important;
-        }
-        html.mond-project-page .hero__nav,
-        html.mond-project-page .hero__nav > a,
-        html.mond-project-page .hero__nav > a > .hero__nav-word {
-          font-weight: 500 !important;
-        }
-        html.mond-project-page .hero__nav .hero__nav-footer a {
-          color: rgb(0, 0, 0) !important;
-        }
-        body[data-theme="light"] .hero__nav-footer::before,
-        body[data-theme="light"] .hero__nav-footer__copyright::before {
-          border-color: rgba(19, 19, 19, 0.22);
-        }
-        html.mond-mobile-menu-open,
-        html.mond-mobile-menu-open body {
-          overflow: hidden !important;
-          overscroll-behavior: none;
-        }
-      }
-      @media (max-width: 600px) {
-        .mond-project-page .site-footer {
-          display: none !important;
-        }
-      }
-      html.lenis,
-      html.lenis body {
-        height: auto;
-      }
-      html.lenis.lenis-smooth {
-        scroll-behavior: auto !important;
-      }
-      html.lenis.lenis-stopped {
-        overflow: hidden;
-      }
-      .mond-page-transition {
-        position: fixed;
-        inset: 0;
-        z-index: 2147483647;
-        visibility: hidden;
-        overflow: hidden;
-        pointer-events: none;
-      }
-      .mond-page-transition.is-active {
-        visibility: visible;
-      }
-      .mond-page-transition__panel {
-        position: absolute;
-        inset: 0;
-        background: #f7f7f7;
-        transform: translate3d(0, 100%, 0);
-        transition: transform 560ms cubic-bezier(0.76, 0, 0.24, 1);
-        will-change: transform;
-      }
-      .mond-page-transition--landing .mond-page-transition__panel {
-        background: #000;
-      }
-      .mond-page-transition.is-active .mond-page-transition__panel {
-        transform: translate3d(0, 0, 0);
-      }
-      .mond-page-transition.is-arriving {
-        visibility: visible;
-      }
-      .mond-page-transition.is-arriving .mond-page-transition__panel {
-        transform: translate3d(0, 0, 0);
-      }
-      .mond-page-transition.is-arriving.is-exiting .mond-page-transition__panel {
-        transform: translate3d(0, -100%, 0);
-      }
-      html.mond-landing-entry .hero,
-      html.mond-landing-entry .about-section,
-      html.mond-landing-entry .work-section,
-      html.mond-landing-entry .site-footer {
-        opacity: 0;
-        transform: translateY(18px);
-        transition: opacity 1040ms ease, transform 1120ms cubic-bezier(0.22, 1, 0.36, 1);
-      }
-      html.mond-landing-entry.is-landing-entry-ready .hero,
-      html.mond-landing-entry.is-landing-entry-ready .about-section,
-      html.mond-landing-entry.is-landing-entry-ready .work-section,
-      html.mond-landing-entry.is-landing-entry-ready .site-footer {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      @media (max-width: 600px) {
-        .mond-mobile-footer-enabled .site-footer.footer-section,
-        .mond-mobile-footer-enabled .site-footer {
-          position: relative !important;
-          width: calc(100vw - 20px) !important;
-          max-width: calc(100vw - 20px) !important;
-          min-height: auto !important;
-          margin: 10px !important;
-          /* Keep the design tail below 10px; reserve the OS inset only once. */
-          margin-bottom: calc(8px + env(safe-area-inset-bottom, 0px)) !important;
-          padding: 60px 0 0 !important;
-          box-sizing: border-box !important;
-          overflow: hidden !important;
-          border: 0 !important;
-          border-radius: 0 !important;
-          background: transparent !important;
-          box-shadow: none !important;
-          backdrop-filter: none !important;
-          -webkit-backdrop-filter: none !important;
-        }
-        .mond-mobile-footer-enabled .site-footer,
-        .mond-mobile-footer-enabled .site-footer * {
-          font-family: "Mona Sans", "Helvetica Neue", Arial, sans-serif !important;
-        }
-        .mond-mobile-footer-enabled .site-footer .footer-content {
-          position: relative !important;
-          display: flex !important;
-          flex-direction: column !important;
-          width: 100% !important;
-          min-height: auto !important;
-        }
-        .mond-mobile-footer-enabled .site-footer .footer-social-minimal,
-        .mond-mobile-footer-enabled .site-footer .footer-contact-block,
-        .mond-mobile-footer-enabled .site-footer .footer-brand-minimal {
-          position: static !important;
-          inset: auto !important;
-          width: 100% !important;
-          max-width: none !important;
-          transform: none !important;
-          text-align: left !important;
-        }
-        .mond-mobile-footer-enabled .site-footer .footer-social-minimal {
-          order: 1;
-          display: flex !important;
-          flex-direction: column !important;
-          align-items: flex-start !important;
-          gap: 30px !important;
-        }
-        .mond-mobile-footer-enabled .site-footer .footer-social-minimal a {
-          margin: 0 !important;
-          color: inherit !important;
-          font-size: 30px !important;
-          font-weight: 550 !important;
-          line-height: 1 !important;
-          letter-spacing: 0 !important;
-        }
-        .mond-mobile-footer-enabled .site-footer .footer-contact-block {
-          order: 2;
-          margin-top: 8svh !important;
-          color: inherit !important;
-          white-space: nowrap !important;
-          font-size: 14.375px !important;
-          font-weight: 400 !important;
-          line-height: 23.125px !important;
-          letter-spacing: -0.02em !important;
-        }
-        .mond-mobile-footer-enabled .site-footer .footer-email {
-          color: inherit !important;
-        }
-        .mond-mobile-footer-enabled .site-footer .footer-brand-minimal {
-          order: 3;
-          margin-top: 5svh !important;
-          margin-bottom: 0 !important;
-          color: inherit !important;
-        }
-        .mond-mobile-footer-enabled .site-footer .footer-brand-minimal__logo {
-          display: block !important;
-          width: 100% !important;
-          height: auto !important;
-          aspect-ratio: 377 / 100;
-          background-color: currentColor !important;
-          -webkit-mask-image: url("/mobile%20footer%20logo.svg") !important;
-          mask-image: url("/mobile%20footer%20logo.svg") !important;
-          -webkit-mask-repeat: no-repeat !important;
-          mask-repeat: no-repeat !important;
-          -webkit-mask-size: 100% 100% !important;
-          mask-size: 100% 100% !important;
-          -webkit-mask-position: left bottom !important;
-          mask-position: left bottom !important;
-        }
-        .mond-mobile-footer-enabled .site-footer .footer-brand-minimal__mobile-copy {
-          display: flex !important;
-          align-items: baseline;
-          justify-content: space-between;
-          width: 100%;
-          margin-top: 12px;
-          color: rgb(152, 152, 152);
-          font-family: "degular-mono", monospace !important;
-          font-size: 13px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 1;
-          letter-spacing: 0;
-          text-transform: none;
-        }
-        .mond-mobile-footer-enabled .site-footer .footer-brand-minimal__mobile-copy,
-        .mond-mobile-footer-enabled .site-footer .footer-brand-minimal__mobile-copy * {
-          font-family: "degular-mono", monospace !important;
-        }
-        .mond-mobile-footer-enabled .site-footer .footer-brand-minimal__mobile-studio {
-          color: rgb(152, 152, 152);
-          text-align: right;
-        }
-        .mond-mobile-footer-enabled .site-footer .footer-copy-minimal {
-          display: none !important;
-        }
-      }
-      @media (min-width: 601px) and (max-width: 720px) {
-        /* At these widths the privacy links follow the footer in normal flow. */
-        body > .mond-consent-utility {
-          padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
-        }
-      }
-    `;
-    document.head.appendChild(style);
   };
 
   const setupVideoCompatibility = () => {
@@ -420,7 +46,24 @@
       attributes: true,
       attributeFilter: ["class"],
     });
-    window.addEventListener("pageshow", syncMenuState);
+    window.addEventListener("pageshow", (event) => {
+      if (event.persisted) {
+        // Native navigation leaves the departing menu visible until replacement.
+        // A history restore must reopen the page with its menu and lock cleared.
+        const nav = header.querySelector(".hero__nav");
+        const toggle = header.querySelector(".hero__menu-toggle");
+        if (nav && toggle) {
+          const previousTransition = nav.style.transition;
+          nav.style.transition = "none";
+          header.classList.remove("is-open", "is-preopening", "is-closing");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Open menu");
+          nav.getBoundingClientRect();
+          nav.style.transition = previousTransition;
+        }
+      }
+      syncMenuState();
+    });
   };
 
   const setupMobileNavigationFooter = () => {
@@ -482,7 +125,7 @@
       "/re-mind/", "/walk-with-me/", "/marty-restaurants/", "/macn/",
       "/dream-ville-software/", "/maier-jewelry/", "/olivo-bistro/"
     ]);
-    const blackTransitionPaths = new Set(["/", "/work/", "/about/"]);
+    const nativeNavigationPaths = new Set(["/", "/work/", "/about/"]);
     const transitionKey = "mond:work-to-intermezzo";
     const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
@@ -491,36 +134,16 @@
       document.querySelectorAll(".mond-page-transition").forEach((overlay) => overlay.remove());
     });
 
-    const createOverlay = (arriving = false, landing = false) => {
+    const createOverlay = () => {
       const overlay = document.createElement("div");
       const panel = document.createElement("div");
-      overlay.className = `mond-page-transition${arriving ? " is-arriving" : ""}${landing ? " mond-page-transition--landing" : ""}`;
+      overlay.className = "mond-page-transition";
       panel.className = "mond-page-transition__panel";
       overlay.setAttribute("aria-hidden", "true");
       overlay.appendChild(panel);
       document.body.appendChild(overlay);
       return overlay;
     };
-
-    if (window.location.pathname === "/" && !prefersReducedMotion) {
-      try {
-        if (sessionStorage.getItem(transitionKey)) {
-          document.documentElement.classList.add("mond-landing-entry");
-          const overlay = createOverlay(true, true);
-          requestAnimationFrame(() => {
-            overlay.classList.add("is-exiting");
-            document.documentElement.classList.add("is-landing-entry-ready");
-          });
-          window.setTimeout(() => {
-            overlay.remove();
-            document.documentElement.classList.remove("mond-landing-entry", "is-landing-entry-ready");
-            sessionStorage.removeItem(transitionKey);
-          }, 900);
-        }
-      } catch (error) {
-        // Navigation still works when session storage is unavailable.
-      }
-    }
 
     document.addEventListener("click", (event) => {
       const link = event.target.closest("a[href]");
@@ -530,8 +153,22 @@
       if (destination.origin !== window.location.origin) return;
 
       const isProject = projectPaths.has(destination.pathname);
-      const usesBlackTransition = blackTransitionPaths.has(destination.pathname);
-      if ((!isProject && !usesBlackTransition) || destination.pathname === window.location.pathname || prefersReducedMotion) return;
+      const usesNativeNavigation = nativeNavigationPaths.has(destination.pathname);
+      if ((!isProject && !usesNativeNavigation) || destination.pathname === window.location.pathname) return;
+
+      if (usesNativeNavigation) {
+        // Keep the open menu in place while the browser loads the destination;
+        // suppress its close animation without preventing the link's default action.
+        event.stopImmediatePropagation();
+        try {
+          // Clear only for a main-page destination; project arrivals still use it.
+          sessionStorage.removeItem(transitionKey);
+        } catch (error) {
+          // Native navigation does not depend on browser storage.
+        }
+        return;
+      }
+      if (prefersReducedMotion) return;
 
       event.preventDefault();
       event.stopImmediatePropagation();
@@ -542,7 +179,7 @@
         // The outgoing transition does not depend on persisted state.
       }
 
-      const overlay = createOverlay(false, usesBlackTransition);
+      const overlay = createOverlay();
       overlay.getBoundingClientRect();
       requestAnimationFrame(() => overlay.classList.add("is-active"));
       window.setTimeout(() => {

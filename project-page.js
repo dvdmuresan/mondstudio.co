@@ -43,12 +43,16 @@
 
       const hud = document.createElement('div');
       hud.className = 'project-hud';
-      hud.setAttribute('aria-label', 'Project position and title');
+      hud.setAttribute('aria-label', 'Project scroll progress and title');
 
       const number = document.createElement('span');
       number.className = 'project-hud__number';
-      number.setAttribute('aria-label', 'Project number');
-      number.textContent = '--';
+      number.setAttribute('role', 'progressbar');
+      number.setAttribute('aria-label', 'Page scroll progress');
+      number.setAttribute('aria-valuemin', '0');
+      number.setAttribute('aria-valuemax', '100');
+      number.setAttribute('aria-valuenow', '0');
+      number.textContent = '0%';
 
       const name = document.createElement('span');
       name.className = 'project-hud__name';
@@ -57,51 +61,40 @@
       hud.append(number, name);
       hero.before(hud);
 
-      const normalizePath = (value, base = window.location.href) => {
-        const path = new URL(value, base).pathname.replace(/\/+$/, '');
-        return `${path || ''}/`;
-      };
-
-      const currentPath = normalizePath(window.location.href);
-      const workURL = new URL('/work/', window.location.href).href;
-
-      fetch(workURL)
-        .then((response) => {
-          if (!response.ok) throw new Error(`Unable to load Work page: ${response.status}`);
-          return response.text();
-        })
-        .then((markup) => {
-          const workDocument = new DOMParser().parseFromString(markup, 'text/html');
-          const projects = Array.from(workDocument.querySelectorAll('.projects-gallery figure[data-project-path]'));
-          const projectIndex = projects.findIndex((project) => normalizePath(project.dataset.projectPath, workURL) === currentPath);
-          if (projectIndex < 0) throw new Error('Current project is missing from the Work page order.');
-
-          const workTitle = projects[projectIndex].querySelector('.projects-gallery__caption-title')?.textContent.trim();
-          number.textContent = String(projectIndex + 1).padStart(2, '0');
-          if (workTitle) name.textContent = workTitle;
-        })
-        .catch(() => {
-          number.textContent = '--';
-        });
-
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      if (reduceMotion.matches) return;
-
       let frame = 0;
-      const updateParallax = () => {
+      const updateScrollDisplay = () => {
         frame = 0;
-        const offset = Math.min(window.scrollY, window.innerHeight) * 0.18;
-        coverMedia.style.setProperty('--project-cover-parallax', `${offset}px`);
+        // Consent and image dialogs temporarily fix the body to lock scrolling.
+        if (document.body.style.position === 'fixed') return;
+        const distance = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        const progress = distance > 0
+          ? Math.round(Math.max(0, Math.min(1, window.scrollY / distance)) * 100)
+          : 0;
+        const value = `${progress}%`;
+        if (number.textContent !== value) {
+          number.textContent = value;
+          number.setAttribute('aria-valuenow', String(progress));
+        }
+        if (!reduceMotion.matches) {
+          const offset = Math.min(window.scrollY, window.innerHeight) * 0.18;
+          coverMedia.style.setProperty('--project-cover-parallax', `${offset}px`);
+        }
       };
-
-      const requestParallaxUpdate = () => {
+      const requestScrollUpdate = () => {
         if (frame) return;
-        frame = window.requestAnimationFrame(updateParallax);
+        frame = window.requestAnimationFrame(updateScrollDisplay);
       };
 
-      updateParallax();
-      window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
-      window.addEventListener('resize', requestParallaxUpdate, { passive: true });
+      updateScrollDisplay();
+      window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+      window.addEventListener('resize', requestScrollUpdate, { passive: true });
+      window.addEventListener('pageshow', requestScrollUpdate);
+      if ('ResizeObserver' in window) {
+        const sizeObserver = new ResizeObserver(requestScrollUpdate);
+        sizeObserver.observe(document.documentElement);
+        sizeObserver.observe(document.body);
+      }
     })();
 
 /* Case reveal animations */

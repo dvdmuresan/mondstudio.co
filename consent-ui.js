@@ -5,7 +5,7 @@ const mountConsentUI = async () => {
 
   const stylesheet = document.createElement("link");
   stylesheet.rel = "stylesheet";
-  stylesheet.href = "/consent-ui.css";
+  stylesheet.href = "/consent-ui.css?v=20260917-compact-4";
   // Do not expose an unstyled or unusable prompt if the stylesheet fails.
   await new Promise((resolve, reject) => {
     stylesheet.onload = resolve;
@@ -32,11 +32,11 @@ const mountConsentUI = async () => {
   prompt.hidden = true;
   prompt.innerHTML = `
     <h2 id="mond-consent-title">Privacy preferences</h2>
-    <p>We use essential browser storage for site functionality and your preferences. Google Analytics is optional and loads only with your permission. Advertising technologies are not active.</p>
+    <p>Essential storage keeps this site working. Analytics is optional and only runs with your permission. No advertising is active.</p>
     <div class="mond-consent-actions">
       <button type="button" data-choice="accept">Accept all</button>
       <button type="button" data-choice="reject">Reject optional</button>
-      <button type="button" data-choice="manage" aria-haspopup="dialog" aria-controls="mond-consent-settings">Manage preferences</button>
+      <button type="button" data-choice="manage" aria-haspopup="dialog" aria-controls="mond-consent-settings" aria-label="Manage preferences">Manage</button>
     </div>`;
 
   const dialog = document.createElement("dialog");
@@ -87,6 +87,114 @@ const mountConsentUI = async () => {
   let returnFocus;
   let unlockScroll;
 
+  // Presentation only: MONDConsent remains the authority for every choice.
+  let promptTriggered = false;
+  let observing = false;
+  let previousChoice = consent.getState().choiceMade;
+  let intent;
+  let lastScrollY = window.scrollY;
+  let frame = 0;
+  let fallbackTimer;
+  let sizeObserver;
+  const geometry = () => ({
+    height: window.innerHeight,
+    distance: Math.max(0, document.documentElement.scrollHeight - window.innerHeight),
+  });
+  const renderPrompt = () => {
+    prompt.hidden = !promptTriggered || consent.getState().choiceMade || dialog.open;
+  };
+  const stopEngagement = () => {
+    observing = false;
+    intent = undefined;
+    cancelAnimationFrame(frame);
+    frame = 0;
+    clearTimeout(fallbackTimer);
+    fallbackTimer = undefined;
+    sizeObserver?.disconnect();
+    window.removeEventListener("scroll", onEngagementScroll);
+    window.removeEventListener("resize", onGeometryChange);
+    document.removeEventListener("visibilitychange", onGeometryChange);
+    document.removeEventListener("focusin", clearScrollIntent, true);
+    ["wheel", "touchmove", "keydown", "pointerdown"].forEach((type) => {
+      window.removeEventListener(type, onScrollIntent, true);
+    });
+  };
+  const revealPrompt = () => {
+    if (consent.getState().choiceMade || dialog.open || promptTriggered) return;
+    promptTriggered = true;
+    stopEngagement();
+    renderPrompt();
+  };
+  const updateFallback = () => {
+    const { height, distance } = geometry();
+    const eligible = observing && !dialog.open && !document.hidden && distance < height * 0.5;
+    if (!eligible) {
+      clearTimeout(fallbackTimer);
+      fallbackTimer = undefined;
+    } else if (fallbackTimer === undefined) {
+      fallbackTimer = window.setTimeout(() => {
+        fallbackTimer = undefined;
+        const current = geometry();
+        if (observing && !document.hidden && current.distance < current.height * 0.5) revealPrompt();
+      }, 10000);
+    }
+  };
+  function clearScrollIntent() {
+    intent = undefined;
+  }
+  function onGeometryChange() {
+    clearScrollIntent();
+    updateFallback();
+  }
+  function onScrollIntent(event) {
+    if (!event.isTrusted || dialog.open || document.hidden) return;
+    const target = event.target instanceof Element ? event.target : null;
+    if (target?.closest('input, textarea, select, [contenteditable="true"], .mond-consent, [data-lenis-prevent]')) return;
+    if (event.type === "keydown" &&
+        (event.altKey || event.ctrlKey || event.metaKey ||
+         !["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "].includes(event.key))) return;
+    // Pointer input qualifies only in the native vertical scrollbar gutter.
+    if (event.type === "pointerdown" &&
+        (event.pointerType !== "mouse" || event.clientX < document.documentElement.clientWidth)) return;
+    const now = performance.now();
+    if (!intent || now > intent.until) intent = { y: lastScrollY, ...geometry() };
+    intent.until = now + 1500;
+  }
+  function onEngagementScroll() {
+    lastScrollY = window.scrollY;
+    if (frame || !intent) return;
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      if (!observing || !intent || document.hidden || performance.now() > intent.until) return;
+      const { height, distance } = geometry();
+      // Ignore viewport chrome, layout changes, focus scrolling, and tiny nudges.
+      if (height !== intent.height || distance !== intent.distance) {
+        intent = undefined;
+        return;
+      }
+      if (distance < height * 0.5 || Math.abs(window.scrollY - intent.y) < height * 0.02) return;
+      if (window.scrollY / distance >= 0.25) revealPrompt();
+    });
+  }
+  const startEngagement = () => {
+    if (observing || promptTriggered || consent.getState().choiceMade || dialog.open) return;
+    observing = true;
+    lastScrollY = window.scrollY;
+    window.addEventListener("scroll", onEngagementScroll, { passive: true });
+    window.addEventListener("resize", onGeometryChange, { passive: true });
+    document.addEventListener("visibilitychange", onGeometryChange);
+    document.addEventListener("focusin", clearScrollIntent, true);
+    ["wheel", "touchmove", "keydown", "pointerdown"].forEach((type) => {
+      window.addEventListener(type, onScrollIntent, { passive: true, capture: true });
+    });
+    if ("ResizeObserver" in window) {
+      sizeObserver = new ResizeObserver(updateFallback);
+      sizeObserver.observe(document.documentElement);
+      sizeObserver.observe(document.body);
+    }
+    updateFallback();
+  };
+
   const readPreferences = () => {
     const state = consent.getState();
     analytics.checked = state.analytics;
@@ -125,7 +233,8 @@ const mountConsentUI = async () => {
     dialog.close();
     unlockScroll?.();
     unlockScroll = undefined;
-    prompt.hidden = consent.getState().choiceMade;
+    renderPrompt();
+    startEngagement();
     if (returnFocus?.isConnected && (returnFocus !== manage || !prompt.hidden)) {
       returnFocus.focus({ preventScroll: true });
     } else {
@@ -134,6 +243,7 @@ const mountConsentUI = async () => {
   };
   const openSettings = (source) => {
     if (dialog.open) return;
+    stopEngagement();
     returnFocus = source;
     readPreferences();
     unlockScroll = lockScroll();
@@ -143,10 +253,17 @@ const mountConsentUI = async () => {
   };
   const synchronize = () => {
     const state = consent.getState();
+    if (state.choiceMade) stopEngagement();
+    else if (previousChoice) {
+      stopEngagement();
+      promptTriggered = false;
+    }
+    previousChoice = state.choiceMade;
     readPreferences();
     if (dialog.open && !state.choiceMade) closeSettings();
     const promptHadFocus = prompt.contains(document.activeElement);
-    prompt.hidden = state.choiceMade || dialog.open;
+    renderPrompt();
+    startEngagement();
     if (promptHadFocus && prompt.hidden) focusPage();
   };
 

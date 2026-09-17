@@ -3196,6 +3196,8 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       }
     }
   </style>
+  <link rel="stylesheet" href="/site-common.css?v=20260914-1" />
+  <script>document.documentElement.classList.add("mond-mobile-footer-enabled");</script>
 </head>
 <body class="view-image" data-hide-footer-legal>
   <script>
@@ -4284,15 +4286,13 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         });
       });
 
-      // Mobile replaces the old first-interaction gate with viewport relevance.
+      // Use viewport relevance on every screen without waiting for user interaction.
       // Observing every preview does not attach sources outside the 80px boundary.
-      if (window.matchMedia('(max-width: 720px)').matches) {
-        // The earlier DOMContentLoaded handler establishes filter state/card order.
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', engageViewportPreviews, { once: true });
-        } else {
-          engageViewportPreviews();
-        }
+      // The earlier DOMContentLoaded handler establishes filter state/card order.
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', engageViewportPreviews, { once: true });
+      } else {
+        engageViewportPreviews();
       }
 
       window.addEventListener('scroll', engageViewportPreviews, { once: true, passive: true });
@@ -4308,7 +4308,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     }
   </script>
   <script type="module" src="./work-3d-loader.js"></script>
-  <script defer src="./site-common.js?v=20260825-3"></script>
+  <script defer src="./site-common.js?v=20260917-engagement-1"></script>
   <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
 </body>
 </html>
