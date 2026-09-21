@@ -2970,7 +2970,11 @@ html.lenis.lenis-stopped {
 
     @media (max-width: 720px) {
       .case-mobile-info dt {
-        font-size: 14.5px;
+        font-size: 12px;
+      }
+
+      .case-mobile-info dd {
+        font-size: 14px;
       }
 
       .case-description,
