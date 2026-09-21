@@ -1,4 +1,105 @@
+/* One media radius across images, videos, and their clipping frames. */
+:root {
+  --mond-media-radius: 4px;
+  --mond-cta-background: rgba(255, 255, 255, 0.20);
+  --mond-cta-hover: rgba(255, 255, 255, 0.25);
+  --mond-cta-color: #fff;
+}
+
+img:not(.hero__brand-image):not(.about-wordmark img),
+video,
+.projects-gallery figure::after,
+.cursor-placeholder.is-image,
+.projects-thumb {
+  border-radius: var(--mond-media-radius) !important;
+}
+
+.pl-1,
+.pl-2,
+.pl-3,
+.pl-4,
+.post-placeholder-panel,
+.post-placeholder-panel__image,
+.projects-gallery__item,
+.case-gallery figure,
+.project-cover,
+.about-figure,
+.about-team-strip__image,
+.about-mobile-person__image,
+.about-person-panel__card,
+.about-person-panel__image-wrap,
+.about-footer-image {
+  border-radius: var(--mond-media-radius) !important;
+  overflow: hidden;
+}
+
+/* Each span contains a complete rendered row; rows slide upward together. */
+.mond-line-reveal .mond-reveal-line {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(.8em);
+}
+.mond-line-reveal.is-line-revealed .mond-reveal-line {
+  animation: mond-project-line-in 620ms cubic-bezier(.22, 1, .36, 1) var(--line-delay, 0ms) both;
+}
+.mond-line-reveal.is-line-settled .mond-reveal-line {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+.case-intro__copy.mond-line-reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+@keyframes mond-project-line-in {
+  from { opacity: 0; transform: translateY(.8em); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mond-line-reveal .mond-reveal-line {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Shared presentation is loaded in the head so first paint matches the final layout. */
+body[data-theme="light"] {
+  --mond-cta-background: rgba(255, 255, 255, 0.65);
+  --mond-cta-hover: rgba(255, 255, 255, 0.9);
+  --mond-cta-color: var(--color-fg, #131313);
+}
+
+/* Contact actions share the Let's Talk appearance across pages. */
+.hero__cta,
+.hero__cta-label,
+.projects-sidebar__cta,
+.projects-sidebar__cta-label,
+.post-placeholder-panel__button {
+  border-radius: var(--mond-media-radius) !important;
+}
+
+:is(.hero__cta, .projects-sidebar__cta, .post-placeholder-panel__button) {
+  border: 0 !important;
+  background: var(--mond-cta-background) !important;
+  color: var(--mond-cta-color) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+}
+
+:is(.hero__cta, .projects-sidebar__cta, .post-placeholder-panel__button):is(:hover, :focus-visible) {
+  background: var(--mond-cta-hover) !important;
+}
+
+.hero__cta-label,
+.projects-sidebar__cta-label {
+  color: inherit !important;
+}
+
 .hero__nav,
 .hero__nav a,
 .hero__nav-word {

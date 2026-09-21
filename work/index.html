@@ -3196,8 +3196,22 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         padding-bottom: 0;
       }
     }
+    body[data-theme] .projects-filter__button[data-filter-type="service"] {
+      color: #aaaaaa;
+      font-weight: 350;
+    }
+
+    body[data-theme] .projects-filter__button[data-filter-type="service"].is-active {
+      color: #ffffff;
+    }
+
+    @media (max-width: 720px) {
+      body[data-theme] .projects-filter__button[data-filter-type="service"] {
+        font-weight: 400;
+      }
+    }
   </style>
-  <link rel="stylesheet" href="/site-common.css?v=20260914-1" />
+  <link rel="stylesheet" href="/site-common.css?v=20260921-project-lines" />
   <script>document.documentElement.classList.add("mond-mobile-footer-enabled");</script>
 </head>
 <body class="view-image" data-hide-footer-legal>
@@ -4310,7 +4324,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     }
   </script>
   <script type="module" src="./work-3d-loader.js"></script>
-  <script defer src="./site-common.js?v=20260917-engagement-1"></script>
+  <script defer src="./site-common.js?v=20260921-project-lines"></script>
   <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
 </body>
 </html>

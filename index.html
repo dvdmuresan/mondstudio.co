@@ -382,7 +382,7 @@ html {
 
     @media (max-width: 720px) {
       .hero__play-fallback {
-        top: calc(101px + (100vw - 20px) * 11.7 / 16 / 2);
+        top: calc(101px + (100vw - 20px) * 5 / 4 / 2);
       }
     }
 
@@ -855,96 +855,6 @@ html {
       gap: 50px;
     }
 
-    .pl-4-caption-wrapper {
-      width: min(1024px, calc(100vw - 40px));
-      margin: clamp(80px, 11vw, 160px) auto 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: clamp(36px, 8vw, 96px);
-      padding: 0;
-    }
-
-    .pl-4-caption {
-      width: 460px;
-      max-width: 100%;
-      margin: 0;
-      color: var(--color-fg);
-      font-family: "Mona Sans", sans-serif;
-      font-size: 54px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 64px;
-    }
-
-    .pl-4-caption span {
-      display: block;
-    }
-
-    .pl-4-services {
-      width: 631px;
-      max-width: 100%;
-      min-height: 56px;
-      color: #d0d0d0;
-      font-family: "Mona Sans", sans-serif;
-      font-size: 17.25px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      letter-spacing: 0;
-      text-align: left;
-      margin: 0;
-    }
-
-    .pl-4-service {
-      transition: color 160ms ease;
-    }
-
-    .pl-4-service-preview {
-      position: fixed;
-      z-index: 80;
-      display: none;
-      width: 143.36px;
-      height: 179.2px;
-      overflow: hidden;
-      border-radius: 4px;
-      opacity: 0;
-      transform: translateY(4px) scale(0.96);
-      pointer-events: none;
-      transition: opacity 160ms ease, transform 180ms cubic-bezier(.2, .8, .2, 1);
-    }
-
-    .pl-4-service-preview img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    @media (min-width: 861px) and (hover: hover) and (pointer: fine) {
-      .pl-4-service {
-        cursor: pointer;
-      }
-
-      .pl-4-service:hover,
-      .pl-4-service:focus-visible {
-        color: var(--color-fg);
-        outline: none;
-      }
-
-      .pl-4-service-preview {
-        display: block;
-      }
-
-      .pl-4-service-preview.is-visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    body[data-theme="light"] .pl-4-services {
-      color: #A3A3A3;
-    }
 
     .pl-4-meta {
       display: flex;
@@ -1315,23 +1225,8 @@ html {
         width: 100%;
       }
 
-      .pl-4-caption-wrapper {
-        width: calc(100vw - 40px);
-        flex-direction: column;
-        gap: 24px;
-        padding: 0;
-      }
 
-      .pl-4-caption {
-        font-size: clamp(40px, 6vw, 48px);
-        line-height: 1.08;
-      }
 
-      .pl-4-services {
-        width: min(560px, 100%);
-        font-size: 15px;
-        line-height: 1.35;
-      }
     }
 
     @media (min-width: 901px) and (max-width: 1440px) {
@@ -1419,9 +1314,6 @@ html {
         width: min(1280px, calc(100vw - 40px));
       }
 
-      .pl-4-caption-wrapper {
-        width: min(1280px, calc(100vw - 40px));
-      }
 
       .pl-4 {
         height: auto;
@@ -3191,22 +3083,8 @@ body[data-theme="light"] .studio-textbox-note {
         line-height: 1.04;
       }
 
-      .pl-4-caption {
-        width: min(420px, 100%);
-        font-size: clamp(38px, 3.1vw, 48px);
-        line-height: 1.1;
-      }
 
-      .pl-4-services {
-        width: min(540px, 100%);
-        font-size: clamp(15.5px, 1.08vw, 16.5px);
-        line-height: 1.34;
-      }
 
-      .pl-4-caption-wrapper {
-        gap: clamp(28px, 5vw, 72px);
-        margin-top: clamp(72px, 8vw, 128px);
-      }
     }
 
     @media (min-width: 901px) and (max-height: 820px) {
@@ -3264,8 +3142,7 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       .latest-works-label {
-        font-size: 27px;
-        line-height: 1.1;
+        display: none;
       }
 
       .latest-works-row,
@@ -3305,21 +3182,8 @@ body[data-theme="light"] .studio-textbox-note {
         bottom: calc(clamp(100px, calc(6vw + 80px), 140px) - 30px);
       }
 
-      .pl-4-caption {
-        font-size: 30px;
-        line-height: 1.2;
-      }
 
-      .pl-4-services {
-        width: min(300px, 100%);
-        font-size: clamp(10px, 2.9vw, 11.25px);
-        line-height: 1.45;
-        color: #d0d0d0;
-      }
 
-      .pl-4-caption-wrapper {
-        margin-top: calc(clamp(80px, 11vw, 160px) + 50px);
-      }
 
       .post-placeholder-panel.pl-5 {
         margin-top: 150px;
@@ -4018,7 +3882,7 @@ body[data-theme="light"] .studio-textbox-note {
       }
 
       .hero {
-        height: calc(101px + ((100vw - 20px) * 9 / 16 * 1.3));
+        height: calc(101px + (100vw - 20px) * 5 / 4);
         min-height: 0;
         max-height: none;
       }
@@ -4032,7 +3896,7 @@ body[data-theme="light"] .studio-textbox-note {
         height: auto;
         min-height: 0;
         max-height: none;
-        aspect-ratio: 16 / 11.7;
+        aspect-ratio: 4 / 5;
         left: 50%;
         top: var(--mobile-video-area-top);
         transform: translate(-50%, 0);
@@ -4046,39 +3910,11 @@ body[data-theme="light"] .studio-textbox-note {
         margin-top: 50px;
       }
 
-      .pl-4-caption-wrapper {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
-      }
 
-      .pl-4-caption {
-        width: 100%;
-        font-size: min(30px, calc((100vw - 60px) / 14));
-        line-height: 1.2;
-      }
 
-      .pl-4-caption span {
-        white-space: nowrap;
-      }
 
-      .pl-4-services {
-        width: max-content;
-        justify-self: end;
-        font-size: 0;
-        line-height: 0;
-      }
 
-      .pl-4-services br {
-        display: none;
-      }
 
-      .pl-4-service {
-        display: block;
-        font-size: 15px;
-        line-height: 18px;
-        white-space: nowrap;
-      }
 
       .hero__top > .hero__nav,
       .hero__nav {
@@ -4199,12 +4035,15 @@ body[data-theme="light"] .studio-textbox-note {
         font-size: 12px;
         text-transform: none;
       }
+
     }
   </style>
-  <link rel="stylesheet" href="/site-common.css?v=20260914-1" />
+  <link rel="stylesheet" href="/site-common.css?v=20260921-project-lines" />
+  <link rel="stylesheet" href="/mobile-footer.css?v=20260921-mona-sans" />
+  <link rel="stylesheet" href="/home-services.css?v=20260921-desktop-restored" />
   <script>document.documentElement.classList.add("mond-mobile-footer-enabled");</script>
 </head>
-<body>
+<body data-theme="dark">
   <header class="hero">
     <video
       class="hero__video is-stage-1"
@@ -4433,7 +4272,7 @@ body[data-theme="light"] .studio-textbox-note {
     </div>
   </div>
 
-<div class="pl-4-caption-wrapper reveal">
+  <div class="pl-4-caption-wrapper reveal">
     <h2 class="pl-4-caption"><span>Design</span><span>with intention.</span></h2>
     <div class="pl-4-services" id="pl-4-services">
       <span class="pl-4-service" tabindex="0" data-preview-image="optimized/intermezzo-festival-visual-identity.jpg">Creative Direction</span>,
@@ -4448,6 +4287,77 @@ body[data-theme="light"] .studio-textbox-note {
   <div class="pl-4-service-preview" id="pl-4-service-preview" aria-hidden="true">
     <img src="optimized/intermezzo-festival-visual-identity.jpg" alt="Intermezzo Festival visual identity artwork" decoding="async">
   </div>
+
+  <section class="home-services reveal" aria-labelledby="home-services-title">
+    <h2 id="home-services-title">Design with intention.</h2>
+    <div class="home-services__list">
+      <details class="home-service" name="home-services">
+        <summary><span>Creative Direction</span><span class="home-service__indicator" aria-hidden="true"></span></summary>
+        <div class="home-service__content">
+          <ul>
+            <li>Brand positioning &amp; creative direction</li>
+            <li>Art direction across visual touchpoints</li>
+            <li>Campaign concepts &amp; communication systems</li>
+            <li>Narrative development &amp; brand expression</li>
+            <li>Creative consistency across channels</li>
+            <li>Direction for launch, growth &amp; evolution</li>
+          </ul>
+        </div>
+      </details>
+      <details class="home-service" name="home-services">
+        <summary><span>Strategy</span><span class="home-service__indicator" aria-hidden="true"></span></summary>
+        <div class="home-service__content">
+          <ul>
+            <li>Brand strategy &amp; positioning</li>
+            <li>Audience, market &amp; category definition</li>
+            <li>Brand focus, relevance &amp; differentiation</li>
+            <li>Go-to-market &amp; launch strategy</li>
+            <li>Communication strategy</li>
+            <li>Long-term brand evolution</li>
+          </ul>
+        </div>
+      </details>
+      <details class="home-service" name="home-services">
+        <summary><span>Visual Identity</span><span class="home-service__indicator" aria-hidden="true"></span></summary>
+        <div class="home-service__content">
+          <ul>
+            <li>Brand identity systems</li>
+            <li>Logo &amp; visual language development</li>
+            <li>Typography &amp; color systems</li>
+            <li>Art direction principles</li>
+            <li>Design systems &amp; brand guidelines</li>
+            <li>Identity evolution &amp; refinement</li>
+          </ul>
+        </div>
+      </details>
+      <details class="home-service" name="home-services">
+        <summary><span>Graphic Design</span><span class="home-service__indicator" aria-hidden="true"></span></summary>
+        <div class="home-service__content">
+          <ul>
+            <li>Editorial design</li>
+            <li>Print &amp; publication design</li>
+            <li>Campaign design</li>
+            <li>Packaging &amp; communication materials</li>
+            <li>Typography-led graphic systems</li>
+            <li>Digital graphic assets</li>
+          </ul>
+        </div>
+      </details>
+      <details class="home-service" name="home-services">
+        <summary><span>Motion Design</span><span class="home-service__indicator" aria-hidden="true"></span></summary>
+        <div class="home-service__content">
+          <ul>
+            <li>Motion identity systems</li>
+            <li>Brand animation principles</li>
+            <li>Logo animation</li>
+            <li>Social &amp; campaign motion assets</li>
+            <li>Animated typography</li>
+            <li>Motion graphics for digital platforms</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
 
   <script>
     (() => {
@@ -4505,23 +4415,25 @@ body[data-theme="light"] .studio-textbox-note {
       <p class="post-placeholder-panel__body">
         Tell us what you’re building, changing or trying to figure out. We’ll take it from there.
       </p>
-      <a class="post-placeholder-panel__button" href="mailto:hello@mondstudio.co?subject=Let%E2%80%99s%20Meet">Contact us</a>
+      <a class="post-placeholder-panel__button" href="/start-a-project/">Start a project</a>
     </div>
   </section>
   </main>
 
-  <footer class="site-footer footer-section visible" id="footer-section" aria-hidden="false">
+  <footer class="site-footer footer-section studio-footer visible" id="footer-section" aria-hidden="false">
     <div class="footer-content">
       <div class="footer-brand-minimal" aria-label="MOND : STUDIO">
         <span class="footer-brand-minimal__logo" aria-hidden="true"></span>
       </div>
       <nav class="footer-social-minimal" aria-label="Footer social links">
+        <span class="studio-footer__channels">CHANNELS</span>
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
         <a href="https://www.instagram.com/studio_mond/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+        <span class="studio-footer__whatsapp" aria-disabled="true">WHATSAPP</span>
       </nav>
       <div class="footer-contact-block">
-        Studio — Cluj-Napoca, Romania <span id="ro-clock" aria-label="Cluj-Napoca local time"></span><br>
-        Creative Network — Budapest, Hungary <span id="hu-clock" aria-label="Budapest local time"></span><br>
+        <span class="studio-footer__location-prefix">Studio — </span>Cluj-Napoca, Romania <span id="ro-clock" aria-label="Cluj-Napoca local time"></span><br>
+        <span class="studio-footer__location-prefix">Creative Network — </span>Budapest, Hungary <span id="hu-clock" aria-label="Budapest local time"></span><br>
         <a class="footer-email" href="mailto:hello@mondstudio.co?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.co</a>
       </div>
       <div class="footer-copy-minimal">©2026 MOND : STUDIO. All Rights Reserved. <a href="/privacy/">Privacy</a></div>
@@ -4773,7 +4685,6 @@ body[data-theme="light"] .studio-textbox-note {
       const STORAGE_KEY = 'mond-theme';
       const themeToggle = document.getElementById('theme-toggle');
       const icon = themeToggle ? themeToggle.querySelector('.theme-toggle__icon') : null;
-      const mediaQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
       const writeStoredTheme = (value) => {
         try {
@@ -4808,17 +4719,6 @@ body[data-theme="light"] .studio-textbox-note {
         });
       }
 
-      if (mediaQuery) {
-        const handlePreferenceChange = (event) => {
-          applyTheme('dark');
-        };
-
-        if (typeof mediaQuery.addEventListener === 'function') {
-          mediaQuery.addEventListener('change', handlePreferenceChange);
-        } else if (typeof mediaQuery.addListener === 'function') {
-          mediaQuery.addListener(handlePreferenceChange);
-        }
-      }
     })();
   </script>
 
@@ -5286,54 +5186,8 @@ body[data-theme="light"] .studio-textbox-note {
     })();
   </script>
 
-  <script>
-    (() => {
-      const serviceBox = document.getElementById('pl-4-services');
-      const services = Array.from(document.querySelectorAll('.pl-4-service'));
-      const preview = document.getElementById('pl-4-service-preview');
-      const previewImage = preview?.querySelector('img');
-      const desktopHover = window.matchMedia('(min-width: 861px) and (hover: hover) and (pointer: fine)');
-      if (!serviceBox || !services.length || !preview || !previewImage) return;
-
-      const positionPreview = () => {
-        if (!desktopHover.matches) return;
-        const box = serviceBox.getBoundingClientRect();
-        const previewWidth = 143.36;
-        const previewHeight = 179.2;
-        const gap = 14;
-        const left = box.right + gap + previewWidth <= window.innerWidth - 20
-          ? box.right + gap
-          : box.left - previewWidth - gap;
-        const top = box.top + Math.max(0, (box.height - previewHeight) / 2);
-        preview.style.left = `${Math.max(20, left)}px`;
-        preview.style.top = `${Math.max(20, Math.min(top, window.innerHeight - previewHeight - 20))}px`;
-      };
-
-      const showPreview = (service) => {
-        if (!desktopHover.matches) return;
-        const source = service.dataset.previewImage;
-        if (!source) return;
-        positionPreview();
-        previewImage.src = source;
-        preview.classList.add('is-visible');
-      };
-
-      const hidePreview = () => preview.classList.remove('is-visible');
-
-      services.forEach((service) => {
-        service.addEventListener('mouseenter', () => showPreview(service));
-        service.addEventListener('mouseleave', hidePreview);
-        service.addEventListener('focus', () => showPreview(service));
-        service.addEventListener('blur', hidePreview);
-      });
-
-      window.addEventListener('resize', positionPreview);
-      window.addEventListener('scroll', positionPreview, { passive: true });
-      desktopHover.addEventListener('change', hidePreview);
-    })();
-  </script>
-
-  <script defer src="./site-common.js?v=20260917-engagement-1"></script>
+  <script defer src="./home-services.js?v=20260921-desktop-restored"></script>
+  <script defer src="./site-common.js?v=20260921-project-lines"></script>
   <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
 </body>
 </html>

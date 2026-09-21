@@ -1,3 +1,136 @@
+/* Reveal each rendered project-title/subtitle line as one upward-moving unit. */
+(() => {
+  const setupProjectLineReveals = () => {
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    if (motion.matches || !('IntersectionObserver' in window)) return;
+
+    document.querySelectorAll('.case-mobile-info__item').forEach(item => {
+      if (/^project\s*:?\s*$/i.test(item.querySelector('dt')?.textContent.trim() || '')) {
+        item.querySelector('dd')?.setAttribute('data-project-line-title', '');
+      }
+    });
+    const selector = [
+      '.pl-1-title', '.pl-3-title', '.pl-4-title',
+      '.home-project-description', '.home-project-services',
+      '.projects-gallery__caption-title', '.projects-gallery__caption-subtitle',
+      '.project-row td:first-child > a',
+      '.projects-table__disabled-link > span:first-child',
+      '.case-intro__copy', '[data-project-line-title]',
+      '.project-hud__name', '.case-project-nav__title'
+    ].join(',');
+    const records = [...document.querySelectorAll(selector)].filter(element => element.textContent.trim()).map(element => {
+      window.mondProtectShortWords?.(element);
+      return {
+        element,
+        original: [...element.childNodes].map(node => node.cloneNode(true)),
+        width: -1,
+        ready: false,
+        revealed: false,
+        subtitle: element.matches('.home-project-description, .home-project-services, .projects-gallery__caption-subtitle'),
+      };
+    });
+    if (!records.length) return;
+    const byElement = new Map(records.map(record => [record.element, record]));
+    const restore = record => {
+      record.element.replaceChildren(...record.original.map(node => node.cloneNode(true)));
+      record.element.classList.remove('mond-line-reveal', 'is-line-revealed', 'is-line-settled');
+      record.ready = false;
+    };
+    const splitLines = record => {
+      const {element} = record;
+      const bounds = element.getBoundingClientRect();
+      if (!element.getClientRects().length || bounds.width <= 1 || bounds.height <= 1 || motion.matches) return;
+      restore(record);
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      const rows = [];
+      // Read all natural line positions before changing the DOM. Keep NBSP groups intact.
+      const plans = nodes.map(node => {
+        const groups = [];
+        for (const match of node.textContent.matchAll(/[^ \t\r\n]+/gu)) {
+          const range = document.createRange();
+          range.setStart(node, match.index);
+          range.setEnd(node, match.index + match[0].length);
+          const rect = range.getClientRects()[0];
+          if (!rect) continue;
+          let row = rows.findIndex(top => Math.abs(top - rect.top) < 2);
+          if (row < 0) { row = rows.length; rows.push(rect.top); }
+          const previous = groups.at(-1);
+          if (previous?.row === row) previous.end = match.index + match[0].length;
+          else groups.push({start: match.index, end: match.index + match[0].length, row});
+        }
+        return {node, groups};
+      });
+      for (const {node, groups} of plans) {
+        if (!groups.length) continue;
+        const fragment = document.createDocumentFragment();
+        let offset = 0;
+        for (const group of groups) {
+          fragment.append(node.textContent.slice(offset, group.start));
+          const line = document.createElement('span');
+          line.className = 'mond-reveal-line';
+          line.textContent = node.textContent.slice(group.start, group.end);
+          line.style.setProperty('--line-delay', `${(record.subtitle ? 100 : 0) + group.row * 110}ms`);
+          fragment.append(line);
+          offset = group.end;
+        }
+        fragment.append(node.textContent.slice(offset));
+        node.replaceWith(fragment);
+      }
+      element.classList.add('mond-line-reveal');
+      if (record.revealed) element.classList.add('is-line-revealed', 'is-line-settled');
+      record.width = element.getBoundingClientRect().width;
+      record.ready = true;
+    };
+    const observer = new IntersectionObserver(entries => {
+      for (const {target, isIntersecting} of entries) {
+        if (!isIntersecting) continue;
+        const record = byElement.get(target);
+        if (!record.ready) splitLines(record);
+        record.revealed = true;
+        target.classList.add('is-line-revealed');
+        observer.unobserve(target);
+      }
+    }, {threshold: 0.15});
+    records.forEach(record => { splitLines(record); observer.observe(record.element); });
+
+    // Re-measure after font loading, viewport changes and hidden Work views opening.
+    let frame = 0;
+    let force = false;
+    const refresh = (remeasure = false) => {
+      force ||= remeasure;
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        records.forEach(record => {
+          const width = record.element.getBoundingClientRect().width;
+          if (width <= 1) { record.ready = false; return; }
+          if (width && (force || !record.ready || Math.abs(width - record.width) > .5)) splitLines(record);
+        });
+        force = false;
+      });
+    };
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(() => refresh());
+      records.forEach(({element}) => resizeObserver.observe(element));
+    }
+    window.addEventListener('resize', () => refresh(true), {passive: true});
+    document.fonts?.ready.then(() => refresh(true));
+    motion.addEventListener('change', () => {
+      if (!motion.matches) return refresh(true);
+      records.forEach(record => {
+        record.revealed = true;
+        restore(record);
+        observer.unobserve(record.element);
+      });
+    });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupProjectLineReveals, {once: true});
+  } else queueMicrotask(setupProjectLineReveals);
+})();
+
 (() => {
   import("/google-consent-mode.js")
     .catch(() => null)
@@ -5,7 +138,7 @@
       await import("/consent-state.js");
       const connected = consentMode?.connectConsent();
       // P4 default and persisted update precede the opt-in-only GA4 loader.
-      await import("/consent-ui.js?v=20260917-engagement-1");
+      await import("/consent-ui.js?v=20260921-shared-footer");
       if (connected) return import("/google-analytics.js");
     })
     .catch(() => {});

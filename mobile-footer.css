@@ -1,0 +1,148 @@
+/* Shared Home and About mobile footer — Figma 659:138. */
+.studio-footer__channels,
+.studio-footer__whatsapp {
+  display: none;
+}
+.studio-footer .footer-social-minimal a:last-of-type {
+  margin-right: 0;
+}
+.studio-footer .footer-social-minimal a,
+.studio-footer .studio-footer__whatsapp {
+  font-family: "Mona Sans", sans-serif !important;
+}
+
+@media (max-width: 720px) {
+  @font-face {
+    font-family: "Studio Footer Mono";
+    src: url("/assets/fonts/atkinson-hyperlegible-mono.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  .mond-mobile-footer-enabled .site-footer.studio-footer {
+    width: calc(100% - 20px) !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    margin: 10px 10px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+    padding: 60px 0 0 !important;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--color-fg, #fff);
+  }
+
+  .mond-mobile-footer-enabled .studio-footer .footer-content {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    align-items: start;
+    gap: 0 12px;
+  }
+
+  .mond-mobile-footer-enabled .studio-footer .footer-social-minimal,
+  .mond-mobile-footer-enabled .studio-footer .footer-contact-block,
+  .mond-mobile-footer-enabled .studio-footer .footer-brand-minimal {
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    transform: none !important;
+    color: inherit !important;
+    text-align: left !important;
+    order: initial;
+  }
+
+  .mond-mobile-footer-enabled .studio-footer .footer-social-minimal {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+  }
+  .mond-mobile-footer-enabled .studio-footer .studio-footer__channels {
+    display: block;
+    height: 26px;
+    color: #8c8c8c;
+    font: 400 11px/17px "Mona Sans", sans-serif !important;
+  }
+  .mond-mobile-footer-enabled .studio-footer .footer-social-minimal a,
+  .mond-mobile-footer-enabled .studio-footer .studio-footer__whatsapp {
+    display: block;
+    margin: 0 !important;
+    color: inherit !important;
+    font: 500 28px/35px "Mona Sans", sans-serif !important;
+    letter-spacing: 0 !important;
+    text-decoration: none;
+  }
+  .mond-mobile-footer-enabled .studio-footer .footer-contact-block {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 72px !important;
+    padding-left: 3px;
+    white-space: nowrap !important;
+    font: 400 11px/17px "Mona Sans", sans-serif !important;
+    letter-spacing: 0 !important;
+  }
+  .mond-mobile-footer-enabled .studio-footer .footer-email {
+    color: inherit;
+    text-decoration: none;
+  }
+  .mond-mobile-footer-enabled .studio-footer .footer-contact-block * {
+    font-family: inherit !important;
+  }
+  .studio-footer .studio-footer__location-prefix {
+    display: none;
+  }
+
+  .mond-mobile-footer-enabled .studio-footer .footer-brand-minimal {
+    /* Keep the shared privacy controls while placing them beside contact info. */
+    display: contents;
+  }
+  .mond-mobile-footer-enabled .studio-footer .footer-brand-minimal__logo {
+    display: block;
+    grid-column: 1 / -1;
+    grid-row: 3;
+    width: calc(100% - 6px) !important;
+    height: auto !important;
+    margin: 70px 0 0 6px;
+    aspect-ratio: 367 / 140;
+    background-color: currentColor !important;
+    -webkit-mask: url("/assets/mond-footer-wordmark.svg") left center / 100% 100% no-repeat !important;
+    mask: url("/assets/mond-footer-wordmark.svg") left center / 100% 100% no-repeat !important;
+  }
+  .mond-mobile-footer-enabled .studio-footer .footer-copy-minimal,
+  .mond-mobile-footer-enabled .studio-footer .footer-brand-minimal__mobile-copy:not(.mond-consent-utility) {
+    display: none !important;
+  }
+  .mond-mobile-footer-enabled .studio-footer .mond-consent-utility {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: end;
+    display: flex !important;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    background: transparent;
+    color: #646464;
+  }
+  .mond-mobile-footer-enabled .studio-footer .mond-consent-utility button,
+  .mond-mobile-footer-enabled .studio-footer .mond-consent-utility a {
+    min-height: 17px;
+    color: inherit;
+    font: 400 11px/17px "Studio Footer Mono", monospace !important;
+    letter-spacing: -0.66px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .studio-footer a:focus-visible,
+  .studio-footer button:focus-visible {
+    outline: 1px solid currentColor;
+    outline-offset: 3px;
+  }
+}

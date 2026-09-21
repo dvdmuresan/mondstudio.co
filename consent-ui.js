@@ -63,12 +63,13 @@ const mountConsentUI = async () => {
 
   const brand = document.querySelector(".site-footer .footer-brand-minimal");
   if (footerAllowed && brand?.querySelector(".footer-brand-minimal__mobile-copy")) {
-    const mobileFooter = window.matchMedia("(max-width: 600px)");
+    const mobileFooter = window.matchMedia(brand.closest(".studio-footer") ? "(max-width: 720px)" : "(max-width: 600px)");
     const desktopFooter = window.matchMedia("(min-width: 721px)");
     const copyright = document.querySelector(".site-footer .footer-copy-minimal");
     const updatePlacement = () => {
       const mobile = mobileFooter.matches;
       const desktop = copyright && desktopFooter.matches;
+      opener.textContent = mobile && brand.closest(".studio-footer") ? "Cookies Settings" : "Cookie Settings";
       brand.classList.toggle("has-privacy-controls", mobile);
       copyright?.classList.toggle("has-privacy-controls", Boolean(desktop));
       utility.classList.toggle("footer-brand-minimal__mobile-copy", mobile);
