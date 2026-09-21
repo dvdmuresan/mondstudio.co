@@ -4373,6 +4373,42 @@ body[data-theme="light"] .studio-textbox-note {
     .pl-4-subtitle {
       color: rgb(152, 152, 152);
     }
+    .home-project-services {
+      display: none;
+    }
+
+    @media (max-width: 720px) {
+      .latest-works-row .placeholder-badge,
+      .latest-works-duo .placeholder-badge,
+      .pl-4-block .placeholder-badge,
+      .home-project-description {
+        display: none;
+      }
+
+      .home-project-services {
+        display: inline;
+      }
+
+      .pl-1,
+      .pl-2,
+      .pl-3,
+      .pl-4 {
+        aspect-ratio: 4 / 5;
+        height: auto;
+      }
+
+      .pl-1-title,
+      .pl-3-title,
+      .pl-4-title {
+        text-transform: uppercase;
+      }
+
+      .pl-1-subtitle,
+      .pl-3-subtitle,
+      .pl-4-subtitle {
+        text-transform: none;
+      }
+    }
   </style>
   <link rel="stylesheet" href="/site-common.css?v=20260914-1" />
   <script>document.documentElement.classList.add("mond-mobile-footer-enabled");</script>
@@ -4571,7 +4607,8 @@ body[data-theme="light"] .studio-textbox-note {
       <div class="pl-1-meta">
         <a class="pl-1-title" href="/walk-with-me/" data-project-transition="walk-with-me" data-transition-title="Walk With Me">Walk with me</a>
         <div class="pl-1-subtitle">
-          Visual identity and packaging design for the Rainy Days Sample Pack.
+          <span class="home-project-description">Visual identity and packaging design for the Rainy Days Sample Pack.</span>
+          <span class="home-project-services">Visual identity, packaging design</span>
         </div>
       </div>
     </div>
@@ -4587,7 +4624,8 @@ body[data-theme="light"] .studio-textbox-note {
       <div class="pl-3-meta">
         <a class="pl-3-title" href="/dream-ville-software/" data-project-transition="dream-ville-software" data-transition-title="Dream Ville Software">Dream Ville</a>
         <div class="pl-3-subtitle">
-          Software development startup. Bold visual identity made to stand the test of time.
+          <span class="home-project-description">Software development startup. Bold visual identity made to stand the test of time.</span>
+          <span class="home-project-services">Brand strategy, creative direction, visual identity</span>
         </div>
       </div>
     </div>
@@ -4598,7 +4636,8 @@ body[data-theme="light"] .studio-textbox-note {
     <div class="pl-4-meta">
       <a class="pl-4-title" href="/re-mind/" data-project-transition="re-mind" data-transition-title="RE:MIND">RE:MIND</a>
       <div class="pl-4-subtitle">
-        A Ritual for the Mind. Visual identity, packaging and product design.
+        <span class="home-project-description">A Ritual for the Mind. Visual identity, packaging and product design.</span>
+          <span class="home-project-services">Brand strategy, visual identity, motion &amp; animation, product &amp; 3D design, packaging design</span>
       </div>
     </div>
   </div>
