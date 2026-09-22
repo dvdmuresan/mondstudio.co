@@ -1,10 +1,11 @@
-import Lenis from 'https://esm.sh/@studio-freight/lenis@1.0.33?bundle';
-
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const desktopPointer = window.matchMedia('(min-width: 721px) and (hover: hover) and (pointer: fine)');
 const hasTouchInput = navigator.maxTouchPoints > 0;
 let lenis;
 let animationFrame;
+let library;
+let pageActive = true;
+const eligible = () => pageActive && desktopPointer.matches && !prefersReducedMotion.matches && !hasTouchInput;
 
 const frame = (time) => {
   if (!lenis) return;
@@ -18,13 +19,16 @@ const stopFrame = () => {
   animationFrame = undefined;
 };
 
-const enableLenis = () => {
+const enableLenis = async () => {
   if (lenis) {
     lenis.start();
     return;
   }
 
-  lenis = new Lenis({
+  // Optional desktop enhancement must never hold DOMContentLoaded or mobile media.
+  const module = await (library ||= import('https://esm.sh/@studio-freight/lenis@1.0.33?bundle').catch(() => null));
+  if (!module || !eligible() || lenis) return;
+  lenis = new module.default({
     smoothWheel: true,
     smoothTouch: false,
     lerp: 0.1,
@@ -42,7 +46,7 @@ const disableLenis = () => {
 };
 
 const syncLenis = () => {
-  if (desktopPointer.matches && !prefersReducedMotion.matches && !hasTouchInput) {
+  if (eligible()) {
     enableLenis();
   } else {
     disableLenis();
@@ -64,4 +68,5 @@ document.addEventListener('click', (event) => {
   }
 }, { capture: true });
 
-window.addEventListener('pagehide', disableLenis, { once: true });
+window.addEventListener('pagehide', () => { pageActive = false; disableLenis(); });
+window.addEventListener('pageshow', () => { pageActive = true; syncLenis(); });

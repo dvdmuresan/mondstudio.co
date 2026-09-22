@@ -4048,7 +4048,7 @@ body[data-theme="light"] .studio-textbox-note {
     <video
       class="hero__video is-stage-1"
       data-src="media/videos/home/mond-studio-branding-design-showreel-hero.mp4"
-      poster="media/videos/home/mond-studio-showreel-poster.webp"
+      poster="media/videos/home/mond-studio-showreel-poster.webp?v=20260921-frame"
       width="1440"
       height="810"
       autoplay
@@ -4249,7 +4249,7 @@ body[data-theme="light"] .studio-textbox-note {
     <div class="pl-3-stack reveal">
       <a class="pl-3" href="/dream-ville-software/" data-project-transition="dream-ville-software" data-transition-title="Dream Ville Software" aria-label="View Dream Ville Software project">
       <div class="placeholder-badge fade-in-bottom fade-in-bottom--delay-2"><span>Branding</span></div>
-      <video class="pl-video" src="media/videos/home/dream-ville-client-testimonial-animation.mp4" poster="optimized/image2.jpg" width="1080" height="1350" preload="none" muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+            <video class="pl-video" src="media/videos/home/dream-ville-client-testimonial-animation.mp4" poster="media/videos/home/dream-ville-client-testimonial-poster.webp" width="1080" height="1350" preload="none" muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
     </a>
       <div class="pl-3-meta">
         <a class="pl-3-title" href="/dream-ville-software/" data-project-transition="dream-ville-software" data-transition-title="Dream Ville Software">Dream Ville</a>
@@ -4521,40 +4521,39 @@ body[data-theme="light"] .studio-textbox-note {
       videos.forEach((video) => {
         let pending = false;
         let policyBlocked = false;
-        let resumeAfterPending = false;
+        let revision = 0;
+        let attemptedRevision = -1;
 
         const syncFallback = () => {
           if (button) button.hidden = !(policyBlocked && video.paused && canPlay(video));
         };
 
-        // Every Home play path uses this gate. A policy refusal waits for an
-        // explicit gesture instead of spawning timer/listener retry trees.
+        // Each readiness/visibility change gets a fresh opportunity to play.
+        // Failed attempts cannot use up the budget before media becomes ready.
         const requestPlay = (userGesture = false) => {
+          if (userGesture) revision += 1;
           if (!canPlay(video)) {
             video.pause();
             syncFallback();
             return;
           }
-          if (pending) {
-            resumeAfterPending = true;
-            return;
-          }
-          if (!video.paused || (policyBlocked && !userGesture)) {
+          if (pending) return;
+          if (!video.paused || attemptedRevision === revision) {
             syncFallback();
             return;
           }
 
           pending = true;
+          attemptedRevision = revision;
           const finish = (error) => {
             pending = false;
-            const shouldResume = resumeAfterPending;
-            resumeAfterPending = false;
+            if (!canPlay(video)) video.pause();
             if (error?.name === 'NotAllowedError') policyBlocked = true;
             if (!error || !video.paused) policyBlocked = false;
             syncFallback();
-            // An out/in visibility change can abort a pending play. Honor the
-            // queued lifecycle request after cancellation, without polling.
-            if (error?.name === 'AbortError' && shouldResume && canPlay(video)) requestPlay();
+            // Coalesce an event received while the play promise was pending.
+            // Rejection alone never starts a retry loop.
+            if (attemptedRevision !== revision && canPlay(video)) requestPlay();
           };
           try {
             const attempt = video.play();
@@ -4565,7 +4564,11 @@ body[data-theme="light"] .studio-textbox-note {
           }
         };
 
-        video[playbackKey] = { play: requestPlay };
+        const resume = () => { revision += 1; requestPlay(); };
+        video[playbackKey] = {
+          play: requestPlay,
+          resume,
+        };
         video.setAttribute('playsinline', '');
         video.setAttribute('webkit-playsinline', '');
         video.setAttribute('muted', '');
@@ -4582,18 +4585,24 @@ body[data-theme="light"] .studio-textbox-note {
           syncFallback();
         });
         video.addEventListener('pause', syncFallback);
-        video.addEventListener('loadeddata', () => requestPlay(), { once: true });
-        video.addEventListener('canplaythrough', () => requestPlay(), { once: true });
+        video.addEventListener('loadeddata', resume);
+        video.addEventListener('canplay', resume);
+        for (const event of ['transitionend', 'animationend']) {
+          document.addEventListener(event, event => {
+            if (event.target.contains(video)) resume();
+          });
+        }
         if (overlay) new MutationObserver(syncFallback).observe(overlay, { attributes: true, attributeFilter: ['class'] });
         button?.addEventListener('click', () => requestPlay(true));
       });
 
       const unlockAutoplay = () => {
-        videos.forEach((video) => video[playbackKey].play());
+        videos.forEach((video) => video[playbackKey].resume());
       };
       unlockAutoplay();
       window.addEventListener('load', unlockAutoplay, { once: true });
       window.addEventListener('pageshow', unlockAutoplay);
+      window.addEventListener('focus', unlockAutoplay);
       document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'hidden') videos.forEach((video) => video.pause());
         else unlockAutoplay();
@@ -4605,7 +4614,7 @@ body[data-theme="light"] .studio-textbox-note {
             const video = entry.target.querySelector('.hero__video');
             if (!video) return;
             video.dataset.heroInView = entry.isIntersecting ? 'true' : 'false';
-            if (entry.isIntersecting) video[playbackKey].play();
+            if (entry.isIntersecting) video[playbackKey].resume();
             else video.pause();
           });
         }, { threshold: 0 });
@@ -4630,55 +4639,7 @@ body[data-theme="light"] .studio-textbox-note {
     })();
   </script>
 
-  <script>
-    (function lazyPlayDecorativeVideos() {
-      const videos = Array.from(document.querySelectorAll('.pl-video, .post-placeholder-panel__video'));
-      if (!videos.length) return;
 
-      const prime = (video) => {
-        video.muted = true;
-        video.defaultMuted = true;
-        video.playsInline = true;
-        video.setAttribute('muted', '');
-        video.setAttribute('playsinline', '');
-      };
-
-      const play = (video) => {
-        prime(video);
-        const attempt = video.play();
-        if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
-      };
-
-      videos.forEach((video) => {
-        prime(video);
-        video.preload = 'none';
-      });
-
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        videos.forEach((video) => video.pause());
-        return;
-      }
-
-      if (!('IntersectionObserver' in window)) {
-        videos.forEach(play);
-        return;
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          const video = entry.target;
-          if (entry.isIntersecting) {
-            video.preload = 'metadata';
-            play(video);
-          } else {
-            video.pause();
-          }
-        });
-      }, { rootMargin: '300px 0px', threshold: 0.01 });
-
-      videos.forEach((video) => observer.observe(video));
-    })();
-  </script>
 
   <script>
     (function () {
@@ -5187,7 +5148,8 @@ body[data-theme="light"] .studio-textbox-note {
   </script>
 
   <script defer src="./home-services.js?v=20260921-desktop-restored"></script>
+  <script defer src="/media-playback.js?v=20260921-ready-events"></script>
   <script defer src="./site-common.js?v=20260921-project-lines"></script>
-  <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
+  <script type="module" src="./smooth-scroll.js?v=20260921-loading-fix"></script>
 </body>
 </html>

@@ -412,12 +412,11 @@
             preload="metadata"
             muted
             loop
-            data-manual-playback
             data-play-button="friss-kakas-play"
             playsinline
             aria-label="Friss Kakas Animation Film Days promotional film"
           ></video>
-          <button class="case-video-play" id="friss-kakas-play" type="button" data-project-cover-control aria-label="Play Friss Kakas Animation Film Days promotional film"><span>Play</span></button>
+          <button class="case-video-play" id="friss-kakas-play" type="button" hidden data-project-cover-control aria-label="Play Friss Kakas Animation Film Days promotional film"><span>Play</span></button>
           <button class="friss-kakas-sound-button" type="button" data-gallery-interactive data-project-cover-control aria-label="Turn on video sound" aria-pressed="false">Sound OFF</button>
         </figure>
       </div>
@@ -604,8 +603,9 @@
     </div>
   </footer>
 
-  <script defer src="./project-page.js?v=20260917-progress-1"></script>
+  <script defer src="./project-page.js?v=20260921-media-autoplay"></script>
+  <script defer src="/media-playback.js?v=20260921-ready-events"></script>
   <script defer src="./site-common.js?v=20260921-project-lines"></script>
-  <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
+  <script type="module" src="./smooth-scroll.js?v=20260921-loading-fix"></script>
 </body>
 </html>

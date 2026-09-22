@@ -3216,9 +3216,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 </head>
 <body class="view-image" data-hide-footer-legal>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      requestAnimationFrame(() => document.body.classList.add('is-page-loaded'));
-    });
+    requestAnimationFrame(() => document.body.classList.add('is-page-loaded'));
   </script>
 
   <header class="hero-header">
@@ -3615,7 +3613,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
 
   <script src="work-taxonomy.js?v=20260917-intermezzo-coming-soon"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    (() => {
       const body = document.body;
       const workModel = window.MOND_WORK_TAXONOMY;
       if (
@@ -4168,7 +4166,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
           }, { passive: true });
         }
       }
-    });
+    })();
   </script>
 
   <script>
@@ -4210,109 +4208,6 @@ body[data-theme="light"] .footer-social-minimal a:focus {
         }
       });
 
-      const previews = Array.from(document.querySelectorAll('.projects-gallery__item video'));
-      if (!previews.length) return;
-
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const prefersReducedData = navigator.connection?.saveData === true;
-
-      const activatePreview = (video) => {
-        if (video.dataset.sourceActivated === 'true' || !video.dataset.src) return;
-        video.src = video.dataset.src;
-        video.dataset.sourceActivated = 'true';
-        video.load();
-      };
-
-      const pendingPreviewPlayback = new WeakSet();
-      const playPreview = (video) => {
-        video.muted = true;
-        video.defaultMuted = true;
-        video.playsInline = true;
-        video.setAttribute('playsinline', '');
-        if (!video.paused || pendingPreviewPlayback.has(video)) return;
-        const playback = video.play();
-        if (playback && typeof playback.then === 'function') {
-          pendingPreviewPlayback.add(video);
-          // Policy rejection leaves the poster visible; no automatic retry loop.
-          const settled = () => pendingPreviewPlayback.delete(video);
-          playback.then(settled, settled);
-        }
-      };
-
-      if (prefersReducedMotion || prefersReducedData) {
-        previews.forEach((video) => video.pause());
-        return;
-      }
-
-      const activateFromIntent = (video) => {
-        activatePreview(video);
-        playPreview(video);
-      };
-
-      if (!('IntersectionObserver' in window)) {
-        previews.forEach((video) => {
-          const figure = video.closest('figure');
-          figure?.addEventListener('pointerenter', () => activateFromIntent(video));
-          figure?.addEventListener('focusin', () => activateFromIntent(video));
-          figure?.addEventListener('pointerleave', () => video.pause());
-        });
-        return;
-      }
-
-      const sourceObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          activatePreview(entry.target);
-          observer.unobserve(entry.target);
-        });
-      }, { threshold: 0, rootMargin: '80px 0px' });
-
-      const playbackObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            activatePreview(entry.target);
-            playPreview(entry.target);
-          } else {
-            entry.target.pause();
-          }
-        });
-      }, { threshold: 0.2 });
-
-      const observePreview = (video) => {
-        sourceObserver.observe(video);
-        playbackObserver.observe(video);
-      };
-
-      let viewportPreviewsEngaged = false;
-      const engageViewportPreviews = () => {
-        if (viewportPreviewsEngaged) return;
-        viewportPreviewsEngaged = true;
-        previews.forEach(observePreview);
-      };
-
-      previews.forEach((video) => {
-        const figure = video.closest('figure');
-        figure?.addEventListener('pointerenter', () => {
-          observePreview(video);
-          activateFromIntent(video);
-        });
-        figure?.addEventListener('focusin', () => {
-          observePreview(video);
-          activateFromIntent(video);
-        });
-      });
-
-      // Use viewport relevance on every screen without waiting for user interaction.
-      // Observing every preview does not attach sources outside the 80px boundary.
-      // The earlier DOMContentLoaded handler establishes filter state/card order.
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', engageViewportPreviews, { once: true });
-      } else {
-        engageViewportPreviews();
-      }
-
-      window.addEventListener('scroll', engageViewportPreviews, { once: true, passive: true });
-      window.addEventListener('touchstart', engageViewportPreviews, { once: true, passive: true });
     })();
   </script>
 
@@ -4324,7 +4219,8 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     }
   </script>
   <script type="module" src="./work-3d-loader.js"></script>
+  <script defer src="/media-playback.js?v=20260921-ready-events"></script>
   <script defer src="./site-common.js?v=20260921-project-lines"></script>
-  <script type="module" src="./smooth-scroll.js?v=20260824-2"></script>
+  <script type="module" src="./smooth-scroll.js?v=20260921-loading-fix"></script>
 </body>
 </html>
