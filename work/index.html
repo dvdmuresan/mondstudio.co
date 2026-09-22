@@ -989,6 +989,91 @@ body[data-theme="light"] .footer-social-minimal a:focus {
       transition: transform 260ms ease;
     }
 
+    .projects-gallery__loader,
+    .projects-gallery__play {
+      display: none;
+    }
+
+    @keyframes project-preview-loading {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 720px) {
+      /* Cover native posters from first paint while the video starts underneath. */
+      html.js .projects-gallery__loader {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        display: grid;
+        place-items: center;
+        background: #151515;
+        pointer-events: none;
+      }
+
+      html.js .projects-gallery__loader-dots {
+        position: relative;
+        display: block;
+        width: 8px;
+        height: 28px;
+        animation: project-preview-loading 1s linear infinite;
+      }
+
+      html.js .projects-gallery__loader-dots::before,
+      html.js .projects-gallery__loader-dots::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #f5f5f5;
+      }
+
+      html.js .projects-gallery__loader-dots::before { top: 0; }
+      html.js .projects-gallery__loader-dots::after { bottom: 0; }
+
+      html.js .projects-gallery__item[data-preview-state="ready"] .projects-gallery__loader {
+        display: none;
+      }
+
+      html.js .projects-gallery__item[data-preview-state="manual"] .projects-gallery__loader-dots,
+      html.js .projects-gallery__item[data-preview-state="error"] .projects-gallery__loader-dots {
+        animation: none;
+      }
+
+      html.js .projects-gallery__play:not([hidden]) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 4;
+        display: grid;
+        place-items: center;
+        box-sizing: border-box;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        padding: 80px 0 0;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: #f5f5f5;
+        font: 400 14px / 1.4 "Mona Sans", sans-serif;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        cursor: pointer;
+      }
+
+      html.js .projects-gallery__play:focus-visible {
+        outline: 2px solid #f5f5f5;
+        outline-offset: -5px;
+      }
+    }
+
+    @media (max-width: 720px) and (prefers-reduced-motion: reduce) {
+      html.js .projects-gallery__loader-dots {
+        animation: none;
+      }
+    }
+
     .projects-gallery__badge {
       position: absolute;
       top: 20px;
@@ -3427,6 +3512,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Packaging Design</span></div>
                   <video data-src="media/work-previews/walk-with-me-work-preview.mp4" poster="media/work-posters/walk-with-me-work-poster.webp" width="1152" height="648" style="aspect-ratio: 16 / 9;" muted loop playsinline preload="none" tabindex="-1" aria-label="Walk With Me Rainy Days sleeve video preview"></video>
+                  <span class="projects-gallery__loader" aria-hidden="true"><span class="projects-gallery__loader-dots"></span></span>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Walk with me</span>
@@ -3440,6 +3526,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Product &amp; 3D Design</span></div>
                   <video data-src="projects/multi-tool/multitool-product-concept-landscape.mp4" poster="projects/multi-tool/multitool-orange-front-view.webp" width="1440" height="810" style="aspect-ratio: 16 / 9;" muted loop playsinline preload="none" tabindex="-1" aria-label="Multitool product concept animation"></video>
+                  <span class="projects-gallery__loader" aria-hidden="true"><span class="projects-gallery__loader-dots"></span></span>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Multitool</span>
@@ -3454,6 +3541,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                   <span class="projects-gallery__coming-soon">Coming Soon</span>
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
                   <video data-src="media/work-previews/intermezzo-work-preview.mp4" poster="optimized/intermezzo-festival-visual-identity.jpg" width="1152" height="648" style="aspect-ratio: 16 / 9;" muted loop playsinline preload="none" tabindex="-1" aria-label="Intermezzo Festival motion identity animation"></video>
+                  <span class="projects-gallery__loader" aria-hidden="true"><span class="projects-gallery__loader-dots"></span></span>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Intermezzo</span>
@@ -3467,6 +3555,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Visual Identity</span></div>
                   <video data-src="projects/maier-jewelry/FIGMA/maier-jewelry-visual-identity-animation.mp4" poster="projects/maier-jewelry/FIGMA/maier-jewelry-wordmark-identity.jpg" width="1080" height="1080" style="aspect-ratio: 1 / 1;" muted loop playsinline preload="none" tabindex="-1" aria-label="Maier Jewelry visual identity animation"></video>
+                  <span class="projects-gallery__loader" aria-hidden="true"><span class="projects-gallery__loader-dots"></span></span>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Maier</span>
@@ -3480,6 +3569,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Motion &amp; Animation</span></div>
                   <video data-src="projects/lesser-of-two-evils/lesser-of-two-evils-widescreen-animation.mp4" poster="media/work-posters/lesser-of-two-evils-work-poster.webp" width="1440" height="810" style="aspect-ratio: 16 / 9;" muted loop playsinline preload="none" tabindex="-1" aria-label="Lesser of Two Evils animated project preview"></video>
+                  <span class="projects-gallery__loader" aria-hidden="true"><span class="projects-gallery__loader-dots"></span></span>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">Lesser</span>
@@ -3519,6 +3609,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
                 <div class="projects-gallery__item">
                   <div class="projects-gallery__badge"><span>Product &amp; 3D Design</span></div>
                   <video data-src="media/work-previews/re-mind-work-preview.mp4" poster="media/work-posters/re-mind-work-poster.webp" width="1152" height="648" style="aspect-ratio: 16 / 9;" muted loop playsinline preload="none" tabindex="-1" aria-label="RE:MIND animated project preview"></video>
+                  <span class="projects-gallery__loader" aria-hidden="true"><span class="projects-gallery__loader-dots"></span></span>
                 </div>
                 <figcaption class="projects-gallery__caption">
                   <span class="projects-gallery__caption-title">RE:MIND</span>
@@ -4219,7 +4310,7 @@ body[data-theme="light"] .footer-social-minimal a:focus {
     }
   </script>
   <script type="module" src="./work-3d-loader.js"></script>
-  <script defer src="/media-playback.js?v=20260921-ready-events"></script>
+  <script defer src="/media-playback.js?v=20260922-preview-loader"></script>
   <script defer src="./site-common.js?v=20260921-project-lines"></script>
   <script type="module" src="./smooth-scroll.js?v=20260921-loading-fix"></script>
 </body>

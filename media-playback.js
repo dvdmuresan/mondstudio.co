@@ -23,20 +23,43 @@
     if (video.dataset.src && !video.getAttribute('src')) video.src = video.dataset.src;
   };
   const hideFallback = state => { if (state.button) state.button.hidden = true; };
+  const revealPreview = (video, state) => {
+    if (!state.preview || state.preview.dataset.previewState === 'ready' || state.previewFramePending) return;
+    state.previewFramePending = true;
+    const reveal = () => {
+      state.previewFramePending = false;
+      if (video.readyState < 2 || video.paused || !state.wanted || !active || document.hidden) return;
+      state.preview.dataset.previewState = 'ready';
+      hideFallback(state);
+    };
+    // Keep the opaque cover until a decoded frame reaches the compositor.
+    // The video itself stays visible so WebKit can start inline autoplay.
+    if (video.requestVideoFrameCallback) video.requestVideoFrameCallback(reveal);
+    else requestAnimationFrame(() => requestAnimationFrame(reveal));
+  };
   const showFallback = (video, state) => {
     // A real browser policy restriction still needs an accessible escape hatch.
-    if (!video.matches('.case-gallery__video') || !state.wanted) return;
+    if (state.preview) {
+      if (state.preview.dataset.previewState === 'ready') return;
+      state.preview.dataset.previewState = video.error ? 'error' : 'manual';
+    } else if (!video.matches('.case-gallery__video') || !state.wanted) return;
     if (!state.button) {
       state.button = document.createElement('button');
       state.button.type = 'button';
-      state.button.className = 'case-video-play';
+      state.button.className = state.preview ? 'projects-gallery__play' : 'case-video-play';
       state.button.setAttribute('data-video-play-fallback', '');
       state.button.setAttribute('aria-label', `Play ${video.getAttribute('aria-label') || 'project video'}`);
       const icon = document.createElement('span');
       icon.setAttribute('aria-hidden', 'true');
       state.button.append(icon);
-      video.parentElement.append(state.button);
+      // Work tiles are links; keep their playback button outside the anchor.
+      (state.preview ? video.closest('figure') : video.parentElement).append(state.button);
       bindFallback(video, state);
+    }
+    if (state.preview) {
+      const label = video.error ? 'Retry preview' : 'Play preview';
+      state.button.firstElementChild.textContent = label;
+      state.button.setAttribute('aria-label', `${label}: ${video.getAttribute('aria-label') || 'project video'}`);
     }
     state.button.hidden = false;
   };
@@ -53,7 +76,10 @@
       state.pending = false;
       if (!state.wanted || !active || document.hidden) { video.pause(); return; }
       if (!video.paused) hideFallback(state);
-      else if (error?.name === 'NotAllowedError') showFallback(video, state);
+      else if (error?.name === 'NotAllowedError') {
+        state.blocked = true;
+        showFallback(video, state);
+      }
       // A readiness/visibility event received during a pending request still
       // gets one attempt. A rejection alone never schedules another request.
       if (state.attemptedRevision !== state.revision) play(video, state);
@@ -68,7 +94,13 @@
     state.button.addEventListener('click', () => {
       state.manual = true;
       state.wanted = true;
+      state.blocked = false;
       state.revision += 1;
+      if (state.preview) {
+        state.preview.dataset.previewState = 'loading';
+        hideFallback(state);
+        if (video.error) video.load();
+      }
       prepare(video);
       play(video, state);
     });
@@ -89,6 +121,9 @@
       if (enabled && position.near) prepare(video);
       if (wanted) play(video, state);
       else { video.pause(); hideFallback(state); }
+      if (state.preview && ((!automatic() && !state.manual) || state.blocked || video.error)) {
+        showFallback(video, state);
+      }
     });
   };
   const schedule = () => { if (!frame) frame = requestAnimationFrame(sync); };
@@ -101,13 +136,17 @@
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
     const button = document.getElementById(video.dataset.playButton || '');
-    const state = {wanted: false, pending: false, manual: false, revision: 0, attemptedRevision: -1, button};
+    const preview = video.parentElement.querySelector('.projects-gallery__loader') ? video.parentElement : null;
+    const state = {wanted: false, pending: false, manual: false, blocked: false, revision: 0, attemptedRevision: -1, button, preview, previewFramePending: false};
     states.set(video, state);
     if (button) { button.hidden = true; bindFallback(video, state); }
     video.addEventListener('playing', () => {
+      state.blocked = false;
       hideFallback(state);
       if (!state.wanted || !active || document.hidden) video.pause();
+      else revealPreview(video, state);
     });
+    if (preview) video.addEventListener('error', () => showFallback(video, state));
     for (const event of ['loadedmetadata', 'loadeddata', 'canplay']) {
       video.addEventListener(event, () => {
         state.revision += 1;
