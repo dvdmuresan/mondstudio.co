@@ -2406,7 +2406,8 @@
       html,
       body {
         min-height: 100svh;
-        overflow-x: hidden;
+        /* Clip horizontal overflow without trapping swipes in a body scroller. */
+        overflow-x: clip;
         overflow-anchor: none;
         overscroll-behavior-x: none;
       }
