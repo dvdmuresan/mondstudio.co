@@ -1,7 +1,9 @@
-/* Preserve the original desktop composition; the accordion is mobile-only. */
+/* Desktop services reveal by row; the accordion is mobile-only. */
 .pl-4-caption-wrapper, .pl-4-service-preview { display: none; }
 @media (min-width: 721px) {
 .pl-4-caption-wrapper {
+      --service-row-muted: #777;
+      --service-row-active: #fff;
       width: min(1024px, calc(100vw - 40px));
       margin: clamp(80px, 11vw, 160px) auto 0;
       display: flex;
@@ -25,6 +27,10 @@
       display: block;
     }
 .pl-4-services {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
       width: 631px;
       max-width: 100%;
       min-height: 56px;
@@ -39,7 +45,12 @@
       margin: 0;
     }
 .pl-4-service {
-      transition: color 160ms ease;
+      display: block;
+      line-height: 1.12;
+    }
+.pl-4-caption span,
+.pl-4-service {
+      color: color-mix(in srgb, var(--service-row-muted), var(--service-row-active) var(--row-progress, 100%));
     }
 .pl-4-service-preview {
       position: fixed;
@@ -66,8 +77,11 @@
       }
 .pl-4-service:hover,
       .pl-4-service:focus-visible {
-        color: var(--color-fg);
-        outline: none;
+        color: var(--service-row-active);
+      }
+.pl-4-service:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 4px;
       }
 .pl-4-service-preview {
         display: block;
@@ -77,8 +91,9 @@
         transform: translateY(0) scale(1);
       }
 }
-body[data-theme="light"] .pl-4-services {
-      color: #A3A3A3;
+body[data-theme="light"] .pl-4-caption-wrapper {
+      --service-row-muted: #777;
+      --service-row-active: var(--color-fg);
     }
 @media (min-width: 721px) and (max-width: 900px) and (orientation: portrait) {
 .pl-4-caption-wrapper {

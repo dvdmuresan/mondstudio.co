@@ -100,7 +100,46 @@
   reducedMotion.addEventListener('change', settleAll);
 })();
 
-// Original desktop service image previews.
+// Each desktop heading/service row brightens as it crosses the reading line.
+(() => {
+  const section = document.querySelector('.pl-4-caption-wrapper');
+  if (!section) return;
+  const rows = [...section.querySelectorAll('.pl-4-caption span, .pl-4-service')];
+  const desktop = window.matchMedia('(min-width: 721px)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let frame = 0;
+
+  const update = () => {
+    frame = 0;
+    if (!desktop.matches || reducedMotion.matches) {
+      rows.forEach((row) => row.style.removeProperty('--row-progress'));
+      return;
+    }
+
+    const readingLine = window.innerHeight * 0.7;
+    // Read positions together before writing styles; scrolling back reverses the reveal.
+    const progress = rows.map((row) => {
+      const { top, height } = row.getBoundingClientRect();
+      return Math.max(0, Math.min(1, (readingLine - top) / Math.max(height, 1)));
+    });
+    rows.forEach((row, index) => {
+      row.style.setProperty('--row-progress', `${progress[index] * 100}%`);
+    });
+  };
+
+  const requestUpdate = () => {
+    if (!frame) frame = window.requestAnimationFrame(update);
+  };
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate, { passive: true });
+  window.addEventListener('pageshow', requestUpdate);
+  desktop.addEventListener('change', requestUpdate);
+  reducedMotion.addEventListener('change', requestUpdate);
+  document.fonts?.ready.then(requestUpdate);
+  update();
+})();
+
+// Desktop service image previews.
     (() => {
       const serviceBox = document.getElementById('pl-4-services');
       const services = Array.from(document.querySelectorAll('.pl-4-service'));
