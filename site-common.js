@@ -136,6 +136,7 @@
     .catch(() => null)
     .then(async (consentMode) => {
       await import("/consent-state.js");
+      await import("/microsoft-clarity.js");
       const connected = consentMode?.connectConsent();
       // P4 default and persisted update precede the opt-in-only GA4 loader.
       await import("/consent-ui.js?v=20260921-shared-footer");
