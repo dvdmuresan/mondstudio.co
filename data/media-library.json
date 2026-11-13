@@ -1,0 +1,1530 @@
+{
+  "project_id": "sij01e0v",
+  "dataset": "production",
+  "notes": "Original project images are stored in Sanity. original_source_paths document their former locations, not files required by the site. Authenticated dlRaw downloads were checked with SHA-256. Public image URLs use Sanity transformations. Local source copies were archived outside this repository during cleanup.",
+  "images": [
+    {
+      "asset_id": "image-f828e98831d3508473c4efa785f03025c904bb58-2024x10488-png",
+      "project": "dream-ville-software",
+      "original_source_paths": [
+        "projects/dream-ville-software/IMAGES/MacBook Pro 16_ - 24.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/f828e98831d3508473c4efa785f03025c904bb58-2024x10488.png",
+      "width": 2024,
+      "height": 10488,
+      "size_bytes": 6105832,
+      "sha1": "f828e98831d3508473c4efa785f03025c904bb58",
+      "sha256": "5fe7b36e8d1807f823190da4dfa05009cf24348657679d6a56faa67410c192e8",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-082b555ce66ad8f91b27d3fb485e506601cc913a-947x1091-jpg",
+      "project": "dream-ville-software",
+      "original_source_paths": [
+        "projects/dream-ville-software/IMAGES/dream-ville-branded-notebook.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/082b555ce66ad8f91b27d3fb485e506601cc913a-947x1091.jpg",
+      "width": 947,
+      "height": 1091,
+      "size_bytes": 370640,
+      "sha1": "082b555ce66ad8f91b27d3fb485e506601cc913a",
+      "sha256": "ed925f3a8ad77d8dc699570d491c8a3a26db05fbb18f567b57bfdcad08dd3dc8",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-712fb88b0eff2cd634c2c4f47c2ca3f46db2a69c-942x649-jpg",
+      "project": "dream-ville-software",
+      "original_source_paths": [
+        "projects/dream-ville-software/IMAGES/dream-ville-business-cards-on-metal-grid.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/712fb88b0eff2cd634c2c4f47c2ca3f46db2a69c-942x649.jpg",
+      "width": 942,
+      "height": 649,
+      "size_bytes": 517523,
+      "sha1": "712fb88b0eff2cd634c2c4f47c2ca3f46db2a69c",
+      "sha256": "130710de8ab854bcdd25ca697be1f5b4dfe0852c7c9414794526f9aab49f0950",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-ca0e2babbd75557cc816b625f89fe77bfedcd0df-1920x1080-jpg",
+      "project": "dream-ville-software",
+      "original_source_paths": [
+        "projects/dream-ville-software/IMAGES/dream-ville-campaign-billboard.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/ca0e2babbd75557cc816b625f89fe77bfedcd0df-1920x1080.jpg",
+      "width": 1920,
+      "height": 1080,
+      "size_bytes": 1735644,
+      "sha1": "ca0e2babbd75557cc816b625f89fe77bfedcd0df",
+      "sha256": "77c7adf5e5e3cd87247bd0fad399c20c287de910d431127d95600ac80d62cd1b",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-df8a3f3333cdffc27bd732c55e2d75a5d3c69692-1920x1080-jpg",
+      "project": "dream-ville-software",
+      "original_source_paths": [
+        "projects/dream-ville-software/IMAGES/dream-ville-cloud-infrastructure-campaign.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/df8a3f3333cdffc27bd732c55e2d75a5d3c69692-1920x1080.jpg",
+      "width": 1920,
+      "height": 1080,
+      "size_bytes": 1266736,
+      "sha1": "df8a3f3333cdffc27bd732c55e2d75a5d3c69692",
+      "sha256": "5be39595919bbf6a32b1fc3e794f5f64fef879ae0fd2b693195baebe1376058e",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-f026f6f1e945445ed9efcfce55e04a666f10271e-947x1091-jpg",
+      "project": "dream-ville-software",
+      "original_source_paths": [
+        "projects/dream-ville-software/IMAGES/dream-ville-employee-id-badge.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/f026f6f1e945445ed9efcfce55e04a666f10271e-947x1091.jpg",
+      "width": 947,
+      "height": 1091,
+      "size_bytes": 663873,
+      "sha1": "f026f6f1e945445ed9efcfce55e04a666f10271e",
+      "sha256": "f56319f10ccb84b6abce9c13d2e6efa7a57fb8dcd98c12e62b42a34a91cc8066",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-59a5949cc8682f60325d303fbce1318cad1976b1-1316x1316-jpg",
+      "project": "dream-ville-software",
+      "original_source_paths": [
+        "projects/dream-ville-software/IMAGES/dream-ville-identity-system.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/59a5949cc8682f60325d303fbce1318cad1976b1-1316x1316.jpg",
+      "width": 1316,
+      "height": 1316,
+      "size_bytes": 282005,
+      "sha1": "59a5949cc8682f60325d303fbce1318cad1976b1",
+      "sha256": "125c649d722d2354853b77acc242168679a8c421a153b80ae684f10d0ad11c2d",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-4e8cfa7c4d2eb2ad0a187ffa7d7732087d956aec-576x576-jpg",
+      "project": "dream-ville-software",
+      "original_source_paths": [
+        "projects/dream-ville-software/IMAGES/dream-ville-pixel-cloud-symbol.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/4e8cfa7c4d2eb2ad0a187ffa7d7732087d956aec-576x576.jpg",
+      "width": 576,
+      "height": 576,
+      "size_bytes": 17775,
+      "sha1": "4e8cfa7c4d2eb2ad0a187ffa7d7732087d956aec",
+      "sha256": "db79bd1980f629bf9f77881292d186e602b2c4eb452b051ee7065b7425999824",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-9625894ec01fb47c876ef2438d2d24123bd64c07-942x1082-jpg",
+      "project": "dream-ville-software",
+      "original_source_paths": [
+        "projects/dream-ville-software/IMAGES/dream-ville-purple-business-cards.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/9625894ec01fb47c876ef2438d2d24123bd64c07-942x1082.jpg",
+      "width": 942,
+      "height": 1082,
+      "size_bytes": 284036,
+      "sha1": "9625894ec01fb47c876ef2438d2d24123bd64c07",
+      "sha256": "969a3716807cdac75d41e728e784d01878627c4d65f488ffed2e3b157864274d",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-71fcbb670beebe1ef8484c9f581d72da3ae63399-1909x1074-jpg",
+      "project": "dream-ville-software",
+      "original_source_paths": [
+        "projects/dream-ville-software/IMAGES/dream-ville-technology-keywords.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/71fcbb670beebe1ef8484c9f581d72da3ae63399-1909x1074.jpg",
+      "width": 1909,
+      "height": 1074,
+      "size_bytes": 689764,
+      "sha1": "71fcbb670beebe1ef8484c9f581d72da3ae63399",
+      "sha256": "83c8ae39770b1028de0260b6321b64d92270ddbc71807af5e79a607c20f3235a",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-6b2e7173706bbcb9ac926541d61ea73f20fd7b3e-1403x1213-jpg",
+      "project": "dream-ville-software",
+      "original_source_paths": [
+        "projects/dream-ville-software/IMAGES/dream-ville-typographic-posters.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/6b2e7173706bbcb9ac926541d61ea73f20fd7b3e-1403x1213.jpg",
+      "width": 1403,
+      "height": 1213,
+      "size_bytes": 1362315,
+      "sha1": "6b2e7173706bbcb9ac926541d61ea73f20fd7b3e",
+      "sha256": "3be57a84aabee9eb455dfc6dcc7394c210969052f274cc3f5e3fb166e0bb3b71",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-99b8e9e9fc24a7b6556a736bbf7da9b376cdae7d-1932x1087-jpg",
+      "project": "dream-ville-software",
+      "original_source_paths": [
+        "projects/dream-ville-software/IMAGES/dream-ville-website-projects-interface.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/99b8e9e9fc24a7b6556a736bbf7da9b376cdae7d-1932x1087.jpg",
+      "width": 1932,
+      "height": 1087,
+      "size_bytes": 552194,
+      "sha1": "99b8e9e9fc24a7b6556a736bbf7da9b376cdae7d",
+      "sha256": "f59fc5f3d80efac933313bf723f8ed0e33ba103fa6748c2befd64c8ae0e133ca",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-f3fba98b5f72b7ec839f7995949bfd857f832728-1915x1077-jpg",
+      "project": "dream-ville-software",
+      "original_source_paths": [
+        "projects/dream-ville-software/IMAGES/dream-ville-wordmark-on-black.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/f3fba98b5f72b7ec839f7995949bfd857f832728-1915x1077.jpg",
+      "width": 1915,
+      "height": 1077,
+      "size_bytes": 104023,
+      "sha1": "f3fba98b5f72b7ec839f7995949bfd857f832728",
+      "sha256": "01e19d7a44c46e2155569f1c41124498e51fb6ee890bbacb53c198ec8c0790ca",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-d2c9e9e794ce362f2194669516c4337906dae2f1-1080x1350-jpg",
+      "project": "friss-kakas",
+      "original_source_paths": [
+        "projects/friss-kakas/Untitled-5.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/d2c9e9e794ce362f2194669516c4337906dae2f1-1080x1350.jpg",
+      "width": 1080,
+      "height": 1350,
+      "size_bytes": 608827,
+      "sha1": "d2c9e9e794ce362f2194669516c4337906dae2f1",
+      "sha256": "82719d43882c139b7d3520290001339b7bb9bc2c110a4bcfd37683f91802bb25",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-b1a67a36237dbda5f2f5718c59f09f73284912d3-320x166-png",
+      "project": "friss-kakas",
+      "original_source_paths": [
+        "projects/friss-kakas/annecy.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/b1a67a36237dbda5f2f5718c59f09f73284912d3-320x166.png",
+      "width": 320,
+      "height": 166,
+      "size_bytes": 4259,
+      "sha1": "b1a67a36237dbda5f2f5718c59f09f73284912d3",
+      "sha256": "0fd484d43c58e59847eb00edadd783c77c36b596bc5cd2c13af56dab833642ff",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-ff96f7ebc1f445c71243f11412630973b7c72753-3120x2001-jpg",
+      "project": "friss-kakas",
+      "original_source_paths": [
+        "projects/friss-kakas/digitalis_plakat_02.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/ff96f7ebc1f445c71243f11412630973b7c72753-3120x2001.jpg",
+      "width": 3120,
+      "height": 2001,
+      "size_bytes": 5170060,
+      "sha1": "ff96f7ebc1f445c71243f11412630973b7c72753",
+      "sha256": "25fec75bcef0f62589c891094bd3bd09f7df35f7d7d8e5c18557e7ee37b586cf",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-6cd55afe6ff4a146957e182b410665637c61f000-4724x2598-jpg",
+      "project": "friss-kakas",
+      "original_source_paths": [
+        "projects/friss-kakas/faceboom_final.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/6cd55afe6ff4a146957e182b410665637c61f000-4724x2598.jpg",
+      "width": 4724,
+      "height": 2598,
+      "size_bytes": 2597840,
+      "sha1": "6cd55afe6ff4a146957e182b410665637c61f000",
+      "sha256": "f592c4ed9b468b3489b1bbe0321620ffd3f93958f65ae8f79c02a3d1d94702fb",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-f2467c99f08ef3f3a5a1f71ec3e3b7d59ecc47b8-687x858-png",
+      "project": "friss-kakas",
+      "original_source_paths": [
+        "projects/friss-kakas/full_hd.00_00_46_26.Still005.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/f2467c99f08ef3f3a5a1f71ec3e3b7d59ecc47b8-687x858.png",
+      "width": 687,
+      "height": 858,
+      "size_bytes": 104609,
+      "sha1": "f2467c99f08ef3f3a5a1f71ec3e3b7d59ecc47b8",
+      "sha256": "e3ddf6ba853d6e4c271d38b9803c8e39269a00a5affa980ad10b5ca1c4b68400",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-002286818b3ac370904f6e5c10cd530438fa3431-1920x1080-png",
+      "project": "friss-kakas",
+      "original_source_paths": [
+        "projects/friss-kakas/full_hd.00_00_48_23.Still007.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/002286818b3ac370904f6e5c10cd530438fa3431-1920x1080.png",
+      "width": 1920,
+      "height": 1080,
+      "size_bytes": 1009983,
+      "sha1": "002286818b3ac370904f6e5c10cd530438fa3431",
+      "sha256": "23b4b1130dfc58f9153f63e2aa0d8d199940bc8089c6d3e5e50cf55f76c4113a",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-51ca6aa4a49a6a4adbaf73b68cf3ed7cf40343f9-1920x1080-jpg",
+      "project": "friss-kakas",
+      "original_source_paths": [
+        "projects/friss-kakas/full_hd.00_01_04_06.Still002.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/51ca6aa4a49a6a4adbaf73b68cf3ed7cf40343f9-1920x1080.jpg",
+      "width": 1920,
+      "height": 1080,
+      "size_bytes": 571850,
+      "sha1": "51ca6aa4a49a6a4adbaf73b68cf3ed7cf40343f9",
+      "sha256": "f2a81bd2ea86f85a2116f5e9c1786651ce5d7d941ec2f179609064d57e0796c0",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-d695118c9fca93f2e6d9fbd5b3bd17cb93c44c7b-3996x2160-jpg",
+      "project": "friss-kakas",
+      "original_source_paths": [
+        "projects/friss-kakas/kakas_lap_02.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/d695118c9fca93f2e6d9fbd5b3bd17cb93c44c7b-3996x2160.jpg",
+      "width": 3996,
+      "height": 2160,
+      "size_bytes": 1079793,
+      "sha1": "d695118c9fca93f2e6d9fbd5b3bd17cb93c44c7b",
+      "sha256": "8cdc86c4e8c033ebf151397c019c902ce06cb754f767f671adfaefa4dfaeb32d",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-183030bc70c7489565e0c209d68ac5b3f45c5b31-3996x2160-jpg",
+      "project": "friss-kakas",
+      "original_source_paths": [
+        "projects/friss-kakas/kakas_lap_03.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/183030bc70c7489565e0c209d68ac5b3f45c5b31-3996x2160.jpg",
+      "width": 3996,
+      "height": 2160,
+      "size_bytes": 1067359,
+      "sha1": "183030bc70c7489565e0c209d68ac5b3f45c5b31",
+      "sha256": "9693a1c42bfe22a51775550315d8b1b851186742f221d7fd9056ca68bb42ffba",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-2c3c9ee9612dd25c185e3372382a819f56ae9073-3996x2160-jpg",
+      "project": "friss-kakas",
+      "original_source_paths": [
+        "projects/friss-kakas/kakas_lap_04.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/2c3c9ee9612dd25c185e3372382a819f56ae9073-3996x2160.jpg",
+      "width": 3996,
+      "height": 2160,
+      "size_bytes": 1146594,
+      "sha1": "2c3c9ee9612dd25c185e3372382a819f56ae9073",
+      "sha256": "01d5469a7123e231453debc19b8db20b155a05afc7d4ebcdbbdc1ed166a9301a",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-fde750006bb3c6d096f73420b7cfc2c0a10dc5c3-337x166-png",
+      "project": "friss-kakas",
+      "original_source_paths": [
+        "projects/friss-kakas/ottawa.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/fde750006bb3c6d096f73420b7cfc2c0a10dc5c3-337x166.png",
+      "width": 337,
+      "height": 166,
+      "size_bytes": 7619,
+      "sha1": "fde750006bb3c6d096f73420b7cfc2c0a10dc5c3",
+      "sha256": "78636f2b251316440c72460d127f5d9615ab9fabe0644cb5a5b9ec33cb0d1f9e",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-f1aa784a111635e1750dd9f38d8dc78c108cdbc3-1080x1350-jpg",
+      "project": "intermezzo",
+      "original_source_paths": [
+        "Intermezzo poster.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/f1aa784a111635e1750dd9f38d8dc78c108cdbc3-1080x1350.jpg",
+      "width": 1080,
+      "height": 1350,
+      "size_bytes": 1427874,
+      "sha1": "f1aa784a111635e1750dd9f38d8dc78c108cdbc3",
+      "sha256": "9c5a18938b2dbb66bc5b3003c6e23a30e3412a233b21dedc593d0472ccb66207",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-ddfacc9ed9d17f7773fd70ebc719f6fc38e656e8-1775x903-jpg",
+      "project": "intermezzo",
+      "original_source_paths": [
+        "image1.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/ddfacc9ed9d17f7773fd70ebc719f6fc38e656e8-1775x903.jpg",
+      "width": 1775,
+      "height": 903,
+      "size_bytes": 344953,
+      "sha1": "ddfacc9ed9d17f7773fd70ebc719f6fc38e656e8",
+      "sha256": "530126e7cb1feef5220ee8dded41b1048173fe1118aba0c475bc1d9e346d3e1b",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-7aff2101b2f44e0496c30deb935fe32e23369dd9-3996x1704-png",
+      "project": "lesser-of-two-evils",
+      "original_source_paths": [
+        "projects/lesser-of-two-evils/fish_transform.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/7aff2101b2f44e0496c30deb935fe32e23369dd9-3996x1704.png",
+      "width": 3996,
+      "height": 1704,
+      "size_bytes": 729083,
+      "sha1": "7aff2101b2f44e0496c30deb935fe32e23369dd9",
+      "sha256": "1e709aa8f791406d902d22abef4c03763e4e1e3d15b5d9f3ddc1983bbc0b9eeb",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-c81012201a31699f30146d3bb483f057c524a35e-3996x2160-png",
+      "project": "lesser-of-two-evils",
+      "original_source_paths": [
+        "projects/lesser-of-two-evils/hazai_final_still_013.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/c81012201a31699f30146d3bb483f057c524a35e-3996x2160.png",
+      "width": 3996,
+      "height": 2160,
+      "size_bytes": 8939503,
+      "sha1": "c81012201a31699f30146d3bb483f057c524a35e",
+      "sha256": "ce7b390514843092db8808a746a42bb8756b24f1290163729f1f5d470345ae85",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-690a7740776336fd0677f982c052602bb5fed2cb-3996x2160-png",
+      "project": "lesser-of-two-evils",
+      "original_source_paths": [
+        "projects/lesser-of-two-evils/hazai_final_still_014.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/690a7740776336fd0677f982c052602bb5fed2cb-3996x2160.png",
+      "width": 3996,
+      "height": 2160,
+      "size_bytes": 9220814,
+      "sha1": "690a7740776336fd0677f982c052602bb5fed2cb",
+      "sha256": "8c75582badc9d5b38fd4e5bf60199ef90986a1e81a653e2d423d237e1c28c208",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-04cebb12b1ea4994b7224562b18e72d38452e6f3-3996x2160-png",
+      "project": "lesser-of-two-evils",
+      "original_source_paths": [
+        "projects/lesser-of-two-evils/hazai_final_still_05.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/04cebb12b1ea4994b7224562b18e72d38452e6f3-3996x2160.png",
+      "width": 3996,
+      "height": 2160,
+      "size_bytes": 10128419,
+      "sha1": "04cebb12b1ea4994b7224562b18e72d38452e6f3",
+      "sha256": "55b6c5d28550ffe7207e952b37b69d784f4f1da16070415c6f2044840fedfbd6",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-8aa69dba64638bf4cdfe8a80a7f564e1093a6cef-1934x519-png",
+      "project": "lesser-of-two-evils",
+      "original_source_paths": [
+        "projects/lesser-of-two-evils/imre_doboz.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/8aa69dba64638bf4cdfe8a80a7f564e1093a6cef-1934x519.png",
+      "width": 1934,
+      "height": 519,
+      "size_bytes": 250422,
+      "sha1": "8aa69dba64638bf4cdfe8a80a7f564e1093a6cef",
+      "sha256": "1b2772b8ee0add04d8b437bb9597fa2caaaa00a7bf7042f6f83b0294989b6579",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-d4053d3ca6712d0fa32412a4a7a37fc1780896be-2400x866-jpg",
+      "project": "lesser-of-two-evils",
+      "original_source_paths": [
+        "projects/lesser-of-two-evils/optimized/lesser-of-two-evils-character-layout-study.jpg"
+      ],
+      "kind": "gallery_export",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/d4053d3ca6712d0fa32412a4a7a37fc1780896be-2400x866.jpg",
+      "width": 2400,
+      "height": 866,
+      "size_bytes": 284517,
+      "sha1": "d4053d3ca6712d0fa32412a4a7a37fc1780896be",
+      "sha256": "cbc5210e3ffdd3d82bbbc46f951598cba47ad5d0bf0b63cfd2fc8e4e3adfb2ed",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-7ae9551795ca377b8786790fd123c2d2de948671-3996x1568-png",
+      "project": "lesser-of-two-evils",
+      "original_source_paths": [
+        "projects/lesser-of-two-evils/trakovsky_hommage.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/7ae9551795ca377b8786790fd123c2d2de948671-3996x1568.png",
+      "width": 3996,
+      "height": 1568,
+      "size_bytes": 5358286,
+      "sha1": "7ae9551795ca377b8786790fd123c2d2de948671",
+      "sha256": "5596b10b8ba533fa5a706dd22a5cda45ebf6a5a02ddf40cfba5e1454d13ab0ea",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-ffdaf7ee9f421fac2b47085f8c46672ff3e92394-4000x2250-jpg",
+      "project": "macn",
+      "original_source_paths": [
+        "projects/macn/macn-logo-mark.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/ffdaf7ee9f421fac2b47085f8c46672ff3e92394-4000x2250.jpg",
+      "width": 4000,
+      "height": 2250,
+      "size_bytes": 137200,
+      "sha1": "ffdaf7ee9f421fac2b47085f8c46672ff3e92394",
+      "sha256": "c166fb3763eddb63ac5147ea55e49744233ec0afe5b0409516e403760d672439",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-c6b6ab7c08629f91c038679357bf9e4096eb831d-2000x1250-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "maier box.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/c6b6ab7c08629f91c038679357bf9e4096eb831d-2000x1250.jpg",
+      "width": 2000,
+      "height": 1250,
+      "size_bytes": 1559323,
+      "sha1": "c6b6ab7c08629f91c038679357bf9e4096eb831d",
+      "sha256": "25330c849ef53ab008f3fd5a414e03352134e341f66fa80bb5ebd6eb9a5fc334",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-fc7d79407305a0dd8d98fa6a172a0da18cd822cc-2024x7028-png",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/FIGMA/MacBook Pro 16_ - 23.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/fc7d79407305a0dd8d98fa6a172a0da18cd822cc-2024x7028.png",
+      "width": 2024,
+      "height": 7028,
+      "size_bytes": 6972079,
+      "sha1": "fc7d79407305a0dd8d98fa6a172a0da18cd822cc",
+      "sha256": "7b17ab56a83108dc8574fc5b821a6986d13d318bf2161b5128de5352f949a15b",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-fc05db2424237286b0413a8b4ff50e12f84c4741-947x1085-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/FIGMA/maier-jewelry-branded-tote-bag.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/fc05db2424237286b0413a8b4ff50e12f84c4741-947x1085.jpg",
+      "width": 947,
+      "height": 1085,
+      "size_bytes": 555891,
+      "sha1": "fc05db2424237286b0413a8b4ff50e12f84c4741",
+      "sha256": "9d87acd0042290180d2f5e67e04d0b9891c0c08fb9cff999e088f00ce431cd7c",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-3f7f2f8fdfe7731fa20203f86a049779669031d5-501x667-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/FIGMA/maier-jewelry-gemstone-ring.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/3f7f2f8fdfe7731fa20203f86a049779669031d5-501x667.jpg",
+      "width": 501,
+      "height": 667,
+      "size_bytes": 464894,
+      "sha1": "3f7f2f8fdfe7731fa20203f86a049779669031d5",
+      "sha256": "bcb9f3bfea04c9ac3b7510db88a12c2b48c606bf763b6b13886652f9f97ce377",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-d37e0a4a80005b767168b22b85ea68f436f8c5fe-1396x1117-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/FIGMA/maier-jewelry-identity-applications.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/d37e0a4a80005b767168b22b85ea68f436f8c5fe-1396x1117.jpg",
+      "width": 1396,
+      "height": 1117,
+      "size_bytes": 224994,
+      "sha1": "d37e0a4a80005b767168b22b85ea68f436f8c5fe",
+      "sha256": "c1f1e0c2b54864b007e80f12b0986ad15a2ef4e95eb5cd671aab79bac8d4fc9d",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-2673964494e35a7e73f63349e335f1241216302b-1920x1080-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/FIGMA/maier-jewelry-mobile-shop-presentation.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/2673964494e35a7e73f63349e335f1241216302b-1920x1080.jpg",
+      "width": 1920,
+      "height": 1080,
+      "size_bytes": 819034,
+      "sha1": "2673964494e35a7e73f63349e335f1241216302b",
+      "sha256": "c780126a1652e291693f8911ac3e3ec8b7837498f2a249ee5484d97b84379da9",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-b030943ae9fa5f605e125549ad73b9499b9a3d75-1396x1117-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/FIGMA/maier-jewelry-rings-hands.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/b030943ae9fa5f605e125549ad73b9499b9a3d75-1396x1117.jpg",
+      "width": 1396,
+      "height": 1117,
+      "size_bytes": 1076760,
+      "sha1": "b030943ae9fa5f605e125549ad73b9499b9a3d75",
+      "sha256": "91aed05ce092c467c7cb888171c554814c2fc2653e39587f02607f71ecd825f4",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-40eb2f8d36d10b98b74553abc123739ed945bd60-580x772-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/FIGMA/maier-jewelry-silver-m-necklace.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/40eb2f8d36d10b98b74553abc123739ed945bd60-580x772.jpg",
+      "width": 580,
+      "height": 772,
+      "size_bytes": 380654,
+      "sha1": "40eb2f8d36d10b98b74553abc123739ed945bd60",
+      "sha256": "ebde2b101e3115bf3d8d0e1db698aa3e146de7d0f2fbc6a997ad7915865d9fe0",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-0949f4a5a09ffaec17e52216882573c21f6fd070-947x1085-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/FIGMA/maier-jewelry-stones-with-soul-graphic.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/0949f4a5a09ffaec17e52216882573c21f6fd070-947x1085.jpg",
+      "width": 947,
+      "height": 1085,
+      "size_bytes": 269938,
+      "sha1": "0949f4a5a09ffaec17e52216882573c21f6fd070",
+      "sha256": "b285274b2d65fc62f56ef93fa1d05f92e2ae71e6539290153774139017449e0f",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-d5101e74b1da29182b261d9c82bdc53bfcdbfa1a-1920x1080-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/FIGMA/maier-jewelry-wordmark-identity.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/d5101e74b1da29182b261d9c82bdc53bfcdbfa1a-1920x1080.jpg",
+      "width": 1920,
+      "height": 1080,
+      "size_bytes": 110057,
+      "sha1": "d5101e74b1da29182b261d9c82bdc53bfcdbfa1a",
+      "sha256": "bafeb7848d2168718df44b4dce917a16bfcf850f54fde52cab8b9573624eb95b",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-b81a9ececdca242088963fd4f3e11cd73c07713c-4000x5328-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/maier-jewelry-silver-bracelet.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/b81a9ececdca242088963fd4f3e11cd73c07713c-4000x5328.jpg",
+      "width": 4000,
+      "height": 5328,
+      "size_bytes": 8624038,
+      "sha1": "b81a9ececdca242088963fd4f3e11cd73c07713c",
+      "sha256": "d20e852b519dfa0236bb17502108987a299e6e8d83c9e91e129ea11d6c77f68d",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-6d45b200258d38d040d6c70e57933a46a36a27c8-4000x5328-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/maier-jewelry-silver-gemstone-ring.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/6d45b200258d38d040d6c70e57933a46a36a27c8-4000x5328.jpg",
+      "width": 4000,
+      "height": 5328,
+      "size_bytes": 5426688,
+      "sha1": "6d45b200258d38d040d6c70e57933a46a36a27c8",
+      "sha256": "893f9fbfdeb726971f0e919caf526999494631a6055e73bc2c28c361bc1a67db",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-fd8c3540a8e5369eb3bb8ff2746a1863419da91f-4000x5328-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/maier-jewelry-silver-m-necklace.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/fd8c3540a8e5369eb3bb8ff2746a1863419da91f-4000x5328.jpg",
+      "width": 4000,
+      "height": 5328,
+      "size_bytes": 4773756,
+      "sha1": "fd8c3540a8e5369eb3bb8ff2746a1863419da91f",
+      "sha256": "9b949c1e54ac757e3f27f15f1ff4162d23470c4978913d2dd17259567d9c2c4e",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-5fe2f4054eafe37640fad44f39ba83e01621061a-3024x4032-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/maier-jewelry-silver-ring-styling.jpeg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/5fe2f4054eafe37640fad44f39ba83e01621061a-3024x4032.jpg",
+      "width": 3024,
+      "height": 4032,
+      "size_bytes": 1496000,
+      "sha1": "5fe2f4054eafe37640fad44f39ba83e01621061a",
+      "sha256": "459cfd7b7f3d95c5f88d338218b98efeeaa7f54d074446590c5929d936074cf3",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-3429277ebb65c2cde38586fb86fcb4a0c4654566-1024x1536-png",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/maier-jewelry-silver-ring-white-background.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/3429277ebb65c2cde38586fb86fcb4a0c4654566-1024x1536.png",
+      "width": 1024,
+      "height": 1536,
+      "size_bytes": 1671704,
+      "sha1": "3429277ebb65c2cde38586fb86fcb4a0c4654566",
+      "sha256": "c42afcf836a34cca1472afa9f52ba992b33c3c6931d25d0ed0eac612e3050699",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-7ed1b143e7f30a11db022ada47170833457f412c-3611x4810-jpg",
+      "project": "maier-jewelry",
+      "original_source_paths": [
+        "projects/maier-jewelry/maier-jewelry-silver-rings-hands.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/7ed1b143e7f30a11db022ada47170833457f412c-3611x4810.jpg",
+      "width": 3611,
+      "height": 4810,
+      "size_bytes": 8208185,
+      "sha1": "7ed1b143e7f30a11db022ada47170833457f412c",
+      "sha256": "2e240acbd39a1fb67eaa9379d73c81c9d92f03f54b95a5e0cae0c3f08b86095a",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-6b8b22ea8bc35e33ecea6a983fa94e0326325975-4000x2250-jpg",
+      "project": "marty-restaurants",
+      "original_source_paths": [
+        "projects/marty-restaurants/images/Marty-Resturant-menu-01.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/6b8b22ea8bc35e33ecea6a983fa94e0326325975-4000x2250.jpg",
+      "width": 4000,
+      "height": 2250,
+      "size_bytes": 8025386,
+      "sha1": "6b8b22ea8bc35e33ecea6a983fa94e0326325975",
+      "sha256": "da9d561b1a77170ff27410a345cfa64cd057f1461ffa992864d319806b2c5a60",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-62cb7689dfa2253c7eef44711a968f212d53e8fe-4000x2250-jpg",
+      "project": "marty-restaurants",
+      "original_source_paths": [
+        "projects/marty-restaurants/images/Marty-Resturant-menu-03.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/62cb7689dfa2253c7eef44711a968f212d53e8fe-4000x2250.jpg",
+      "width": 4000,
+      "height": 2250,
+      "size_bytes": 7028456,
+      "sha1": "62cb7689dfa2253c7eef44711a968f212d53e8fe",
+      "sha256": "20228eb75b83ee2390ff15f1ae84a7e440e22405bc3e36c4a0196fc44d826339",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-e91431f5344d04424784f1fc0dd8e1562a7a626d-4000x2250-jpg",
+      "project": "marty-restaurants",
+      "original_source_paths": [
+        "projects/marty-restaurants/images/Marty-Resturant-menu-04.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/e91431f5344d04424784f1fc0dd8e1562a7a626d-4000x2250.jpg",
+      "width": 4000,
+      "height": 2250,
+      "size_bytes": 5400124,
+      "sha1": "e91431f5344d04424784f1fc0dd8e1562a7a626d",
+      "sha256": "8ae8ce550737850d36d7b6196ad6042435ae3472e42932d261f8abdae76f10f3",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-879127e67c330996f8e7053834d1cb734668322c-4000x2250-jpg",
+      "project": "marty-restaurants",
+      "original_source_paths": [
+        "projects/marty-restaurants/images/Marty-Resturant-menu-05.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/879127e67c330996f8e7053834d1cb734668322c-4000x2250.jpg",
+      "width": 4000,
+      "height": 2250,
+      "size_bytes": 8990172,
+      "sha1": "879127e67c330996f8e7053834d1cb734668322c",
+      "sha256": "9e0a06b4f6c0d6235cfafeef8776728ecbb6d7f732cb497f110fea5120035543",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-ec795072fa219abb37e1af8378a405cc688a0140-4000x2250-jpg",
+      "project": "marty-restaurants",
+      "original_source_paths": [
+        "projects/marty-restaurants/images/Marty-Resturant-menu-06.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/ec795072fa219abb37e1af8378a405cc688a0140-4000x2250.jpg",
+      "width": 4000,
+      "height": 2250,
+      "size_bytes": 7447616,
+      "sha1": "ec795072fa219abb37e1af8378a405cc688a0140",
+      "sha256": "4441677b052f7a623e4dc32eda3b56b5a965431dad6b83cc1dbab4205e59a1cc",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-7efc699d153da5b08e591785232e3c176597083d-4000x2250-jpg",
+      "project": "marty-restaurants",
+      "original_source_paths": [
+        "projects/marty-restaurants/images/Marty-Resturant-menu-07.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/7efc699d153da5b08e591785232e3c176597083d-4000x2250.jpg",
+      "width": 4000,
+      "height": 2250,
+      "size_bytes": 5861744,
+      "sha1": "7efc699d153da5b08e591785232e3c176597083d",
+      "sha256": "6b0fd0ab21b2d2e307e3115a17db1232f83ad9a8edae6ade39d154a70ebc272a",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-e28f6d91a47a49c329d0a8843a5f81fc9e93f4d5-4444x18000-jpg",
+      "project": "marty-restaurants",
+      "original_source_paths": [
+        "projects/marty-restaurants/images/Untitled-5.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/e28f6d91a47a49c329d0a8843a5f81fc9e93f4d5-4444x18000.jpg",
+      "width": 4444,
+      "height": 18000,
+      "size_bytes": 53171241,
+      "sha1": "e28f6d91a47a49c329d0a8843a5f81fc9e93f4d5",
+      "sha256": "b084b206303e7fb72216dd27f1f57f921a8140fa41d53076b23292d831ca06ce",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-8663119947a67b51fdc542ad2f0bf8a6dc02b67f-4000x2250-jpg",
+      "project": "marty-restaurants",
+      "original_source_paths": [
+        "projects/marty-restaurants/images/marty-restaurants-seafood-menu-spread.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/8663119947a67b51fdc542ad2f0bf8a6dc02b67f-4000x2250.jpg",
+      "width": 4000,
+      "height": 2250,
+      "size_bytes": 8093978,
+      "sha1": "8663119947a67b51fdc542ad2f0bf8a6dc02b67f",
+      "sha256": "baa9b05f66e782eb30131c1ee272c53636bc0419110a3e2b75194c6b8e3a3e9e",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-5c5a0b5500aa8eaff80c24819032d978dca8620a-2400x1350-webp",
+      "project": "multi-tool",
+      "original_source_paths": [
+        "projects/multi-tool/multitool-black-three-quarter-view.webp"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/5c5a0b5500aa8eaff80c24819032d978dca8620a-2400x1350.webp",
+      "width": 2400,
+      "height": 1350,
+      "size_bytes": 44134,
+      "sha1": "5c5a0b5500aa8eaff80c24819032d978dca8620a",
+      "sha256": "48c22941b0146149c0702982b320bb0329972431ebf8d71b4284e31b9dfed47e",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-787f721977d277221395009b19ccaff59f469a5a-705x705-jpg",
+      "project": "multi-tool",
+      "original_source_paths": [
+        "projects/multi-tool/multitool-logo-mark.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/787f721977d277221395009b19ccaff59f469a5a-705x705.jpg",
+      "width": 705,
+      "height": 705,
+      "size_bytes": 20252,
+      "sha1": "787f721977d277221395009b19ccaff59f469a5a",
+      "sha256": "e76c40c70dcdefdd0792fd5d3ba071a992b598a257516878229762ffceea9bf7",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-76f8ff095701b4aee2cdc35a8da06a9c8dc517af-2400x1350-webp",
+      "project": "multi-tool",
+      "original_source_paths": [
+        "projects/multi-tool/multitool-modular-exploded-view.webp"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/76f8ff095701b4aee2cdc35a8da06a9c8dc517af-2400x1350.webp",
+      "width": 2400,
+      "height": 1350,
+      "size_bytes": 77824,
+      "sha1": "76f8ff095701b4aee2cdc35a8da06a9c8dc517af",
+      "sha256": "f8651f078f94e82e979290bcdc0ad270c1660ef47bf3c5ac1190259da39326eb",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-0ce5c75560bb7b5bfdeb92db7172f76536190e94-2400x1350-webp",
+      "project": "multi-tool",
+      "original_source_paths": [
+        "projects/multi-tool/multitool-orange-black-configurations.webp"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/0ce5c75560bb7b5bfdeb92db7172f76536190e94-2400x1350.webp",
+      "width": 2400,
+      "height": 1350,
+      "size_bytes": 72784,
+      "sha1": "0ce5c75560bb7b5bfdeb92db7172f76536190e94",
+      "sha256": "845f75dad29987d88885d04a034ac32eee0c8b104d1a162bc6f6c65f4eedd398",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-6f2826c2d3a91fa0fe68dc88fa5e1fed2ec1ba6c-1019x1167-jpg",
+      "project": "multi-tool",
+      "original_source_paths": [
+        "projects/multi-tool/multitool-orange-front-view-portrait.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/6f2826c2d3a91fa0fe68dc88fa5e1fed2ec1ba6c-1019x1167.jpg",
+      "width": 1019,
+      "height": 1167,
+      "size_bytes": 336320,
+      "sha1": "6f2826c2d3a91fa0fe68dc88fa5e1fed2ec1ba6c",
+      "sha256": "f359cb282a27216fa4c102aa87fa2eb9352313b24fd43833355bdc7a4a834821",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-bea6a9e3abb72fc14917557fe149e2ab949679cc-2400x1350-webp",
+      "project": "multi-tool",
+      "original_source_paths": [
+        "projects/multi-tool/multitool-orange-front-view.webp"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/bea6a9e3abb72fc14917557fe149e2ab949679cc-2400x1350.webp",
+      "width": 2400,
+      "height": 1350,
+      "size_bytes": 46514,
+      "sha1": "bea6a9e3abb72fc14917557fe149e2ab949679cc",
+      "sha256": "86adcf71d4c98b11cb61d2b3de0d39b5a67300da47da956df480b857dca4b0ef",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-41fe08545c0a0bdde3887062e8852141a3f3624b-2250x2250-png",
+      "project": "olivo-bistro",
+      "original_source_paths": [
+        "projects/olivo-bistro/olivo-bistro-brand-identity-presentation.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/41fe08545c0a0bdde3887062e8852141a3f3624b-2250x2250.png",
+      "width": 2250,
+      "height": 2250,
+      "size_bytes": 6646682,
+      "sha1": "41fe08545c0a0bdde3887062e8852141a3f3624b",
+      "sha256": "2d1d37847e8fd9be0331b7cbb9bcfd966dcfa3b6322c9c4d2b5d949af4a2099a",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-58b5013d4713b6402c764e32f2e298a477662029-3800x2533-jpg",
+      "project": "re-mind",
+      "original_source_paths": [
+        "projects/re-mind/Muresan David - 3.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/58b5013d4713b6402c764e32f2e298a477662029-3800x2533.jpg",
+      "width": 3800,
+      "height": 2533,
+      "size_bytes": 7330211,
+      "sha1": "58b5013d4713b6402c764e32f2e298a477662029",
+      "sha256": "f825c4a8e495aee5942ffd2aab3629b3cbe6eca9c55bc66ed8542fe08ffd3139",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-18076c11cbf905b4e7d78d0b9708f1d482cea22f-5698x3800-jpg",
+      "project": "re-mind",
+      "original_source_paths": [
+        "projects/re-mind/Muresan David - 4.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/18076c11cbf905b4e7d78d0b9708f1d482cea22f-5698x3800.jpg",
+      "width": 5698,
+      "height": 3800,
+      "size_bytes": 10230662,
+      "sha1": "18076c11cbf905b4e7d78d0b9708f1d482cea22f",
+      "sha256": "b04b40561898f72c7ff495604130d569a3f82ccdc63d7abaf83d957a1baef3ea",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-98297b4dc6c7a37d6b0d083407b8b729af5826e1-2533x3800-jpg",
+      "project": "re-mind",
+      "original_source_paths": [
+        "projects/re-mind/Muresan David - 5.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/98297b4dc6c7a37d6b0d083407b8b729af5826e1-2533x3800.jpg",
+      "width": 2533,
+      "height": 3800,
+      "size_bytes": 4294474,
+      "sha1": "98297b4dc6c7a37d6b0d083407b8b729af5826e1",
+      "sha256": "24205609adfa641696d851c3fb63dc57b650400eb46a381941991b178849b23e",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-865c4016280ec2f5e34b8d60c4db21d8c92008b2-3800x2542-jpg",
+      "project": "re-mind",
+      "original_source_paths": [
+        "projects/re-mind/Muresan David -2.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/865c4016280ec2f5e34b8d60c4db21d8c92008b2-3800x2542.jpg",
+      "width": 3800,
+      "height": 2542,
+      "size_bytes": 5225509,
+      "sha1": "865c4016280ec2f5e34b8d60c4db21d8c92008b2",
+      "sha256": "05728958060e3a32fc8878ba697c3dda8c21ec42e35c02c5e34feee2120fb712",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-d90d44d9557de80d1bd2797c34f2cbbb5bc43b8f-3899x3899-jpg",
+      "project": "re-mind",
+      "original_source_paths": [
+        "projects/re-mind/Muresan-David--1.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/d90d44d9557de80d1bd2797c34f2cbbb5bc43b8f-3899x3899.jpg",
+      "width": 3899,
+      "height": 3899,
+      "size_bytes": 2203993,
+      "sha1": "d90d44d9557de80d1bd2797c34f2cbbb5bc43b8f",
+      "sha256": "5f2a4b00f3749d2eb59ac71cb3481341f7203e2ccae4067391d0b45dfd238df5",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-7c620c1babf1ff045f80c16f96d20dcd3cf939be-4533x4500-jpg",
+      "project": "re-mind",
+      "original_source_paths": [
+        "projects/re-mind/Packaging illustration-iometric.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/7c620c1babf1ff045f80c16f96d20dcd3cf939be-4533x4500.jpg",
+      "width": 4533,
+      "height": 4500,
+      "size_bytes": 2221117,
+      "sha1": "7c620c1babf1ff045f80c16f96d20dcd3cf939be",
+      "sha256": "c2e80186c2557d2ac76672d6fdbd0ddbc954622541aadc3fb2c1780304bbced7",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-9fa4229d43cd5ff556cd1f7e18e5ece1784d2086-2500x1667-jpg",
+      "project": "shared-project-previews",
+      "original_source_paths": [
+        "image2.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/9fa4229d43cd5ff556cd1f7e18e5ece1784d2086-2500x1667.jpg",
+      "width": 2500,
+      "height": 1667,
+      "size_bytes": 831530,
+      "sha1": "9fa4229d43cd5ff556cd1f7e18e5ece1784d2086",
+      "sha256": "37e60892841f1766f1058d05e378b96a38db440884818f247157feefc5a38876",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-b89dec6b03d685e8ec64a5431dff83ecb00d2746-3615x2034-png",
+      "project": "shared-project-previews",
+      "original_source_paths": [
+        "image3.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/b89dec6b03d685e8ec64a5431dff83ecb00d2746-3615x2034.png",
+      "width": 3615,
+      "height": 2034,
+      "size_bytes": 9220226,
+      "sha1": "b89dec6b03d685e8ec64a5431dff83ecb00d2746",
+      "sha256": "1e88da65acaeda8374a8c27d43ebf820ea1f9b63b33da2fb83f8d24b03743118",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-cc1bbae287c5eed8d64f0e29b95c9f4ed85021d6-4228x3877-jpg",
+      "project": "shared-project-previews",
+      "original_source_paths": [
+        "image4.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/cc1bbae287c5eed8d64f0e29b95c9f4ed85021d6-4228x3877.jpg",
+      "width": 4228,
+      "height": 3877,
+      "size_bytes": 6715402,
+      "sha1": "cc1bbae287c5eed8d64f0e29b95c9f4ed85021d6",
+      "sha256": "1da09ced98d971975245dd86b9d48259c5de3e0ca7769fce76a1321cccacc17a",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-31e6aedab56951ee07a4d7a05b119d7a6b27bd61-4160x5547-jpg",
+      "project": "shared-project-previews",
+      "original_source_paths": [
+        "image5.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/31e6aedab56951ee07a4d7a05b119d7a6b27bd61-4160x5547.jpg",
+      "width": 4160,
+      "height": 5547,
+      "size_bytes": 21737367,
+      "sha1": "31e6aedab56951ee07a4d7a05b119d7a6b27bd61",
+      "sha256": "d2141c3e1c790e8fdf467a17bd78a5fa10007eea36d15b9855ac4d2aad8f2457",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-d300d0fb102885e3043572f20e5306f300ce6c9e-4500x5625-jpg",
+      "project": "shinrin",
+      "original_source_paths": [
+        "projects/shinrin/shinrin-logo-thumbnail.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/d300d0fb102885e3043572f20e5306f300ce6c9e-4500x5625.jpg",
+      "width": 4500,
+      "height": 5625,
+      "size_bytes": 16561513,
+      "sha1": "d300d0fb102885e3043572f20e5306f300ce6c9e",
+      "sha256": "c4928226140f8444e60a6dd05d6938a52c52002c561656bd9280a16236bbd8ff",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-4f8e868e190a09c543deda3a69c6dab575fc7bc2-5625x4500-jpg",
+      "project": "shinrin",
+      "original_source_paths": [
+        "projects/shinrin/shinrin-logo.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/4f8e868e190a09c543deda3a69c6dab575fc7bc2-5625x4500.jpg",
+      "width": 5625,
+      "height": 4500,
+      "size_bytes": 3210309,
+      "sha1": "4f8e868e190a09c543deda3a69c6dab575fc7bc2",
+      "sha256": "b5197137acd668a9a60412b38fa3131807723b9f7842732ff4ca188469044358",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-475f656932f1c674d17edbcc3ca11c648f629770-6240x4160-jpg",
+      "project": "walk-with-me",
+      "original_source_paths": [
+        "projects/walk-with-me/DSCF8322.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/475f656932f1c674d17edbcc3ca11c648f629770-6240x4160.jpg",
+      "width": 6240,
+      "height": 4160,
+      "size_bytes": 13677897,
+      "sha1": "475f656932f1c674d17edbcc3ca11c648f629770",
+      "sha256": "0af88855b004ba85ecb1ec1c9474242550ec83fbbdecd144bbd3300ae65fc478",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-86bf5c9c22b0ad3da4fc38762e63bbc51bc77cb7-4160x5200-jpg",
+      "project": "walk-with-me",
+      "original_source_paths": [
+        "projects/walk-with-me/DSCF8324.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/86bf5c9c22b0ad3da4fc38762e63bbc51bc77cb7-4160x5200.jpg",
+      "width": 4160,
+      "height": 5200,
+      "size_bytes": 10359941,
+      "sha1": "86bf5c9c22b0ad3da4fc38762e63bbc51bc77cb7",
+      "sha256": "47e4dfc5954aa99b19d27d1953c637f35bd2a2a3efd58421ea3b6e2021ee6969",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-0cec4f0e9b086ae77227d1b98abc052a6c3ece41-6240x3510-jpg",
+      "project": "walk-with-me",
+      "original_source_paths": [
+        "projects/walk-with-me/DSCF8334.jpg",
+        "image6.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/0cec4f0e9b086ae77227d1b98abc052a6c3ece41-6240x3510.jpg",
+      "width": 6240,
+      "height": 3510,
+      "size_bytes": 9021418,
+      "sha1": "0cec4f0e9b086ae77227d1b98abc052a6c3ece41",
+      "sha256": "ac9d84f07d9411efe250d40e5c9b6a027941d8dc9083a0c6ad75b45aa4cc5264",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-bce89108bcb27fe5aad509bef4b2c26dc4ce302f-4160x5200-jpg",
+      "project": "walk-with-me",
+      "original_source_paths": [
+        "projects/walk-with-me/DSCF8354.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/bce89108bcb27fe5aad509bef4b2c26dc4ce302f-4160x5200.jpg",
+      "width": 4160,
+      "height": 5200,
+      "size_bytes": 9359765,
+      "sha1": "bce89108bcb27fe5aad509bef4b2c26dc4ce302f",
+      "sha256": "985017fd8f1e06b369fea95122615a53386e81ebb5178d91d1ac11dc1899fb74",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-2feb91c41fa6dabdf6c31ffb2087cf44d0092d25-4160x5200-jpg",
+      "project": "walk-with-me",
+      "original_source_paths": [
+        "projects/walk-with-me/DSCF8367.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/2feb91c41fa6dabdf6c31ffb2087cf44d0092d25-4160x5200.jpg",
+      "width": 4160,
+      "height": 5200,
+      "size_bytes": 8487715,
+      "sha1": "2feb91c41fa6dabdf6c31ffb2087cf44d0092d25",
+      "sha256": "7f697ffe7b00bf966308eff58c627c9b9989894fccde82b669f0ecde73116d3a",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-aa5e0df856a25ef92b980f0c0ce9f22303117d75-4160x5200-jpg",
+      "project": "walk-with-me",
+      "original_source_paths": [
+        "projects/walk-with-me/DSCF8377.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/aa5e0df856a25ef92b980f0c0ce9f22303117d75-4160x5200.jpg",
+      "width": 4160,
+      "height": 5200,
+      "size_bytes": 11634848,
+      "sha1": "aa5e0df856a25ef92b980f0c0ce9f22303117d75",
+      "sha256": "6a65881a4db2afedb607549c163d8732f394016a5aaa03f4a3648b5b04ed7707",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-d0eb97050d55fd9c35c6644bb196948418b0b6ac-8382x4715-jpg",
+      "project": "walk-with-me",
+      "original_source_paths": [
+        "projects/walk-with-me/DSCF8394.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/d0eb97050d55fd9c35c6644bb196948418b0b6ac-8382x4715.jpg",
+      "width": 8382,
+      "height": 4715,
+      "size_bytes": 13542237,
+      "sha1": "d0eb97050d55fd9c35c6644bb196948418b0b6ac",
+      "sha256": "ecffe305d67c36de223b175458f1fe284ac4b80a1e5f16c726e3055a57136db1",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-28746f88bf8f98ab6254c83ca58367d168c3e3e4-1080x1350-jpg",
+      "project": "walk-with-me",
+      "original_source_paths": [
+        "projects/walk-with-me/Poster-rainy-days.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/28746f88bf8f98ab6254c83ca58367d168c3e3e4-1080x1350.jpg",
+      "width": 1080,
+      "height": 1350,
+      "size_bytes": 556169,
+      "sha1": "28746f88bf8f98ab6254c83ca58367d168c3e3e4",
+      "sha256": "86eb03a9c31471cc1b313266d65ef062918235974ab58df332b2e26926193dea",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-6623a0dd0e53f042d765a4e86352ce063b2534ff-2136x2670-jpg",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/03_Sustainable-tape_By-Mocku.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/6623a0dd0e53f042d765a4e86352ce063b2534ff-2136x2670.jpg",
+      "width": 2136,
+      "height": 2670,
+      "size_bytes": 941152,
+      "sha1": "6623a0dd0e53f042d765a4e86352ce063b2534ff",
+      "sha256": "10e60af8c7042949c5c37578c553431423231f087be41e87c1d430f17ffe51cc",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-7786e0a859f720253c6d542455f23060cee218ae-1080x1349-jpg",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/App-Icon-Mockup.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/7786e0a859f720253c6d542455f23060cee218ae-1080x1349.jpg",
+      "width": 1080,
+      "height": 1349,
+      "size_bytes": 793055,
+      "sha1": "7786e0a859f720253c6d542455f23060cee218ae",
+      "sha256": "4e0629ae4d69852ae544560f01f73feb77ffc09c956b89c0007dbaed173a370d",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-751c83461f5bf57eb0e291e3de727d9a009b982f-1091x1365-png",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/Asset 1.png"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/751c83461f5bf57eb0e291e3de727d9a009b982f-1091x1365.png",
+      "width": 1091,
+      "height": 1365,
+      "size_bytes": 1840586,
+      "sha1": "751c83461f5bf57eb0e291e3de727d9a009b982f",
+      "sha256": "8980c39409d08b4fe283f6e97bdc6f56b991ce9814c36d7d4afc0bfaa7d3a6d0",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-2750524582b64ad44441b984bec58ddacb63759d-1743x2179-jpg",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/Asset 3-100.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/2750524582b64ad44441b984bec58ddacb63759d-1743x2179.jpg",
+      "width": 1743,
+      "height": 2179,
+      "size_bytes": 3332378,
+      "sha1": "2750524582b64ad44441b984bec58ddacb63759d",
+      "sha256": "c0ab3fc03199f8a9fca0496da30f8e561b94c334aa741cce319bafa76905d3af",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-60f06c0762ef0e2775749b26bf8d87d1599ef8e4-2601x1583-jpg",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/Asset 5-100.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/60f06c0762ef0e2775749b26bf8d87d1599ef8e4-2601x1583.jpg",
+      "width": 2601,
+      "height": 1583,
+      "size_bytes": 908885,
+      "sha1": "60f06c0762ef0e2775749b26bf8d87d1599ef8e4",
+      "sha256": "25f58b147d14a7d17c74414b0367e4a0061e04679abcae9b2b6dfce7e14aa77b",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254-4343x5428-jpg",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/Blank-branding-mockup-4K-upscaled.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254-4343x5428.jpg",
+      "width": 4343,
+      "height": 5428,
+      "size_bytes": 2468574,
+      "sha1": "1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254",
+      "sha256": "ce0cebf13ad77b275995268fad3484558c3f28c8d9f868fd88002dcb14c45af9",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-e504d3497507104b0b9e15ce736c85e71845a08d-2400x3000-jpg",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/Business_Card_Mockup_3.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/e504d3497507104b0b9e15ce736c85e71845a08d-2400x3000.jpg",
+      "width": 2400,
+      "height": 3000,
+      "size_bytes": 4077812,
+      "sha1": "e504d3497507104b0b9e15ce736c85e71845a08d",
+      "sha256": "de5a2515a86384506c199b90aeb3f10a6ecafa287ff0afd28c504fb2ebaed122",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-769ded8a83cfaa6469daaa243f80cf9c0f5edf47-6923x8634-jpg",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/PREZENTARE -  MEGAMONTAJ-01.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/769ded8a83cfaa6469daaa243f80cf9c0f5edf47-6923x8634.jpg",
+      "width": 6923,
+      "height": 8634,
+      "size_bytes": 9329636,
+      "sha1": "769ded8a83cfaa6469daaa243f80cf9c0f5edf47",
+      "sha256": "f10fba1943eafbee969b81b2504faa3450e9f991098d24a2a2b640eb0f557755",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-4b9af00f6190760a34320a766a3037ff6f7c8baf-4542x5683-jpg",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/PREZENTARE -  MEGAMONTAJ.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/4b9af00f6190760a34320a766a3037ff6f7c8baf-4542x5683.jpg",
+      "width": 4542,
+      "height": 5683,
+      "size_bytes": 2961553,
+      "sha1": "4b9af00f6190760a34320a766a3037ff6f7c8baf",
+      "sha256": "f6fdcac4cdeb6f164dbc094d733a4d4a61dff740d54325a444961dafd724c790",
+      "original_bytes_verified": true
+    },
+    {
+      "asset_id": "image-bae11e6b6e81b12238c442546d533c3f03efea26-4542x5683-jpg",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/PREZENTARE -  MEGAMONTAJ2.jpg"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/images/sij01e0v/production/bae11e6b6e81b12238c442546d533c3f03efea26-4542x5683.jpg",
+      "width": 4542,
+      "height": 5683,
+      "size_bytes": 3617334,
+      "sha1": "bae11e6b6e81b12238c442546d533c3f03efea26",
+      "sha256": "13474c10535106ac841ee3ce50879dc64a85319fa9da224c157b0b8c1ad6846e",
+      "original_bytes_verified": true
+    }
+  ],
+  "hero_video": {
+    "source_filename": "Orbit-Carousel---16x9 (1).mp4",
+    "url": "https://cdn.sanity.io/files/sij01e0v/production/dcaef7881e975c21a4884dc56265e92bf462f756.mp4",
+    "size_bytes": 27635999,
+    "width": 1920,
+    "height": 1080,
+    "fps": 60,
+    "sha256": "a0af6421b55e31cf0b60dba24340520d3bc7a8b5b099343d6f20d009fdc1bb4b",
+    "original_bytes_verified": true
+  },
+  "videos": [
+    {
+      "asset_id": "file-8b8fd787f1d95405902c03e023ded9c06d171b12-mp4",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/MEGAMONTAJ · 16_9 motion.mp4"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/files/sij01e0v/production/8b8fd787f1d95405902c03e023ded9c06d171b12.mp4",
+      "width": 2560,
+      "height": 1440,
+      "size_bytes": 1272696,
+      "sha1": "8b8fd787f1d95405902c03e023ded9c06d171b12",
+      "sha256": "45f9267daf5f0a12565992d2d2801a820859e3a026875325734fd5dc1d789a5c",
+      "original_bytes_verified": true,
+      "fps": "60/1",
+      "duration_seconds": 4.766667
+    },
+    {
+      "asset_id": "file-6ea2fd9cf365b1d6aa429bdcc021d805078b580c-mp4",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/Megamontaj colaj video.mp4"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/files/sij01e0v/production/6ea2fd9cf365b1d6aa429bdcc021d805078b580c.mp4",
+      "width": 2160,
+      "height": 2700,
+      "size_bytes": 16727305,
+      "sha1": "6ea2fd9cf365b1d6aa429bdcc021d805078b580c",
+      "sha256": "e5c8ae25ebd3402b93e79626c74aea529944c2d6a4c977a82d371ac4fb21dfbf",
+      "original_bytes_verified": true,
+      "fps": "60/1",
+      "duration_seconds": 14.15
+    },
+    {
+      "asset_id": "file-f960edbd52c1e0de6862d6ea82d7f8bdfe5d7051-mp4",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/Megamontaj-MM anim.mp4"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/files/sij01e0v/production/f960edbd52c1e0de6862d6ea82d7f8bdfe5d7051.mp4",
+      "width": 2160,
+      "height": 2700,
+      "size_bytes": 3276958,
+      "sha1": "f960edbd52c1e0de6862d6ea82d7f8bdfe5d7051",
+      "sha256": "88f3f9a10fda745dbeefcb56215ee6ead447598d1fd3d6a83622f90279b4087a",
+      "original_bytes_verified": true,
+      "fps": "60/1",
+      "duration_seconds": 7.7
+    },
+    {
+      "asset_id": "file-373ad841223bbcb57be601b5587b72de82373f04-mp4",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/Palette motion · Traveling wave · 16_9.mp4"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/files/sij01e0v/production/373ad841223bbcb57be601b5587b72de82373f04.mp4",
+      "width": 2560,
+      "height": 1440,
+      "size_bytes": 182215,
+      "sha1": "373ad841223bbcb57be601b5587b72de82373f04",
+      "sha256": "0958d6cd90a1f4d63f96e6275deccca5a83ee1705ad243db08a72064306a4cfa",
+      "original_bytes_verified": true,
+      "fps": "60/1",
+      "duration_seconds": 7.016667
+    },
+    {
+      "asset_id": "file-4ed497e5d4ffce3399bd7153ca87068536be48b9-mp4",
+      "project": "megamontaj",
+      "original_source_paths": [
+        "incoming/megamontaj/Symbol construction · Grid & photo reveal · 16_9.mp4"
+      ],
+      "kind": "original",
+      "url": "https://cdn.sanity.io/files/sij01e0v/production/4ed497e5d4ffce3399bd7153ca87068536be48b9.mp4",
+      "width": 2560,
+      "height": 1440,
+      "size_bytes": 59476917,
+      "sha1": "4ed497e5d4ffce3399bd7153ca87068536be48b9",
+      "sha256": "2b4c2c422301bd1391d156cf35ed0824f245c042ac948c30ec9c29149d45d78e",
+      "original_bytes_verified": true,
+      "fps": "60/1",
+      "duration_seconds": 11.516667
+    }
+  ]
+}

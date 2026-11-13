@@ -1,0 +1,15 @@
+.DS_Store
+._*
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+.env
+.env.*
+!.env.example
+.cache/
+.sixth/
+reports/
+test-results/
+playwright-report/
+/incoming/

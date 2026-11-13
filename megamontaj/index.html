@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base href="/">
+  <title>Megamontaj Rebranding &amp; Web Development — MOND Studio</title>
+  <meta name="description" content="Rebranding and web development for Megamontaj, a construction company in Târgu Mureș, Romania. A 2026 project by David Muresan." />
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#f7f7f7" />
+  <link rel="canonical" href="https://www.mondstudio.co/megamontaj/" />
+  <script>
+    if (window.location.pathname.endsWith('/index.html')) {
+      window.location.replace(window.location.pathname.slice(0, -10) + window.location.search + window.location.hash);
+    }
+  </script>
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="MOND Studio" />
+  <meta property="og:title" content="Megamontaj Rebranding &amp; Web Development — MOND Studio" />
+  <meta property="og:description" content="Rebranding and web development for Megamontaj, a construction company in Târgu Mureș, Romania. A 2026 project by David Muresan." />
+  <meta property="og:url" content="https://www.mondstudio.co/megamontaj/" />
+  <meta property="og:image" content="https://cdn.sanity.io/images/sij01e0v/production/60f06c0762ef0e2775749b26bf8d87d1599ef8e4-2601x1583.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90&amp;fm=jpg" />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1169" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": "https://www.mondstudio.co/megamontaj/#project",
+    "name": "Megamontaj",
+    "description": "Rebranding and web development for Megamontaj, a construction company in Târgu Mureș, Romania. A 2026 project by David Muresan.",
+    "url": "https://www.mondstudio.co/megamontaj/",
+    "image": "https://cdn.sanity.io/images/sij01e0v/production/60f06c0762ef0e2775749b26bf8d87d1599ef8e4-2601x1583.jpg?w=1920&fit=max&auto=format&q=90&fm=jpg",
+    "dateCreated": "2026",
+    "creator": {
+        "@id": "https://www.mondstudio.co/#organization"
+    },
+    "contributor": {
+        "@type": "Person",
+        "name": "David Muresan"
+    },
+    "about": {
+        "@type": "Organization",
+        "name": "Megamontaj"
+    },
+    "genre": "Rebranding & Web Development",
+    "locationCreated": "Târgu Mureș, Romania",
+    "mainEntityOfPage": "https://www.mondstudio.co/megamontaj/",
+    "isPartOf": {
+        "@id": "https://www.mondstudio.co/#website"
+    },
+    "inLanguage": "en"
+}
+  </script>
+  <link rel="preconnect" href="https://use.typekit.net" />
+  <link rel="stylesheet" href="https://use.typekit.net/rsz0lck.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/xhp4yar.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/did4gvj.css" />
+  <link rel="icon" type="image/png" href="/assets/icons/favicon.png" />
+  <script>
+    try {
+      const transitionState = sessionStorage.getItem('mond:work-to-intermezzo');
+      if (transitionState) {
+        document.documentElement.classList.add('project-entry-transition');
+      }
+    } catch (error) {
+      // Ignore storage failures; the page still loads normally.
+    }
+  </script>
+  <link rel="stylesheet" href="/assets/css/project-page.css?v=20260924-native-scroll" />
+  <style>
+    .megamontaj-gallery,
+    .megamontaj-gallery > .case-gallery__row { gap: 20px; }
+    @media (min-width: 721px) {
+      .megamontaj-gallery .megamontaj-gallery__row--one-two {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-common.css?v=20260921-project-lines" />
+  <script>document.documentElement.classList.add("mond-project-page");</script>
+</head>
+<body data-theme="light">
+  <div class="case-page-transition" id="case-page-transition" aria-hidden="true">
+    <div class="case-page-transition__panel"></div>
+  </div>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const revealHeroText = () => {
+        const items = Array.from(document.querySelectorAll('.hero-text-drop'));
+        if (!items.length) return;
+
+        items.forEach((item, index) => {
+          window.setTimeout(() => {
+            item.classList.add('is-visible');
+          }, index * 160);
+        });
+      };
+
+      if (!root.classList.contains('project-entry-transition')) return;
+
+      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      try {
+        JSON.parse(sessionStorage.getItem('mond:work-to-intermezzo') || '{}');
+      } catch (error) {
+        // The transition can continue without persisted state.
+      }
+
+      if (prefersReducedMotion) {
+        root.classList.remove('project-entry-transition');
+        revealHeroText();
+        try {
+          sessionStorage.removeItem('mond:work-to-intermezzo');
+        } catch (error) {}
+        return;
+      }
+
+      window.setTimeout(() => {
+        root.classList.add('is-panel-exiting');
+      }, 40);
+
+      window.setTimeout(() => {
+        root.classList.add('is-project-entry-ready');
+        revealHeroText();
+      }, 220);
+
+      window.setTimeout(() => {
+        root.classList.add('is-case-reveal-ready');
+        window.dispatchEvent(new CustomEvent('mond:intermezzo-entry-reveal'));
+      }, 340);
+
+      window.setTimeout(() => {
+        root.classList.remove('project-entry-transition');
+        root.classList.remove('is-panel-exiting');
+        root.classList.remove('is-project-entry-ready');
+        root.classList.remove('is-case-reveal-ready');
+        try {
+          sessionStorage.removeItem('mond:work-to-intermezzo');
+        } catch (error) {}
+      }, 900);
+    })();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const root = document.documentElement;
+      if (root.classList.contains('project-entry-transition')) return;
+
+      const items = Array.from(document.querySelectorAll('.hero-text-drop'));
+      items.forEach((item, index) => {
+        window.setTimeout(() => {
+          item.classList.add('is-visible');
+        }, 120 + index * 160);
+      });
+    });
+  </script>
+  <header class="hero">
+    <div class="hero__overlay is-visible" id="hero-overlay" aria-hidden="false">
+      <div class="hero__top">
+        <a class="hero__brand hero-text-drop" href="/" aria-label="MOND : STUDIO home">
+          <img class="hero__brand-image" src="/assets/icons/mond-logo-black.svg" alt="MOND : STUDIO" width="590" height="63" decoding="async" />
+          <span class="hero__brand-project" aria-hidden="true">MEGAMONTAJ</span>
+        </a>
+        <button class="hero__menu-toggle" id="hero-menu-toggle" type="button" aria-controls="hero-primary-nav" aria-expanded="false" aria-label="Open menu">
+          <span class="hero__menu-icon" aria-hidden="true">:</span>
+        </button>
+        <nav class="hero__nav" id="hero-primary-nav" aria-label="Primary navigation">
+          <a href="/work/"><span class="hero__nav-word">WORK</span></a>
+          <a href="/about/"><span class="hero__nav-word">ABOUT</span></a>
+          <a href="https://cal.eu/mondstudio"><span class="hero__nav-word">CONTACT</span></a>
+          <a class="hero__nav-talk" href="https://cal.eu/mondstudio"><span class="hero__nav-word">LET'S</span> <span class="hero__nav-word">TALK</span></a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    (function () {
+      const header = document.querySelector('.hero__top');
+      const menuToggle = document.getElementById('hero-menu-toggle');
+      const nav = document.getElementById('hero-primary-nav');
+
+      if (!header || !menuToggle || !nav) return;
+
+      let closingTimer;
+
+      const setMenuOpen = (isOpen) => {
+        window.clearTimeout(closingTimer);
+        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+
+        if (isOpen) {
+          header.classList.remove('is-open');
+          header.classList.remove('is-closing');
+          header.classList.add('is-preopening');
+          nav.getBoundingClientRect();
+          window.requestAnimationFrame(() => {
+            header.classList.remove('is-preopening');
+            header.classList.add('is-open');
+          });
+        } else {
+          header.classList.remove('is-preopening');
+          header.classList.toggle('is-closing', header.classList.contains('is-open'));
+          header.classList.remove('is-open');
+          closingTimer = window.setTimeout(() => {
+            header.classList.remove('is-closing');
+          }, 340);
+        }
+      };
+
+      menuToggle.addEventListener('click', () => {
+        setMenuOpen(!header.classList.contains('is-open'));
+      });
+
+      nav.addEventListener('click', (event) => {
+        if (event.target.closest('a')) {
+          setMenuOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          setMenuOpen(false);
+        }
+      });
+
+      const updateScrolledState = () => {
+        document.body.classList.toggle('has-scrolled', window.scrollY > 0);
+      };
+
+      updateScrolledState();
+      window.addEventListener('scroll', updateScrolledState, { passive: true });
+    })();
+  </script>
+
+  <main class="case-main" id="about" data-theme-target>
+    <section class="case-section">
+      <div class="case-heading">
+        <h1 class="case-intro__copy case-reveal" style="--reveal-delay: 40ms;">Megamontaj</h1>
+        <dl class="case-mobile-info case-reveal" style="--reveal-delay: 100ms;">
+          <div class="case-mobile-info__item">
+            <dt>Project Type:</dt>
+            <dd>Rebranding &amp; Web Development</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Project:</dt>
+            <dd>Megamontaj</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Year:</dt>
+            <dd>2026</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Location:</dt>
+            <dd>Târgu Mureș, Romania</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Services:</dt>
+            <dd>Art Direction, Graphic Design, UI, Web Development</dd>
+          </div>
+          <div class="case-mobile-info__item">
+            <dt>Industry:</dt>
+            <dd>Construction</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="case-gallery case-gallery--rows megamontaj-gallery">
+        <div class="case-gallery__row case-gallery__row--1">
+          <figure class="case-media-reveal" style="--reveal-delay: 900ms;">
+            <video class="case-gallery__video" data-src="https://cdn.sanity.io/files/sij01e0v/production/4ed497e5d4ffce3399bd7153ca87068536be48b9.mp4" poster="/assets/images/posters/megamontaj/symbol-construction.jpg" width="2560" height="1440" preload="none" muted loop playsinline aria-label="Megamontaj symbol construction grid and architectural photo reveal"></video>
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--2">
+          <figure class="case-media-reveal" style="--reveal-delay: 280ms;">
+            <video class="case-gallery__video" data-src="https://cdn.sanity.io/files/sij01e0v/production/8b8fd787f1d95405902c03e023ded9c06d171b12.mp4" poster="/assets/images/posters/megamontaj/brand-motion.jpg" width="2560" height="1440" preload="none" muted loop playsinline aria-label="Megamontaj animated brand symbol and wordmark"></video>
+          </figure>
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 340ms;">
+            <img src="https://cdn.sanity.io/images/sij01e0v/production/769ded8a83cfaa6469daaa243f80cf9c0f5edf47-6923x8634.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90" srcset="https://cdn.sanity.io/images/sij01e0v/production/769ded8a83cfaa6469daaa243f80cf9c0f5edf47-6923x8634.jpg?w=416&amp;fit=max&amp;auto=format&amp;q=90 416w, https://cdn.sanity.io/images/sij01e0v/production/769ded8a83cfaa6469daaa243f80cf9c0f5edf47-6923x8634.jpg?w=768&amp;fit=max&amp;auto=format&amp;q=90 768w, https://cdn.sanity.io/images/sij01e0v/production/769ded8a83cfaa6469daaa243f80cf9c0f5edf47-6923x8634.jpg?w=1024&amp;fit=max&amp;auto=format&amp;q=90 1024w, https://cdn.sanity.io/images/sij01e0v/production/769ded8a83cfaa6469daaa243f80cf9c0f5edf47-6923x8634.jpg?w=1440&amp;fit=max&amp;auto=format&amp;q=90 1440w, https://cdn.sanity.io/images/sij01e0v/production/769ded8a83cfaa6469daaa243f80cf9c0f5edf47-6923x8634.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90 1920w, https://cdn.sanity.io/images/sij01e0v/production/769ded8a83cfaa6469daaa243f80cf9c0f5edf47-6923x8634.jpg?w=2560&amp;fit=max&amp;auto=format&amp;q=90 2560w, https://cdn.sanity.io/images/sij01e0v/production/769ded8a83cfaa6469daaa243f80cf9c0f5edf47-6923x8634.jpg?w=3200&amp;fit=max&amp;auto=format&amp;q=90 3200w, https://cdn.sanity.io/images/sij01e0v/production/769ded8a83cfaa6469daaa243f80cf9c0f5edf47-6923x8634.jpg?w=3840&amp;fit=max&amp;auto=format&amp;q=90 3840w, https://cdn.sanity.io/images/sij01e0v/production/769ded8a83cfaa6469daaa243f80cf9c0f5edf47-6923x8634.jpg?w=6923&amp;fit=max&amp;auto=format&amp;q=90 6923w" sizes="(max-width: 720px) calc(100vw - 20px), calc((100vw - 60px) / 3.25)" data-lightbox-src="https://cdn.sanity.io/images/sij01e0v/production/769ded8a83cfaa6469daaa243f80cf9c0f5edf47-6923x8634.jpg?w=6923&amp;fit=max&amp;auto=format&amp;q=90" alt="Megamontaj wordmark and symbol family over a dark industrial building" width="6923" height="8634" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--4">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 400ms;">
+            <img src="https://cdn.sanity.io/images/sij01e0v/production/bae11e6b6e81b12238c442546d533c3f03efea26-4542x5683.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90" srcset="https://cdn.sanity.io/images/sij01e0v/production/bae11e6b6e81b12238c442546d533c3f03efea26-4542x5683.jpg?w=416&amp;fit=max&amp;auto=format&amp;q=90 416w, https://cdn.sanity.io/images/sij01e0v/production/bae11e6b6e81b12238c442546d533c3f03efea26-4542x5683.jpg?w=768&amp;fit=max&amp;auto=format&amp;q=90 768w, https://cdn.sanity.io/images/sij01e0v/production/bae11e6b6e81b12238c442546d533c3f03efea26-4542x5683.jpg?w=1024&amp;fit=max&amp;auto=format&amp;q=90 1024w, https://cdn.sanity.io/images/sij01e0v/production/bae11e6b6e81b12238c442546d533c3f03efea26-4542x5683.jpg?w=1440&amp;fit=max&amp;auto=format&amp;q=90 1440w, https://cdn.sanity.io/images/sij01e0v/production/bae11e6b6e81b12238c442546d533c3f03efea26-4542x5683.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90 1920w, https://cdn.sanity.io/images/sij01e0v/production/bae11e6b6e81b12238c442546d533c3f03efea26-4542x5683.jpg?w=2560&amp;fit=max&amp;auto=format&amp;q=90 2560w, https://cdn.sanity.io/images/sij01e0v/production/bae11e6b6e81b12238c442546d533c3f03efea26-4542x5683.jpg?w=3200&amp;fit=max&amp;auto=format&amp;q=90 3200w, https://cdn.sanity.io/images/sij01e0v/production/bae11e6b6e81b12238c442546d533c3f03efea26-4542x5683.jpg?w=3840&amp;fit=max&amp;auto=format&amp;q=90 3840w, https://cdn.sanity.io/images/sij01e0v/production/bae11e6b6e81b12238c442546d533c3f03efea26-4542x5683.jpg?w=4542&amp;fit=max&amp;auto=format&amp;q=90 4542w" sizes="(max-width: 720px) calc(100vw - 20px), calc((100vw - 60px) / 3.25)" data-lightbox-src="https://cdn.sanity.io/images/sij01e0v/production/bae11e6b6e81b12238c442546d533c3f03efea26-4542x5683.jpg?w=4542&amp;fit=max&amp;auto=format&amp;q=90" alt="Technical line drawing of a steel construction frame" width="4542" height="5683" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-media-reveal" style="--reveal-delay: 460ms;">
+            <video class="case-gallery__video" data-src="https://cdn.sanity.io/files/sij01e0v/production/6ea2fd9cf365b1d6aa429bdcc021d805078b580c.mp4" poster="/assets/images/posters/megamontaj/brand-applications.jpg" width="2160" height="2700" preload="none" muted loop playsinline aria-label="Megamontaj animated brand applications and construction imagery"></video>
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--2">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 520ms;">
+            <img src="https://cdn.sanity.io/images/sij01e0v/production/60f06c0762ef0e2775749b26bf8d87d1599ef8e4-2601x1583.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90" srcset="https://cdn.sanity.io/images/sij01e0v/production/60f06c0762ef0e2775749b26bf8d87d1599ef8e4-2601x1583.jpg?w=416&amp;fit=max&amp;auto=format&amp;q=90 416w, https://cdn.sanity.io/images/sij01e0v/production/60f06c0762ef0e2775749b26bf8d87d1599ef8e4-2601x1583.jpg?w=768&amp;fit=max&amp;auto=format&amp;q=90 768w, https://cdn.sanity.io/images/sij01e0v/production/60f06c0762ef0e2775749b26bf8d87d1599ef8e4-2601x1583.jpg?w=1024&amp;fit=max&amp;auto=format&amp;q=90 1024w, https://cdn.sanity.io/images/sij01e0v/production/60f06c0762ef0e2775749b26bf8d87d1599ef8e4-2601x1583.jpg?w=1440&amp;fit=max&amp;auto=format&amp;q=90 1440w, https://cdn.sanity.io/images/sij01e0v/production/60f06c0762ef0e2775749b26bf8d87d1599ef8e4-2601x1583.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90 1920w, https://cdn.sanity.io/images/sij01e0v/production/60f06c0762ef0e2775749b26bf8d87d1599ef8e4-2601x1583.jpg?w=2560&amp;fit=max&amp;auto=format&amp;q=90 2560w, https://cdn.sanity.io/images/sij01e0v/production/60f06c0762ef0e2775749b26bf8d87d1599ef8e4-2601x1583.jpg?w=2601&amp;fit=max&amp;auto=format&amp;q=90 2601w" sizes="(max-width: 720px) calc(100vw - 20px), calc((100vw - 60px) * 2.25 / 3.25)" data-lightbox-src="https://cdn.sanity.io/images/sij01e0v/production/60f06c0762ef0e2775749b26bf8d87d1599ef8e4-2601x1583.jpg?w=2601&amp;fit=max&amp;auto=format&amp;q=90" alt="Megamontaj geometric and circular M symbols over architectural photography" width="2601" height="1583" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 640ms;">
+            <img src="https://cdn.sanity.io/images/sij01e0v/production/2750524582b64ad44441b984bec58ddacb63759d-1743x2179.jpg?w=1743&amp;fit=max&amp;auto=format&amp;q=90" srcset="https://cdn.sanity.io/images/sij01e0v/production/2750524582b64ad44441b984bec58ddacb63759d-1743x2179.jpg?w=416&amp;fit=max&amp;auto=format&amp;q=90 416w, https://cdn.sanity.io/images/sij01e0v/production/2750524582b64ad44441b984bec58ddacb63759d-1743x2179.jpg?w=768&amp;fit=max&amp;auto=format&amp;q=90 768w, https://cdn.sanity.io/images/sij01e0v/production/2750524582b64ad44441b984bec58ddacb63759d-1743x2179.jpg?w=1024&amp;fit=max&amp;auto=format&amp;q=90 1024w, https://cdn.sanity.io/images/sij01e0v/production/2750524582b64ad44441b984bec58ddacb63759d-1743x2179.jpg?w=1440&amp;fit=max&amp;auto=format&amp;q=90 1440w, https://cdn.sanity.io/images/sij01e0v/production/2750524582b64ad44441b984bec58ddacb63759d-1743x2179.jpg?w=1743&amp;fit=max&amp;auto=format&amp;q=90 1743w" sizes="(max-width: 720px) calc(100vw - 20px), calc((100vw - 60px) / 3.25)" data-lightbox-src="https://cdn.sanity.io/images/sij01e0v/production/2750524582b64ad44441b984bec58ddacb63759d-1743x2179.jpg?w=1743&amp;fit=max&amp;auto=format&amp;q=90" alt="Megamontaj wordmark applied vertically to a red industrial facade" width="1743" height="2179" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--3">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 760ms;">
+            <img src="https://cdn.sanity.io/images/sij01e0v/production/e504d3497507104b0b9e15ce736c85e71845a08d-2400x3000.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90" srcset="https://cdn.sanity.io/images/sij01e0v/production/e504d3497507104b0b9e15ce736c85e71845a08d-2400x3000.jpg?w=416&amp;fit=max&amp;auto=format&amp;q=90 416w, https://cdn.sanity.io/images/sij01e0v/production/e504d3497507104b0b9e15ce736c85e71845a08d-2400x3000.jpg?w=768&amp;fit=max&amp;auto=format&amp;q=90 768w, https://cdn.sanity.io/images/sij01e0v/production/e504d3497507104b0b9e15ce736c85e71845a08d-2400x3000.jpg?w=1024&amp;fit=max&amp;auto=format&amp;q=90 1024w, https://cdn.sanity.io/images/sij01e0v/production/e504d3497507104b0b9e15ce736c85e71845a08d-2400x3000.jpg?w=1440&amp;fit=max&amp;auto=format&amp;q=90 1440w, https://cdn.sanity.io/images/sij01e0v/production/e504d3497507104b0b9e15ce736c85e71845a08d-2400x3000.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90 1920w, https://cdn.sanity.io/images/sij01e0v/production/e504d3497507104b0b9e15ce736c85e71845a08d-2400x3000.jpg?w=2400&amp;fit=max&amp;auto=format&amp;q=90 2400w" sizes="(max-width: 720px) calc(100vw - 20px), calc((100vw - 60px) / 2)" data-lightbox-src="https://cdn.sanity.io/images/sij01e0v/production/e504d3497507104b0b9e15ce736c85e71845a08d-2400x3000.jpg?w=2400&amp;fit=max&amp;auto=format&amp;q=90" alt="Black Megamontaj business cards with a white wordmark" width="2400" height="3000" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 820ms;">
+            <img src="https://cdn.sanity.io/images/sij01e0v/production/6623a0dd0e53f042d765a4e86352ce063b2534ff-2136x2670.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90" srcset="https://cdn.sanity.io/images/sij01e0v/production/6623a0dd0e53f042d765a4e86352ce063b2534ff-2136x2670.jpg?w=416&amp;fit=max&amp;auto=format&amp;q=90 416w, https://cdn.sanity.io/images/sij01e0v/production/6623a0dd0e53f042d765a4e86352ce063b2534ff-2136x2670.jpg?w=768&amp;fit=max&amp;auto=format&amp;q=90 768w, https://cdn.sanity.io/images/sij01e0v/production/6623a0dd0e53f042d765a4e86352ce063b2534ff-2136x2670.jpg?w=1024&amp;fit=max&amp;auto=format&amp;q=90 1024w, https://cdn.sanity.io/images/sij01e0v/production/6623a0dd0e53f042d765a4e86352ce063b2534ff-2136x2670.jpg?w=1440&amp;fit=max&amp;auto=format&amp;q=90 1440w, https://cdn.sanity.io/images/sij01e0v/production/6623a0dd0e53f042d765a4e86352ce063b2534ff-2136x2670.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90 1920w, https://cdn.sanity.io/images/sij01e0v/production/6623a0dd0e53f042d765a4e86352ce063b2534ff-2136x2670.jpg?w=2136&amp;fit=max&amp;auto=format&amp;q=90 2136w" sizes="(max-width: 720px) calc(100vw - 20px), calc((100vw - 60px) / 2)" data-lightbox-src="https://cdn.sanity.io/images/sij01e0v/production/6623a0dd0e53f042d765a4e86352ce063b2534ff-2136x2670.jpg?w=2136&amp;fit=max&amp;auto=format&amp;q=90" alt="Megamontaj red, white and black branded packaging tape" width="2136" height="2670" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row megamontaj-gallery__row--one-two">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 700ms;">
+            <img src="https://cdn.sanity.io/images/sij01e0v/production/4b9af00f6190760a34320a766a3037ff6f7c8baf-4542x5683.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90" srcset="https://cdn.sanity.io/images/sij01e0v/production/4b9af00f6190760a34320a766a3037ff6f7c8baf-4542x5683.jpg?w=416&amp;fit=max&amp;auto=format&amp;q=90 416w, https://cdn.sanity.io/images/sij01e0v/production/4b9af00f6190760a34320a766a3037ff6f7c8baf-4542x5683.jpg?w=768&amp;fit=max&amp;auto=format&amp;q=90 768w, https://cdn.sanity.io/images/sij01e0v/production/4b9af00f6190760a34320a766a3037ff6f7c8baf-4542x5683.jpg?w=1024&amp;fit=max&amp;auto=format&amp;q=90 1024w, https://cdn.sanity.io/images/sij01e0v/production/4b9af00f6190760a34320a766a3037ff6f7c8baf-4542x5683.jpg?w=1440&amp;fit=max&amp;auto=format&amp;q=90 1440w, https://cdn.sanity.io/images/sij01e0v/production/4b9af00f6190760a34320a766a3037ff6f7c8baf-4542x5683.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90 1920w, https://cdn.sanity.io/images/sij01e0v/production/4b9af00f6190760a34320a766a3037ff6f7c8baf-4542x5683.jpg?w=2560&amp;fit=max&amp;auto=format&amp;q=90 2560w, https://cdn.sanity.io/images/sij01e0v/production/4b9af00f6190760a34320a766a3037ff6f7c8baf-4542x5683.jpg?w=3200&amp;fit=max&amp;auto=format&amp;q=90 3200w, https://cdn.sanity.io/images/sij01e0v/production/4b9af00f6190760a34320a766a3037ff6f7c8baf-4542x5683.jpg?w=3840&amp;fit=max&amp;auto=format&amp;q=90 3840w, https://cdn.sanity.io/images/sij01e0v/production/4b9af00f6190760a34320a766a3037ff6f7c8baf-4542x5683.jpg?w=4542&amp;fit=max&amp;auto=format&amp;q=90 4542w" sizes="(max-width: 720px) calc(100vw - 20px), calc((100vw - 60px) / 3)" data-lightbox-src="https://cdn.sanity.io/images/sij01e0v/production/4b9af00f6190760a34320a766a3037ff6f7c8baf-4542x5683.jpg?w=4542&amp;fit=max&amp;auto=format&amp;q=90" alt="Megamontaj red and white wordmarks paired with a red industrial building" width="4542" height="5683" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-media-reveal" style="--reveal-delay: 580ms;">
+            <video class="case-gallery__video" data-src="https://cdn.sanity.io/files/sij01e0v/production/373ad841223bbcb57be601b5587b72de82373f04.mp4" poster="/assets/images/posters/megamontaj/color-palette.jpg" width="2560" height="1440" preload="none" muted loop playsinline aria-label="Megamontaj red, black, white and grey color palette animation"></video>
+          </figure>
+        </div>
+        <div class="case-gallery__row case-gallery__row--3">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 880ms;">
+            <img src="https://cdn.sanity.io/images/sij01e0v/production/1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254-4343x5428.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90" srcset="https://cdn.sanity.io/images/sij01e0v/production/1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254-4343x5428.jpg?w=416&amp;fit=max&amp;auto=format&amp;q=90 416w, https://cdn.sanity.io/images/sij01e0v/production/1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254-4343x5428.jpg?w=768&amp;fit=max&amp;auto=format&amp;q=90 768w, https://cdn.sanity.io/images/sij01e0v/production/1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254-4343x5428.jpg?w=1024&amp;fit=max&amp;auto=format&amp;q=90 1024w, https://cdn.sanity.io/images/sij01e0v/production/1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254-4343x5428.jpg?w=1440&amp;fit=max&amp;auto=format&amp;q=90 1440w, https://cdn.sanity.io/images/sij01e0v/production/1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254-4343x5428.jpg?w=1920&amp;fit=max&amp;auto=format&amp;q=90 1920w, https://cdn.sanity.io/images/sij01e0v/production/1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254-4343x5428.jpg?w=2560&amp;fit=max&amp;auto=format&amp;q=90 2560w, https://cdn.sanity.io/images/sij01e0v/production/1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254-4343x5428.jpg?w=3200&amp;fit=max&amp;auto=format&amp;q=90 3200w, https://cdn.sanity.io/images/sij01e0v/production/1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254-4343x5428.jpg?w=3840&amp;fit=max&amp;auto=format&amp;q=90 3840w, https://cdn.sanity.io/images/sij01e0v/production/1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254-4343x5428.jpg?w=4343&amp;fit=max&amp;auto=format&amp;q=90 4343w" sizes="(max-width: 720px) calc(100vw - 20px), calc((100vw - 60px) / 2)" data-lightbox-src="https://cdn.sanity.io/images/sij01e0v/production/1a6a7bdf498d3d98bfbfb1ab6eeaee7019bba254-4343x5428.jpg?w=4343&amp;fit=max&amp;auto=format&amp;q=90" alt="Megamontaj project presentation and portfolio book mockup" width="4343" height="5428" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 900ms;">
+            <img src="https://cdn.sanity.io/images/sij01e0v/production/751c83461f5bf57eb0e291e3de727d9a009b982f-1091x1365.png?w=1091&amp;fit=max&amp;auto=format&amp;q=90" srcset="https://cdn.sanity.io/images/sij01e0v/production/751c83461f5bf57eb0e291e3de727d9a009b982f-1091x1365.png?w=416&amp;fit=max&amp;auto=format&amp;q=90 416w, https://cdn.sanity.io/images/sij01e0v/production/751c83461f5bf57eb0e291e3de727d9a009b982f-1091x1365.png?w=768&amp;fit=max&amp;auto=format&amp;q=90 768w, https://cdn.sanity.io/images/sij01e0v/production/751c83461f5bf57eb0e291e3de727d9a009b982f-1091x1365.png?w=1024&amp;fit=max&amp;auto=format&amp;q=90 1024w, https://cdn.sanity.io/images/sij01e0v/production/751c83461f5bf57eb0e291e3de727d9a009b982f-1091x1365.png?w=1091&amp;fit=max&amp;auto=format&amp;q=90 1091w" sizes="(max-width: 720px) calc(100vw - 20px), calc((100vw - 60px) / 2)" data-lightbox-src="https://cdn.sanity.io/images/sij01e0v/production/751c83461f5bf57eb0e291e3de727d9a009b982f-1091x1365.png?w=1091&amp;fit=max&amp;auto=format&amp;q=90" alt="Megamontaj website layouts displayed over a red industrial facade" width="1091" height="1365" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+        <div class="case-gallery__row megamontaj-gallery__row--one-two">
+          <figure class="case-gallery__image case-media-reveal" style="--reveal-delay: 900ms;">
+            <img src="https://cdn.sanity.io/images/sij01e0v/production/7786e0a859f720253c6d542455f23060cee218ae-1080x1349.jpg?w=1080&amp;fit=max&amp;auto=format&amp;q=90" srcset="https://cdn.sanity.io/images/sij01e0v/production/7786e0a859f720253c6d542455f23060cee218ae-1080x1349.jpg?w=416&amp;fit=max&amp;auto=format&amp;q=90 416w, https://cdn.sanity.io/images/sij01e0v/production/7786e0a859f720253c6d542455f23060cee218ae-1080x1349.jpg?w=768&amp;fit=max&amp;auto=format&amp;q=90 768w, https://cdn.sanity.io/images/sij01e0v/production/7786e0a859f720253c6d542455f23060cee218ae-1080x1349.jpg?w=1024&amp;fit=max&amp;auto=format&amp;q=90 1024w, https://cdn.sanity.io/images/sij01e0v/production/7786e0a859f720253c6d542455f23060cee218ae-1080x1349.jpg?w=1080&amp;fit=max&amp;auto=format&amp;q=90 1080w" sizes="(max-width: 720px) calc(100vw - 20px), calc((100vw - 60px) / 3)" data-lightbox-src="https://cdn.sanity.io/images/sij01e0v/production/7786e0a859f720253c6d542455f23060cee218ae-1080x1349.jpg?w=1080&amp;fit=max&amp;auto=format&amp;q=90" alt="Megamontaj M symbol shown as an app icon on a phone" width="1080" height="1349" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="case-media-reveal" style="--reveal-delay: 900ms;">
+            <video class="case-gallery__video" data-src="https://cdn.sanity.io/files/sij01e0v/production/f960edbd52c1e0de6862d6ea82d7f8bdfe5d7051.mp4" poster="/assets/images/posters/megamontaj/symbol-motion.jpg" width="2160" height="2700" preload="none" muted loop playsinline aria-label="Megamontaj M symbol in motion with industrial architecture"></video>
+          </figure>
+        </div>
+      </div>
+      <div class="case-description-row">
+        <div class="case-description case-reveal">
+          <h2 class="case-project-nav__label" style="margin: 0 0 8px;">Project</h2>
+          <p style="margin: 0;">Megamontaj is a construction company based in Târgu Mureș, Romania. The project brings rebranding and web development into a single visual system, creating continuity between the company’s physical presence and its digital communication. The identity connects the scale and structure of industrial architecture with a clear, recognisable brand.</p>
+          <h2 class="case-project-nav__label" style="margin: 24px 0 8px;">Approach</h2>
+          <p style="margin: 0;">The design is built around an M-based symbol, a bold wordmark and a palette of red, black, white and grey. Architectural photography and technical drawings connect the identity to the company’s field, while a consistent graphic language carries across signage, business cards, packaging tape and presentation materials. The website extends this system through clear typography, structured layouts and a direct presentation of the company’s work.</p>
+        </div>
+        <dl class="case-credits case-reveal" style="--reveal-delay: 160ms;">
+          <dt class="case-credit-label">Art Direction &amp;<br class="case-credit-mobile-break"> Graphic Design</dt>
+          <dd>David Muresan</dd>
+          <dt class="case-credit-label">UI &amp;<br class="case-credit-mobile-break"> Web Development</dt>
+          <dd>David Muresan</dd>
+        </dl>
+      </div>
+      <nav class="case-project-nav case-project-nav--portal case-reveal" aria-label="Project navigation" style="--reveal-delay: 220ms;">
+        <div class="case-project-nav__item">
+          <a class="case-project-nav__button" href="/dream-ville-software/" data-cursor-image="https://cdn.sanity.io/images/sij01e0v/production/9fa4229d43cd5ff556cd1f7e18e5ece1784d2086-2500x1667.jpg?w=768&amp;fit=max&amp;auto=format&amp;q=90" aria-label="Previous project: Dream Ville Software"><span class="case-project-nav__arrow" aria-hidden="true">←</span><span class="case-project-nav__title">DREAM VILLE SOFTWARE</span></a>
+        </div>
+        <div class="case-project-nav__item case-project-nav__item--next">
+          <a class="case-project-nav__button" href="/maier-jewelry/" data-cursor-image="https://cdn.sanity.io/images/sij01e0v/production/d5101e74b1da29182b261d9c82bdc53bfcdbfa1a-1920x1080.jpg?w=1920&fit=max&auto=format&q=90" aria-label="Next project: Maier Jewelry"><span class="case-project-nav__title">MAIER JEWELRY</span><span class="case-project-nav__arrow" aria-hidden="true">→</span></a>
+        </div>
+      </nav>
+      <div class="case-project-cursor" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="Megamontaj image slideshow" aria-hidden="true">
+    <button class="image-lightbox__button image-lightbox__close" type="button" aria-label="Close image slideshow">x</button>
+    <button class="image-lightbox__button image-lightbox__prev" type="button" aria-label="Previous image">&lsaquo;</button>
+    <div class="image-lightbox__stage">
+      <img class="image-lightbox__image" src="" alt="" decoding="async" />
+    </div>
+    <button class="image-lightbox__button image-lightbox__next" type="button" aria-label="Next image">&rsaquo;</button>
+    <div class="image-lightbox__counter" aria-live="polite"></div>
+  </div>
+
+  <footer class="site-footer footer-section visible" id="footer-section" aria-hidden="false">
+    <div class="footer-content">
+      <div class="footer-brand-minimal" aria-label="MOND : STUDIO">
+        <span class="footer-brand-minimal__logo" aria-hidden="true"></span>
+      </div>
+      <nav class="footer-social-minimal" aria-label="Footer social links">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
+        <a href="https://www.instagram.com/studio_mond/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+      </nav>
+      <div class="footer-contact-block">
+        Studio — Cluj-Napoca, Romania <span id="ro-clock" aria-label="Cluj-Napoca local time"></span><br>
+        Creative Network — Budapest, Hungary <span id="hu-clock" aria-label="Budapest local time"></span><br>
+        <a class="footer-email" href="mailto:hello@mondstudio.co?subject=Hey%20there!%20I%20would%20like%20to%20work%20with%20you!">hello@mondstudio.co</a>
+      </div>
+      <div class="footer-copy-minimal">©2026 MOND : STUDIO. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <script defer src="/assets/js/project-page.js?v=20260921-media-autoplay"></script>
+  <script defer src="/assets/js/media-playback.js?v=20260921-ready-events"></script>
+  <script defer src="/assets/js/site-common.js?v=20260921-project-lines"></script>
+  <script type="module" src="/assets/js/smooth-scroll.js?v=20260921-loading-fix"></script>
+</body>
+</html>

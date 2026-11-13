@@ -23,11 +23,11 @@ ORIGIN = f"https://{HOST}"
 ENDPOINT = "https://api.indexnow.org/indexnow"
 KEY_FILE = ROOT / "123ebf8fb85a4a0e8b1548473569d5fe.txt"
 SHARED_FILES = {
-    "project-page.css",
-    "project-page.js",
+    "assets/css/project-page.css",
+    "assets/js/project-page.js",
     "robots.txt",
-    "site-common.js",
-    "smooth-scroll.js",
+    "assets/js/site-common.js",
+    "assets/js/smooth-scroll.js",
 }
 
 
